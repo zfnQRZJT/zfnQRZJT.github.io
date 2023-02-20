@@ -62,9 +62,7 @@ div {
 .topbarlink:hover {
   color:#3DF;
 }
-.topbarlink:hover > .topbaraborder, .activetbl > .topbaraborder {
+.topbarlink:hover:not(.activetbl) > .topbaraborder {
   width:100%;
-}
-.topbarlink:hover > .topbaraborder {
   background:#3DF;
 }
