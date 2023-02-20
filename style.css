@@ -39,3 +39,16 @@ div {
 #pixelboard .pixel {
   transition:border-width 0.3s;
 }
+.topbarlink {
+  cursor:pointer;
+}
+.topbarlink::after {
+  content:"";
+  width:0px;
+  background:#0BF;
+  height:var(--gap);
+  transition:width 0.3s;
+}
+.topbarlink::hover::after {
+  width:100%;
+}
