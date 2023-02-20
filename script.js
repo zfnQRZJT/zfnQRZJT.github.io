@@ -15,10 +15,12 @@ const setImage = function(imgdata) {
     interval = setInterval(function() {
       if (intervalIter <= 63) {
         for (let i = 0; i <= intervalIter; i++) {
+          console.log(i,intervalIter - i);
           find("pixelboard").children[i].children[intervalIter - i].style.background = imgdata[i][intervalIter - i];
         }
       } else {
         for (let i = intervalIter - 63; i <= 63; i++) {
+          console.log(i,intervalIter - i);
           find("pixelboard").children[i].children[intervalIter - i].style.background = imgdata[i][intervalIter - i];
         }
       }
