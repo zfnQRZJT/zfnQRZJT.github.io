@@ -43,11 +43,15 @@ div {
   cursor:pointer;
   color:#FFF;
   transition:color 0.3s;
+  display:block;
+  width:max-content;
+  text-align:center;
+  text-decoration-underline:none;
 }
 .topbarlink > .topbaraborder {
   width:0px;
   background:#3DF;
-  height:var(--gap);
+  height:calc(var(--gap)/2);
   transition:width 0.3s;
   display:inline-block;
 }
