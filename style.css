@@ -37,7 +37,11 @@ div {
   height:1.5625%;
 }
 #pixelboard .pixel {
-  transition:border-width 0.3s;
+  transition:background 0.3s;
+  background:transparent;
+  width:1.5625%;
+  height:1.5625%;
+  display:inline-block;
 }
 .topbarlink {
   cursor:pointer;
