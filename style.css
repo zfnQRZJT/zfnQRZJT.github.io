@@ -29,7 +29,7 @@ div {
   border-color:#000000;
   border:solid;
   position:fixed;
-  top:var(--gap);
+  top:calc(40px + var(--gap));
   right:var(--gap);
 }
 #pixelboard .pixelrow {
