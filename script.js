@@ -36,7 +36,7 @@ var randomColours = [];
 for (let i = 0; i < 64; i++) {
   randomColours.push([]);
   for (let j = 0; j < 64; j++) {
-    randomColours[i].push("#" + (Math.floor(16777216*Math.random())).toString(16));
+    randomColours[i].push("#" + ("000000" + (Math.floor(16777216*Math.random())).toString(16)).substr(-6));
   }
 }
 window.onload = startBoard;
