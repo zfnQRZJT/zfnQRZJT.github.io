@@ -48,7 +48,7 @@ div {
   text-align:center;
   text-decoration:none;
   height:30px;
-  margin-right:calc(2*var(--gap))
+  margin-right:calc(4*var(--gap))
 }
 .topbarlink > .topbaraborder {
   width:0px;
