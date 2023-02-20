@@ -9,11 +9,17 @@ body, html {
   width:100vw;
   height:100%;
   margin:0;
+  background:#120606;
 }
 div {
   display:inline-block;
 }
 #topbar {
+  background: linear-gradient(90deg,#90C,#F00,#F80,#FF0);
+  color: #FFF;
+  padding: var(--gap);
+  font-size: 25px;
+  font-family:Rubik, sans-serif;
   width:100%;
 }
 #pixelboard {
@@ -21,6 +27,7 @@ div {
   height:30vw;
   border-width:var(--gap);
   border-color:#000000;
+  border:solid;
   position:fixed;
   top:var(--gap);
   right:var(--gap);
