@@ -44,16 +44,16 @@ div {
   color:#FFF;
   transition:color 0.3s;
 }
-.topbarlink::after {
-  content:"";
+.topbarlink > .topbaraborder {
   width:0px;
-  background:#0BF;
+  background:#3DF;
   height:var(--gap);
   transition:width 0.3s;
+  display:inline-block;
 }
 .topbarlink:hover {
-  color:#0BF;
+  color:#3DF;
 }
-.topbarlink:hover::after {
+.topbarlink:hover > .topbaraborder {
   width:100%;
 }
