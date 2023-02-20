@@ -41,6 +41,8 @@ div {
 }
 .topbarlink {
   cursor:pointer;
+  color:#FFF;
+  transition:color 0.3s;
 }
 .topbarlink::after {
   content:"";
@@ -49,6 +51,9 @@ div {
   height:var(--gap);
   transition:width 0.3s;
 }
-.topbarlink::hover::after {
+.topbarlink:hover {
+  color:#0BF;
+}
+.topbarlink:hover::after {
   width:100%;
 }
