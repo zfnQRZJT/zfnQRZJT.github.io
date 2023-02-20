@@ -13,8 +13,14 @@ const setImage = function(imgdata) {
     inInterval = true;
     intervalIter = 0;
     interval = setInterval(function() {
-      for (let i = 0; i <= intervalIter; i++) {
-        find("pixelboard").children[i].children[intervalIter - i].style.background = imgdata[i][intervalIter - i];
+      if (intervalIter <= 63) {
+        for (let i = 0; i <= intervalIter; i++) {
+          find("pixelboard").children[i].children[intervalIter - i].style.background = imgdata[i][intervalIter - i];
+        }
+      } else {
+        for (let i = intervalIter - 63; i <= 63; i++) {
+          find("pixelboard").children[i].children[intervalIter - i].style.background = imgdata[i][intervalIter - i];
+        }
       }
       intervalIter += 1;
       if (intervalIter >= 126) {
