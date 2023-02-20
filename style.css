@@ -26,5 +26,12 @@ div {
   border-color:#000000;
   position:fixed;
   top:var(--gap);
-  left:var(--gap);
+  right:var(--gap);
+}
+#pixelboard .pixelrow {
+  width:100%;
+  height:1.5625%;
+}
+#pixelboard .pixel {
+  transition:border-width 0.3s;
 }
