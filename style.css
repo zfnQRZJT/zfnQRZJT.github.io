@@ -1,0 +1,10 @@
+body, html {
+  width:100vw;
+  height:100%;
+}
+div {
+  display:inline-block;
+}
+#topbar {
+  width:100%;
+}
