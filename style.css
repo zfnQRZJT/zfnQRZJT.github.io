@@ -40,7 +40,7 @@ div {
   transition:background 0.3s;
   background:transparent;
   width:1.5625%;
-  height:1.5625%;
+  height:100%;
   display:inline-block;
 }
 .topbarlink {
