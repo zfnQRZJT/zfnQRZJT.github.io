@@ -8,6 +8,9 @@
 body, html {
   width:100vw;
   height:100%;
+  margin:0;
+}
+body {
   margin:var(--gap);
 }
 div {
@@ -21,4 +24,7 @@ div {
   height:30vw;
   border-width:var(--gap);
   border-color:#000000;
+  position:fixed;
+  top:var(--gap);
+  left:var(--gap);
 }
