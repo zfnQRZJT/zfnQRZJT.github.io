@@ -43,18 +43,19 @@ div {
   cursor:pointer;
   color:#FFF;
   transition:color 0.3s;
-  display:block;
+  display:inline-block;
   width:max-content;
   text-align:center;
   text-decoration:none;
+  height:30px;
 }
 .topbarlink > .topbaraborder {
   width:0px;
-  background:#3DF;
+  background:#FFF;
   position:relative;
   height:calc(var(--gap)/2);
   bottom:calc(var(--gap)/2);
-  transition:width 0.3s;
+  transition:width 0.3s, background 0.3s;
   display:inline-block;
 }
 .topbarlink:hover {
@@ -62,4 +63,5 @@ div {
 }
 .topbarlink:hover > .topbaraborder {
   width:100%;
+  background:#3DF;
 }
