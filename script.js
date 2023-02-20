@@ -3,7 +3,7 @@ const find = function(elem) {
 }
 const startBoard = function() {
   find("pixelboard").innerHTML = ("<div class='pixelRow'>" + ("<div class='pixel'></div>").repeat(64) + "</div>").repeat(64);
-  setImage(randomColours());
+  setImage(randomColours);
 }
 var inInterval = false;
 var intervalIter = 0;
