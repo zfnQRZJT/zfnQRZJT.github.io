@@ -46,12 +46,14 @@ div {
   display:block;
   width:max-content;
   text-align:center;
-  text-decoration-underline:none;
+  text-decoration:none;
 }
 .topbarlink > .topbaraborder {
   width:0px;
   background:#3DF;
+  position:relative;
   height:calc(var(--gap)/2);
+  bottom:calc(var(--gap)/2);
   transition:width 0.3s;
   display:inline-block;
 }
