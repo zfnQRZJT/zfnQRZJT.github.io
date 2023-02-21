@@ -46,4 +46,9 @@ for (let i = 0; i < 64; i++) {
     if ((Math.floor(i/8) + Math.floor(j/8)) % 2) {chessColours[i].push("#000000");} else {chessColours[i].push("#00AA55");}
   }
 }
+var zfnDraw1 = fetch('https://upload.wikimedia.org/wikipedia/commons/7/77/Delete_key1.jpg')
+  .then(res => res.blob()) // Gets the response and returns it as a blob
+  .then(blob => {
+    console.log(blob.readAsDataURL());
+  }
 window.onload = startBoard;
