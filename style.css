@@ -77,6 +77,7 @@ div {
 #mainbody {
   width:calc(100vw - 2*var(--gap) - 30vw);
   margin:calc(10*var(--gap));
+  margin-top:calc(10*var(--gap) + 40px);
 }
 h1 {
   font-size:5em;
@@ -84,7 +85,6 @@ h1 {
 }
 h3 {
   font-weight:400;
-  margin-top:5em;
 }
 .rainbowtext {
   background:linear-gradient(90deg,#0B3 0% 6.25%,#0BF 18.75% 25%,#90C 37.5% 43.75%,#F00 56.25% 62.5%,#F80 75% 81.25%,#FF0 93.75% 100%);
@@ -92,13 +92,21 @@ h3 {
   color:transparent;
 }
 #godownbutton {
+  background:#F44;
+  border-radius:15px;
+  height:30px;
+  border:0px solid #000;
+}
+#godownbutton > a {
   font-weight:400;
   color:#FFF;
-  background:#F44;
-  border-radius:50%;
-  border:0px solid #000;
+  font-size:20px;
+  text-decoration:none;
+  margin:0 5px;
   transition:color 0.3s;
+  display:inline-block;
+  height:100%;
 }
-#godownbutton:hover {
+#godownbutton:hover > a {
   color:#0BF;
 }
