@@ -44,7 +44,7 @@ for (let i = 0; i < 64; i++) {
     if ((Math.floor(i/8) + Math.floor(j/8)) % 2) {chessColours[i].push("#000000");} else {chessColours[i].push("#00AA55");}
   }
 }
-var zfnDraw1 = fetch('/zfnPixel.png')
+/*var zfnDraw1 = fetch('/zfnPixel.png')
   .then(res => res.blob()) // Gets the response and returns it as a blob
   .then(blob => {
     const reader = new FileReader();
@@ -58,4 +58,7 @@ var zfnDraw1 = fetch('/zfnPixel.png')
       reader.readAsDataURL(blob);
     }
   });
+*/
+import intgraph from "pixeldataexport";
+console.log(intgraph);
 window.onload = startBoard;
