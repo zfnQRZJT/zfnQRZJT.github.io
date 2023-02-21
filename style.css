@@ -48,6 +48,7 @@ div {
 .topbarlink {
   cursor:pointer;
   color:#FFF;
+  text-shadow:1px 1px 0px #000;
   transition:color 0.3s;
   display:inline-block;
   width:max-content;
@@ -64,20 +65,25 @@ div {
   bottom:calc(var(--gap)/2);
   transition:width 0.3s, background 0.3s;
   display:inline-block;
+  border-bottom:1px solid #000;
 }
 .topbarlink:hover:not(.activetbl) > .topbaraborder {
   width:100%;
   background:#3DF;
 }
+#mainbody {
+  width:calc(100vw - 2*var(--gap) - 30vw);
+}
 h1 {
   font-size:5em;
-  margin:10*var(--gap);
+  margin:calc(10*var(--gap));
 }
 h3 {
   font-weight:400;
+  margin-left:calc(10*var(--gap));
 }
 .rainbowtext {
-  background:linear-gradient(90deg,#0B3,#0BF,#90C,#F00,#F80,#FF0);
+  background:linear-gradient(90deg,#0B3 0% 6.25%,#0BF 18.75% 25%,#90C 37.5% 43.75%,#F00 56.25% 62.5%,#F80 75% 81.25%,#FF0 93.75% 100%);
   -webkit-background-clip:text;
   color:transparent;
 }
