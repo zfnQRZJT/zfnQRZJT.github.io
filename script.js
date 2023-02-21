@@ -3,7 +3,7 @@ const find = function(elem) {
 }
 const startBoard = function() {
   find("pixelboard").innerHTML = ("<div class='pixelRow'>" + ("<div class='pixel'></div>").repeat(64) + "</div>").repeat(64);
-  setImage(unsplitImageData(intgraph));
+  setImage(unsplitImageData(zfnpixel));
 }
 var inInterval = false;
 var intervalIter = 0;
@@ -33,7 +33,7 @@ const setImage = function(imgdata) {
 const unsplitImageData = function(imgdata) {
   let retArr = [];
   for (let k = 0; k < imgdata.length/4; k++) {
-    retArr.push("#" + ("000000" + (256*256*imgdata[4*i] + 256*imgdata[4*i + 1] + imgdata[4*i + 2]).toString(16)).substr(-6));
+    retArr.push("#" + ("000000" + (256*256*imgdata[4*k] + 256*imgdata[4*k + 1] + imgdata[4*k + 2]).toString(16)).substr(-6));
   }
   return(retArr);
 }
@@ -66,6 +66,8 @@ for (let i = 0; i < 64; i++) {
     }
   });
 */
+import {zfnpixel as zfnpixel} from "/pixeldataexport.js";
+import {metezori as metezori} from "/pixeldataexport.js";
 import {intgraph as intgraph} from "/pixeldataexport.js";
 console.log(intgraph);
 window.onload = startBoard;
