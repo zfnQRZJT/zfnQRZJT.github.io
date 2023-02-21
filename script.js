@@ -59,6 +59,6 @@ for (let i = 0; i < 64; i++) {
     }
   });
 */
-import intgraph from "/pixeldataexport";
+import intgraph from "/pixeldataexport.js";
 console.log(intgraph);
 window.onload = startBoard;
