@@ -70,5 +70,5 @@ import {images as images} from "/pixeldataexport.js";
 const zfnPixel = images.zfnPixel;
 const metezori = images.metezori;
 const intGraph = images.intGraph;
-console.log(intGraph);
+console.log(unsplitImageData(zfnPixel));
 window.onload = startBoard;
