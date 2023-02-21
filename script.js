@@ -4,31 +4,31 @@ const find = function(elem) {
 const startBoard = function() {
   find("pixelboard").innerHTML = ("<div class='pixelRow'>" + ("<div class='pixel'></div>").repeat(64) + "</div>").repeat(64);
   setImage(unsplitImageData(zfnPixel));
+  setTimeout(function() {
+    unsplitImageData(metezori);
+  },500);
+  setTimeout(function() {
+    unsplitImageData(intGraph);
+  },1000);
 }
-var inInterval = false;
-var intervalIter = 0;
-var interval;
+var intervals = [];
 const setImage = function(imgdata) {
-  if (!inInterval) {
-    inInterval = true;
-    intervalIter = 0;
-    interval = setInterval(function() {
-      if (intervalIter <= 63) {
-        for (let i = 0; i <= intervalIter; i++) {
-          find("pixelboard").children[i].children[intervalIter - i].style.background = imgdata[i][intervalIter - i];
-        }
-      } else {
-        for (let i = intervalIter - 63; i <= 63; i++) {
-          find("pixelboard").children[i].children[intervalIter - i].style.background = imgdata[i][intervalIter - i];
-        }
+  interval = setInterval(function(intid) {
+    if (intervals[intid] <= 63) {
+      for (let i = 0; i <= intervals[intid]; i++) {
+        find("pixelboard").children[i].children[intervals[intid] - i].style.background = imgdata[i][intervals[intid] - i];
       }
-      intervalIter += 1;
-      if (intervalIter > 126) {
-        inInterval = false;
-        clearInterval(interval);
+    } else {
+      for (let i = intervals[intid] - 63; i <= 63; i++) {
+        find("pixelboard").children[i].children[intervals[intid] - i].style.background = imgdata[i][intervals[intid] - i];
       }
-    },15);
-  }
+    }
+    intervals[intid] += 1;
+    if (intervals[intid] > 126) {
+      clearInterval(intid);
+    }
+  },15,interval);
+  intervals.push(0);
 }
 const unsplitImageData = function(imgdata) {
   let retArr = [];
