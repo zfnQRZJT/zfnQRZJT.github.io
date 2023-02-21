@@ -35,7 +35,14 @@ const unsplitImageData = function(imgdata) {
   for (let k = 0; k < imgdata.length/4; k++) {
     retArr.push("#" + ("000000" + (256*256*imgdata[4*k] + 256*imgdata[4*k + 1] + imgdata[4*k + 2]).toString(16)).substr(-6));
   }
-  return(retArr);
+  let retArr2 = [];
+  for (let k = 0; k < 64; k++) {
+    retArr2.push([]);
+    for (let l = 0; l < 64; l++) {
+      retArr2[k].push(retArr[64*k + l]);
+    }
+  }
+  return(retArr2);
 }
 var randomColours = [];
 for (let i = 0; i < 64; i++) {
