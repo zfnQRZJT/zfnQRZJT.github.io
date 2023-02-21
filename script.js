@@ -66,8 +66,9 @@ for (let i = 0; i < 64; i++) {
     }
   });
 */
-import {zfnpixel as zfnpixel} from "/pixeldataexport.js";
-import {metezori as metezori} from "/pixeldataexport.js";
-import {intgraph as intgraph} from "/pixeldataexport.js";
+import {images as images} from "/pixeldataexport.js";
+const zfnpixel = images.zfnpixel;
+const metezori = images.metezori;
+const intgraph = images.intgraph;
 console.log(intgraph);
 window.onload = startBoard;
