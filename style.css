@@ -72,10 +72,10 @@ div {
   border-bottom:1px solid #000;
 }
 .topbarlink:hover:not(.activetbl) > .belowaborder, #godownbutton:hover > .belowaborder {
-  width:100%;
+  width:90%;
 }
 #mainbody {
-  width:calc(100vw - 2*var(--gap) - 30vw);
+  width:calc(100vw - 22*var(--gap) - 30vw);
   margin:calc(10*var(--gap));
   margin-top:calc(10*var(--gap) + 40px);
 }
@@ -101,7 +101,7 @@ h3 {
 #godownbutton > a {
   font-weight:400;
   color:#FFF;
-  font-size:22px;
+  font-size:20px;
   text-decoration:none;
   margin:0 5px;
   display:inline-block;
