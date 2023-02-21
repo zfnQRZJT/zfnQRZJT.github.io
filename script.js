@@ -3,7 +3,7 @@ const find = function(elem) {
 }
 const startBoard = function() {
   find("pixelboard").innerHTML = ("<div class='pixelRow'>" + ("<div class='pixel'></div>").repeat(64) + "</div>").repeat(64);
-  setImage(randomColours);
+  setImage(chessColours);
 }
 var inInterval = false;
 var intervalIter = 0;
@@ -37,6 +37,13 @@ for (let i = 0; i < 64; i++) {
   randomColours.push([]);
   for (let j = 0; j < 64; j++) {
     randomColours[i].push("#" + ("000000" + (Math.floor(16777216*Math.random())).toString(16)).substr(-6));
+  }
+}
+var chessColours = [];
+for (let i = 0; i < 64; i++) {
+  chessColours.push([]);
+  for (let j = 0; j < 64; j++) {
+    if ((Math.floor(i/8) + Math.floor(j/8)) % 2) {chessColours[i].push("#000000");} else {chessColours[i].push("#111111");}
   }
 }
 window.onload = startBoard;
