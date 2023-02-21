@@ -29,7 +29,7 @@ const setImage = function(imgdata) {
         inInterval = false;
         clearInterval(interval);
       }
-    },20);
+    },10);
   }
 }
 var randomColours = [];
