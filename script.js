@@ -50,5 +50,5 @@ var zfnDraw1 = fetch('https://upload.wikimedia.org/wikipedia/commons/7/77/Delete
   .then(res => res.blob()) // Gets the response and returns it as a blob
   .then(blob => {
     console.log(blob.readAsDataURL());
-  }
+  });
 window.onload = startBoard;
