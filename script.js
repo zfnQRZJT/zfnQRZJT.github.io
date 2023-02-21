@@ -25,7 +25,7 @@ const setImage = function(imgdata) {
         }
       }
       intervalIter += 1;
-      if (intervalIter >= 126) {
+      if (intervalIter > 126) {
         inInterval = false;
         clearInterval(interval);
       }
@@ -43,7 +43,7 @@ var chessColours = [];
 for (let i = 0; i < 64; i++) {
   chessColours.push([]);
   for (let j = 0; j < 64; j++) {
-    if ((Math.floor(i/8) + Math.floor(j/8)) % 2) {chessColours[i].push("#000000");} else {chessColours[i].push("#111111");}
+    if ((Math.floor(i/8) + Math.floor(j/8)) % 2) {chessColours[i].push("#000000");} else {chessColours[i].push("#00AA55");}
   }
 }
 window.onload = startBoard;
