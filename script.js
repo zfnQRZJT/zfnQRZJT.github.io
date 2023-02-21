@@ -3,7 +3,7 @@ const find = function(elem) {
 }
 const startBoard = function() {
   find("pixelboard").innerHTML = ("<div class='pixelRow'>" + ("<div class='pixel'></div>").repeat(64) + "</div>").repeat(64);
-  setImage(chessColours);
+  setImage(unsplitImageData(intgraph));
 }
 var inInterval = false;
 var intervalIter = 0;
@@ -29,6 +29,13 @@ const setImage = function(imgdata) {
       }
     },15);
   }
+}
+const unsplitImageData = function(imgdata) {
+  let retArr = [];
+  for (let k = 0; k < imgdata.length/4; k++) {
+    retArr.push("#" + ("000000" + (256*256*imgdata[4*i] + 256*imgdata[4*i + 1] + imgdata[4*i + 2]).toString(16)).substr(-6));
+  }
+  return(retArr);
 }
 var randomColours = [];
 for (let i = 0; i < 64; i++) {
