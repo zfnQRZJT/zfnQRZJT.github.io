@@ -49,6 +49,15 @@ for (let i = 0; i < 64; i++) {
 var zfnDraw1 = fetch('https://upload.wikimedia.org/wikipedia/commons/7/77/Delete_key1.jpg')
   .then(res => res.blob()) // Gets the response and returns it as a blob
   .then(blob => {
-    console.log(blob.readAsDataURL());
+    const reader = new FileReader();
+
+    reader.addEventListener("load", () => {
+      // convert image file to base64 string
+      console.log(reader.result);
+    }, false);
+
+    if (blob) {
+      reader.readAsDataURL(blob);
+    }
   });
 window.onload = startBoard;
