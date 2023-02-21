@@ -61,7 +61,7 @@ div {
   height:30px;
   margin-right:calc(4*var(--gap))
 }
-.topbarlink > .topbaraborder {
+.belowaborder {
   width:0px;
   background:#FFF;
   position:relative;
@@ -71,7 +71,7 @@ div {
   display:inline-block;
   border-bottom:1px solid #000;
 }
-.topbarlink:hover:not(.activetbl) > .topbaraborder {
+.topbarlink:hover:not(.activetbl) > .belowaborder, #godownbutton:hover > .belowaborder {
   width:100%;
 }
 #mainbody {
@@ -96,17 +96,15 @@ h3 {
   border-radius:15px;
   height:30px;
   border:0px solid #000;
+  width:max-content;
 }
 #godownbutton > a {
   font-weight:400;
   color:#FFF;
-  font-size:20px;
+  font-size:22px;
   text-decoration:none;
   margin:0 5px;
-  transition:color 0.3s;
   display:inline-block;
   height:100%;
-}
-#godownbutton:hover > a {
-  color:#0BF;
+  text-shadow:1px 1px 0px #000;
 }
