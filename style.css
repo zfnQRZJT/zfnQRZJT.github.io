@@ -75,12 +75,18 @@ div {
   width:90%;
 }
 #mainbody {
-  width:calc(100vw - 22*var(--gap) - 30vw);
-  margin:calc(10*var(--gap));
-  margin-top:calc(10*var(--gap) + 40px);
+  overflow:scroll;
   scroll-snap-type: y mandatory;
+  width:100%;
+  height:100%;
+  position:fixed;
+  top:0;
+  left:0;
 }
 .section {
+  width:calc(100vw - 22*var(--gap) - 30vw);
+  padding:calc(10*var(--gap));
+  padding-top:calc(10*var(--gap) + 40px);
   scroll-snap-align:start;
   height:100vh;
 }
