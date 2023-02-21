@@ -10,6 +10,7 @@ body, html {
   height:100%;
   margin:0;
   background:#120606;
+  color:#EEE;
 }
 div {
   display:inline-block;
@@ -69,4 +70,9 @@ div {
 .topbarlink:hover:not(.activetbl) > .topbaraborder {
   width:100%;
   background:#3DF;
+}
+.rainbowtext {
+  background:linear-gradient(90deg,#0BF,#90C,#F00,#F80,#FF0);
+  webkit-background-clip:text;
+  color:transparent;
 }
