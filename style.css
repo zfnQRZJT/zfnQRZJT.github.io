@@ -78,6 +78,11 @@ div {
   width:calc(100vw - 22*var(--gap) - 30vw);
   margin:calc(10*var(--gap));
   margin-top:calc(10*var(--gap) + 40px);
+  scroll-snap-type: y mandatory;
+}
+.section {
+  scroll-snap-align:start;
+  height:100vh;
 }
 h1 {
   font-size:5em;
