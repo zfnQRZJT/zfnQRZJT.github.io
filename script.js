@@ -1,3 +1,4 @@
+"use strict";
 const find = function(elem) {
   return(document.getElementById(elem));
 }
@@ -12,6 +13,7 @@ const startBoard = function() {
   },1000);
 }
 var intervals = [];
+var interval = 0;
 const setImage = function(imgdata) {
   interval = setInterval(function(intid) {
     if (intervals[intid] <= 63) {
