@@ -3,7 +3,7 @@ const find = function(elem) {
 }
 const startBoard = function() {
   find("pixelboard").innerHTML = ("<div class='pixelRow'>" + ("<div class='pixel'></div>").repeat(64) + "</div>").repeat(64);
-  setImage(unsplitImageData(zfnpixel));
+  setImage(unsplitImageData(zfnPixel));
 }
 var inInterval = false;
 var intervalIter = 0;
@@ -67,8 +67,8 @@ for (let i = 0; i < 64; i++) {
   });
 */
 import {images as images} from "/pixeldataexport.js";
-const zfnpixel = images.zfnpixel;
+const zfnPixel = images.zfnPixel;
 const metezori = images.metezori;
-const intgraph = images.intgraph;
-console.log(intgraph);
+const intGraph = images.intGraph;
+console.log(intGraph);
 window.onload = startBoard;
