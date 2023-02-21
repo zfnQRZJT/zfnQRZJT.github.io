@@ -11,12 +11,13 @@ body, html {
   margin:0;
   background:#120606;
   color:#EEE;
+  font-family:Rubik,sans-serif;
 }
 div {
   display:inline-block;
 }
 #topbar {
-  background: linear-gradient(90deg,#90C,#F00,#F80,#FF0);
+  background: linear-gradient(90deg,#0B3,#0BF,#90C,#F00,#F80,#FF0);
   color: #FFF;
   padding: var(--gap);
   font-size: 25px;
@@ -64,15 +65,19 @@ div {
   transition:width 0.3s, background 0.3s;
   display:inline-block;
 }
-.topbarlink:hover {
-  color:#3DF;
-}
 .topbarlink:hover:not(.activetbl) > .topbaraborder {
   width:100%;
   background:#3DF;
 }
+h1 {
+  font-size:5em;
+  margin:10*var(--gap);
+}
+h3 {
+  font-weight:400;
+}
 .rainbowtext {
-  background:linear-gradient(90deg,#0BF,#90C,#F00,#F80,#FF0);
-  webkit-background-clip:text;
+  background:linear-gradient(90deg,#0B3,#0BF,#90C,#F00,#F80,#FF0);
+  -webkit-background-clip:text;
   color:transparent;
 }
