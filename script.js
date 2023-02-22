@@ -18,6 +18,7 @@ var intervals = [];
 var interval = 0;
 const setImage = function(imgdata) {
   interval = setInterval(function(intid) {
+    console.log(intid);
     if (intervals[intid] <= 63) {
       for (let i = 0; i <= intervals[intid]; i++) {
         find("pixelboard").children[i].children[intervals[intid] - i].style.background = imgdata[i][intervals[intid] - i];
