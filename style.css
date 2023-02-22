@@ -127,3 +127,8 @@ h3 {
   width:calc(6*var(--gap));
   margin-left:var(--gap);
 }
+.whitedotgrid {
+  position:absolute;
+  background:url('/whitecircle.png');
+  background-size:15px;
+}
