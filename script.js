@@ -93,7 +93,7 @@ const scrollEvent = function() {
         prevh = 3;
         break;
       case 4:
-        intervals.push([unsplitImageData(metezori),0]);
+        intervals.push([unsplitImageData(videoPFP),0]);
         prevh = 4;
         break;
     }
@@ -103,7 +103,7 @@ import {images as images} from "/pixeldataexport.js";
 const zfnPixel = images.zfnPixel;
 const metezori = images.metezori;
 const intGraph = images.intGraph;
-console.log(unsplitImageData(zfnPixel));
+const videoPFP = images.videoPFP;
 window.onload = startBoard;
 window.onbeforeunload = function () {
   find("mainbody").scrollTo(0, 0);
