@@ -16,11 +16,13 @@ const startBoard = function() {
 }
 var intervals = [];
 setInterval(function() {
-  if (intervals.length) {for (let intid = 0; intid < intervals.length; intid++) {
+  if (intervals.length) {
+    console.log(intervals);
+    for (let intid = 0; intid < intervals.length; intid++) {
     if (intervals[intid][1] <= 63) {
       for (let i = 0; i <= intervals[intid][1]; i++) {
         find("pixelboard").children[i].children[intervals[intid][1] - i].style.background = intervals[intid][0][i][intervals[intid][1] - i];
-      }
+      } 
     } else {
       for (let i = intervals[intid][1] - 63; i <= 63; i++) {
         find("pixelboard").children[i].children[intervals[intid][1] - i].style.background = intervals[intid][0][i][intervals[intid][1] - i];
