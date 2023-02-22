@@ -132,4 +132,5 @@ h3 {
   position:absolute;
   background:url('/whitecircle.png');
   background-size:15px;
+  z-index:-1; 
 }
