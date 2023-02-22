@@ -78,18 +78,23 @@ const scrollEvent = function() {
     switch(h) {
       case 0:
         intervals.push([unsplitImageData(zfnPixel),0]);
+        prevh = 0;
         break;
       case 1:
         intervals.push([unsplitImageData(metezori),0]);
+        prevh = 1;
         break;
       case 2:
         intervals.push([unsplitImageData(intGraph),0]);
+        prevh = 2;
         break;
       case 3:
         intervals.push([chessColours,0]);
+        prevh = 3;
         break;
       case 4:
         intervals.push([unsplitImageData(metezori),0]);
+        prevh = 4;
         break;
     }
   }
