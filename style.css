@@ -38,6 +38,7 @@ div {
   position:fixed;
   top:calc(40px + var(--gap));
   right:var(--gap);
+  line-height:0;
 }
 #pixelboard .pixelRow {
   width:100%;
