@@ -39,7 +39,7 @@ div {
   top:calc(40px + var(--gap));
   right:var(--gap);
 }
-#pixelboard .pixelrow {
+#pixelboard .pixelRow {
   width:100%;
   height:1.5625%;
 }
