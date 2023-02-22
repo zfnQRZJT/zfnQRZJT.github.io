@@ -100,3 +100,6 @@ const metezori = images.metezori;
 const intGraph = images.intGraph;
 console.log(unsplitImageData(zfnPixel));
 window.onload = startBoard;
+window.onbeforeunload = function () {
+  find("mainbody").scrollTo(0, 0);
+}
