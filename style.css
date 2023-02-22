@@ -91,6 +91,7 @@ div {
   padding-top:calc(10*var(--gap) + 40px);
   scroll-snap-align:start;
   height:100vh;
+  position:relative;
 }
 h1 {
   font-size:5em;
