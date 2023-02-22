@@ -82,10 +82,10 @@ const scrollEvent = function() {
         intervals.push([unsplitImageData(metezori),0]);
         break;
       case 2:
-        intervals.push([chessColours,0]);
+        intervals.push([unsplitImageData(intGraph),0]);
         break;
       case 3:
-        intervals.push([unsplitImageData(intGraph),0]);
+        intervals.push([chessColours,0]);
         break;
       case 4:
         intervals.push([unsplitImageData(metezori),0]);
