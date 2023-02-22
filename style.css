@@ -103,14 +103,14 @@ h3 {
   -webkit-background-clip:text;
   color:transparent;
 }
-#godownbutton {
+.godownbutton {
   background:#F44;
   border-radius:15px;
   height:30px;
   border:0px solid #000;
   width:max-content;
 }
-#godownbutton > a {
+.godownbutton > a {
   font-weight:400;
   color:#FFF;
   font-size:20px;
