@@ -73,7 +73,7 @@ div {
   border-bottom:1px solid #000;
 }
 .topbarlink:hover:not(.activetbl) > .belowaborder, .godownbutton:hover > .belowaborder {
-  width:90%;
+  width:100%;
 }
 #mainbody {
   overflow:scroll;
@@ -105,10 +105,11 @@ h3 {
 }
 .godownbutton {
   background:#F44;
-  border-radius:15px;
+  border-radius:8px;
   height:30px;
   border:0px solid #000;
   width:max-content;
+  display:block;
 }
 .godownbutton > a {
   font-weight:400;
