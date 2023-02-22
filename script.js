@@ -6,10 +6,10 @@ const startBoard = function() {
   find("pixelboard").innerHTML = ("<div class='pixelRow'>" + ("<div class='pixel'></div>").repeat(64) + "</div>").repeat(64);
   setImage(unsplitImageData(zfnPixel));
   setTimeout(function() {
-    unsplitImageData(metezori);
+    setImage(unsplitImageData(metezori));
   },500);
   setTimeout(function() {
-    unsplitImageData(intGraph);
+    setImage(unsplitImageData(intGraph));
   },1000);
 }
 var intervals = [];
