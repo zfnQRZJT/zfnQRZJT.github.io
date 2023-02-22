@@ -3,6 +3,7 @@ const find = function(elem) {
   return(document.getElementById(elem));
 }
 const startBoard = function() {
+  find("mainbody").onscroll = scrollEvent;
   find("pixelboard").innerHTML = ("<div class='pixelRow'>" + ("<div class='pixel'></div>").repeat(64) + "</div>").repeat(64);
   intervals.push([unsplitImageData(zfnPixel),0]);
 }
@@ -99,4 +100,3 @@ const metezori = images.metezori;
 const intGraph = images.intGraph;
 console.log(unsplitImageData(zfnPixel));
 window.onload = startBoard;
-window.onscroll = scrollEvent;
