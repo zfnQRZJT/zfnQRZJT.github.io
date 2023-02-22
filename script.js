@@ -7,9 +7,11 @@ const startBoard = function() {
   setImage(unsplitImageData(zfnPixel));
   setTimeout(function() {
     setImage(unsplitImageData(metezori));
+    console.log("metezori loading");
   },500);
   setTimeout(function() {
     setImage(unsplitImageData(intGraph));
+    console.log("intgraph loading");
   },1000);
 }
 var intervals = [];
@@ -31,6 +33,7 @@ const setImage = function(imgdata) {
     }
   },15,interval);
   intervals.push(0);
+  console.log(intervals);
 }
 const unsplitImageData = function(imgdata) {
   let retArr = [];
