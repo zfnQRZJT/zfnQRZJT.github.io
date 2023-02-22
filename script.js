@@ -4,40 +4,35 @@ const find = function(elem) {
 }
 const startBoard = function() {
   find("pixelboard").innerHTML = ("<div class='pixelRow'>" + ("<div class='pixel'></div>").repeat(64) + "</div>").repeat(64);
-  setImage(unsplitImageData(zfnPixel));
+  intervals.push([unsplitImageData(zfnPixel),0]);
   setTimeout(function() {
-    setImage(unsplitImageData(metezori));
+    intervals.push([unsplitImageData(metezori),0]);
     console.log("metezori loading");
   },500);
   setTimeout(function() {
-    setImage(unsplitImageData(intGraph));
+    intervals.push([unsplitImageData(intGraph),0]);
     console.log("intgraph loading");
   },1000);
 }
 var intervals = [];
-var interval = 0;
-const setImage = function(imgdata) {
-  interval = setInterval(function(intid) {
-    if (!intervals[intid]) {
-      intervals[intid] = 0;
-    }
-    console.log(intid,intervals);
-    if (intervals[intid] <= 63) {
-      for (let i = 0; i <= intervals[intid]; i++) {
-        find("pixelboard").children[i].children[intervals[intid] - i].style.background = imgdata[i][intervals[intid] - i];
+setInterval(function() {
+  if (intervals.length) {for (let intid = 0; intid < intervals.length; intid++) {
+    if (intervals[intid][1] <= 63) {
+      for (let i = 0; i <= intervals[intid][1]; i++) {
+        find("pixelboard").children[i].children[intervals[intid][1] - i].style.background = intervals[intid][0][i][intervals[intid][1] - i];
       }
     } else {
-      for (let i = intervals[intid] - 63; i <= 63; i++) {
-        find("pixelboard").children[i].children[intervals[intid] - i].style.background = imgdata[i][intervals[intid] - i];
+      for (let i = intervals[intid][1] - 63; i <= 63; i++) {
+        find("pixelboard").children[i].children[intervals[intid][1] - i].style.background = intervals[intid][0][i][intervals[intid][1] - i];
       }
     }
-    intervals[intid] += 1;
-    if (intervals[intid] > 126) {
-      clearInterval(intid);
+    intervals[intid][1] += 1;
+    if (intervals[intid][1] > 126) {
+      intervals.splice(intid,1);
+      intid -= 1;
     }
-  },15,interval);
-  console.log(intervals);
-}
+  }}
+},15);
 const unsplitImageData = function(imgdata) {
   let retArr = [];
   for (let k = 0; k < imgdata.length/4; k++) {
