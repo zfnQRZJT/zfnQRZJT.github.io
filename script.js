@@ -18,6 +18,9 @@ var intervals = [];
 var interval = 0;
 const setImage = function(imgdata) {
   interval = setInterval(function(intid) {
+    if (!intervals[intid]) {
+      intervals[intid] = 0;
+    }
     console.log(intid,intervals);
     if (intervals[intid] <= 63) {
       for (let i = 0; i <= intervals[intid]; i++) {
@@ -33,7 +36,6 @@ const setImage = function(imgdata) {
       clearInterval(intid);
     }
   },15,interval);
-  intervals.push(0);
   console.log(intervals);
 }
 const unsplitImageData = function(imgdata) {
