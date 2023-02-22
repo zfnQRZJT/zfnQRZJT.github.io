@@ -5,14 +5,6 @@ const find = function(elem) {
 const startBoard = function() {
   find("pixelboard").innerHTML = ("<div class='pixelRow'>" + ("<div class='pixel'></div>").repeat(64) + "</div>").repeat(64);
   intervals.push([unsplitImageData(zfnPixel),0]);
-  setTimeout(function() {
-    intervals.push([unsplitImageData(metezori),0]);
-    console.log("metezori loading");
-  },500);
-  setTimeout(function() {
-    intervals.push([unsplitImageData(intGraph),0]);
-    console.log("intgraph loading");
-  },1000);
 }
 var intervals = [];
 setInterval(function() {
@@ -78,9 +70,33 @@ for (let i = 0; i < 64; i++) {
     }
   });
 */
+let prevh = 0;
+const scrollEvent = function() {
+  let h = Math.round(find("mainbody").scrollTop/document.body.offsetHeight);
+  if (h != prevh) {
+    switch(h) {
+      case 0:
+        intervals.push([unsplitImageData(zfnPixel),0]);
+        break;
+      case 1:
+        intervals.push([unsplitImageData(metezori),0]);
+        break;
+      case 2:
+        intervals.push([chessColours,0]);
+        break;
+      case 3:
+        intervals.push([unsplitImageData(intGraph),0]);
+        break;
+      case 4:
+        intervals.push([unsplitImageData(metezori),0]);
+        break;
+    }
+  }
+}
 import {images as images} from "/pixeldataexport.js";
 const zfnPixel = images.zfnPixel;
 const metezori = images.metezori;
 const intGraph = images.intGraph;
 console.log(unsplitImageData(zfnPixel));
 window.onload = startBoard;
+window.onscroll = scrollEvent;
