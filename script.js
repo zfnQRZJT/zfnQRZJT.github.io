@@ -106,5 +106,6 @@ const intGraph = images.intGraph;
 const videoPFP = images.videoPFP;
 window.onload = startBoard;
 window.onbeforeunload = function () {
-  find("mainbody").scrollTo(0, 0);
+  find("mainbody").onscroll = null;
+  find("mainbody").innerHTML = "";
 }
