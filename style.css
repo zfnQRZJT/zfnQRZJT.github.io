@@ -99,6 +99,7 @@ h1 {
 }
 h3 {
   font-weight:400;
+  margin:0;
 }
 .rainbowtext {
   background:linear-gradient(90deg,#0B3 0% 6.25%,#0BF 18.75% 25%,#90C 37.5% 43.75%,#F00 56.25% 62.5%,#F80 75% 81.25%,#FF0 93.75% 100%);
@@ -157,4 +158,7 @@ h3 {
   background:url('/whitecircle.png');
   background-size:15px;
   z-index:-1; 
+}
+.mathimage {
+  max-width:100%;
 }
