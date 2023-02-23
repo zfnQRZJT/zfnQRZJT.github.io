@@ -127,6 +127,30 @@ h3 {
 .proglang {
   width:calc(6*var(--gap));
   margin-left:var(--gap);
+  position:relative;
+  -webkit-filter:grayscale(1);
+  transition: -webkit-filter 0.3s;
+}
+.proglang:hover {
+  -webkit-filter:grayscale(0);
+}
+.proglangsticker {
+  opacity:0;
+  display:none;
+  transition:opacity 0.3s;
+  background:#333;
+  border:#777;
+  border-radius:5px;
+  height:20px;
+  font-size:10px;
+  position:absolute;
+  top:-20px;
+  left:50%;
+  transform:translateX(-50%);
+}
+.proglang:hover .proglangsticker {
+  display:block;
+  opacity:1;
 }
 .whitedotgrid {
   position:absolute;
