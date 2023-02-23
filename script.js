@@ -81,7 +81,7 @@ const scrollEvent = function() {
         prevh = 0;
         break;
       case 1:
-        intervals.push([unsplitImageData(metezori),0]);
+        intervals.push([unsplitImageData(codeRefe),0]);
         prevh = 1;
         break;
       case 2:
@@ -96,6 +96,14 @@ const scrollEvent = function() {
         intervals.push([unsplitImageData(videoPFP),0]);
         prevh = 4;
         break;
+      case 5:
+        intervals.push([randomColours,0]);
+        prevh = 5;
+        break;
+      case 6:
+        intervals.push([unsplitImageData(metezori),0]);
+        prevh = 6;
+        break;
     }
   }
 }
@@ -104,6 +112,7 @@ const zfnPixel = images.zfnPixel;
 const metezori = images.metezori;
 const intGraph = images.intGraph;
 const videoPFP = images.videoPFP;
+const codeRefe = images.codeRefe;
 window.onload = startBoard;
 window.onbeforeunload = function () {
   find("mainbody").onscroll = null;
