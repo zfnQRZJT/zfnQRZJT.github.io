@@ -19,12 +19,12 @@ First we need f(15/8).<br>\
 Now we need f(7/8).<br>\
 \\(f(\\frac{7}{8}) = \\frac{1}{2}f(\\frac{7}{8} - f(\\frac{-1}{8})) = \\frac{1}{2}f(\\frac{7}{8} - \\frac{1}{8}) = \\frac{1}{2}f(\\frac{3}{4})\\)<br><br><br>\
 Okay, I think this is taking too long. f(7/8) will be some tiny number from all the multiplications by 1/2, so f(15/8) will be half of f(x) where x is barely smaller than 15/8. It will take too long to get even f(2). So let's generalize.<br><br><br>\
-<b>For 0 <= x < 1:<b><br>\
+<b>For 0 <= x < 1:</b><br>\
 \\(f(x) = \\frac{1}{2}f(x - f(x - 1))\\) but x - 1 < 0 so<br>\
 \\(f(x) = \\frac{1}{2}f(x - (1 - x)) = \\frac{1}{2}f(2x - 1)\\)<br><br>\
 Let's try finding f(7/8) with this.<br>\
 \\(f(\\frac{7}{8}) = \\frac{1}{2}f(\\frac{3}{4}) = \\frac{1}{4}f(\\frac{1}{2}) = \\frac{1}{8}f(0) = \\frac{1}{16}\\). Each time we double our distance from 1 the function attains a new multiplier of \\(\\frac{1}{2}\\). Based on this I'll declare this equation, verifiable with induction:<br>\
-\\(f(1 - \\frac{1}{2^x}) = \\frac{1}{2^(x+1)}\\)"]
+\\(f(1 - \\frac{1}{2^{x}}) = \\frac{1}{2^{x+1}}\\)"]
 }
 const urlPath = (new URL(window.location.href).search.substr(1))
 window.onload = function() {
