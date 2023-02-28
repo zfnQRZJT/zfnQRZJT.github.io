@@ -1,5 +1,5 @@
 const blogs = {
-  "6353227688162363":["Surely this simple recursive function won't produce ridiculous results?",
+  "6353227688162363":["Surely this simple recursive function won't return ridiculous results?",
 "A friend sent an image of this unassuming functional equation (calling it 'hell')<br>\
 \\(f(x) = -x\\) for x < 0,<br>\
 \\(\\frac{1}{2}f(x-f(x-1))\\) otherwise,<br>\
@@ -24,7 +24,17 @@ Okay, I think this is taking too long. f(7/8) will be some tiny number from all 
 \\(f(x) = \\frac{1}{2}f(x - (1 - x)) = \\frac{1}{2}f(2x - 1)\\)<br><br>\
 Let's try finding f(7/8) with this.<br>\
 \\(f(\\frac{7}{8}) = \\frac{1}{2}f(\\frac{3}{4}) = \\frac{1}{4}f(\\frac{1}{2}) = \\frac{1}{8}f(0) = \\frac{1}{16}\\). Each time we double our distance from 1 the function attains a new multiplier of \\(\\frac{1}{2}\\). Based on this I'll declare this equation, verifiable with induction:<br>\
-\\(f(1 - \\frac{1}{2^{x}}) = \\frac{1}{2^{x+1}}\\)"]
+\\(f(1 - \\frac{1}{2^{x}}) = \\frac{1}{2^{x+1}}\\).<br><br>\
+Now applying that:<br>\
+\\(f(\\frac{15}{8}) = \\frac{1}{2}f(\\frac{15}{8} - \\frac{1}{16}) = \\frac{1}{2}f(\\frac{29}{16})\\)<br>\
+Hm. We'll need f(13/16) for that. Let's generalize some more.<br><br>\
+I'll leave it to you to prove that the function evaluated at a dyadic rational will always return a dyadic rational. I'm going to try to find \\(f(1 - \\frac{n}{2^{x}})\\) for n < \\(2^{x}\\), n odd.<br>\
+Starting at \\(1 - \\frac{n}{2^{x}}\\) we double our distance from 1 multiple times. Each time we attain another multiplication by \\frac{1}{2}.<br>\
+But how many times do we double our distance from 1 before the argument becomes negative?<br>\
+Well, once n > 2^y the argument will be negative. In other words y < \\(log_{2}{n}\\), or specifically, y = \\(\\operatorname{floor}(log_{2}{n})\\). I'll call this \\(L_{2}(n)\\).<br><br>\
+So with \\(f(1 - \\frac{n}{2^{x}})\\) we do this division x - y times to get \\(\\frac{1}{2^{x - y}}f(1 - \\frac{n}{2^{y}}) = \\frac{\\frac{n}{2^{y}} - 1}{2^{x - y}}\\).<br><br><br>\
+Now let's find a closed form for \\(f(2 - \\frac{n}{2^{x}})\\).<br>\
+"]
 }
 const urlPath = (new URL(window.location.href).search.substr(1))
 window.onload = function() {
