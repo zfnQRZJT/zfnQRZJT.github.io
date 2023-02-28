@@ -6,12 +6,12 @@ const blogs = {
 find \\(f(3)\\).<br>\
 My first thought was, since it is defined for negative numbers, let's find \\(f(0)\\), then \\(f(1)\\), then \\(f(2)\\), then \\(f(3)\\).<br>\
 In essence this is what we will do. But let's just try doing it.<br>\
-$(f\left(0\right)=\frac{1}{2}f\left(0-f\left(-1\right)\right)\ =\ \frac{1}{2}f\left(-1\right)=\frac{1}{2})$<br>\
+\\(f(0)=\\frac{1}{2}f(0-f(-1)) = \frac{1}{2}f(-1)=\frac{1}{2}\\)<br>\
 Then f(1)...<br>\
-$(f\left(1\right)=\frac{1}{2}f\left(1-f\left(0\right)\right)=\frac{1}{2}f\left(\frac{1}{2}\right))$<br>\
+\\(f(1)=\frac{1}{2}f(1-f(0))=\frac{1}{2}f(1/2)\\)<br>\
 Oh, it looks like we need f(1/2) first.<br>\
-$(f\left(\frac{1}{2}\right)=\frac{1}{2}f\left(\frac{1}{2}-f\left(-\frac{1}{2}\right)\right)=\frac{1}{2}f\left(\frac{1}{2}-\frac{1}{2}\right)=\frac{1}{2}f\left(0\right)=\frac{1}{4})$<br>\
-So $(f\left(1\right)=\frac{1}{4})$."]
+\\(f(\frac{1}{2})=\frac{1}{2}f(\frac{1}{2}-f(-\frac{1}{2}))=\frac{1}{2}f({1}{2}-{1}{2})=\frac{1}{2}f(0)=\frac{1}{4}\\)<br>\
+So \\(f(1)=\frac{1}{8}\\)."]
 
 
 }
@@ -29,3 +29,8 @@ window.onload = function() {
     document.body.innerHTML = "Not found";
   }
 }
+
+
+document.addEventListener('load', function(){
+    MathJax.typeset()
+});
