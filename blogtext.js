@@ -39,5 +39,7 @@ window.onload = function() {
 
 
 document.addEventListener('load', function(){
-    MathJax.typeset()
+    setTimeout(function() {
+      MathJax.typeset()
+    },1000);
 });
