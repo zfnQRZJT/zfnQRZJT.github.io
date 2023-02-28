@@ -52,6 +52,8 @@ In general, \\(f(2 - \\frac{1}{2^{x}}) = \\frac{1}{2^{2x + 3}}\\).<br>\
 <b>f(2) = 1/1024.</b><br><br><br>\
 Now it's time for our final stand. \\(f(2) = \\frac{1}{1024}\\). \\(f(3) = \\frac{1}{2}f(3 - \\frac{1}{1024}) = \\frac{1}{2}f(\\frac{3071}{1024})\\). This will relate to \\(f(2 - 1/1024) = \\frac{1}{2^{23}}\\)<br>\
 Take a moment to think about that. f(3) is half of \\(f(3 - \\frac{1}{1024})\\) which is half of \\(f(3 - \\frac{1}{1024} - \\frac{1}{8388608})\\). See how many steps it will take to get down to f(2) again? We should expect the answer for f(3) to be on the order of \\(2^{-10 000 000}\\).\
+Let's try to figure that out. <b>We'll write it in binary.</b> It's \\(f(10.11111111101111111111) = f(11 - 0.00000000010000000000001). When we double n's distance from the highest power of 2 less than n, we're really just doubling the digits after the first 1 in this small number. How many times does it take to get the small number above 1?<br>\
+\\(0.00000000010000000000001 \Rightarrow 0.0000000001000000000001 \Rightarrow 0.000000000100000000001 \Rightarrow 0.00000000010000000001 \Rightarrow 0.0000000001000000001 \Rightarrow 0.000000000100000001 \Rightarrow 0.00000000010000001 \Rightarrow 0.0000000001000001 \Rightarrow 0.000000000100001 \Rightarrow 0.00000000010001 \Rightarrow 0.0000000001001 \Rightarrow 0.000000000101 \Rightarrow 0.00000000011 \Rightarrow 0.000000001 \Rightarrow\Rightarrow 0.00000001 \Rightarrow\Rightarrow 0.0000001 \Rightarrow\Rightarrow 0.000001 \Rightarrow\Rightarrow 0.00001 \Rightarrow\Rightarrow 0.0001 \Rightarrow\Rightarrow 0.001 \Rightarrow\Rightarrow 0.01 \Rightarrow\Rightarrow 0.1 \Rightarrow\Rightarrow 1\\)
 "]
 }
 const urlPath = (new URL(window.location.href).search.substr(1));
