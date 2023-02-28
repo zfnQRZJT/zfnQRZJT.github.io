@@ -1,10 +1,10 @@
 const blogs = {
   "6353227688162363":["Surely this simple recursive function won't produce ridiculous results?",
    "A friend sent an image of this unassuming functional equation (calling it 'hell')<br>\
-$(f\left(x\right)=-x)$ for $(x<0)$,<br>\
-$(\frac{1}{2}f\left(x-f\left(x-1\right)\right))$ otherwise,<br>\
-find $(f\left(3\right))$.<br>\
-My first thought was, since it is defined for negative numbers, let's find $(f\left(0\right))$, then $(f\left(1\right))$, then $(f\left(2\right))$, then $(f\left(3\right))$.<br>\
+\\(f(x) = -x\\) for \(x<0\),<br>\
+\\(\\frac{1}{2}*f(x-f(x-1))\\) otherwise,<br>\
+find \\(f(3)\\).<br>\
+My first thought was, since it is defined for negative numbers, let's find \\(f(0)\\), then \\(f(1)\\), then \\(f(2)\\), then \\(f(3)\\).<br>\
 In essence this is what we will do. But let's just try doing it.<br>\
 $(f\left(0\right)=\frac{1}{2}f\left(0-f\left(-1\right)\right)\ =\ \frac{1}{2}f\left(-1\right)=\frac{1}{2})$<br>\
 Then f(1)...<br>\
