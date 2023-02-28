@@ -1,6 +1,6 @@
 const blogs = {
   "6353227688162363":["Surely this simple recursive function won't produce ridiculous results?",
-   "A friend sent an image of this unassuming functional equation (calling it 'hell')<br>\
+"A friend sent an image of this unassuming functional equation (calling it 'hell')<br>\
 \\(f(x) = -x\\) for x < 0,<br>\
 \\(\\frac{1}{2}f(x-f(x-1))\\) otherwise,<br>\
 find \\(f(3)\\).<br><br><br>\
@@ -35,11 +35,11 @@ window.onload = function() {
     }
     document.querySelector(".section").innerHTML += rhtml;
   } else if (blogs[1*urlPath]) {
-    document.querySelector(".section").innerHTML += "<h1>" + blogs[1*urlPath][0] + "</h1>" + blogs[1*urlPath][1];
+    document.querySelector(".section").innerHTML += "<h2><u>" + blogs[1*urlPath][0] + "</u></h2>" + blogs[1*urlPath][1];
+    setTimeout(function() {
+      MathJax.typeset()
+    },1000);
   } else {
     document.querySelector(".section").innerHTML = "Not found";
   }
-  setTimeout(function() {
-    MathJax.typeset()
-  },1000);
 }
