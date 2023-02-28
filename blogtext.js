@@ -50,7 +50,8 @@ n starts as a power of 2, namely 1, in 2 - 1/8. In iteration 1 it will double th
 We know that \\(f(2) = \\frac{1}{2}f(15/8)\\). We can now see that this is \\(\\frac{1}{2}f(15/8) = \\frac{1}{8}f(14/8) = \\frac{1}{32}f(12/8) = \\frac{1}{128}f(8/8) = \\frac{1}{128}f(1) = \\frac{1}{128}\\frac{1}{8} = \\frac{1}{1024}\\).]<br>\
 In general, \\(f(2 - \\frac{1}{2^{x}}) = \\frac{1}{2^{2x + 3}}\\).<br>\
 <b>f(2) = 1/1024.</b><br><br><br>\
-Now it's time for our final stand. \\(f(2) = \\frac{1}{1024}\\). \\(f(3) = \\frac{1}{2}f(3 - \\frac{1}{1024}) = \\frac{1}{2}f(\\frac{3071}{1024})\\). This will relate to \\(f(2 - 1/1024)\\)\
+Now it's time for our final stand. \\(f(2) = \\frac{1}{1024}\\). \\(f(3) = \\frac{1}{2}f(3 - \\frac{1}{1024}) = \\frac{1}{2}f(\\frac{3071}{1024})\\). This will relate to \\(f(2 - 1/1024) = \\frac{1}{2^{23}}\\)<br>\
+Take a moment to think about that. f(3) is half of \\(f(3 - \\frac{1}{1024})\\) which is half of \\(f(3 - \\frac{1}{1024} - \\frac{1}{8388608})\\). See how many steps it will take to get down to f(2) again? We should expect the answer for f(3) to be on the order of \\(2^{-10 000 000}\\).\
 "
 }
 const urlPath = (new URL(window.location.href).search.substr(1));
