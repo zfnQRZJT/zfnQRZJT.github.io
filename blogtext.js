@@ -31,7 +31,7 @@ Hm. We'll need f(13/16) for that. Let's generalize some more.<br><br>\
 I'll leave it to you to prove that the function evaluated at a dyadic rational will always return a dyadic rational. I'm going to try to find \\(f(1 - \\frac{n}{2^{x}})\\) for n < \\(2^{x}\\), n odd.<br>\
 Starting at \\(1 - \\frac{n}{2^{x}}\\) we double our distance from 1 multiple times. Each time we attain another multiplication by \\frac{1}{2}.<br>\
 But how many times do we double our distance from 1 before the argument becomes negative?<br>\
-Well, once n > 2^y the argument will be negative. In other words y < \\(log_{2}{n}\\), or specifically, y = \\(\\operatorname{floor}(log_{2}{n})\\). I'll call this \\(L_{2}(n)\\).<br><br>\
+Well, once n > 2^y the argument will be negative. In other words y < \\(log_{2}{n}\\), or specifically, y = \\(\\lfloor \log_{2}{n} \\rfloor\\). I'll call this \\(L_{2}(n)\\).<br><br>\
 So with \\(f(1 - \\frac{n}{2^{x}})\\) we do this division x - y times to get \\(\\frac{1}{2^{x - y}}f(1 - \\frac{n}{2^{y}}) = \\frac{\\frac{n}{2^{y}} - 1}{2^{x - y}}\\).<br><br><br>\
 Now let's find a closed form for \\(f(2 - \\frac{n}{2^{x}})\\).<br>\
 "]
