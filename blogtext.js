@@ -3,21 +3,21 @@ const blogs = {
    "A friend sent an image of this unassuming functional equation (calling it 'hell')<br>\
 \\(f(x) = -x\\) for x < 0,<br>\
 \\(\\frac{1}{2}f(x-f(x-1))\\) otherwise,<br>\
-find \\(f(3)\\).<br>\
+find \\(f(3)\\).<br><br><br>\
 My first thought was, since it is defined for negative numbers, let's find \\(f(0)\\), then \\(f(1)\\), then \\(f(2)\\), then \\(f(3)\\).<br>\
 In essence this is what we will do. But let's just try doing it.<br>\
-\\(f(0)=\\frac{1}{2}f(0-f(-1)) = \\frac{1}{2}f(-1)=\\frac{1}{2}\\)<br>\
+\\(f(0)=\\frac{1}{2}f(0-f(-1)) = \\frac{1}{2}f(-1)=\\frac{1}{2}\\)<br><br>\
 <b>Then f(1)...</b><br>\
 \\(f(1)=\\frac{1}{2}f(1-f(0))=\\frac{1}{2}f(\\frac{1}{2})\\)<br>\
 Oh, it looks like we need f(1/2) first.<br>\
 \\(f(\\frac{1}{2})=\\frac{1}{2}f(\\frac{1}{2}-f(-\\frac{1}{2}))=\\frac{1}{2}f({1}{2}-{1}{2})=\\frac{1}{2}f(0)=\\frac{1}{4}\\)<br>\
-So \\(f(1)=\\frac{1}{8}\\).<br>\
+So \\(f(1)=\\frac{1}{8}\\).<br><br>\
 <b>Now f(2)...</b><br>\
 \\(f(2) = \\frac{1}{2}f(2 - f(1)) = \\frac{1}{2}f(2 - \\frac{1}{8}) = \\frac{1}{2}f(\\frac{15}{8})\\)<br>\
 First we need f(15/8).<br>\
 \\(f(\\frac{15}{8}) = \\frac{1}{2}f(\\frac{15}{8} - f(\\frac{7}{8}))\\)<br>\
 Now we need f(7/8).<br>\
-\\(f(\\frac{7}{8}) = \\frac{1}{2}f(\\frac{7}{8} - f(\\frac{-1}{8})) = \\frac{1}{2}f(\\frac{7}{8} - \\frac{1}{8}) = \\frac{1}{2}f(\\frac{3}{4})\\)<br>\
+\\(f(\\frac{7}{8}) = \\frac{1}{2}f(\\frac{7}{8} - f(\\frac{-1}{8})) = \\frac{1}{2}f(\\frac{7}{8} - \\frac{1}{8}) = \\frac{1}{2}f(\\frac{3}{4})\\)<br><br><br>\
 Okay, I think this is taking too long. f(7/8) will be some tiny number from all the multiplications by 1/2, so f(15/8) will be half of f(x) for x being some number barely smaller than 15/8. It will take too long to do this manually. So let's generalize."]
 
 
@@ -35,11 +35,7 @@ window.onload = function() {
   } else {
     document.body.innerHTML = "Not found";
   }
+  setTimeout(function() {
+    MathJax.typeset()
+  },1000);
 }
-
-
-document.addEventListener('load', function(){
-    setTimeout(function() {
-      MathJax.typeset()
-    },1000);
-});
