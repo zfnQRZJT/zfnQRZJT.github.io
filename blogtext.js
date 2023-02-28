@@ -33,11 +33,11 @@ window.onload = function() {
     for (blog in blogs) {
       rhtml += "<a href='/blog?" + blog + "'>" + blogs[blog][0] + "</a>";
     }
-    document.getElementById("mainbody").innerHTML += rhtml;
+    document.querySelector(".section").innerHTML += rhtml;
   } else if (blogs[1*urlPath]) {
-    document.getElementById("mainbody").innerHTML += "<h1>" + blogs[1*urlPath][0] + "</h1>" + blogs[1*urlPath][1];
+    document.querySelector(".section").innerHTML += "<h1>" + blogs[1*urlPath][0] + "</h1>" + blogs[1*urlPath][1];
   } else {
-    document.getElementById("mainbody").innerHTML = "Not found";
+    document.querySelector(".section").innerHTML = "Not found";
   }
   setTimeout(function() {
     MathJax.typeset()
