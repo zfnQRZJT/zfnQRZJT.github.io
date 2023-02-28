@@ -15,7 +15,7 @@ So $(f\left(1\right)=\frac{1}{4})$."]
 
 
 }
-const urlPath = (new URL(window.location.href).pathname.substr(6))
+const urlPath = (new URL(window.location.href).search.substr(1))
 window.onload = function() {
   if (urlPath === "") {
     let rhtml = "<h1>Blog</h1>";
