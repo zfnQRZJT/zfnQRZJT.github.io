@@ -1,5 +1,5 @@
-export blogs as [
-  ["Surely this simple recursive function won't produce ridiculous results?",
+const blogs = {
+  "6353227688162363":["Surely this simple recursive function won't produce ridiculous results?",
    "A friend sent an image of this unassuming functional equation (calling it 'hell')<br>\
 $(f\left(x\right)=-x)$ for $(x<0)$,<br>\
 $(\frac{1}{2}f\left(x-f\left(x-1\right)\right))$ otherwise,<br>\
@@ -14,4 +14,18 @@ $(f\left(\frac{1}{2}\right)=\frac{1}{2}f\left(\frac{1}{2}-f\left(-\frac{1}{2}\ri
 So $(f\left(1\right)=\frac{1}{4})$."]
 
 
-]
+}
+const urlPath = (new URL(window.location.href).pathname.substr(5))
+window.onload = function() {
+  if (urlPath === "") {
+    let rhtml = "<h1>Blog</h1>";
+    for (blog in blogs) {
+      rhtml += "<a href='/blogs?" + blog + "'>" + blogs[blog][0] + "</a>";
+    }
+    document.body.innerHTML = rhtml;
+  } else if (blogs[1*urlPath]) {
+    document.body.innerHTML = "<h1>" + blogs[1*urlPath][0] + "</h1>" + blogs[1*urlPath][1];
+  } else {
+    document.body.innerHTML = "Not found";
+  }
+}
