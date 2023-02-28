@@ -31,9 +31,14 @@ Hm. We'll need f(13/16) for that. Let's generalize some more.<br><br>\
 I'll leave it to you to prove that the function evaluated at a dyadic rational will always return a dyadic rational. I'm going to try to find \\(f(1 - \\frac{n}{2^{x}})\\) for n < \\(2^{x}\\), n odd.<br>\
 Starting at \\(1 - \\frac{n}{2^{x}}\\) we double our distance from 1 multiple times. Each time we attain another multiplication by \\frac{1}{2}.<br>\
 But how many times do we double our distance from 1 before the argument becomes negative?<br>\
-Well, once n > 2^y the argument will be negative. In other words y < \\(log_{2}{n}\\), or specifically, y = \\(\\lfloor \log_{2}{n} \\rfloor\\). I'll call this \\(L_{2}(n)\\).<br><br>\
-So with \\(f(1 - \\frac{n}{2^{x}})\\) we do this division x - y times to get \\(\\frac{1}{2^{x - y}}f(1 - \\frac{n}{2^{y}}) = \\frac{\\frac{n}{2^{y}} - 1}{2^{x - y}}\\).<br><br><br>\
+Well, once n > 2^y the argument will be negative. In other words y < \\(log_{2}{n}\\), or specifically, y = \\(\\lfloor \\log_{2}{n} \\rfloor\\). I'll call this \\(L_{2}(n)\\).<br><br>\
+So with \\(f(1 - \\frac{n}{2^{x}})\\) we do this division x - y times to get \\(\\frac{1}{2^{x - y}}f(1 - \\frac{n}{2^{y}}) = \\frac{\\frac{n}{2^{y}} - 1}{2^{x - y}} = \\frac{n - 2^{y}}{2^{x}}\\).<br><br><br>\
 Now let's find a closed form for \\(f(2 - \\frac{n}{2^{x}})\\).<br>\
+\\(f(2 - \\frac{n}{2^{x}}) = \\frac{1}{2}f(2 - \\frac{n}{2^{x}} - \\frac{n - 2^{y}}{2^{x}} = \\frac{1}{2}f(2 - \\frac{2n - 2^{y}}{2^x})\\).<br><br>\
+It may be difficult to understand what exactly the transformation inside the function is that gives a coefficient of 1/2 outside the function. In the range [0,1) it was easy to understand: 2x - 1 doubles the distance from 1. What is this one doing?<br>\
+Let's look at some examples.<br>\
+(I will ignore the 2 - for now)<br>\
+\\(\\frac{141}{256} (n = 141, y = 7) \\Rightarrow \\frac{154}{256} \\Rightarrow \\frac{180}{256} \\RightArrow \\frac{232}{256} \\RightArrow {336}{256} \\).
 "]
 }
 const urlPath = (new URL(window.location.href).search.substr(1))
