@@ -41,7 +41,7 @@ Let's look at some examples.<br>\
 \\(\\frac{141}{256} (n = 141, y = 7) \\Rightarrow \\frac{154}{256} \\Rightarrow \\frac{180}{256} \\RightArrow \\frac{232}{256} \\RightArrow {336}{256} \\).
 "]
 }
-const urlPath = (new URL(window.location.href).search.substr(1))
+const urlPath = (new URL(window.location.href).search.substr(1));
 window.onload = function() {
   if (urlPath === "") {
     let rhtml = "<h1>Blog</h1>";
@@ -50,7 +50,7 @@ window.onload = function() {
     }
     document.querySelector(".section").innerHTML += rhtml;
   } else if (blogs[1*urlPath]) {
-    document.querySelector(".section").innerHTML += "<h2><u>" + blogs[1*urlPath][0] + "</u></h2>" + blogs[1*urlPath][1];
+    document.querySelector(".section").innerHTML += "<h2 style='font-size:><u>" + blogs[1*urlPath][0] + "</u></h2>" + blogs[1*urlPath][1];
     setTimeout(function() {
       MathJax.typeset()
     },1000);
