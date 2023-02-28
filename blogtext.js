@@ -15,16 +15,16 @@ So $(f\left(1\right)=\frac{1}{4})$."]
 
 
 }
-const urlPath = (new URL(window.location.href).pathname.substr(5))
+const urlPath = (new URL(window.location.href).pathname.substr(6))
 window.onload = function() {
   if (urlPath === "") {
     let rhtml = "<h1>Blog</h1>";
     for (blog in blogs) {
-      rhtml += "<a href='/blogs?" + blog + "'>" + blogs[blog][0] + "</a>";
+      rhtml += "<a href='/blog?" + blog + "'>" + blogs[blog][0] + "</a>";
     }
-    document.body.innerHTML = rhtml;
+    document.body.innerHTML += rhtml;
   } else if (blogs[1*urlPath]) {
-    document.body.innerHTML = "<h1>" + blogs[1*urlPath][0] + "</h1>" + blogs[1*urlPath][1];
+    document.body.innerHTML += "<h1>" + blogs[1*urlPath][0] + "</h1>" + blogs[1*urlPath][1];
   } else {
     document.body.innerHTML = "Not found";
   }
