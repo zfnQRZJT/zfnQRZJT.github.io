@@ -2,6 +2,8 @@ const half = "<frac><n>1</n><d>2</d></frac>";
 const frac = function(n,d) {
   return("<frac><n>" + n + "</n><d>" + d + "</d></frac>");
 }
+const lfl = "<lfl></lfl>";
+const rfl = "<rfl></rfl>";
 const blogs = {
   "6353227688162363":["Surely this simple recursive function won't return ridiculous results?",
 `A friend sent an image of this unassuming functional equation (calling it "hell")<br>\
