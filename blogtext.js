@@ -4,7 +4,7 @@ const frac = function(n,d) {
 }
 const blogs = {
   "6353227688162363":["Surely this simple recursive function won't return ridiculous results?",
-`A friend sent an image of this unassuming functional equation (calling it \"hell\")<br>\
+`A friend sent an image of this unassuming functional equation (calling it "hell")<br>\
 <m>f(x) = -x</m> for <m>x < 0</m>,<br>\
 <m>${half}f(x-f(x-1))</m> otherwise,<br>\
 find <m>f(3)</m>.<br><br><br>\
@@ -32,11 +32,11 @@ Let's try finding f(7/8) with this.<br>\
 Now applying that:<br>\
 <m>f(${frac(15,8)}) = ${half}f(${frac(15,8)} - ${frac(1,16)}) = ${half}f(${frac(29,16)})</m><br>\
 Hm. We'll need f(13/16) for that. Let's generalize some more.<br><br>\
-I'll leave it to you to prove that the function evaluated at a dyadic rational will always return a dyadic rational. I'm going to try to find <m>f(1 - ${frac(n,"2<s>x</s>")})</m> for <m>n < 2<s>x</s></m>, n odd.<br>\
+I'll leave it to you to prove that the function evaluated at a dyadic rational will always return a dyadic rational. I'm going to try to find <m>f(1 - ${frac("n","2<s>x</s>")})</m> for <m>n < 2<s>x</s></m>, n odd.<br>\
 Starting at <m>1 - ${frac("n","2<s>x</s>")}</m> we double our distance from 1 multiple times. Each time we attain another multiplication by ${half}.<br>\
 But how many times do we double our distance from 1 before the argument becomes negative?<br>\
-Well, once <m>n > 2<s>y</s></m> the argument will be negative. In other words <m>y < log<u>2</u>n</m>, or specifically, y = <m>${lfl} log<u>2</u>n ${rfl}</m>. I'll call this <m>L2(n)</m>.<br><br>\
-So with <m>f(1 - ${frac("n","2<s>x</s>)})</m> we do this division x - y times to get <m>${frac(1,"2^<s>x - y</s>")}f(1 - ${frac("n","2<s>y</s>")}) = ${frac(frac("n","2<s>y</s>") + " - 1","2<s>x - y</s>")} = ${frac("n - 2<s>y</s>","2<s>x</s>")}</m>.<br><br><br>\
+Well, once <m>n > 2<s>y</s></m> the argument will be negative. In other words <m>y < log<u>2</u>n</m>, or specifically, y = <m>${lfl} log<u>2</u>n ${rfl}</m>. I'll call this <m>L2(n)</m>.<br><br>
+So with <m>f(1 - ${frac("n","2<s>x</s>")})</m> we do this division x - y times to get <m>${frac(1,"2^<s>x - y</s>")}f(1 - ${frac("n","2<s>y</s>")}) = ${frac(frac("n","2<s>y</s>") + " - 1","2<s>x - y</s>")} = ${frac("n - 2<s>y</s>","2<s>x</s>")}</m>.<br><br><br>\
 Now let's find a closed form for <m>f(2 - ${frac("n","2<s>x</s>")})</m>.<br>\
 <m>f(2 - ${frac("n","2<s>x</s>")}) = ${half}f(2 - ${frac("n","2<s>x</s>")} - ${frac("n - 2<s>y</s>","2<s>x</s>")}) = ${half}f(2 - ${frac("2n - 2<s>y</s>","2<s>x</s>")})</m>.<br><br>\
 It may be difficult to understand what exactly the transformation inside the function is that gives a coefficient of 1/2 outside the function. In the range <m>[0,1)</m> it was easy to understand: 2x - 1 doubles the distance from 1. What is this one doing?<br>\
