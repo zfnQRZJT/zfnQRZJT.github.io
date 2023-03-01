@@ -70,7 +70,37 @@ We just removed one of the 1s in the binary expansion simply to decrease a by 1.
 So <m>f(2 - S) = ${frac(1,"2<s>S[t] - t + a + 3</s>")}</m><br>
 <b>If a - t + 1 = -1</b>, if a = t - 2, then we will not use the highest element S[t]. We'll get 1.00...001. How many 0s? Well, on the previous step it was 0.1100...001. There are S[t] - S[t - 1] - 1 0s there. The final doubling adds 1 more 0 to this, giving S[t] - S[t - 1]. So the number 1.00...001 = [0,S[t] - S[t - 1] + 1], with S[t - 1] - 1 halvings. <m>f(2 - 1 - ${frac(1,"2<s>S[t] - S[t - 1] + 1</s>")}) = f(1 - ${frac(1,"2<s>S[t] - S[t - 1] + 1</s>")}) = ${frac(1,"2<s>S[t] - S[t - 1] + 2</s>")}</m>.<br>
 So <m>f(2 - S) = ${frac(1,"2<s>S[t] - S[t - 1] + 2</s>")}${frac(1,"2<s>S[t - 1] - 1</s>")} = ${frac(1,"2<s>S[t] + 1</s>")}</m>.<br>
-<b>If a - t + 1 <= -2</b>, if a <= t - 3, we'll get 2 - 1.00...001... . This will become 1 - 0.00...001wxyz.., which will become -0.wxyz... As long as wxyz... is nonzero, this is 0.wxyz...
+<b>If a - t + 1 <= -2</b>, if a <= t - 3, we'll get 2 - 1.00...001... . This will become 1 - 0.00...001wxyz.., which will become -0.wxyz... As long as wxyz... is nonzero, this is 0.wxyz... Now, what will this come out to?<br>
+We will use up to element S[a + 1] to move a down to 0. S[a + 1] will have to move down to 1, where it will add to the a (also 1) and make a 0. This will take S[a + 1] - 1 steps. The number has now entered the (0,1) range. S[a + 2] must make a total (including the first section) of S[a + 2] steps to become 0. Since it is subtracted from 1 we can now write the full argument of the function as 1 - [0,S[a + 3] - S[a+2]...] = -[S[a + 3] - S[a+2]...] which took S[a + 2] steps.
+In summary, <m>f(2 - S) = [S[a + 3],...]</m>.<br>
+Do you see what that means?
+Every list that results from applying the function to S is added to S. Why? Well, it's f(3 - S) = 1/2f(3 - S - f(2 - S)) = 1/4f(3 - S - f(2 - S) - f(2 - S - f(2 - S))). Our real end goal is to find out how many times we will repeat this process, to find <m>f(3 - ${frac(1,1024)})</m>. But that's later.
+I'm going to show that if a > t - 3 the answer will be an element not already in S.<br><br>
+If a >= t - 1 the new element is [S[t] - t + a + 3].<br>
+S[t] - t + a + 3 > S[t]<br>
+a + 3 > t
+a > t - 3
+But a > t - 2 because a >= t - 1, so this is true.<br>
+If a = t - 2 the new element is [S[t] + 1] which is clearly not in S (S[t] is the greatest element).
+So if t is too small we will keep adding a new element to the set. When a = t - 2 the new element will be the direct successor of the previous element. This will be the tipping point, meaning that the only way to get into the 3rd scenario is when a = t - 3. At this point the new element added will be equal to the last element added.<hline></hline>
+Alright, time to try it out.<br>
+[10, 23] a = 10, t = 2<br>
+[10, 23, 34] t = 3<br>
+[10, 23, 34, 44] t = 4<br>
+At this point you can see the pattern. The increase in the new element from S[t] is decreasing by 1 every step because t is increasing and nothing else is changing.<br>
+[10, 23, 34, 44, 53]<br>
+[10, 23, 34, 44, 53, 61]<br>
+[10, 23, 34, 44, 53, 61, 68]<br>
+[10, 23, 34, 44, 53, 61, 68, 74]<br>
+[10, 23, 34, 44, 53, 61, 68, 74, 79]<br>
+[10, 23, 34, 44, 53, 61, 68, 74, 79, 83]<br>
+[10, 23, 34, 44, 53, 61, 68, 74, 79, 83, 86] t = 11<br>
+[10, 23, 34, 44, 53, 61, 68, 74, 79, 83, 86, 88] t = 12<br>
+[10, 23, 34, 44, 53, 61, 68, 74, 79, 83, 86, 88, 89] t = 13<br>
+At this point the math tells us to add an 89 to the set. We know this is actually a binary number, 0.00000000010000000000001000000000010000000001000000001000000010000001000001000010001001011, and we need to add a <m>2<s>-89</s></m> to it.<br>
+So what are we left with?<br>
+[10, 23, 34, 44, 53, 61, 68, 74, 79, 83, 86, 87]<br>
+We are making progress.
 `]
 }
 const urlPath = (new URL(window.location.href).search.substr(1));
