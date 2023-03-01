@@ -88,18 +88,14 @@ Alright, time to try it out.<br>
 [10, 23, 34] t = 3<br>
 [10, 23, 34, 44] t = 4<br>
 At this point you can see the pattern. The increase in the new element from S[t] is decreasing by 1 every step because t is increasing and nothing else is changing.<br>
-[10, 23, 34, 44, 53]<br>
-[10, 23, 34, 44, 53, 61]<br>
-[10, 23, 34, 44, 53, 61, 68]<br>
-[10, 23, 34, 44, 53, 61, 68, 74]<br>
-[10, 23, 34, 44, 53, 61, 68, 74, 79]<br>
-[10, 23, 34, 44, 53, 61, 68, 74, 79, 83]<br>
 [10, 23, 34, 44, 53, 61, 68, 74, 79, 83, 86] t = 11<br>
 [10, 23, 34, 44, 53, 61, 68, 74, 79, 83, 86, 88] t = 12<br>
 [10, 23, 34, 44, 53, 61, 68, 74, 79, 83, 86, 88, 89] t = 13<br>
 At this point the math tells us to add an 89 to the set. We know this is actually a binary number, 0.00000000010000000000001000000000010000000001000000001000000010000001000001000010001001011, and we need to add a <m>2<s>-89</s></m> to it.<br>
 So what are we left with?<br>
-[10, 23, 34, 44, 53, 61, 68, 74, 79, 83, 86, 87]<br>
+[10, 23, 34, 44, 53, 61, 68, 74, 79, 83, 86, 87] t = 12<br>
+[10, 23, 34, 44, 53, 61, 68, 74, 79, 83, 86, 87, 88] t = 13<br>
+It's tempting to just do it manually but let's try to figure out exactly how many iterations this will take. It took 2 steps to move the recent chain of 1s left by 1.
 We are making progress.
 `]
 }
