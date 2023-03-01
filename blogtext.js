@@ -32,8 +32,8 @@ Let's try finding f(7/8) with this.<br>
 <m>f(${frac(7,8)}) = ${half}f(${frac(3,4)}) = ${frac(1,4)}f(${frac(1,2)}) = ${frac(1,8)}f(0) = ${frac(1,16)}</m>. Each time we double our distance from 1 the function attains a new multiplier of <m>${half}</m>. Based on this I'll declare this equation, verifiable with induction:<br>\
 <m>f(1 - ${frac(1,"2<s>x</s>")}) = ${frac(1,"2<s>x+1</s>")}</m>.<br><br>\
 Now applying that:<br>\
-<m>f(${frac(15,8)}) = ${half}f(${frac(15,8)} - ${frac(1,16)}) = ${half}f(${frac(29,16)})</m><br>\
-Hm. We'll need f(13/16) for that. Let's generalize some more.<br><br>\
+<m>f(${frac(15,8)}) = ${half}f(${frac(15,8)} - ${frac(1,16)}) = ${half}f(${frac(29,16)})</m><br>
+Hm. We'll need f(13/16) for that. Let's generalize some more.<br><br>
 I'll leave it to you to prove that the function evaluated at a dyadic rational will always return a dyadic rational. I'm going to try to find <m>f(1 - ${frac("n","2<s>x</s>")})</m> for <m>n < 2<s>x</s></m>, n odd.<br>\
 Starting at <m>1 - ${frac("n","2<s>x</s>")}</m> we double our distance from 1 multiple times. Each time we attain another multiplication by ${half}.<br>\
 But how many times do we double our distance from 1 before the argument becomes negative?<br>\
@@ -62,13 +62,15 @@ Take a moment to think about that. f(3) is a fourth of <m>f(3 - ${frac(1,1024)} 
 Let's try to figure that out. <b>We'll write it in binary.</b> It's <m>f(10.11111111101111111111) = f(11 - 0.00000000010000000000001).</m> When we double n's distance from the highest power of 2 less than n, we're really just doubling the digits after the first 1 in this small number. How many times does it take to get the small number above 1?<br>\
 <m>0.00000000010000000000001 => => => => => => => => => => => => 0.00000000011 => 0.000000001 => => => => => => => => => => => => => => => => 0.1 => => 1</m><br><br>
 As you can see, it increases at a much greater rate when it is exactly a power of 2. If there is even a single 1 way after the first 1, it has to bring the far-off 1 all the way to combine with the first 1 before it will get anywhere.<hline></hline>
-Let's standardize that idea. I'll use the notation <m>[a,b,c,d...]</m> to mean <m>${frac(1,"2<s>a</s>")} + ${frac(1,"2<s>b</s>")} + ${frac(1,"2<s>c</s>")}...</m>. How long will it take this to surpass 1, and how much will it surpass by?<br>
+Let's standardize that idea. I'll use the notation S = [a,b,c,d...] to mean <m>${frac(1,"2<s>a</s>")} + ${frac(1,"2<s>b</s>")} + ${frac(1,"2<s>c</s>")}...</m>. How long will it take this to surpass 1, and how much will it surpass by?<br>
 <u><i>This line of reasoning is arguably the critical piece of this entire problem. You can easily find f(2) manually. You cannot easily recurse millions of times to find f(3).</i></u><br><br>
 After b - a doublings, we get a new set S = [a - 1, a - b + c, a - b + d...]<br>
 We just removed one of the 1s in the binary expansion simply to decrease a by 1. Call the number of elements in the set, t. So we will get a down to at most a - t + 1 through this method.<br><br>
-<b>If <m>a - t + 1 >= 0</m></b>, in other words, if a >= t - 1, then the highest element, S[t] (starting from 1) will have taken S[t] - (a - t + 2) steps, so S[t] + t - a - 2 steps, plus an additional 2(a - t + 1) steps to reach 1. This totals <m>S[t] + t - a - 2 + 2a - 2t + 2 = S[t] - t + a steps, each multiplying the function by 1/2. The number is subtracted from 2 so this leaves us with 1, which we know is ${frac(1,8)}</m>. In total we will have <br>\
-<b>If <m>a - t + 1 = -1</m></b>, if <m>a = t - 2</m>, then we will not use the highest element S[t]. We'll get 1.00...001. How many 0s? Well, on the previous step it was 0.1100...001. There are S[t] - S[t - 1] - 1 0s there. The final doubling adds 1 more 0 to this, giving S[t] - S[t - 1]. So the number 1.00...001 = [0,S[t] - S[t - 1] + 1], with S[t - 1] - 1 doublings. <m>f(2 - 1 - ${frac(1,"2<s>S[t] - S[t - 1] + 1</s>")}) = f(1 - ${frac(1,"2<s>S[t] - S[t - 1] + 1</s>")}) = ${frac(1,"2<s>S[t] - S[t - 1] + 2</s>")}</m>.<br>
-So <m>f(S) = ${frac(1,"2<s>S[t] - S[t - 1] + 2</s>")}${frac(1,"2<s>S[t - 1] - 1</s>")} = ${frac(1,"2<s>S[t] - 1</s>")}</m>.<br>\
+<b>If a - t + 1 >= 0</b>, in other words, if a >= t - 1, then the highest element, S[t] (starting from 1) will have taken S[t] - (a - t + 2) steps, so S[t] + t - a - 2 steps, plus an additional 2(a - t + 1) steps to reach 1. This totals <m>S[t] + t - a - 2 + 2a - 2t + 2 = S[t] - t + a steps, each multiplying the function by 1/2. The number is subtracted from 2 so this leaves us with 1, which we know is ${frac(1,8)}</m>.<br>
+So <m>f(2 - S) = ${frac(1,"2<s>S[t] - t + a + 3</s>")}</m><br>
+<b>If a - t + 1 = -1</b>, if a = t - 2, then we will not use the highest element S[t]. We'll get 1.00...001. How many 0s? Well, on the previous step it was 0.1100...001. There are S[t] - S[t - 1] - 1 0s there. The final doubling adds 1 more 0 to this, giving S[t] - S[t - 1]. So the number 1.00...001 = [0,S[t] - S[t - 1] + 1], with S[t - 1] - 1 halvings. <m>f(2 - 1 - ${frac(1,"2<s>S[t] - S[t - 1] + 1</s>")}) = f(1 - ${frac(1,"2<s>S[t] - S[t - 1] + 1</s>")}) = ${frac(1,"2<s>S[t] - S[t - 1] + 2</s>")}</m>.<br>
+So <m>f(2 - S) = ${frac(1,"2<s>S[t] - S[t - 1] + 2</s>")}${frac(1,"2<s>S[t - 1] - 1</s>")} = ${frac(1,"2<s>S[t] + 1</s>")}</m>.<br>
+<b>If a - t + 1 <= -2</b>, if a <= t - 3, we'll get 2 - 1.00...001... . This will become 1 - 0.00...001wxyz.., which will become -0.wxyz... As long as wxyz... is nonzero, this is 0.wxyz...
 `]
 }
 const urlPath = (new URL(window.location.href).search.substr(1));
