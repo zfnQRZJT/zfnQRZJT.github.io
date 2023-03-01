@@ -81,7 +81,7 @@ S[t] - t + a + 3 > S[t]<br>
 a + 3 > t
 a > t - 3
 But a > t - 2 because a >= t - 1, so this is true.<br>
-If a = t - 2 the new element is [S[t] + 1] which is clearly not in S (S[t] is the greatest element).
+If a = t - 2 the new element is [S[t] + 1] which is clearly not in S (S[t] is the greatest element).<br>
 So if t is too small we will keep adding a new element to the set. When a = t - 2 the new element will be the direct successor of the previous element. This will be the tipping point, meaning that the only way to get into the 3rd scenario is when a = t - 3. At this point the new element added will be equal to the last element added.<hline></hline>
 Alright, time to try it out.<br>
 [10, 23] a = 10, t = 2<br>
