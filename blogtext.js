@@ -72,7 +72,7 @@ So <m>f(2 - S) = ${frac(1,"2<s>S[t] - t + a + 3</s>")}</m><br>
 So <m>f(2 - S) = ${frac(1,"2<s>S[t] - S[t - 1] + 2</s>")}${frac(1,"2<s>S[t - 1] - 1</s>")} = ${frac(1,"2<s>S[t] + 1</s>")}</m>.<br>
 <b>If a - t + 1 <= -2</b>, if a <= t - 3, we'll get 2 - 1.00...001... . This will become 1 - 0.00...001wxyz.., which will become -0.wxyz... As long as wxyz... is nonzero, this is 0.wxyz... Now, what will this come out to?<br>
 We will use up to element S[a + 1] to move a down to 0. S[a + 1] will have to move down to 1, where it will add to the a (also 1) and make a 0. This will take S[a + 1] - 1 steps. The number has now entered the (0,1) range. S[a + 2] must make a total (including the first section) of S[a + 2] steps to become 0. Since it is subtracted from 1 we can now write the full argument of the function as 1 - [0,S[a + 3] - S[a+2]...] = -[S[a + 3] - S[a+2]...] which took S[a + 2] steps.
-In summary, <m>f(2 - S) = [S[a + 3],...]</m>.<br>
+In summary, <m>f(2 - S) = [S[a + 3],...]</m>.<br><br>
 Do you see what that means?
 Every list that results from applying the function to S is added to S. Why? Well, it's f(3 - S) = 1/2f(3 - S - f(2 - S)) = 1/4f(3 - S - f(2 - S) - f(2 - S - f(2 - S))). Our real end goal is to find out how many times we will repeat this process, to find <m>f(3 - ${frac(1,1024)})</m>. But that's later.
 I'm going to show that if a > t - 3 the answer will be an element not already in S.<br><br>
@@ -95,8 +95,29 @@ At this point the math tells us to add an 89 to the set. We know this is actuall
 So what are we left with?<br>
 [10, 23, 34, 44, 53, 61, 68, 74, 79, 83, 86, 87] t = 12<br>
 [10, 23, 34, 44, 53, 61, 68, 74, 79, 83, 86, 87, 88] t = 13<br>
-It's tempting to just do it manually but let's try to figure out exactly how many iterations this will take. It took 2 steps to move the recent chain of 1s left by 1.
+It's tempting to just do it manually but let's try to figure out exactly how many iterations this will take to get to a = 9. It took 2 steps to move the recent chain of 1s left by 1.
 We are making progress.
+To get to a = 9 we will need to get S to be [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] because the only duplicate element that can be added is when t = 13.
+You can now intuitively see that this will take a really long time, just for a = 10 to a = 9 - then it will have to get to a = 8, etc.
+So how long does it take to decrease a by 1? Well, you have to decrease S[2] by S[2] - S[1]. To do that you need to decrease S[3] by (S[3] - S[2]), S[2] - S[1] times. Know what this is? This is multiplication. We're basically going to take the product of the gaps between numbers. Let's just confirm this hypothesis quickly.<br><br>
+[10]<br>
+[10, 12, 14, 16] after 3 steps (I decreased the gaps for sake of experimentation)<br>
+[10, 12, 14, 15] after M + 3 steps<br>
+[10, 12, 13] after 2M + 3 steps<br>
+[10, 12, 13, 15] after 2M + 4 steps<br>
+[10, 12, 13, 14] after 3M + 4 steps<br>
+[10, 11] after 4M + 4 steps<br>
+[10, 11, 13, 15] after 4M + 6 steps<br>
+[10, 11, 13, 14] after 5M + 6 steps<br>
+[10, 11, 12] after 6M + 6 steps<br>
+[10, 11, 12, 14] after 6M + 7 steps<br>
+[10, 11, 12, 13] after 7M + 7 steps<br>
+[9] after 8M + 7 steps<br>
+Why 8M + 7? Well, we generate 3 additional elements, then 1, then 2, then 1. If we did the pattern over it would be 4 + 1 + 2 + 1 + 3 + 1 + 2 + 1 = P(4). When we embed P(x) in P(x+1) we do P(4) but with 4 => 5, P(4). Essentially we multiply by 2 and add 1. So this will add up to 2^x - 1.<br>
+And the 8 is from the product of the gaps, as I said.<br>
+This is actually a bold claim. Can we prove it? Call number of steps at iteration N #(N). #(1) is (S[2] - a)#(N - 1) + 1. Well, it seems that nice power of 2 formula was only because the gaps were all 2.<br><br>
+But basically we will get gap1(1 + gap2(1 + gap3....))) = #(1). Expanding out, the answer will be something like this<br>
+
 `]
 }
 const urlPath = (new URL(window.location.href).search.substr(1));
