@@ -6,7 +6,7 @@ const lfl = "<lfl></lfl>";
 const rfl = "<rfl></rfl>";
 const blogs = {
   "6353227688162363":["Surely this simple recursive function won't return ridiculous results?",
-`A friend sent an image of this unassuming functional equation (calling it "hell")<br>\
+`A friend sent an image of this unassuming functional equation (calling it "absolute hell")<br>\
 <m>f(x) = -x</m> for <m>x < 0</m>,<br>
 <m>${half}f(x-f(x-1))</m> otherwise,<br>
 find <m>f(3)</m>.<hline></hline>
@@ -112,7 +112,7 @@ window.onload = function() {
     }
     document.querySelector(".section").innerHTML += rhtml;
   } else if (blogs[1*urlPath]) {
-    document.querySelector(".section").innerHTML += "<h2 style='font-size:><u>" + blogs[1*urlPath][0] + "</u></h2>" + blogs[1*urlPath][1];
+    document.querySelector(".section").innerHTML += "<h2 style='font-size:30px;'><u>" + blogs[1*urlPath][0] + "</u></h2>" + blogs[1*urlPath][1];
     setTimeout(function() {
       MathJax.typeset()
     },1000);
