@@ -16,20 +16,31 @@
       mjx-script mjx-c.mjx-c1D465.TEX-I::before {
         top:0px;
       }*/
+      .section {
+        scroll-snap-align:none;
+        width:100%;
+        height:fit-content;
+        line-height:30px;
+      }
       frac {
         height: 1px;
         background: #FFF;
         width: fit-content;
         position: relative;
-        top: 10px;
+        top: 16px;
         text-align: center;
         display: inline-block;
+        margin: 0 3px;
       }
       frac > n {
-        position: absolute;
-        top: -20px;
+        position: relative;
+        top: -22px;
         display: inline-block;
         width: 100%;
+      }
+      frac > d {
+        bottom: 37px;
+        position: relative;
       }
       m {
         margin-top:6px;
@@ -51,7 +62,7 @@
     <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <div id="topbar">
       <a class="topbarlink" href="/"><b>zfnQRZJT</b>.me<div class="belowaborder"></div></a><a href="/projects" class="topbarlink">Projects<div class="belowaborder"></div></a><a class="activetbl topbarlink" href="/blog">Blog<div class="belowaborder"></div></a>
-    </div><div id="mainbody"><div class="section" style="scroll-snap-align:none; width:100%; height:fit-content;"></div></div>
+    </div><div id="mainbody"><div class="section"></div></div>
     <div hidden id="update"></div>
   </body>
 </html>
