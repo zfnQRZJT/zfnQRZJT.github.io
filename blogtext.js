@@ -5,7 +5,7 @@ const frac = function(n,d) {
 const lfl = "<lfl></lfl>";
 const rfl = "<rfl></rfl>";
 const blogs = {
-  "6353227688162363":["Surely this simple recursive function won't return ridiculous results?",
+  "6353227688162363":["Surely this small, simple-seeming recursive relation won't return ridiculous results?",
 `A friend sent an image of this unassuming functional equation (calling it "absolute hell")<br>\
 <m>f(x) = -x</m> for <m>x < 0</m>,<br>
 <m>${half}f(x-f(x-1))</m> otherwise,<br>
