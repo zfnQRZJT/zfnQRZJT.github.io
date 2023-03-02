@@ -144,7 +144,7 @@ You can see the pattern. Eventually we will get down to 3 - [1], which after 1 +
 I actually did this by hand without a calculator in class (you know, for fun, and I wanted to do this whole problem with no calculator):<br>
 <img src="/fusiblezfnswork.png"><br>
 Therefore<br><br>
-<h2 style='font-size:30px;'><b><m>f(3) = ${frac(1,"2<s>1541023937</s>")}</m></b></h2><hline></hline>
+<h2 style='font-size:30px;'><b><m>f(3) = 2<s>-1541023937</s></m></b></h2><hline></hline>
 And now for f(4)...
 `]
 }
