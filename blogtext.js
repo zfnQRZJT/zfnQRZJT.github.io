@@ -158,6 +158,7 @@ window.onload = function() {
     }
     document.querySelector(".section").innerHTML += rhtml;
   } else if (blogs[1*urlPath]) {
+    document.title = blogs[1*urlPath][0];
     document.querySelector(".section").innerHTML += "<h2 style='font-size:30px;'><u>" + blogs[1*urlPath][0] + "</u></h2>" + blogs[1*urlPath][1];
     setTimeout(function() {
       MathJax.typeset()
