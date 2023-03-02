@@ -116,7 +116,7 @@ So how long does it take to decrease a by 1? Well, you have to decrease S[2] by 
 Why 8M + 7?<br>
 Call number of steps at iteration N #(N). #(1) is (S[2] - a)#(N - 1) + 1. Well, it seems that nice power of 2 formula was only because the gaps were all 2.<br><br>
 But basically we will get 1 + gap1(1 + gap2(1 + gap3....))) = #(1). Expanding out, the answer will be something like this<br>
-1 + <img src="/productofgaps.png"><br><br>
+<img src="/fusiblegapsumproduct.png"><br><br>
 Time to test again, with an actual possible set.
 Start with a = 2. By <m>f(2 - ${frac(1,"2<s>x</s>")}) = ${frac(1,"2<s>2x + 3</s>")}</m>, next element is 7. Then we can apply the iteration.<br>
 [2] after 0 steps<br>
@@ -143,7 +143,8 @@ You can see the pattern. Eventually we will get down to 3 - [1], which after 1 +
 <img src="/fusibleanswersum.png"><br>
 I actually did this by hand without a calculator in class (you know, for fun, and I wanted to do this whole problem with no calculator):<br>
 <img src="/fusiblezfnswork.png"><br>
-Therefore <b><m>f(3) = ${frac(1,"2<s>1541023937</s>")}</m></b>.<hline></hline>
+Therefore<br>
+<h2 style='font-size:30px;'><b><m>f(3) = ${frac(1,"2<s>1541023937</s>")}</m></b></h2><hline></hline>
 And now for f(4)...
 `]
 }
