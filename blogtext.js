@@ -113,11 +113,38 @@ So how long does it take to decrease a by 1? Well, you have to decrease S[2] by 
 [10, 11, 12, 14] after 6M + 7 steps<br>
 [10, 11, 12, 13] after 7M + 7 steps<br>
 [9] after 8M + 7 steps<br>
-Why 8M + 7? Well, we generate 3 additional elements, then 1, then 2, then 1. If we did the pattern over it would be 4 + 1 + 2 + 1 + 3 + 1 + 2 + 1 = P(4). When we embed P(x) in P(x+1) we do P(4) but with 4 => 5, P(4). Essentially we multiply by 2 and add 1. So this will add up to 2^x - 1.<br>
-And the 8 is from the product of the gaps, as I said.<br>
-This is actually a bold claim. Can we prove it? Call number of steps at iteration N #(N). #(1) is (S[2] - a)#(N - 1) + 1. Well, it seems that nice power of 2 formula was only because the gaps were all 2.<br><br>
-But basically we will get gap1(1 + gap2(1 + gap3....))) = #(1). Expanding out, the answer will be something like this<br>
-
+Why 8M + 7?<br>
+Call number of steps at iteration N #(N). #(1) is (S[2] - a)#(N - 1) + 1. Well, it seems that nice power of 2 formula was only because the gaps were all 2.<br><br>
+But basically we will get 1 + gap1(1 + gap2(1 + gap3....))) = #(1). Expanding out, the answer will be something like this<br>
+1 + <img src="/productofgaps.png"><br><br>
+Time to test again, with an actual possible set.
+Start with a = 2. By <m>f(2 - ${frac(1,"2<s>x</s>")}) = ${frac(1,"2<s>2x + 3</s>")}</m>, next element is 7. Then we can apply the iteration.<br>
+[2] after 0 steps<br>
+[2, 7] after 1 step<br>
+[2, 7, 10, 12, 13] after 4 steps<br>
+[2, 7, 10, 11, 12] after 6 steps<br>
+[2, 7, 9, 11, 12] after 9 steps<br>
+[2, 7, 9, 10, 11] after 11 steps<br>
+[2, 7, 8] after 12 steps<br>
+[2, 7, 8, 10, 11] after 14 steps<br>
+[2, 7, 8, 9, 10] after 16 steps<br>
+[2, 6] after 17 steps<br>
+It took 16 steps to get from [2, 7] to [2, 6]<br>
+[2, 5] after 33 steps<br>
+[2, 4] after 49 steps<br>
+[2, 3] after 65 steps<br>
+[1] after 81 steps<br>
+Is 81 correct? Well, gaps are 5, 3, 2, 1 so we should get 1 + 5 + 5*3 + 5*3*2 + 5*3*2*1 = 81. So yes, this formula works. And we can finally get the answer.<hline></hline>
+So, we start at 3 - []. After one step this becomes 3 - [10]. How many steps does it take for 10 to become 9?<br>
+1 + (13)(1 + 11 + 11*10 + 11*10*9 + ... + 11!)<br>
+Then how many steps to get to 3 - [8]?<br>
+1 + (12)(1 + 10 + 10*9 + 10*9*8 + .. 10!)<br>
+You can see the pattern. Eventually we will get down to 3 - [1], which after 1 + 4(2 + 2 + 1) steps will reach 3 - [0] = 2. We know f(2) is ${frac(1,1024)}. We just need to compute this sum:<br>
+<img src="/fusibleanswersum.png"><br>
+I actually did this by hand without a calculator in class (you know, for fun, and I wanted to do this whole problem with no calculator):<br>
+<img src="/fusiblezfnswork.png"><br>
+Therefore <b><m>f(3) = ${frac(1,"2<s>1541023937</s>")}</m></b>.<hline></hline>
+And now for f(4)...
 `]
 }
 const urlPath = (new URL(window.location.href).search.substr(1));
