@@ -78,8 +78,8 @@ Every list that results from applying the function to S is added to S. Why? Well
 I'm going to show that if a > t - 3 the answer will be an element not already in S.<br><br>
 If a >= t - 1 the new element is [S[t] - t + a + 3].<br>
 S[t] - t + a + 3 > S[t]<br>
-a + 3 > t
-a > t - 3
+a + 3 > t<br>
+a > t - 3<br>
 But a > t - 2 because a >= t - 1, so this is true.<br>
 If a = t - 2 the new element is [S[t] + 1] which is clearly not in S (S[t] is the greatest element).<br>
 So if t is too small we will keep adding a new element to the set. When a = t - 2 the new element will be the direct successor of the previous element. This will be the tipping point, meaning that the only way to get into the 3rd scenario is when a = t - 3. At this point the new element added will be equal to the last element added.<hline></hline>
@@ -99,25 +99,13 @@ It's tempting to just do it manually but let's try to figure out exactly how man
 We are making progress.
 To get to a = 9 we will need to get S to be [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] because the only duplicate element that can be added is when t = 13.
 You can now intuitively see that this will take a really long time, just for a = 10 to a = 9 - then it will have to get to a = 8, etc.
-So how long does it take to decrease a by 1? Well, you have to decrease S[2] by S[2] - S[1]. To do that you need to decrease S[3] by (S[3] - S[2]), S[2] - S[1] times. Know what this is? This is multiplication. We're basically going to take the product of the gaps between numbers. Let's just confirm this hypothesis quickly.<br><br>
-[10]<br>
-[10, 12, 14, 16] after 3 steps (I decreased the gaps for sake of experimentation)<br>
-[10, 12, 14, 15] after M + 3 steps<br>
-[10, 12, 13] after 2M + 3 steps<br>
-[10, 12, 13, 15] after 2M + 4 steps<br>
-[10, 12, 13, 14] after 3M + 4 steps<br>
-[10, 11] after 4M + 4 steps<br>
-[10, 11, 13, 15] after 4M + 6 steps<br>
-[10, 11, 13, 14] after 5M + 6 steps<br>
-[10, 11, 12] after 6M + 6 steps<br>
-[10, 11, 12, 14] after 6M + 7 steps<br>
-[10, 11, 12, 13] after 7M + 7 steps<br>
-[9] after 8M + 7 steps<br>
-Why 8M + 7?<br>
-Call number of steps at iteration N #(N). #(1) is (S[2] - a)#(N - 1) + 1. Well, it seems that nice power of 2 formula was only because the gaps were all 2.<br><br>
-But basically we will get 1 + gap1(1 + gap2(1 + gap3....))) = #(1). Expanding out, the answer will be something like this<br>
+So how long does it take to decrease a by 1? Well, you have to decrease S[2] by S[2] - S[1]. To do that you need to decrease S[3] by (S[3] - S[2]), S[2] - S[1] times. Know what this is? This is multiplication. We're basically going to take the product of the gaps between numbers.<br><br>
+Let's just confirm this.<br>
+It seems like we're multiplying the gaps but we also have to add 1 every time to generate a new next element. [A][B][C][D] has to take 1 step just to make a [E]; [E] will then decrease until it becomes [D] and then [D] will decrease by 1.<br>
+So, if #(N) is number of steps for N, #(N - 1) = 1 + #(N)*gap.<br>
+We will get 1 + gap1(1 + gap2(1 + gap3....))) = #(1). Expanding out, the answer will be something like this<br>
 <img src="/fusiblegapsumproduct.png"><br><br>
-Time to test again, with an actual possible set.
+Time to test it out, with an actual possible set.
 Start with a = 2. By <m>f(2 - ${frac(1,"2<s>x</s>")}) = ${frac(1,"2<s>2x + 3</s>")}</m>, next element is 7. Then we can apply the iteration.<br>
 [2] after 0 steps<br>
 [2, 7] after 1 step<br>
