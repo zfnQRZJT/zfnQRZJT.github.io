@@ -3,7 +3,7 @@ const frac = function(n,d) {
   return("<frac><n>" + n + "</n><d>" + d + "</d></frac>");
 }
 const sum = function(start,end,fun) {
-  return("<sum><sumtop>" + end + "</sumtop><sumsym>∑</sumsym><sumbot>" + start + "</sumbot>" + fun + "</sum>");
+  return("<sum><sumtop>" + end + "</sumtop><sumsym>∑</sumsym><sumbot>" + start + "</sumbot></sum>");
 }
 const lfl = "<lfl></lfl>";
 const rfl = "<rfl></rfl>";
@@ -132,7 +132,7 @@ Then how many steps to get to 3 - [8]?<br>
 1 + (12)(1 + 10 + 10*9 + 10*9*8 + .. 10!)<br>
 You can see the pattern. Eventually we will get down to 3 - [1], which after 1 + 4(2 + 2 + 1) steps will reach 3 - [0] = 2. We know f(2) is ${frac(1,1024)}. We just need to compute this sum:<br>
 <img src="/fusibleanswersum.png"><br>
-1 + ${sum("a = 1","10","(1 + (a + 3)" + sum("k = 0","a + 1",frac("(a + 1)!","k!")) + ")")} + 10
+1 + ${sum("a = 1","10","(1 + (a + 3)") + "(" + sum("k = 0","a + 1") + frac("(a + 1)!","k!")}) + 10
 I actually did this by hand without a calculator in class (you know, for fun, and I wanted to do this whole problem with no calculator):<br>
 <img src="/fusiblezfnswork.png"><br>
 Therefore<br><br>
