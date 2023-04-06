@@ -139,7 +139,7 @@ Therefore<br><br>
 And that's the answer.<hline></hline>
 Now for f(4)...
 `],
-  "381603815512885":["Mathjax Test","\\(\\log_{4}{5}\\)"]
+  "381603815512885":["Mathjax Test","\\(\\int_{0.5665}^{1}(\\ln(x)+\\frac{4}{x^{2}+3x+4)dx\\)"]
 }
 const urlPath = (new URL(window.location.href).search.substr(1));
 window.onload = function() {
