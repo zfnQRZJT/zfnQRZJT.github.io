@@ -146,7 +146,7 @@ window.onload = function() {
   if (urlPath === "") {
     let rhtml = "<h1>Blog</h1>";
     for (blog in blogs) {
-      rhtml += "<a href='/blog?" + blog + "'>" + blogs[blog][0] + "</a>";
+      rhtml += "<div class='blogbox'><a class='bloglink' href='/blog?" + blog + "'>" + blogs[blog][0] + "</a>" + blogs[blog][1].replaceAll("\\(","[mathstart]").replaceAll("\\)","[mathend]") + "</div>";
     }
     document.querySelector(".section").innerHTML += rhtml;
   } else if (blogs[1*urlPath]) {
