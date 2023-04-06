@@ -138,7 +138,8 @@ Therefore<br><br>
 <h2 style='font-size:30px;'><b><m>f(3) = 2<s>-1541023937</s></m></b></h2><br>
 And that's the answer.<hline></hline>
 Now for f(4)...
-`]
+`],
+  "381603815512885":["Mathjax Test","\\(\\log_{4}{5}\\)"]
 }
 const urlPath = (new URL(window.location.href).search.substr(1));
 window.onload = function() {
