@@ -139,7 +139,19 @@ Therefore<br><br>
 And that's the answer.<hline></hline>
 Now for f(4)...
 `],
-  "381603815512885":["Mathjax Test","\\(\\int_{0.5665}^{1}(\\ln(x)+\\frac{4}{x^{2}+3x+4})dx\\)"]
+  "381603815512885":["Mathjax Update","This is going to be a short blogpost but I have an update on the state of math in this blog.<br><br>\
+Math is now fixed!!<br><br>\
+The first blogpost will remain the only one not to use MathJax, which, for those who don't know, is a way to easily write LaTeX on websites and the MathJax robot will convert it into beautiful symbols.<br>\
+Like Desmos. Except better in some ways and worse in others.<br><br>\
+On the Find f(3) post I created my own semi-working system to embed math, although the only thing I really got to was fractions. Everything else (sums, etc) was too hard.<br><br>\
+That leaves the question, why didn't I use MathJax?<br>\
+Well, as a matter of fact, I did try it, but it looked HORRIBLE. Like this<br>\
+<img src='/horriblemathjax.png'><br>\
+It turns out this was caused by one css rule I've put for a long time in the <code>* {}</code> block:<br><br>\
+<code>* {<br>&nbsp;&nbsp;vertical-align:top;<br>}</code><br><br>\
+This just means the position of an element is the top of the bounding box. The default is vertical-align:baseline, which I don't know or care to find out the meaning of (and no, it's not the bottom), but which I am convicted is entirely illogical. The top should be the position.<br><br>\
+In any case I figured out that if I removed that rule MathJax worked properly. I had to fix a few goofy design failures due to the change but now I will be able to embed sums and stuff in text.<br><br>\
+I'll see you next time."]
 }
 const urlPath = (new URL(window.location.href).search.substr(1));
 window.onload = function() {
