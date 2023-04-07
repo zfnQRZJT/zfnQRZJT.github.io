@@ -8,7 +8,7 @@ const sum = function(start,end,fun) {
 const lfl = "<lfl></lfl>";
 const rfl = "<rfl></rfl>";
 const blogs = {
-  "6353227688162363":["Surely this small, simple-seeming recursive relation won't return ridiculous results?",
+  "6353227688162363":["Surely this small, simple-seeming recursive relation won't return ridiculous results?",true,
 `A friend sent an image of this unassuming functional equation (calling it "absolute hell")<br>\
 <m>f(x) = -x</m> for <m>x < 0</m>,<br>
 <m>${half}f(x-f(x-1))</m> otherwise,<br>
@@ -139,7 +139,7 @@ Therefore<br><br>
 And that's the answer.<hline></hline>
 Now for f(4)...
 `],
-  "381603815512885":["Mathjax Update","This is going to be a short blogpost but I have an update on the state of math in this blog.<br><br>\
+  "381603815512885":["Mathjax update",true,"This is going to be a short blogpost but I have an update on the state of math in this blog.<br><br>\
 Math is now fixed!!<br><br>\
 The first blogpost will remain the only one not to use MathJax, which, for those who don't know, is a way to easily write LaTeX on websites and the MathJax robot will convert it into beautiful symbols.<br>\
 Like Desmos. Except better in some ways and worse in others.<br><br>\
@@ -151,19 +151,22 @@ It turns out this was caused by one css rule I've put for a long time in the <co
 <code>* {<br>&nbsp;&nbsp;vertical-align:top;<br>}</code><br><br>\
 This just means the position of an element is the top of the bounding box. The default is vertical-align:baseline, which I don't know or care to find out the meaning of (and no, it's not the bottom), but which I am convicted is entirely illogical. The top should be the position.<br><br>\
 In any case I figured out that if I removed that rule MathJax worked properly. I had to fix a few goofy design failures due to the change but now I will be able to embed sums and stuff in text.<br><br>\
-I'll see you next time."]
+I'll see you next time."],
+  "24985796172591412":["The sum of rational series",false,"It turns out that sums are really, really hard to do."]
 }
 const urlPath = (new URL(window.location.href).search.substr(1));
 window.onload = function() {
   if (urlPath === "") {
     let rhtml = "<h1>Blog</h1>";
     for (blog in blogs) {
-      rhtml += "<div class='blogbox'><a class='bloglink' href='/blog?" + blog + "'>" + blogs[blog][0] + "</a>" + blogs[blog][1].replaceAll("\\(","[mathstart]").replaceAll("\\)","[mathend]") + "</div>";
+      if (blogs[blog][1]) {
+        rhtml += "<div class='blogbox'><a class='bloglink' href='/blog?" + blog + "'>" + blogs[blog][0] + "</a>" + blogs[blog][2].replaceAll("\\(","[mathstart]").replaceAll("\\)","[mathend]") + "</div>";
+      }
     }
     document.querySelector(".section").innerHTML += rhtml;
   } else if (blogs[1*urlPath]) {
     document.title = blogs[1*urlPath][0];
-    document.querySelector(".section").innerHTML += "<h2 style='font-size:30px;'><u>" + blogs[1*urlPath][0] + "</u></h2>" + blogs[1*urlPath][1];
+    document.querySelector(".section").innerHTML += "<h2 style='font-size:30px;'><u>" + blogs[1*urlPath][0] + "</u></h2>" + blogs[1*urlPath][2];
     setTimeout(function() {
       MathJax.typeset()
     },1000);
