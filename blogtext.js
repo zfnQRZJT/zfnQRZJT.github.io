@@ -152,9 +152,13 @@ It turns out this was caused by one css rule I've put for a long time in the <co
 This just means the position of an element is the top of the bounding box. The default is vertical-align:baseline, which I don't know or care to find out the meaning of (and no, it's not the bottom), but which I am convicted is entirely illogical. The top should be the position.<br><br>\
 In any case I figured out that if I removed that rule MathJax worked properly. I had to fix a few goofy design failures due to the change but now I will be able to embed sums and stuff in text.<br><br>\
 I'll see you next time."],
-  "24985796172591412":["The sum of rational series",false,`Differential calculus, which is the study of functions and the rate that they change, is universally considered hard. Limits and full differentiation and integrals oh my. In particular finding integrals and antiderivatives seems like a very unfun puzzle. But you may be surprised to learn that typically<br>
-    \\[\\sum\\]<br>
-    the humble sumble is more difficult.`]
+  "24985796172591412":["The sum of rational series",false,`Differential calculus, which is the study of functions and the rate that they change, is universally considered hard. Limits and full differentiation and integrals oh my. In particular finding integrals and antiderivatives seems like a very unfun puzzle. But you may be surprised to learn that typically the humble sumble is more difficult.<br>
+    \\[\\sum_{n=1}^{\\infty}\\frac{1}{n^2}\\]
+    The famous Basel problem. Its value is \\(\\frac{\\pi^2}{6}\\). If you exchange the \\(n^2\\) for \\(n^3\\) you get a number very little is known about.
+    \\[\\sum_{n=1}^{N}n^{e}\\]
+    Good luck finding the induction here. I'll be attacking this sum later in the post.
+    \\[\\sum_{n=1}^{\infty}\\frac{\\tan(n)}{n^{4}}\\]
+    Wolfram|Alpha says it diverges. Are you convinced?`]
 }
 const urlPath = (new URL(window.location.href).search.substr(1));
 window.onload = function() {
