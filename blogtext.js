@@ -160,7 +160,19 @@ I'll see you next time."],
     \\[\\sum_{n=1}^{\\infty}\\frac{\\tan(n)}{n^{4}}\\]
     Wolfram|Alpha says it diverges. Are you convinced?
     \\[\\sum_{n=1}^{\\infty}\\frac{(-1)^{n}}{3n-1}\\]
-    A delectable morsel of mathematics.`]
+    A delectable morsel of mathematics.
+    <hline></hline>
+    So why are these hard? The simple answer is that they just are. This is the way the cookie crumbles. To some extent I think the reason is that continuity is smooth, while series, if you see them as area under a step function, have jagged edges that are hard to deal with. Or maybe it's that people care more about integration and emphasize techniques to do it when equally good techniques exist for series. In any case, our goal will be to transform a series into an integral. Let's begin.<br><br>
+    I'll start with this well-known series.
+    \\[\\sum_{n=1}^{\\infty}\\frac{1}{n}\\]
+    We know this is infinity. Can we use calculus to prove it?<br>
+    Here's the key insight.
+    \\[\\frac{1}{1} + \\frac{1}{2} + \\frac{1}{3} + \\frac{1}{4} ... = \\frac{1^1}{1} + \\frac{1^2}{2} + \\frac{1^3}{3} + \\frac{1^4}{4} ... = \\f(1) - f(0), f(x) = \\frac{x^1}{1} + \\frac{x^2}{2} + \\frac{x^3}{3} + \\frac{x^4}{4} ...\\]
+    Now we will take the derivative with the power rule.
+    \\[f'(x) = \\frac{1x^0}{1} + \\frac{2x^1}{2} + \\frac{3x^2}{3} + \\frac{4x^3}{4} ... = 1 + x + x^2 + x^3 ... = \\frac{1}{1 - x}, x\\neq1\\]
+    We are allowed to make that substitution because on all but one point of the domain, \\(|x| < 1\\).
+    \\[f'(x) = \\frac{1}{1-x}\\Rightarrow\\sum_{n=1}^{\\infty}\\frac{1}{n}=\\lim_{a\\rightarrow1^-}\\int_{0}^{a}\\frac{1}{1-x}dx\\]
+    There we have it. The sum becomes an integral.`]
 }
 const urlPath = (new URL(window.location.href).search.substr(1));
 window.onload = function() {
