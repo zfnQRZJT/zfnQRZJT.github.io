@@ -187,8 +187,8 @@ I'll see you next time."],
     \\[u = \\frac{2x - 1}{\\sqrt3}\\]
     \\[\\Longrightarrow \\frac{2}{9}\\int_{-\\frac{1}{\\sqrt3}}^{\\frac{1}{\\sqrt3}}\\frac{\\sqrt3u-3}{u^2-1}\\frac{\\sqrt3}{2}du - \\frac{1}{3}\\ln(2) = \\frac{\\pi}{3\\sqrt3} - \\frac{1}{3}\\ln(2)\\]
     <!--/button-->
-    There comes a time when you're sick of the answer being the most random combination of \\(\\pi\\) and \\(\\ln\\).<br><br>
-    ${/*
+    There comes a time when you're sick of the answer being the most random combination of \\(\\pi\\) and \\(\\ln\\).<br><br>`
+    /*
     Anyway it's time for the grand finish. (Don't leave though, I have more fun stuff below)
     \\[\\sum_{n=1}^{\\infty}\\frac{(n-\\alpha)(n - \\beta)}{(n-\\gamma)(n-\\delta)(n - \\varepsilon)(n-\\zeta)}, \\gamma, \\delta, \\varepsilon, \\zeta \\notin \\mathbb{Z}^+\\]
     How do we deal with this?
@@ -206,7 +206,7 @@ I'll see you next time."],
     It turns out that the f(x) will be some fraction with x in the numerator and denominator, so taking the derivative will make it worse. So we're going to take the derivatives and clear the numerator first.
     \\[\\sum_{n=1}^{\\infty}\\frac{(n-\\alpha)(n - \\beta)x^{n - \\alpha}}{(n-\\gamma)(n-\\delta)(n - \\varepsilon)(n-\\zeta)} = \\frac{d}{dx}\\sum_{n=1}^{\\infty}\\frac{(n - \\beta)x^{n - \\alpha + 1}}{(n-\\gamma)(n-\\delta)(n - \\varepsilon)(n-\\zeta)}\\]
     Now, as I said, since x is a constant in the frame of the sum, we can take this annoyingly complicated power of x out.
-    \\[\\frac{d}{dx}x^{-\\alpha + 1 + \\beta}\\sum_{n=1}^{\\infty}\\frac{(n - \\beta)x^{n - \\beta}}{(n-\\gamma)(n-\\delta)(n - \\varepsilon)(n-\\zeta)}\\]*/}`]
+    \\[\\frac{d}{dx}x^{-\\alpha + 1 + \\beta}\\sum_{n=1}^{\\infty}\\frac{(n - \\beta)x^{n - \\beta}}{(n-\\gamma)(n-\\delta)(n - \\varepsilon)(n-\\zeta)}\\]*/]
 }
 const urlPath = (new URL(window.location.href).search.substr(1));
 window.onload = function() {
