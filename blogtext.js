@@ -156,7 +156,7 @@ I'll see you next time."],
     \\[\\sum_{n=1}^{\\infty}\\frac{1}{n^2}\\]
     The famous Basel problem. Its value is \\(\\frac{\\pi^2}{6}\\). If you exchange the \\(n^2\\) for \\(n^3\\) you get a number very little is known about.
     \\[\\sum_{n=1}^{N}n^{e}\\]
-    Good luck finding the induction here. I'll be attacking this sum later in the post.
+    Good luck finding the induction here. There's a pretty good approximation for large values of x. I'm not sure if we can do better. More on this problem coming soon.
     \\[\\sum_{n=1}^{\\infty}\\frac{\\tan(n)}{n^{4}}\\]
     Wolfram|Alpha says it diverges. Are you convinced?
     \\[\\sum_{n=1}^{\\infty}\\frac{(-1)^{n-1}}{3n-1}\\]
