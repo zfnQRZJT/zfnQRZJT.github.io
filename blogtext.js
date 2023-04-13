@@ -152,7 +152,7 @@ It turns out this was caused by one css rule I've put for a long time in the <co
 This just means the position of an element is the top of the bounding box. The default is vertical-align:baseline, which I don't know or care to find out the meaning of (and no, it's not the bottom), but which I am convicted is entirely illogical. The top should be the position.<br><br>\
 In any case I figured out that if I removed that rule MathJax worked properly. I had to fix a few goofy design failures due to the change but now I will be able to embed sums and stuff in text.<br><br>\
 I'll see you next time."],
-  "24985796172591412":["The sum of rational series",false,`Differential calculus, which is the study of functions and the rate that they change, is universally considered hard. Limits and full differentiation and integrals oh my. In particular finding integrals and antiderivatives seems like a very unfun puzzle. But you may be surprised to learn that typically the humble sumble is more difficult.<br>
+  "24985796172591412":["The sum of rational series",true,`Infinitesimal calculus, the study of functions and the rate that they change, is universally considered hard. Limits and full differentiation and integrals oh my. In particular finding integrals and antiderivatives seems like a very unfun puzzle. But you may be surprised to learn that typically the humble sumble is more difficult.<br>
     \\[\\sum_{n=1}^{\\infty}\\frac{1}{n^2}\\]
     The famous Basel problem. Its value is \\(\\frac{\\pi^2}{6}\\). If you exchange the \\(n^2\\) for \\(n^3\\) you get a number very little is known about.
     \\[\\sum_{n=1}^{N}n^{e}\\]
@@ -175,20 +175,38 @@ I'll see you next time."],
     There we have it. The sum becomes an integral. It's actually simple to find:
     \\[u = 1 - x\\]\\[\\lim_{a\\rightarrow0^+}\\int_{a}^{1}\\frac{1}{u}du=\\lim_{a\\rightarrow0^+}\\ln(x)\\Big|_{\\small{a}}^{\\small1}=-\\lim_{a\\rightarrow0^+}\\ln(a)=\\infty\\]
     We can use a similar technique for \\(\\sum_{n=1}^{\\infty}\\frac{(-1)^n}{n}\\)
-    \\[\\frac{1}{1} - \\frac{1}{2} + \\frac{1}{3} - \\frac{1}{4} ... = \\frac{x^1}{1} - \\frac{x^2}{2} + \\frac{x^3}{3} - \\frac{x^4}{4}\\Big|_{\\small0}^{\\small1}=\\int_{0}{1}\\Big(\\frac{1x^0}{1}-\\frac{2x^1}{2}+\\frac{3x^2}{3}-\\frac{4x^3}{4}...\\Big)dx=\\int_{0}^{1}\\frac{1}{1+x}dx=\\ln(1+x)\\Big|_{\\small0}^{\\small1}=\\ln(2)\\]
-    As a last fun exercise before the big explosion let's do this.
+    \\[\\frac{1}{1} - \\frac{1}{2} + \\frac{1}{3} - \\frac{1}{4} ... = \\frac{x^1}{1} - \\frac{x^2}{2} + \\frac{x^3}{3} - \\frac{x^4}{4}\\Big|_{\\small0}^{\\small1}=\\int_{0}^{1}\\Big(\\frac{1x^0}{1}-\\frac{2x^1}{2}+\\frac{3x^2}{3}-\\frac{4x^3}{4}...\\Big)dx=\\int_{0}^{1}\\frac{1}{1+x}dx=\\ln(1+x)\\Big|_{\\small0}^{\\small1}=\\ln(2)\\]
+    As a last fun exercise in rational functions let's do the one I hinted at in the intro.
     \\[\\sum_{n=1}^{\\infty}\\frac{(-1)^{n}}{3n-1}\\]
     The answer is below.
     <!--button class="spoiler" onclick="spoil(this)"-->
-    \\[f(x) = \\sum_{n=1}^{\\infty}\\frac{(-1)^{n-1}x^{3n-1}}{3n-1}, f(1) = \\int_{0}^{1}f'(x)dx\\]
-    \\[= \\int_{0}^{1}\\sum_{n=1}^{\\infty}(-1)^{n-1}x^{3n-2}dx = \\int_{0}^{1}x*\\sum_{n=0}^{\\infty}(-x^3)^n dx = \\int_{0}^{1}\\frac{x}{(x+1)(x^2-x+1)}dx\\]
+    \\[f(x) = \\sum_{n=1}^{\\infty}\\frac{(-1)^{n-1}x^{3n-1}}{3n-1}, f(1) = \\int_{0}^{1}f'(x)dx\\ = \\int_{0}^{1}\\sum_{n=1}^{\\infty}(-1)^{n-1}x^{3n-2}dx = \\int_{0}^{1}x*\\sum_{n=0}^{\\infty}(-x^3)^n dx = \\int_{0}^{1}\\frac{x}{(x+1)(x^2-x+1)}dx\\]
     Partial fractions.
     \\[= \\frac{1}{3}\\int_{0}^{1}\\frac{x}{x^2-x+1} - \\frac{1}{x+1}dx\\]
     Completing the square.
-    u = \\frac{2x - 1}{\\sqrt(3)}
-    \\[\\Longrightarrow \\frac{2}{9}\\int_{-\\frac{1}{\\sqrt(3)}}^{\\frac{1}{\\sqrt(3)}}\\frac{\\sqrt(3)u-3}{u^2-1}\\frac{\\sqrt(3)}{2}du - \\frac{1}{3}\\ln(2)\\]
-    \\[= \\frac{\\pi}{3\\sqrt(3)} - \\frac{1}{3}\\ln(2)\\]
-    <!--/button-->`]
+    \\[u = \\frac{2x - 1}{\\sqrt3}\\]
+    \\[\\Longrightarrow \\frac{2}{9}\\int_{-\\frac{1}{\\sqrt3}}^{\\frac{1}{\\sqrt3}}\\frac{\\sqrt3u-3}{u^2-1}\\frac{\\sqrt3}{2}du - \\frac{1}{3}\\ln(2) = \\frac{\\pi}{3\\sqrt3} - \\frac{1}{3}\\ln(2)\\]
+    <!--/button-->
+    There comes a time when you're sick of the answer being the most random combination of \\(\\pi\\) and \\(\\ln\\).<br><br>
+    ${/*
+    Anyway it's time for the grand finish. (Don't leave though, I have more fun stuff below)
+    \\[\\sum_{n=1}^{\\infty}\\frac{(n-\\alpha)(n - \\beta)}{(n-\\gamma)(n-\\delta)(n - \\varepsilon)(n-\\zeta)}, \\gamma, \\delta, \\varepsilon, \\zeta \\notin \\mathbb{Z}^+\\]
+    How do we deal with this?
+    So far the way was to add x^(some exponent) so that when taking the derivative of the sum with respect to x, it made it simpler, and so integrating the simpler thing got the original sum.
+    Here we'll do basically the same thing. If we insert \\(x^{n-\\gamma}\\) it will remove one of the things in the bottom, so integrating once will get back to this. Then we can multiply the sum by the necessary power of x to make the power of x inside the series \\(n - delta\\). If we keep doing this we'll get a quadruple integral that looks something like this.
+    \\[\\int\\int\\int\\int\\sum_{n=1}^{\\infty}(n-\\alpha)(n-\\beta)x^n\\]
+    And now that the (n - greekletterIchosespecificallytopunishyou) is in the numerator taking the derivative will never work. It will just make it more complicated.<br><br>
+    The answer, of course, is integrating instead. With the correct power, the power rule in reverse vacuums terms up into the exponent. Very cool.<br>
+    Keep in mind that since taking the derivative ends up in the final thing as an integral, and integrating ends up as a derivative. If one simplifies, the original expression equals the reverse operation on the simpler thing.<br>
+    Now we should be careful. Which do we do first, get rid of the denominator or the numerator?<br>
+    Would you rather end up with
+    \\[\\int\\int\\int\\int\\frac{d}{dx}\\frac{d}{dx}f(x)dxdxdxdx\\]
+    or
+    \\[\\frac{d}{dx}\\frac{d}{dx}\\int\\int\\int\\intf(x)dxdxdxdx\\]
+    It turns out that the f(x) will be some fraction with x in the numerator and denominator, so taking the derivative will make it worse. So we're going to take the derivatives and clear the numerator first.
+    \\[\\sum_{n=1}^{\\infty}\\frac{(n-\\alpha)(n - \\beta)x^{n - \\alpha}}{(n-\\gamma)(n-\\delta)(n - \\varepsilon)(n-\\zeta)} = \\frac{d}{dx}\\sum_{n=1}^{\\infty}\\frac{(n - \\beta)x^{n - \\alpha + 1}}{(n-\\gamma)(n-\\delta)(n - \\varepsilon)(n-\\zeta)}\\]
+    Now, as I said, since x is a constant in the frame of the sum, we can take this annoyingly complicated power of x out.
+    \\[\\frac{d}{dx}x^{-\\alpha + 1 + \\beta}\\sum_{n=1}^{\\infty}\\frac{(n - \\beta)x^{n - \\beta}}{(n-\\gamma)(n-\\delta)(n - \\varepsilon)(n-\\zeta)}\\]*/}`]
 }
 const urlPath = (new URL(window.location.href).search.substr(1));
 window.onload = function() {
