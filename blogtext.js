@@ -152,7 +152,7 @@ It turns out this was caused by one css rule I've put for a long time in the <co
 This just means the position of an element is the top of the bounding box. The default is vertical-align:baseline, which I don't know or care to find out the meaning of (and no, it's not the bottom), but which I am convicted is entirely illogical. The top should be the position.<br><br>\
 In any case I figured out that if I removed that rule MathJax worked properly. I had to fix a few goofy design failures due to the change but now I will be able to embed sums and stuff in text.<br><br>\
 I'll see you next time."],
-  "24985796172591412":["The sum of rational series",true,`Infinitesimal calculus, the study of functions and the rate that they change, is universally considered hard. Limits and full differentiation and integrals oh my. In particular finding integrals and antiderivatives seems like a very unfun puzzle. But you may be surprised to learn that typically the humble sumble is more difficult.<br>
+  "24985796172591412":["Summing up rational functions",true,`Infinitesimal calculus, the study of functions and the rate that they change, is universally considered hard. Limits and full differentiation and integrals oh my. In particular finding integrals and antiderivatives seems like a very unfun puzzle. But you may be surprised to learn that typically the humble sumble is more difficult.<br>
     \\[\\sum_{n=1}^{\\infty}\\frac{1}{n^2}\\]
     The famous Basel problem. Its value is \\(\\frac{\\pi^2}{6}\\). If you exchange the \\(n^2\\) for \\(n^3\\) you get a number very little is known about.
     \\[\\sum_{n=1}^{N}n^{e}\\]
@@ -212,7 +212,7 @@ const urlPath = (new URL(window.location.href).search.substr(1));
 window.onload = function() {
   if (urlPath === "") {
     let rhtml = "<h1>Blog</h1>";
-    for (blog in blogs) {
+    for (blog = blogs.length - 1; blog >= 0; blog--) {
       if (blogs[blog][1]) {
         rhtml += "<div class='blogbox'><a class='bloglink' href='/blog?" + blog + "'>" + blogs[blog][0] + "</a>" + blogs[blog][2].replaceAll("\\(","[mathstart]").replaceAll("\\)","[mathend]") + "</div>";
       }
