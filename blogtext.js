@@ -182,6 +182,13 @@ I'll see you next time."],
     <button class="spoiler" onclick="spoil(this)">
     \\[f(x) = \\sum_{n=1}^{\\infty}\\frac{(-1)^{n-1}x^{3n-1}}{3n-1}, f(1) = \\int_{0}^{1}f'(x)dx\\]
     \\[= \\int_{0}^{1}\\sum_{n=1}^{\\infty}(-1)^{n-1}x^{3n-2}dx = \\int_{0}^{1}x*\\sum_{n=0}^{\\infty}(-x^3)^n dx = \\int_{0}{1}\\frac{x}{(x+1)(x^2-x+1)}dx\\]
+    Partial fractions.
+    \\[= \\frac{1}{3}\\int_{0}^{1}\\frac{x}{x^2-x+1} - \\frac{1}{x+1}dx\\]
+    Completing the square.
+    u = \\frac{2x - 1}{\\sqrt(3)}
+    \\[\\Longrightarrow \\frac{2}{9}\\int_{-\\frac{1}{\\sqrt(3)}}^{\\frac{1}{\\sqrt(3)}}\\frac{\\sqrt(3)u-3}{u^2-1}\\frac{\\sqrt(3)}{2}du - \\frac{1}{3}\\ln(2)\\]
+    \\[= 2\\frac{\\arctan\\frac{1}{\\sqrt(3)}}{\\sqrt(3)} - \\frac{1}{3}\\ln(2)\\]
+    \\[= \\frac{\\pi}{3\\sqrt(3)} - \\frac{1}{3}\\ln(2)\\]
     </button>`]
 }
 const urlPath = (new URL(window.location.href).search.substr(1));
