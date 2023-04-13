@@ -179,10 +179,10 @@ I'll see you next time."],
     As a last fun exercise before the big explosion let's do this.
     \\[\\sum_{n=1}^{\\infty}\\frac{(-1)^{n}}{3n-1}\\]
     The answer is below.
-    <spoiler>
+    <button class="spoiler" onclick="spoil(this)">
     \\[f(x) = \\sum_{n=1}^{\\infty}\\frac{(-1)^{n-1}x^{3n-1}}{3n-1}, f(1) = \\int_{0}^{1}f'(x)dx\\]
     \\[= \\int_{0}^{1}\\sum_{n=1}^{\\infty}(-1)^{n-1}x^{3n-2}dx = \\int_{0}^{1}x*\\sum_{n=0}^{\\infty}(-x^3)^n dx = \\int_{0}{1}\\frac{x}{(x+1)(x^2-x+1)}dx\\]
-    </spoiler>`]
+    </button>`]
 }
 const urlPath = (new URL(window.location.href).search.substr(1));
 window.onload = function() {
@@ -203,4 +203,8 @@ window.onload = function() {
   } else {
     document.querySelector(".section").innerHTML = "Not found";
   }
+}
+const spoil = function(e) {
+  e.className = "spoiled";
+  e.style.pointerEvents = "none";
 }
