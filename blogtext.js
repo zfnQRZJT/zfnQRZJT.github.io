@@ -179,7 +179,7 @@ I'll see you next time."],
     As a last fun exercise before the big explosion let's do this.
     \\[\\sum_{n=1}^{\\infty}\\frac{(-1)^{n}}{3n-1}\\]
     The answer is below.
-    <button class="spoiler" onclick="spoil(this)">
+    <!--button class="spoiler" onclick="spoil(this)"-->
     \\[f(x) = \\sum_{n=1}^{\\infty}\\frac{(-1)^{n-1}x^{3n-1}}{3n-1}, f(1) = \\int_{0}^{1}f'(x)dx\\]
     \\[= \\int_{0}^{1}\\sum_{n=1}^{\\infty}(-1)^{n-1}x^{3n-2}dx = \\int_{0}^{1}x*\\sum_{n=0}^{\\infty}(-x^3)^n dx = \\int_{0}^{1}\\frac{x}{(x+1)(x^2-x+1)}dx\\]
     Partial fractions.
@@ -187,9 +187,8 @@ I'll see you next time."],
     Completing the square.
     u = \\frac{2x - 1}{\\sqrt(3)}
     \\[\\Longrightarrow \\frac{2}{9}\\int_{-\\frac{1}{\\sqrt(3)}}^{\\frac{1}{\\sqrt(3)}}\\frac{\\sqrt(3)u-3}{u^2-1}\\frac{\\sqrt(3)}{2}du - \\frac{1}{3}\\ln(2)\\]
-    \\[= 2\\frac{\\arctan\\frac{1}{\\sqrt(3)}}{\\sqrt(3)} - \\frac{1}{3}\\ln(2)\\]
     \\[= \\frac{\\pi}{3\\sqrt(3)} - \\frac{1}{3}\\ln(2)\\]
-    </button>`]
+    <!--/button-->`]
 }
 const urlPath = (new URL(window.location.href).search.substr(1));
 window.onload = function() {
