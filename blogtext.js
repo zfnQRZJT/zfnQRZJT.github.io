@@ -159,7 +159,7 @@ I'll see you next time."],
     Good luck finding the induction here. I'll be attacking this sum later in the post.
     \\[\\sum_{n=1}^{\\infty}\\frac{\\tan(n)}{n^{4}}\\]
     Wolfram|Alpha says it diverges. Are you convinced?
-    \\[\\sum_{n=1}^{\\infty}\\frac{(-1)^{n}}{3n-1}\\]
+    \\[\\sum_{n=1}^{\\infty}\\frac{(-1)^{n-1}}{3n-1}\\]
     A delectable morsel of mathematics.
     <hline></hline>
     So why are these hard? The simple answer is that they just are. This is the way the cookie crumbles. To some extent I think the reason is that continuity is smooth, while series, if you see them as area under a step function, have jagged edges that are hard to deal with. Or maybe it's that people care more about integration and emphasize techniques to do it when equally good techniques exist for series. In any case, our goal will be to transform a series into an integral. Let's begin.<br><br>
@@ -176,7 +176,13 @@ I'll see you next time."],
     \\[u = 1 - x\\]\\[\\lim_{a\\rightarrow0^+}\\int_{a}^{1}\\frac{1}{u}du=\\lim_{a\\rightarrow0^+}\\ln(x)\\Big|_{\\small{a}}^{\\small1}=-\\lim_{a\\rightarrow0^+}\\ln(a)=\\infty\\]
     We can use a similar technique for \\(\\sum_{n=1}^{\\infty}\\frac{(-1)^n}{n}\\)
     \\[\\frac{1}{1} - \\frac{1}{2} + \\frac{1}{3} - \\frac{1}{4} ... = \\frac{x^1}{1} - \\frac{x^2}{2} + \\frac{x^3}{3} - \\frac{x^4}{4}\\Big|_{\\small0}^{\\small1}=\\int_{0}{1}\\Big(\\frac{1x^0}{1}-\\frac{2x^1}{2}+\\frac{3x^2}{3}-\\frac{4x^3}{4}...\\Big)dx=\\int_{0}^{1}\\frac{1}{1+x}dx=\\ln(1+x)\\Big|_{\\small0}^{\\small1}=\\ln(2)\\]
-    As a last `]
+    As a last fun exercise before the big explosion let's do this.
+    \\[\\sum_{n=1}^{\\infty}\\frac{(-1)^{n}}{3n-1}\\]
+    The answer is below.
+    <spoiler>
+    \\[f(x) = \\sum_{n=1}^{\\infty}\\frac{(-1)^{n-1}x^{3n-1}}{3n-1}, f(1) = \\int_{0}^{1}f'(x)dx\\]
+    \\[= \\int_{0}^{1}\\sum_{n=1}^{\\infty}(-1)^{n-1}x^{3n-2}dx = \\int_{0}^{1}x*\\sum_{n=0}^{\\infty}(-x^3)^n dx = \\int_{0}{1}\\frac{x}{(x+1)(x^2-x+1)}dx\\]
+    </spoiler>`]
 }
 const urlPath = (new URL(window.location.href).search.substr(1));
 window.onload = function() {
