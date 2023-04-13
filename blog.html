@@ -146,12 +146,16 @@
       }
       .spoiler::before {
         content:"SPOILER";
+        color:#FFF;
+        font-weight:bold;
       }
       .spoiler {
         height:30px;
-        background:#555;
+        background:#666;
         border:0px solid;
         border-radius:10px;
+        color:transparent;
+        font-size:0;
       }
       .spoiled {
         pointer-events:none;
@@ -159,6 +163,8 @@
         background:transparent;
         height:auto;
         border:none;
+        color:#FFF;
+        font-size:inherit;
       }
     </style>
   </head>
