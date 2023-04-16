@@ -206,7 +206,24 @@ I'll see you next time."],
     It turns out that the f(x) will be some fraction with x in the numerator and denominator, so taking the derivative will make it worse. So we're going to take the derivatives and clear the numerator first.
     \\[\\sum_{n=1}^{\\infty}\\frac{(n-\\alpha)(n - \\beta)x^{n - \\alpha}}{(n-\\gamma)(n-\\delta)(n - \\varepsilon)(n-\\zeta)} = \\frac{d}{dx}\\sum_{n=1}^{\\infty}\\frac{(n - \\beta)x^{n - \\alpha + 1}}{(n-\\gamma)(n-\\delta)(n - \\varepsilon)(n-\\zeta)}\\]
     Now, as I said, since x is a constant in the frame of the sum, we can take this annoyingly complicated power of x out.
-    \\[\\frac{d}{dx}x^{-\\alpha + 1 + \\beta}\\sum_{n=1}^{\\infty}\\frac{(n - \\beta)x^{n - \\beta}}{(n-\\gamma)(n-\\delta)(n - \\varepsilon)(n-\\zeta)}\\]*/]
+    \\[\\frac{d}{dx}x^{-\\alpha + 1 + \\beta}\\sum_{n=1}^{\\infty}\\frac{(n - \\beta)x^{n - \\beta}}{(n-\\gamma)(n-\\delta)(n - \\varepsilon)(n-\\zeta)}\\]*/],
+  "100124391293009":["asdf",false,`P(n) is a polynomial therefore it is continuous and differentiable everywhere.<br>
+  For every stupid term a_n, \\(P(n) < P(n + 1) \\) and \\(P(n) < P(n - 1)\\) or<br>
+\\(P(n) > P(n + 1)\\) and \\(P(n) > P(n - 1)\\). This leaves 6 cases:
+\\[P(n) < P(n + 1) < P(n - 1)\\]
+\\[\\Longrightarrow IVT: \\exists x_{1} \\in (n - 1, n) | P(x_{1}) = P(n + 1), Rolle's Theorem (RT): \\exists x_{2} \\in (x_{1}, n + 1) | P'(x_{2}) = 0 and x_{2} is a minimum of P\\]
+\\[P(n) < P(n - 1) < P(n + 1)\\]
+\\[\\Longrightarrow IVT: \\exists x_{1} \\in (n, n + 1) | P(x_{1}) = P(n - 1), RT: \\exists x_{2} \\in (n - 1, x_{1}) | P'(x_{2}) = 0 and x_{2} is a minimum of P\\]
+\\[P(n) < P(n + 1) = P(n - 1)\\]
+\\[\\Longrightarrow RT: \\exists x_{1} \\in (n - 1, n + 1) | P'(x_{1}) = 0 and x_{1} is a minimum of P\\]
+\\[P(n) > P(n + 1) > P(n - 1)\\]
+\\[\\Longrightarrow IVT: \\exists x_{1} \\in (n - 1, n) | P(x_{1}) = P(n + 1), RT: \\exists x_{2} \\in (x_{1}, n + 1) | P'(x_{2}) = 0 and x_{2} is a maximum of P\\]
+\\[P(n) > P(n - 1) > P(n + 1)\\]
+\\[\\Longrightarrow IVT: \\exists x_{1} \\in (n, n + 1) | P(x_{1}) = P(n - 1), RT: \\exists x_{2} \\in (n - 1, x_{1}) | P'(x_{2}) = 0 and x_{2} is a maximum of P\\]
+\\[P(n) > P(n + 1) = P(n - 1)\\]
+\\[\\Longrightarrow RT: \\exists x_{1} \\in (n - 1, n + 1) | P'(x_{1}) = 0 and x_{1} is a maximum of P\\]
+Therefore every stupid term \\(a_n\\) greater than both its preceding and succeeding term is associated with at least one maximum of P(x) strictly between n - 1 and n + 1, and every stupid term \\(a_n\\) is associated with at least one minimum of P(x) strictly between n - 1 and n + 1.<br>
+The only ways a 0 of P'(x) can be associated with multiple stupid terms \\(a_n\\) are if it is a maximum in both ranges of 2 maximum stupid terms, or a minimum in both ranges of 2 minimum stupid terms.<br>`]
 }
 const urlPath = (new URL(window.location.href).search.substr(1));
 window.onload = function() {
