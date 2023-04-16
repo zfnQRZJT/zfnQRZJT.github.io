@@ -211,17 +211,17 @@ I'll see you next time."],
   For every stupid term a_n, \\(P(n) < P(n + 1) \\) and \\(P(n) < P(n - 1)\\) or<br>
 \\(P(n) > P(n + 1)\\) and \\(P(n) > P(n - 1)\\). This leaves 6 cases:
 \\[P(n) < P(n + 1) < P(n - 1)\\]
-\\[\\Longrightarrow IVT: \\exists x_{1} \\in (n - 1, n) | P(x_{1}) = P(n + 1), \\text{ Rolle's Theorem (RT):} \\exists x_{2} \\in (x_{1}, n + 1) | P'(x_{2}) = 0 \\text{ and } x_{2} \\text{ is a minimum of P}\\]
+\\[\\Longrightarrow IVT: \\exists x_{1} \\in (n - 1, n) | P(x_{1}) = P(n + 1), \\text{ Rolle's Theorem (RT): } \\exists x_{2} \\in (x_{1}, n + 1) | P'(x_{2}) = 0 \\text{ and } x_{2} \\text{ is a minimum of P}\\]
 \\[P(n) < P(n - 1) < P(n + 1)\\]
 \\[\\Longrightarrow IVT: \\exists x_{1} \\in (n, n + 1) | P(x_{1}) = P(n - 1), RT: \\exists x_{2} \\in (n - 1, x_{1}) | P'(x_{2}) = 0 \\text{ and } x_{2} \\text{ is a minimum of P}\\]
 \\[P(n) < P(n + 1) = P(n - 1)\\]
-\\[\\Longrightarrow RT: \\exists x_{1} \\in (n - 1, n + 1) | P'(x_{1}) = 0 \\text{ and } x_{2} \\text{ is a minimum of P }\\]
+\\[\\Longrightarrow RT: \\exists x_{1} \\in (n - 1, n + 1) | P'(x_{1}) = 0 \\text{ and } x_{1} \\text{ is a minimum of P }\\]
 \\[P(n) > P(n + 1) > P(n - 1)\\]
 \\[\\Longrightarrow IVT: \\exists x_{1} \\in (n - 1, n) | P(x_{1}) = P(n + 1), RT: \\exists x_{2} \\in (x_{1}, n + 1) | P'(x_{2}) = 0\\text{ and } x_{2} \\text{ is a maximum of P }\\]
 \\[P(n) > P(n - 1) > P(n + 1)\\]
 \\[\\Longrightarrow IVT: \\exists x_{1} \\in (n, n + 1) | P(x_{1}) = P(n - 1), RT: \\exists x_{2} \\in (n - 1, x_{1}) | P'(x_{2}) = 0\\text{ and } x_{2} \\text{ is a maximum of P }\\]
 \\[P(n) > P(n + 1) = P(n - 1)\\]
-\\[\\Longrightarrow RT: \\exists x_{1} \\in (n - 1, n + 1) | P'(x_{1}) = 0\\text{ and } x_{2} \\text{ is a maximum of P }\\]
+\\[\\Longrightarrow RT: \\exists x_{1} \\in (n - 1, n + 1) | P'(x_{1}) = 0\\text{ and } x_{1} \\text{ is a maximum of P }\\]
 Therefore every stupid term \\(a_n\\) greater than both its preceding and succeeding term is associated with at least one maximum of P(x) strictly between n - 1 and n + 1, and every stupid term \\(a_n\\) is associated with at least one minimum of P(x) strictly between n - 1 and n + 1.<br>
 The only ways a 0 of P'(x) can be associated with multiple stupid terms \\(a_n\\) are if it is a maximum in both open ranges of 2 maximum stupid terms, or a minimum in both open ranges of 2 minimum stupid terms.<br>
 However 2 maximum stupid terms cannot occur adjacent because each must be greater than its neighbors, and the same for 2 minimum stupid terms.<br>
