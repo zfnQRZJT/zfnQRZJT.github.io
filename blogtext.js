@@ -236,9 +236,10 @@ const urlPath = (new URL(window.location.href).search.substr(1));
 window.onload = function() {
   if (urlPath === "") {
     let rhtml = "<h1>Blog</h1>";
-    for (let blog = blogs.length - 1; blog >= 0; blog--) {
+    for (let blogi = Object.keys(blogs).length - 1; blogi >= 0; blogi--) {
+      const blog = Object.keys(blogs)[blogi];
       if (blogs[blog][1]) {
-        rhtml += "<div class='blogbox'><a class='bloglink' href='/blog?" + blog + "'>" + blogs[blog][0] + "</a>" + blogs[blog][2].replaceAll("\\(","[mathstart]").replaceAll("\\)","[mathend]") + "</div>";
+        rhtml += "<div class='blogbox'><a class='bloglink' href='/blog?" + blog + "'>" + blogs[blog][0] + "</a>" + blogs[blog][2].replaceAll("\\(","[mathstart]").replaceAll("\\)","[mathend]").substring(0,500) + "</div>";
       }
     }
     document.querySelector(".section").innerHTML += rhtml;
