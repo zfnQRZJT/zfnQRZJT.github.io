@@ -207,7 +207,9 @@ I'll see you next time."],
     \\[\\sum_{n=1}^{\\infty}\\frac{(n-\\alpha)(n - \\beta)x^{n - \\alpha}}{(n-\\gamma)(n-\\delta)(n - \\varepsilon)(n-\\zeta)} = \\frac{d}{dx}\\sum_{n=1}^{\\infty}\\frac{(n - \\beta)x^{n - \\alpha + 1}}{(n-\\gamma)(n-\\delta)(n - \\varepsilon)(n-\\zeta)}\\]
     Now, as I said, since x is a constant in the frame of the sum, we can take this annoyingly complicated power of x out.
     \\[\\frac{d}{dx}x^{-\\alpha + 1 + \\beta}\\sum_{n=1}^{\\infty}\\frac{(n - \\beta)x^{n - \\beta}}{(n-\\gamma)(n-\\delta)(n - \\varepsilon)(n-\\zeta)}\\]*/],
-  "100124391293009":["asdf",false,`P(n) is a polynomial therefore it is continuous and differentiable everywhere.<br>
+  "5726309034840841":["My proof of the stupid term problem",true,`I got in the discord/maths newspaper with this!<br><br>
+  The problem is as follows: On a finite sequence of arbitrary real-valued terms \\(a_{n}\\), a "stupid term" refers to a term that is greater than the term before and greater than the one after, or less than the term before and less than the one after. P is the least-ordered polynomial such that for all n in the sequence, \\(P(n) = a_{n}\\). Show that the order of P is no less than the stupid number of the sequence.<hline></hline>The solution:<br><br>
+  P(n) is a polynomial therefore it is continuous and differentiable everywhere.<br>
   For every stupid term a_n, \\(P(n) < P(n + 1) \\) and \\(P(n) < P(n - 1)\\) or<br>
 \\(P(n) > P(n + 1)\\) and \\(P(n) > P(n - 1)\\). This leaves 6 cases:
 \\[P(n) < P(n + 1) < P(n - 1)\\]
