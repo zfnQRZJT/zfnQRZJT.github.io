@@ -236,7 +236,7 @@ const urlPath = (new URL(window.location.href).search.substr(1));
 window.onload = function() {
   if (urlPath === "") {
     let rhtml = "<h1>Blog</h1>";
-    for (blog = blogs.length - 1; blog >= 0; blog--) {
+    for (let blog = blogs.length - 1; blog >= 0; blog--) {
       if (blogs[blog][1]) {
         rhtml += "<div class='blogbox'><a class='bloglink' href='/blog?" + blog + "'>" + blogs[blog][0] + "</a>" + blogs[blog][2].replaceAll("\\(","[mathstart]").replaceAll("\\)","[mathend]") + "</div>";
       }
