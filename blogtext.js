@@ -10,37 +10,37 @@ const rfl = "<rfl></rfl>";
 const blogs = {
   "6353227688162363":["Surely this small, simple-seeming recursive relation won't return ridiculous results?",true,
 `A friend sent an image of this unassuming functional equation (calling it "absolute hell")<br>\
-<m>f(x) = -x</m> for <m>x < 0</m>,<br>
-<m>${half}f(x-f(x-1))</m> otherwise,<br>
-find <m>f(3)</m>.<hline></hline>
-My first thought was, since it is defined for negative numbers, let's find <m>f(0)</m>, then <m>f(1)</m>, then <m>f(2)</m>, then <m>f(3)</m>.<br>\
+\(f(x) = -x\) for \(x < 0\),<br>
+\(\frac{1}{2}f(x-f(x-1))\) otherwise,<br>
+find \(f(3)\).<hline></hline>
+My first thought was, since it is defined for negative numbers, let's find \(f(0)\), then \(f(1)\), then \(f(2)\), then \(f(3)\).<br>\
 In essence this is what we will do. But let's just try doing it.<br>
-<m>f(0)=${half}f(0-f(-1)) = ${half}f(-1)=${half}</m><br><br>
+\[f(0)=\frac{1}{2}f(0-f(-1)) = \frac{1}{2}f(-1)=\frac{1}{2}\]<br>
 <b>Then f(1)...</b><br>
-<m>f(1)=${half}f(1-f(0))=${half}f(${half})</m><br>
+\[f(1)=\frac{1}{2}f(1-f(0))=\frac{1}{2}f(\frac{1}{2})</m>\]
 Oh, it looks like we need f(1/2) first.<br>
-<m>f(${half})=${half}f(${half}-f(-${half}))=${half}f(${half}-${half})=${half}f(0)=${frac(1,4)}</m><br>\
-So <m>f(1)=${half}${frac(1,4)} = ${frac(1,8)}</m>.<br><br>
+\[f(\frac{1}{2})=\frac{1}{2}f(\frac{1}{2}-f(-\frac{1}{2}))=\frac{1}{2}f(\frac{1}{2}-\frac{1}{2})=\frac{1}{2}f(0)=\frac{1}{4}\]<br>\
+So \(f(1)=\frac{1}{2}\frac{1}{4} = \frac{1}{8}\).<br><br>
 <b>Now f(2)...</b><br>
-<m>f(2) = ${half}f(2 - f(1)) = ${half}f(2 - ${frac(1,8)}) = ${half}f(${frac(15,8)})</m><br>
+\[f(2) = \frac{1}{2}f(2 - f(1)) = \frac{1}{2}f(2 - \frac{1}{8}) = \frac{1}{2}f(\frac{15}{8})\]
 First we need f(15/8).<br>
-<m>f(${frac(15,8)}) = ${half}f(${frac(15,8)} - f(${frac(7,8)}))</m><br>\
+\[f(\frac{15}{8}) = \frac{1}{2}f(\frac{15}{8} - f(\frac{7}{8}))\]\
 Now we need f(7/8).<br>
-<m>f(${frac(7,8)}) = ${half}f(${frac(7,8)} - f(${frac(-1,8)})) = ${half}f(${frac(7,8)} - ${frac(1,8)}) = ${half}f(${frac(3,4)})</m><br><br>\
+\[f(\frac{7}{8}) = \frac{1}{2}f(\frac{7}{8}} - f(\frac{-1}{8})) = \frac{1}{2}f(\frac{7}{8} - \frac{1}{8}) = \frac{1}{2}f(\frac{3}{4})\]<br><br>\
 Okay, I think this is taking too long. f(7/8) will be some tiny number from all the multiplications by 1/2, so f(15/8) will be half of f(x) where x is barely smaller than 15/8. It will take too long to get even f(2). So let's generalize.<hline></hline>\
-<b>For <m>0 <= x < 1</m>:</b><br>
-<m>f(x) = ${half}f(x - f(x - 1))</m> but <m>x - 1 < 0</m> so<br>
-<m>f(x) = ${half}f(x - (1 - x)) = ${half}f(2x - 1)</m><br><br>
+<b>For \(0 \leq x < 1\):</b><br>
+\(f(x) = \frac{1}{2}f(x - f(x - 1))\) but \(x - 1 < 0\) so<br>
+\[f(x) = \frac{1}{2}f(x - (1 - x)) = \frac{1}{2}f(2x - 1)\]<br><br>
 Let's try finding f(7/8) with this.<br>
-<m>f(${frac(7,8)}) = ${half}f(${frac(3,4)}) = ${frac(1,4)}f(${frac(1,2)}) = ${frac(1,8)}f(0) = ${frac(1,16)}</m>. Each time we double our distance from 1 the function attains a new multiplier of <m>${half}</m>. Based on this I'll declare this equation, verifiable with induction:<br>\
-<m>f(1 - ${frac(1,"2<s>x</s>")}) = ${frac(1,"2<s>x+1</s>")}</m>.<br><br>\
+\(f(\frac{7}{8}) = \frac{1}{2}f(\frac{3}{4}) = \frac{1}{4}f(\frac{1}{2}) = \frac{1}{8}f(0) = \frac(1,16)\). Each time we double our distance from 1 the function attains a new multiplier of 1/2. Based on this I'll declare this equation, verifiable with induction:<br>\
+\[f(1 - \frac{1}{2^x}) = \frac{1}{2^{x+1}}\]<br>\
 Now applying that:<br>\
-<m>f(${frac(15,8)}) = ${half}f(${frac(15,8)} - ${frac(1,16)}) = ${half}f(${frac(29,16)})</m><br>
+\[f(\frac{15}{8}) = \frac{1}{2}f(\frac{15}{8} - \frac{1}{16}) = \frac{1}{2}f(\frac{29}{16})\]
 Hm. We'll need f(13/16) for that. Let's generalize some more.<br><br>
-I'll leave it to you to prove that the function evaluated at a dyadic rational will always return a dyadic rational. I'm going to try to find <m>f(1 - ${frac("n","2<s>x</s>")})</m> for <m>n < 2<s>x</s></m>, n odd.<br>\
-Starting at <m>1 - ${frac("n","2<s>x</s>")}</m> we double our distance from 1 multiple times. Each time we attain another multiplication by ${half}.<br>\
+I'll leave it to you to prove that the function evaluated at a dyadic rational will always return a dyadic rational. I'm going to try to find \(f(1 - \frac{n,2^x})\) for \(n < 2^x\), n odd.<br>\
+Starting at \(1 - \frac{n}{2^x}\) we double our distance from 1 multiple times. Each time we attain another multiplication by \frac{1}{2}.<br>\
 But how many times do we double our distance from 1 before the argument becomes negative?<br>\
-Well, once <m>n > 2<s>y</s></m> the argument will be negative. In other words <m>y < log<u>2</u>n</m>, or specifically, y = <m>${lfl}log<u>2</u>n${rfl}</m>. I'll call this <m>L2(n)</m>.<br><br>
+Well, once \(n > 2^y\) the argument will be negative. In other words \(y < \log_2 n\), or specifically, \(y = \lfloor \log_2 \rfloor\). I'll call this \(L2(n)\).<br><br>
 So with <m>f(1 - ${frac("n","2<s>x</s>")})</m> we do this division x - y times to get <m>${frac(1,"2<s>x - y</s>")}f(1 - ${frac("n","2<s>y</s>")}) = ${frac("n/2<s>y</s> - 1","2<s>x - y</s>")} = ${frac("n - 2<s>y</s>","2<s>x</s>")}</m>.<br><br>\
 Now let's find a closed form for <m>f(2 - ${frac("n","2<s>x</s>")})</m>.<br>
 <m>f(2 - ${frac("n","2<s>x</s>")}) = ${half}f(2 - ${frac("n","2<s>x</s>")} - ${frac("n - 2<s>y</s>","2<s>x</s>")}) = ${half}f(2 - ${frac("2n - 2<s>y</s>","2<s>x</s>")})</m>.<br><br>
