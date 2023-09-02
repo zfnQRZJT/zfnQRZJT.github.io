@@ -1,6 +1,6 @@
-const half = "<frac><n>1</n><d>2</d></frac>";
+const half = "\\frac{1}{2}";
 const frac = function(n,d) {
-  return("<frac><n>" + n + "</n><d>" + d + "</d></frac>");
+  return("\\frac{" + n + "}{" + d + "}");
 }
 const sum = function(start,end,fun) {
   return("<sum><sumtop>" + end + "</sumtop><sumsym>∑</sumsym><sumbot>" + start + "</sumbot></sum>");
@@ -41,9 +41,9 @@ I'll leave it to you to prove that the function evaluated at a dyadic rational w
 Starting at \\(1 - \\frac{n}{2^x}\\) we double our distance from 1 multiple times. Each time we attain another multiplication by \\frac{1}{2}.<br>\
 But how many times do we double our distance from 1 before the argument becomes negative?<br>\
 Well, once \\(n > 2^y\\) the argument will be negative. In other words \\(y < \\log_2 n\\), or specifically, \\(y = \\lfloor \\log_2 \\rfloor\\). I'll call this \\(L2(n)\\).<br><br>
-So with <m>f(1 - ${frac("n","2<s>x</s>")})</m> we do this division x - y times to get <m>${frac(1,"2<s>x - y</s>")}f(1 - ${frac("n","2<s>y</s>")}) = ${frac("n/2<s>y</s> - 1","2<s>x - y</s>")} = ${frac("n - 2<s>y</s>","2<s>x</s>")}</m>.<br><br>\
-Now let's find a closed form for <m>f(2 - ${frac("n","2<s>x</s>")})</m>.<br>
-<m>f(2 - ${frac("n","2<s>x</s>")}) = ${half}f(2 - ${frac("n","2<s>x</s>")} - ${frac("n - 2<s>y</s>","2<s>x</s>")}) = ${half}f(2 - ${frac("2n - 2<s>y</s>","2<s>x</s>")})</m>.<br><br>
+So with \\(f(1 - \\frac{n}{2^x}))\\) we do this division x - y times to get \\(\\frac{1}{2^{x-y}}f(1 - \\frac{n}{2^y}) = \\frac{n/2^y - 1}{2^{x-y}}\\) = \\frac{n - 2^y}{2^x}\\).<br><br>\
+Now let's find a closed form for \\(f(2 - \\frac{n}{2^x})\\).<br>
+\\[f(2 - \\frac{n}{2^x}) = \\frac{1}{2}f(2 - \\frac{n}{2^x} - \\frac{n - 2^y}{2^x}) = \\frac{1}{2}f(2 - \\frac{2n - 2^y}{2^x})\\]<br><br>
 It may be difficult to understand what exactly the transformation inside the function is that gives a coefficient of 1/2 outside the function. In the range <m>[0,1)</m> it was easy to understand: 2x - 1 doubles the distance from 1. What is this one doing?<br>\
 It finds the largest power of 2 less than n, then subtracts from 2n that power? It's easier to understand if I write it as n + n - 2^y. This is actually doubling n's distance from that power.<br><br>`
 /*Let's look at some examples.<br>
@@ -57,9 +57,9 @@ If n < 2^x/2 it is a bit more complicated. Let's write n in binary as 1 [a zeroe
 After a doublings this will come to 11...<br>*/+
 `Understanding the truly amazing complexity of this transformation is critical for the solution of this problem. But we can actually simplify for now.<br>
 n starts as a power of 2, namely 1, in 2 - 1/8. In iteration 1 it will double the distance from n/2, giving 3n/2. Then it will double the distance from n, giving 2n. In general, it will double its distance from 2 every 2 steps, giving an additional multiplication of 1/4.<br>
-We know that <m>f(2) = ${half}f(${frac(15,8)})</m>. We can now see that this is <m>${frac(1,8)}f(${frac(14,8)}) = ${frac(1,32)}f(${frac(12,8)}) = ${frac(1,128)}f(${frac(8,8)}) = ${frac(1,128)}f(1) = ${frac(1,128)}${frac(1,8)} = ${frac(1,1024)}</m>.<br>
-In general, <m>f(2 - ${frac(1,"2<s>x</s>")}) = ${frac(1,"2<s>2x + 3</s>")}</m>.<br>
-<b><m>f(2) = ${frac(1,1024)}.</m></b><hline></hline>
+We know that \\(f(2) = ${half}f(${frac(15,8)})\\). We can now see that this is \\(${frac(1,8)}f(${frac(14,8)}) = ${frac(1,32)}f(${frac(12,8)}) = ${frac(1,128)}f(${frac(8,8)}) = ${frac(1,128)}f(1) = ${frac(1,128)}${frac(1,8)} = ${frac(1,1024)}\\).<br>
+In general, \\(f(2 - ${frac(1,"2^x")}) = ${frac(1,"2^{2x+3}")}\\).<br>
+\\(\mathbf{f(2) = ${frac(1,1024)}}.\\)</b><hline></hline>
 Now it's time for our final stand. <m>f(2) = ${frac(1,1024)}</m>. <m>f(3) = ${half}f(3 - ${frac(1,1024)})</m>. This will relate to <m>f(2 - ${frac(1,1024)}) = ${frac(1,"2<s>23</s>")}</m><br>
 Take a moment to think about that. f(3) is a fourth of <m>f(3 - ${frac(1,1024)} - ${frac(1,8388608)})</m>. See how many steps it will take to get down to f(2) again? We should expect the answer for f(3) to be on the order of <m>2<s>-10 000 000</s></m>.
 Let's try to figure that out. <b>We'll write it in binary.</b> It's <m>f(10.11111111101111111111) = f(11 - 0.00000000010000000000001).</m> When we double n's distance from the highest power of 2 less than n, we're really just doubling the digits after the first 1 in this small number. How many times does it take to get the small number above 1?<br>\
