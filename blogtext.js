@@ -239,7 +239,7 @@ window.onload = function() {
     for (let blogi = Object.keys(blogs).length - 1; blogi >= 0; blogi--) {
       const blog = Object.keys(blogs)[blogi];
       if (blogs[blog][1]) {
-        rhtml += "<div class='blogbox'><a class='bloglink' href='/blog?" + blog + "'>" + blogs[blog][0] + "</a>" + blogs[blog][2].replaceAll("\\(","").replaceAll("\\)","").substring(0,500) + "</div>";
+        rhtml += "<div class='blogbox'><a class='bloglink' href='/blog?" + blog + "'>" + blogs[blog][0] + "</a>" + blogs[blog][2].replaceAll("\\(","").replaceAll("\\)","").replaceAll("<","").substring(0,500) + "</div>";
       }
     }
     document.querySelector(".section").innerHTML += rhtml;
