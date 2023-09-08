@@ -17,35 +17,35 @@ My first thought was, since it is defined for negative numbers, let's find \\(f(
 In essence this is what we will do. But let's just try doing it.<br>
 \\[f(0)=\\frac{1}{2}f(0-f(-1)) = \\frac{1}{2}f(-1)=\\frac{1}{2}\\]<br>
 <b>Then f(1)...</b><br>
-\\[f(1)=\\frac{1}{2}f(1-f(0))=\\frac{1}{2}f(\\frac{1}{2})\\]
+\\[f(1)=\\frac{1}{2}f(1-f(0))=\\frac{1}{2}f\\left(\\frac{1}{2}\\right)\\]
 Oh, it looks like we need f(1/2) first.<br>
-\\[f(\\frac{1}{2})=\\frac{1}{2}f(\\frac{1}{2}-f(-\\frac{1}{2}))=\\frac{1}{2}f(\\frac{1}{2}-\\frac{1}{2})=\\frac{1}{2}f(0)=\\frac{1}{4}\\]<br>\
+\\[f\\left(\\frac{1}{2}\\right)=\\frac{1}{2}f\\left(\\frac{1}{2}-f\\left(-\\frac{1}{2}\\right)\\right)=\\frac{1}{2}f\\left(\\frac{1}{2}-\\frac{1}{2}\\right)=\\frac{1}{2}f(0)=\\frac{1}{4}\\]<br>\
 So \\(f(1)=\\frac{1}{2}\\frac{1}{4} = \\frac{1}{8}\\).<br><br>
 <b>Now f(2)...</b><br>
-\\[f(2) = \\frac{1}{2}f(2 - f(1)) = \\frac{1}{2}f(2 - \\frac{1}{8}) = \\frac{1}{2}f(\\frac{15}{8})\\]
+\\[f(2) = \\frac{1}{2}f(2 - f(1)) = \\frac{1}{2}f\\left(2 - \\frac{1}{8}\\right) = \\frac{1}{2}f\\left(\\frac{15}{8}\\right)\\]
 First we need f(15/8).<br>
-\\[f(\\frac{15}{8}) = \\frac{1}{2}f(\\frac{15}{8} - f(\\frac{7}{8}))\\]\
+\\[f\\left(\\frac{15}{8}\\right) = \\frac{1}{2}f\\left(\\frac{15}{8} - f\\left(\\frac{7}{8}\\right)\\right)\\]\
 Now we need f(7/8).<br>
-\\[f(\\frac{7}{8}) = \\frac{1}{2}f(\\frac{7}{8} - f(\\frac{-1}{8})) = \\frac{1}{2}f(\\frac{7}{8} - \\frac{1}{8}) = \\frac{1}{2}f(\\frac{3}{4})\\]<br><br>\
+\\[f\\left(\\frac{7}{8}\\right) = \\frac{1}{2}f\\left(\\frac{7}{8} - f\\left(\\frac{-1}{8}\\right)\\right) = \\frac{1}{2}f\\left(\\frac{7}{8} - \\frac{1}{8}\\right) = \\frac{1}{2}f\\left(\\frac{3}{4}\\right)\\]<br><br>\
 Okay, I think this is taking too long. f(7/8) will be some tiny number from all the multiplications by 1/2, so f(15/8) will be half of f(x) where x is barely smaller than 15/8. It will take too long to get even f(2). So let's generalize.<hline></hline>\
 <b>For \\(0 \\leq x < 1\\):</b><br>
 \\(f(x) = \\frac{1}{2}f(x - f(x - 1))\\) but \\(x - 1 < 0\\) so<br>
 \\[f(x) = \\frac{1}{2}f(x - (1 - x)) = \\frac{1}{2}f(2x - 1)\\]<br><br>
 Let's try finding f(7/8) with this.<br>
-\\(f(\\frac{7}{8}) = \\frac{1}{2}f(\\frac{3}{4}) = \\frac{1}{4}f(\\frac{1}{2}) = \\frac{1}{8}f(0) = \\frac(1,16)\\). Each time we double our distance from 1 the function attains a new multiplier of 1/2. Based on this I'll declare this equation, verifiable with induction:<br>\
-\\[f(1 - \\frac{1}{2^x}) = \\frac{1}{2^{x+1}}\\]<br>\
+\\(f\\left(\\frac{7}{8}\\right) = \\frac{1}{2}f\\left(\\frac{3}{4}\\right) = \\frac{1}{4}f\\left(\\frac{1}{2}\\right) = \\frac{1}{8}f(0) = \\frac{1}{16}\\). Each time we double our distance from 1 the function attains a new multiplier of 1/2. Based on this I'll declare this equation, verifiable with induction:<br>\
+\\[f\\left(1 - \\frac{1}{2^x}\\right) = \\frac{1}{2^{x+1}}\\]<br>\
 Now applying that:<br>\
-\\[f(\\frac{15}{8}) = \\frac{1}{2}f(\\frac{15}{8} - \\frac{1}{16}) = \\frac{1}{2}f(\\frac{29}{16})\\]
+\\[f\\left(\\frac{15}{8}\\right) = \\frac{1}{2}f\\left(\\frac{15}{8} - \\frac{1}{16}\\right) = \\frac{1}{2}f\\left(\\frac{29}{16}\\right)\\]
 Hm. We'll need f(13/16) for that. Let's generalize some more.<br><br>
-I'll leave it to you to prove that the function evaluated at a dyadic rational will always return a dyadic rational. I'm going to try to find \(f(1 - \frac{n,2^x})\) for \(n < 2^x\), n odd.<br>\
+I'll leave it to you to prove that the function evaluated at a dyadic rational will always return a dyadic rational. I'm going to try to find \\(f\\left(1 - \frac{n,2^x}\\right)\\) for \\(n < 2^x\\), \\(n\\) odd.<br>\
 Starting at \\(1 - \\frac{n}{2^x}\\) we double our distance from 1 multiple times. Each time we attain another multiplication by \\frac{1}{2}.<br>\
 But how many times do we double our distance from 1 before the argument becomes negative?<br>\
 Well, once \\(n > 2^y\\) the argument will be negative. In other words \\(y < \\log_2 n\\), or specifically, \\(y = \\lfloor \\log_2 \\rfloor\\). I'll call this \\(L2(n)\\).<br><br>
-So with \\(f(1 - \\frac{n}{2^x}))\\) we do this division x - y times to get \\(\\frac{1}{2^{x-y}}f(1 - \\frac{n}{2^y}) = \\frac{n/2^y - 1}{2^{x-y}}\\) = \\frac{n - 2^y}{2^x}\\).<br><br>\
-Now let's find a closed form for \\(f(2 - \\frac{n}{2^x})\\).<br>
-\\[f(2 - \\frac{n}{2^x}) = \\frac{1}{2}f(2 - \\frac{n}{2^x} - \\frac{n - 2^y}{2^x}) = \\frac{1}{2}f(2 - \\frac{2n - 2^y}{2^x})\\]<br><br>
+So with \\f\\left(1 - \\frac{n}{2^x}\\right)\\) we do this division \\(x - y\\) times to get \\(\\frac{1}{2^{x-y}}f\\left(1 - \\frac{n}{2^y}\\right) = \\frac{n/2^y - 1}{2^{x-y}}\\) = \\frac{n - 2^y}{2^x}\\).<br><br>\
+Now let's find a closed form for \\(f\\left(2 - \\frac{n}{2^x}\\right)\\).<br>
+\\[f\\left(2 - \\frac{n}{2^x}\\right) = \\frac{1}{2}f\\left(2 - \\frac{n}{2^x} - \\frac{n - 2^y}{2^x}\\right) = \\frac{1}{2}f\\left(2 - \\frac{2n - 2^y}{2^x}\\right)\\]<br><br>
 It may be difficult to understand what exactly the transformation inside the function is that gives a coefficient of 1/2 outside the function. In the range <m>[0,1)</m> it was easy to understand: 2x - 1 doubles the distance from 1. What is this one doing?<br>\
-It finds the largest power of 2 less than n, then subtracts from 2n that power? It's easier to understand if I write it as n + n - 2^y. This is actually doubling n's distance from that power.<br><br>`
+It finds the largest power of 2 less than n, then subtracts from 2n that power? It's easier to understand if I write it as \\(n + n - 2^y\\). This is actually doubling \\(n\\)'s distance from that power.<br><br>`
 /*Let's look at some examples.<br>
 (I will ignore the "2 -" part for now)<br>
 <m>141}{256} \\Rightarrow \\frac{154}{256} \\Rightarrow \\frac{180}{256} \\Rightarrow \\frac{232}{256} \\Rightarrow \\frac{336}{256}</m>.<br><br>
@@ -57,13 +57,13 @@ If n < 2^x/2 it is a bit more complicated. Let's write n in binary as 1 [a zeroe
 After a doublings this will come to 11...<br>*/+
 `Understanding the truly amazing complexity of this transformation is critical for the solution of this problem. But we can actually simplify for now.<br>
 n starts as a power of 2, namely 1, in 2 - 1/8. In iteration 1 it will double the distance from n/2, giving 3n/2. Then it will double the distance from n, giving 2n. In general, it will double its distance from 2 every 2 steps, giving an additional multiplication of 1/4.<br>
-We know that \\(f(2) = ${half}f(${frac(15,8)})\\). We can now see that this is \\(${frac(1,8)}f(${frac(14,8)}) = ${frac(1,32)}f(${frac(12,8)}) = ${frac(1,128)}f(${frac(8,8)}) = ${frac(1,128)}f(1) = ${frac(1,128)}${frac(1,8)} = ${frac(1,1024)}\\).<br>
-In general, \\(f(2 - ${frac(1,"2^x")}) = ${frac(1,"2^{2x+3}")}\\).<br>
-\\(\mathbf{f(2) = ${frac(1,1024)}}.\\)</b><hline></hline>
-Now it's time for our final stand. \\(f(2) = ${frac(1,1024)}\\). \\(f(3) = ${half}f(3 - ${frac(1,1024)})\\). This will relate to \\(f(2 - ${frac(1,1024)}) = \frac{1}{2^{23}}\\)<br>
-Take a moment to think about that. f(3) is a fourth of \\(f(3 - ${frac(1,1024)} - ${frac(1,8388608)})\\). See how many steps it will take to get down to f(2) again? We should expect the answer for f(3) to be on the order of \\(2^{-10 000 000}\\).
-Let's try to figure that out. <b>We'll write it in binary.</b> It's <m>f(10.11111111101111111111) = f(11 - 0.00000000010000000000001).</m> When we double n's distance from the highest power of 2 less than n, we're really just doubling the digits after the first 1 in this small number. How many times does it take to get the small number above 1?<br>\
-\\(0.00000000010000000000001 \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow 0.00000000011 \\Rightarrow 0.000000001 \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow 0.1 \\Rightarrow \\Rightarrow 1</m><br><br>
+We know that \\(f(2) = \\frac{1}{2}f\\left(${frac(15,8)}\\right)\\). We can now see that this is \\(${frac(1,8)}f\\left(${frac(14,8)}\\right) = ${frac(1,32)}f\\left(${frac(12,8)}\\right) = ${frac(1,128)}f\\left(${frac(8,8)}\\right) = ${frac(1,128)}f(1) = ${frac(1,128)}${frac(1,8)} = ${frac(1,1024)}\\).<br>
+In general, \\(f\\left(2 - \\frac{1}{2^x}\\right) = \\frac{1}{2^{2x+3}}\\).<br>
+\\(\\mathbf{f(2) = ${frac(1,1024)}}.\\)</b><hline></hline>
+Now it's time for our final stand. \\(f(2) = ${frac(1,1024)}\\). \\(f(3) = ${half}f\\left(3 - ${frac(1,1024)}\\right)\\). This will relate to \\(f\\left(2 - \\frac{1}{1024}\\right) = \\frac{1}{2^{23}}\\)<br>
+Take a moment to think about that. f(3) is a fourth of \\(f\\left(3 - ${frac(1,1024)} - ${frac(1,8388608)}\\right)\\). See how many steps it will take to get down to f(2) again? We should expect the answer for f(3) to be on the order of \\(2^{-10 000 000}\\).
+Let's try to figure that out. <b>We'll write it in binary.</b> It's \\(f(10.11111111101111111111) = f(11 - 0.00000000010000000000001)\\). When we double n's distance from the highest power of 2 less than n, we're really just doubling the digits after the first 1 in this small number. How many times does it take to get the small number above 1?<br>\
+\\(0.00000000010000000000001 \\to \\to \\to \\to \\to \\to \\to \\to \\to \\to \\to \\to 0.00000000011 \\to 0.000000001 \\to \\to \\to \\to \\to \\to \\to \\to \\to \\to \\to \\to \\to \\to \\to \\to 0.1 \\to \\to 1\\)<br><br>
 As you can see, it increases at a much greater rate when it is exactly a power of 2. If there is even a single 1 way after the first 1, it has to bring the far-off 1 all the way to combine with the first 1 before it will get anywhere.<hline></hline>
 Let's standardize that idea. I'll use the notation \\(S = [a,b,c,d...]\\) to mean \\(${frac(1,"2^a")} + ${frac(1,"2^b")} + ${frac(1,"2^c")}...\\). How long will it take this to surpass 1, and how much will it surpass by?<br>
 <u><i>This line of reasoning is arguably the critical piece of this entire problem. You can easily find f(2) manually. You cannot easily recurse millions of times to find f(3).</i></u><br><br>
@@ -71,13 +71,13 @@ After \\(b - a\\) doublings, we get a new set \\(S = [a - 1, a - b + c, a - b + 
 We just removed one of the 1s in the binary expansion simply to decrease \\(a\\) by \\(1\\). Call the number of elements in the set \\(t\\). So we will get \\(a\\) down to at most \\(a - t + 1\\) through this method.<br><br>
 <b>If \\(\\mathbf{a - t + 1 \\geq 0}\\)</b>, in other words, if \\(a \\geq t - 1\\), then the highest element, \\(S[t]\\) (starting from 1) will have taken \\(S[t] - (a - t + 2)\\) steps, so \\(S[t] + t - a - 2\\) steps, plus an additional \\(2(a - t + 1)\\) steps to reach 1. This totals \\(S[t] + t - a - 2 + 2a - 2t + 2 = S[t] - t + a\\) steps, each multiplying the function by 1/2. The number is subtracted from 2 so this leaves us with 1, which we know is \\(${frac(1,8)}\\).<br>
 So \\(f(2 - S) = \\frac{1}{2^{S[t] - t + a + 3}}\\)<br>
-<b>If \\(\\mathbf{a - t + 1 = -1}\\)</b>, if \\(a = t - 2\\), then we will not use the highest element \\(S[t]\\). We'll get 1.00...001. How many 0s? Well, on the previous step it was 0.1100...001. There are \\(S[t] - S[t - 1] - 1\\) 0s there. The final doubling adds 1 more 0 to this, giving \\(S[t] - S[t - 1]\\). So the number 1.00...001 = \\([0,S[t] - S[t - 1] + 1], with S[t - 1] - 1\\) halvings. \\(f(2 - 1 - \\frac{1}{2^{S[t] - S[t - 1] + 1}}) = f(1 - \\frac{1}{2^{S[t] - S[t - 1] + 1}}) = \frac{1}{2^{S[t] - S[t - 1] + 2}}\\).<br>
+<b>If \\(\\mathbf{a - t + 1 = -1}\\)</b>, if \\(a = t - 2\\), then we will not use the highest element \\(S[t]\\). We'll get 1.00...001. How many 0s? Well, on the previous step it was 0.1100...001. There are \\(S[t] - S[t - 1] - 1\\) 0s there. The final doubling adds 1 more 0 to this, giving \\(S[t] - S[t - 1]\\). So the number 1.00...001 = \\([0,S[t] - S[t - 1] + 1], with S[t - 1] - 1\\) halvings. \\(f\\left(2 - 1 - \\frac{1}{2^{S[t] - S[t - 1] + 1}}\\right) = f\\left(1 - \\frac{1}{2^{S[t] - S[t - 1] + 1}}\\right) = \\frac{1}{2^{S[t] - S[t - 1] + 2}}\\).<br>
 So \\(f(2 - S) = \\frac{1}{2^{S[t] - S[t - 1] + 2}}\\frac{1}{2^{S[t - 1] - 1}} = \\frac{1}{2^{S[t] + 1}}\\).<br>
 <b>If \\(\\mathbf{a - t + 1 \\leq -2}\\)</b>, if \\(a \\leq t - 3\\), we'll get 2 - 1.00...001... . This will become 1 - 0.00...001wxyz.., which will become -0.wxyz... As long as wxyz... is nonzero, this is 0.wxyz... Now, what will this come out to?<br>
 We will use up to element \\(S[a + 1]\\) to move a down to 0. \\(S[a + 1]\\) will have to move down to 1, where it will add to the a (also 1) and make a 0. This will take \\(S[a + 1] - 1\\) steps. The number has now entered the \\((0,1)\\) range. \\(S[a + 2]\\) must make a total (including the first section) of \\(S[a + 2]\\) steps to become 0. Since it is subtracted from 1 we can now write the full argument of the function as \\(1 - [0,S[a + 3] - S[a+2]...] = -[S[a + 3] - S[a+2]...]\\) which took \\(S[a + 2]\\) steps.
 In summary, \\(f(2 - S) = [S[a + 3],...]\\).<br><br>
 Do you see what that means?
-Every list that results from applying the function to S is added to S. Why? Well, it's \\(f(3 - S) = \\frac{1}{2}f(3 - S - f(2 - S)) = \\frac{1}{4}f(3 - S - f(2 - S) - f(2 - S - f(2 - S)))\\). Our real end goal is to find out how many times we will repeat this process, to find \\(f(3 - ${frac(1,1024)})\\). But that's later.
+Every list that results from applying the function to S is added to S. Why? Well, it's \\(f(3 - S) = \\frac{1}{2}f(3 - S - f(2 - S)) = \\frac{1}{4}f(3 - S - f(2 - S) - f(2 - S - f(2 - S)))\\). Our real end goal is to find out how many times we will repeat this process, to find \\(f\\left(3 - ${frac(1,1024)}\\right)\\). But that's later.
 I'm going to show that if \\(a > t - 3\\) the answer will be an element not already in S.<br><br>
 If \\(a \\geq t - 1\\) the new element is \\([S[t] - t + a + 3]\\).<br>
 \\(S[t] - t + a + 3 > S[t]\\)<br>
@@ -109,7 +109,7 @@ So, if #(N) is number of steps for N, #(N - 1) = 1 + #(N)*gap.<br>
 We will get 1 + gap1(1 + gap2(1 + gap3....))) = #(1). Expanding out, the answer will be something like this<br>
 <img src="/fusiblegapsumproduct.png"><br><br>
 Time to test it out, with an actual possible set.
-Start with \\(a = 2\\). By \\(f(2 - \\frac{1}{2^x}) = \\frac{1}{2^{2x + 3}}\\), next element is 7. Then we can apply the iteration.<br>
+Start with \\(a = 2\\). By \\(f\\left(2 - \\frac{1}{2^x}\\right) = \\frac{1}{2^{2x + 3}}\\), next element is 7. Then we can apply the iteration.<br>
 [2] after 0 steps<br>
 [2, 7] after 1 step<br>
 [2, 7, 10, 12, 13] after 4 steps<br>
