@@ -26,7 +26,7 @@ So \\(f(1)=\\frac{1}{2}\\frac{1}{4} = \\frac{1}{8}\\).<br><br>
 First we need f(15/8).<br>
 \\[f(\\frac{15}{8}) = \\frac{1}{2}f(\\frac{15}{8} - f(\\frac{7}{8}))\\]\
 Now we need f(7/8).<br>
-\\[f(\\frac{7}{8}) = \\frac{1}{2}f(\\frac{7}{8}} - f(\\frac{-1}{8})) = \\frac{1}{2}f(\\frac{7}{8} - \\frac{1}{8}) = \\frac{1}{2}f(\\frac{3}{4})\\]<br><br>\
+\\[f(\\frac{7}{8}) = \\frac{1}{2}f(\\frac{7}{8} - f(\\frac{-1}{8})) = \\frac{1}{2}f(\\frac{7}{8} - \\frac{1}{8}) = \\frac{1}{2}f(\\frac{3}{4})\\]<br><br>\
 Okay, I think this is taking too long. f(7/8) will be some tiny number from all the multiplications by 1/2, so f(15/8) will be half of f(x) where x is barely smaller than 15/8. It will take too long to get even f(2). So let's generalize.<hline></hline>\
 <b>For \\(0 \\leq x < 1\\):</b><br>
 \\(f(x) = \\frac{1}{2}f(x - f(x - 1))\\) but \\(x - 1 < 0\\) so<br>
@@ -60,56 +60,56 @@ n starts as a power of 2, namely 1, in 2 - 1/8. In iteration 1 it will double th
 We know that \\(f(2) = ${half}f(${frac(15,8)})\\). We can now see that this is \\(${frac(1,8)}f(${frac(14,8)}) = ${frac(1,32)}f(${frac(12,8)}) = ${frac(1,128)}f(${frac(8,8)}) = ${frac(1,128)}f(1) = ${frac(1,128)}${frac(1,8)} = ${frac(1,1024)}\\).<br>
 In general, \\(f(2 - ${frac(1,"2^x")}) = ${frac(1,"2^{2x+3}")}\\).<br>
 \\(\mathbf{f(2) = ${frac(1,1024)}}.\\)</b><hline></hline>
-Now it's time for our final stand. <m>f(2) = ${frac(1,1024)}</m>. <m>f(3) = ${half}f(3 - ${frac(1,1024)})</m>. This will relate to <m>f(2 - ${frac(1,1024)}) = ${frac(1,"2<s>23</s>")}</m><br>
-Take a moment to think about that. f(3) is a fourth of <m>f(3 - ${frac(1,1024)} - ${frac(1,8388608)})</m>. See how many steps it will take to get down to f(2) again? We should expect the answer for f(3) to be on the order of <m>2<s>-10 000 000</s></m>.
+Now it's time for our final stand. \\(f(2) = ${frac(1,1024)}\\). \\(f(3) = ${half}f(3 - ${frac(1,1024)})\\). This will relate to \\(f(2 - ${frac(1,1024)}) = \frac{1}{2^{23}}\\)<br>
+Take a moment to think about that. f(3) is a fourth of \\(f(3 - ${frac(1,1024)} - ${frac(1,8388608)})\\). See how many steps it will take to get down to f(2) again? We should expect the answer for f(3) to be on the order of \\(2^{-10 000 000}\\).
 Let's try to figure that out. <b>We'll write it in binary.</b> It's <m>f(10.11111111101111111111) = f(11 - 0.00000000010000000000001).</m> When we double n's distance from the highest power of 2 less than n, we're really just doubling the digits after the first 1 in this small number. How many times does it take to get the small number above 1?<br>\
-<m>0.00000000010000000000001 => => => => => => => => => => => => 0.00000000011 => 0.000000001 => => => => => => => => => => => => => => => => 0.1 => => 1</m><br><br>
+\\(0.00000000010000000000001 \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow 0.00000000011 \\Rightarrow 0.000000001 \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow \\Rightarrow 0.1 \\Rightarrow \\Rightarrow 1</m><br><br>
 As you can see, it increases at a much greater rate when it is exactly a power of 2. If there is even a single 1 way after the first 1, it has to bring the far-off 1 all the way to combine with the first 1 before it will get anywhere.<hline></hline>
-Let's standardize that idea. I'll use the notation S = [a,b,c,d...] to mean <m>${frac(1,"2<s>a</s>")} + ${frac(1,"2<s>b</s>")} + ${frac(1,"2<s>c</s>")}...</m>. How long will it take this to surpass 1, and how much will it surpass by?<br>
+Let's standardize that idea. I'll use the notation \\(S = [a,b,c,d...]\\) to mean \\(${frac(1,"2^a")} + ${frac(1,"2^b")} + ${frac(1,"2^c")}...\\). How long will it take this to surpass 1, and how much will it surpass by?<br>
 <u><i>This line of reasoning is arguably the critical piece of this entire problem. You can easily find f(2) manually. You cannot easily recurse millions of times to find f(3).</i></u><br><br>
-After b - a doublings, we get a new set S = [a - 1, a - b + c, a - b + d...]<br>
-We just removed one of the 1s in the binary expansion simply to decrease a by 1. Call the number of elements in the set, t. So we will get a down to at most a - t + 1 through this method.<br><br>
-<b>If a - t + 1 >= 0</b>, in other words, if a >= t - 1, then the highest element, S[t] (starting from 1) will have taken S[t] - (a - t + 2) steps, so S[t] + t - a - 2 steps, plus an additional 2(a - t + 1) steps to reach 1. This totals <m>S[t] + t - a - 2 + 2a - 2t + 2 = S[t] - t + a steps, each multiplying the function by 1/2. The number is subtracted from 2 so this leaves us with 1, which we know is ${frac(1,8)}</m>.<br>
-So <m>f(2 - S) = ${frac(1,"2<s>S[t] - t + a + 3</s>")}</m><br>
-<b>If a - t + 1 = -1</b>, if a = t - 2, then we will not use the highest element S[t]. We'll get 1.00...001. How many 0s? Well, on the previous step it was 0.1100...001. There are S[t] - S[t - 1] - 1 0s there. The final doubling adds 1 more 0 to this, giving S[t] - S[t - 1]. So the number 1.00...001 = [0,S[t] - S[t - 1] + 1], with S[t - 1] - 1 halvings. <m>f(2 - 1 - ${frac(1,"2<s>S[t] - S[t - 1] + 1</s>")}) = f(1 - ${frac(1,"2<s>S[t] - S[t - 1] + 1</s>")}) = ${frac(1,"2<s>S[t] - S[t - 1] + 2</s>")}</m>.<br>
-So <m>f(2 - S) = ${frac(1,"2<s>S[t] - S[t - 1] + 2</s>")}${frac(1,"2<s>S[t - 1] - 1</s>")} = ${frac(1,"2<s>S[t] + 1</s>")}</m>.<br>
-<b>If a - t + 1 <= -2</b>, if a <= t - 3, we'll get 2 - 1.00...001... . This will become 1 - 0.00...001wxyz.., which will become -0.wxyz... As long as wxyz... is nonzero, this is 0.wxyz... Now, what will this come out to?<br>
-We will use up to element S[a + 1] to move a down to 0. S[a + 1] will have to move down to 1, where it will add to the a (also 1) and make a 0. This will take S[a + 1] - 1 steps. The number has now entered the (0,1) range. S[a + 2] must make a total (including the first section) of S[a + 2] steps to become 0. Since it is subtracted from 1 we can now write the full argument of the function as 1 - [0,S[a + 3] - S[a+2]...] = -[S[a + 3] - S[a+2]...] which took S[a + 2] steps.
-In summary, <m>f(2 - S) = [S[a + 3],...]</m>.<br><br>
+After \\(b - a\\) doublings, we get a new set \\(S = [a - 1, a - b + c, a - b + d...]\\)<br>
+We just removed one of the 1s in the binary expansion simply to decrease \\(a\\) by \\(1\\). Call the number of elements in the set \\(t\\). So we will get \\(a\\) down to at most \\(a - t + 1\\) through this method.<br><br>
+<b>If \\(\\mathbf{a - t + 1 \\geq 0}\\)</b>, in other words, if \\(a \\geq t - 1\\), then the highest element, \\(S[t]\\) (starting from 1) will have taken \\(S[t] - (a - t + 2)\\) steps, so \\(S[t] + t - a - 2\\) steps, plus an additional \\(2(a - t + 1)\\) steps to reach 1. This totals \\(S[t] + t - a - 2 + 2a - 2t + 2 = S[t] - t + a\\) steps, each multiplying the function by 1/2. The number is subtracted from 2 so this leaves us with 1, which we know is \\(${frac(1,8)}\\).<br>
+So \\(f(2 - S) = \\frac{1}{2^{S[t] - t + a + 3}}\\)<br>
+<b>If \\(\\mathbf{a - t + 1 = -1}\\)</b>, if \\(a = t - 2\\), then we will not use the highest element \\(S[t]\\). We'll get 1.00...001. How many 0s? Well, on the previous step it was 0.1100...001. There are \\(S[t] - S[t - 1] - 1\\) 0s there. The final doubling adds 1 more 0 to this, giving \\(S[t] - S[t - 1]\\). So the number 1.00...001 = \\([0,S[t] - S[t - 1] + 1], with S[t - 1] - 1\\) halvings. \\(f(2 - 1 - \\frac{1}{2^{S[t] - S[t - 1] + 1}}) = f(1 - \\frac{1}{2^{S[t] - S[t - 1] + 1}}) = \frac{1}{2^{S[t] - S[t - 1] + 2}}\\).<br>
+So \\(f(2 - S) = \\frac{1}{2^{S[t] - S[t - 1] + 2}}\\frac{1}{2^{S[t - 1] - 1}} = \\frac{1}{2^{S[t] + 1}}\\).<br>
+<b>If \\(\\mathbf{a - t + 1 \\leq -2}\\)</b>, if \\(a \\leq t - 3\\), we'll get 2 - 1.00...001... . This will become 1 - 0.00...001wxyz.., which will become -0.wxyz... As long as wxyz... is nonzero, this is 0.wxyz... Now, what will this come out to?<br>
+We will use up to element \\(S[a + 1]\\) to move a down to 0. \\(S[a + 1]\\) will have to move down to 1, where it will add to the a (also 1) and make a 0. This will take \\(S[a + 1] - 1\\) steps. The number has now entered the \\((0,1)\\) range. \\(S[a + 2]\\) must make a total (including the first section) of \\(S[a + 2]\\) steps to become 0. Since it is subtracted from 1 we can now write the full argument of the function as \\(1 - [0,S[a + 3] - S[a+2]...] = -[S[a + 3] - S[a+2]...]\\) which took \\(S[a + 2]\\) steps.
+In summary, \\(f(2 - S) = [S[a + 3],...]\\).<br><br>
 Do you see what that means?
-Every list that results from applying the function to S is added to S. Why? Well, it's f(3 - S) = 1/2f(3 - S - f(2 - S)) = 1/4f(3 - S - f(2 - S) - f(2 - S - f(2 - S))). Our real end goal is to find out how many times we will repeat this process, to find <m>f(3 - ${frac(1,1024)})</m>. But that's later.
-I'm going to show that if a > t - 3 the answer will be an element not already in S.<br><br>
-If a >= t - 1 the new element is [S[t] - t + a + 3].<br>
-S[t] - t + a + 3 > S[t]<br>
-a + 3 > t<br>
-a > t - 3<br>
-But a > t - 2 because a >= t - 1, so this is true.<br>
-If a = t - 2 the new element is [S[t] + 1] which is clearly not in S (S[t] is the greatest element).<br>
-So if t is too small we will keep adding a new element to the set. When a = t - 2 the new element will be the direct successor of the previous element. This will be the tipping point, meaning that the only way to get into the 3rd scenario is when a = t - 3. At this point the new element added will be equal to the last element added.<hline></hline>
+Every list that results from applying the function to S is added to S. Why? Well, it's \\(f(3 - S) = \\frac{1}{2}f(3 - S - f(2 - S)) = \\frac{1}{4}f(3 - S - f(2 - S) - f(2 - S - f(2 - S)))\\). Our real end goal is to find out how many times we will repeat this process, to find \\(f(3 - ${frac(1,1024)})\\). But that's later.
+I'm going to show that if \\(a > t - 3\\) the answer will be an element not already in S.<br><br>
+If \\(a \\geq t - 1\\) the new element is \\([S[t] - t + a + 3]\\).<br>
+\\(S[t] - t + a + 3 > S[t]\\)<br>
+\\(a + 3 > t\\)<br>
+\\(a > t - 3\\)<br>
+But \\(a > t - 2\\) because \\(a \\geq t - 1\\), so this is true.<br>
+If \\(a = t - 2\\) the new element is \\([S[t] + 1]\\) which is clearly not in \\(S\\) (\\(S[t]\\) is the greatest element).<br>
+So if \\(t\\) is too small we will keep adding a new element to the set. When \\(a = t - 2\\) the new element will be the direct successor of the previous element. This will be the tipping point, meaning that the only way to get into the 3rd scenario is when \\(a = t - 3\\). At this point the new element added will be equal to the last element added.<hline></hline>
 Alright, time to try it out.<br>
 [10, 23] a = 10, t = 2<br>
 [10, 23, 34] t = 3<br>
 [10, 23, 34, 44] t = 4<br>
-At this point you can see the pattern. The increase in the new element from S[t] is decreasing by 1 every step because t is increasing and nothing else is changing.<br>
+At this point you can see the pattern. The increase in the new element from \\(S[t]\\) is decreasing by 1 every step because \\(t\\) is increasing and nothing else is changing.<br>
 [10, 23, 34, 44, 53, 61, 68, 74, 79, 83, 86] t = 11<br>
 [10, 23, 34, 44, 53, 61, 68, 74, 79, 83, 86, 88] t = 12<br>
 [10, 23, 34, 44, 53, 61, 68, 74, 79, 83, 86, 88, 89] t = 13<br>
-At this point the math tells us to add an 89 to the set. We know this is actually a binary number, 0.00000000010000000000001000000000010000000001000000001000000010000001000001000010001001011, and we need to add a <m>2<s>-89</s></m> to it.<br>
+At this point the math tells us to add an 89 to the set. We know this is actually a binary number, 0.00000000010000000000001000000000010000000001000000001000000010000001000001000010001001011, and we need to add a \\(2^{-89}\\) to it.<br>
 So what are we left with?<br>
 [10, 23, 34, 44, 53, 61, 68, 74, 79, 83, 86, 87] t = 12<br>
 [10, 23, 34, 44, 53, 61, 68, 74, 79, 83, 86, 87, 88] t = 13<br>
 It's tempting to just do it manually but let's try to figure out exactly how many iterations this will take to get to a = 9. It took 2 steps to move the recent chain of 1s left by 1.
 We are making progress.
-To get to a = 9 we will need to get S to be [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] because the only duplicate element that can be added is when t = 13.
-You can now intuitively see that this will take a really long time, just for a = 10 to a = 9 - then it will have to get to a = 8, etc.
-So how long does it take to decrease a by 1? Well, you have to decrease S[2] by S[2] - S[1]. To do that you need to decrease S[3] by (S[3] - S[2]), S[2] - S[1] times. Know what this is? This is multiplication. We're basically going to take the product of the gaps between numbers.<br><br>
+To get to \\(a = 9\\) we will need to get \\(S\\) to be [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] because the only duplicate element that can be added is when \\(t = 13\\).
+You can now intuitively see that this will take a really long time, just for \\(a = 10\\) to \\(a = 9\\) - then it will have to get to \\(a = 8\\), etc.
+So how long does it take to decrease \\(a\\) by 1? Well, you have to decrease S[2] by S[2] - S[1]. To do that you need to decrease S[3] by (S[3] - S[2]), S[2] - S[1] times. Know what this is? This is multiplication. We're basically going to take the product of the gaps between numbers.<br><br>
 Let's just confirm this.<br>
 It seems like we're multiplying the gaps but we also have to add 1 every time to generate a new next element. [A][B][C][D] has to take 1 step just to make a [E]; [E] will then decrease until it becomes [D] and then [D] will decrease by 1.<br>
 So, if #(N) is number of steps for N, #(N - 1) = 1 + #(N)*gap.<br>
 We will get 1 + gap1(1 + gap2(1 + gap3....))) = #(1). Expanding out, the answer will be something like this<br>
 <img src="/fusiblegapsumproduct.png"><br><br>
 Time to test it out, with an actual possible set.
-Start with a = 2. By <m>f(2 - ${frac(1,"2<s>x</s>")}) = ${frac(1,"2<s>2x + 3</s>")}</m>, next element is 7. Then we can apply the iteration.<br>
+Start with \\(a = 2\\). By \\(f(2 - \\frac{1}{2^x}) = \\frac{1}{2^{2x + 3}}\\), next element is 7. Then we can apply the iteration.<br>
 [2] after 0 steps<br>
 [2, 7] after 1 step<br>
 [2, 7, 10, 12, 13] after 4 steps<br>
@@ -125,12 +125,12 @@ It took 16 steps to get from [2, 7] to [2, 6]<br>
 [2, 4] after 49 steps<br>
 [2, 3] after 65 steps<br>
 [1] after 81 steps<br>
-Is 81 correct? Well, gaps are 5, 3, 2, 1 so we should get 1 + 5 + 5*3 + 5*3*2 + 5*3*2*1 = 81. So yes, this formula works. And we can finally get the answer.<hline></hline>
+Is 81 correct? Well, gaps are 5, 3, 2, 1 so we should get \\(1 + 5 + 5\cdot 3 + 5\cdot 3\cdot 2 + 5\cdot 3\cdot 2\cdot 1 = 81\\). So yes, this formula works. And we can finally get the answer.<hline></hline>
 So, we start at 3 - []. After one step this becomes 3 - [10]. How many steps does it take for 10 to become 9?<br>
 1 + (13)(1 + 11 + 11*10 + 11*10*9 + ... + 11!)<br>
 Then how many steps to get to 3 - [8]?<br>
 1 + (12)(1 + 10 + 10*9 + 10*9*8 + .. 10!)<br>
-You can see the pattern. Eventually we will get down to 3 - [1], which after 1 + 4(2 + 2 + 1) steps will reach 3 - [0] = 2. We know f(2) is ${frac(1,1024)}. We just need to compute this sum:<br>
+You can see the pattern. Eventually we will get down to 3 - [1], which after 1 + 4(2 + 2 + 1) steps will reach 3 - [0] = 2. We know f(2) is \\(\\frac{1}{1024}\\). We just need to compute this sum:<br>
 <img src="/fusibleanswersum.png"><br>
 I actually did this by hand without a calculator in class (you know, for fun, and I wanted to do this whole problem with no calculator):<br>
 <img src="/fusiblezfnswork.png"><br>
@@ -239,7 +239,7 @@ window.onload = function() {
     for (let blogi = Object.keys(blogs).length - 1; blogi >= 0; blogi--) {
       const blog = Object.keys(blogs)[blogi];
       if (blogs[blog][1]) {
-        rhtml += "<div class='blogbox'><a class='bloglink' href='/blog?" + blog + "'>" + blogs[blog][0] + "</a>" + blogs[blog][2].replaceAll("\\(","[mathstart]").replaceAll("\\)","[mathend]").substring(0,500) + "</div>";
+        rhtml += "<div class='blogbox'><a class='bloglink' href='/blog?" + blog + "'>" + blogs[blog][0] + "</a>" + blogs[blog][2].replaceAll("\\(","").replaceAll("\\)","").substring(0,500) + "</div>";
       }
     }
     document.querySelector(".section").innerHTML += rhtml;
