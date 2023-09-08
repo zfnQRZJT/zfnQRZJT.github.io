@@ -38,7 +38,7 @@ Now applying that:<br>\
 \\[f\\left(\\frac{15}{8}\\right) = \\frac{1}{2}f\\left(\\frac{15}{8} - \\frac{1}{16}\\right) = \\frac{1}{2}f\\left(\\frac{29}{16}\\right)\\]
 Hm. We'll need f(13/16) for that. Let's generalize some more.<br><br>
 I'll leave it to you to prove that the function evaluated at a dyadic rational will always return a dyadic rational. I'm going to try to find \\(f\\left(1 - \\frac{n}{2^x}\\right)\\) for \\(n < 2^x\\), \\(n\\) odd.<br>\
-Starting at \\(1 - \\frac{n}{2^x}\\) we double our distance from 1 multiple times. Each time we attain another multiplication by \\frac{1}{2}.<br>\
+Starting at \\(1 - \\frac{n}{2^x}\\) we double our distance from 1 multiple times. Each time we attain another multiplication by \\(\\frac{1}{2}\\).<br>\
 But how many times do we double our distance from 1 before the argument becomes negative?<br>\
 Well, once \\(n > 2^y\\) the argument will be negative. In other words \\(y < \\log_2 n\\), or specifically, \\(y = \\lfloor \\log_2 \\rfloor\\).<br><br>
 So with \\(f\\left(1 - \\frac{n}{2^x}\\right)\\) we do this division \\(x - y\\) times to get \\(\\frac{1}{2^{x-y}}f\\left(1 - \\frac{n}{2^y}\\right) = \\frac{n/2^y - 1}{2^{x-y}} = \\frac{n - 2^y}{2^x}\\).<br><br>\
