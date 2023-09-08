@@ -37,11 +37,11 @@ Let's try finding f(7/8) with this.<br>
 Now applying that:<br>\
 \\[f\\left(\\frac{15}{8}\\right) = \\frac{1}{2}f\\left(\\frac{15}{8} - \\frac{1}{16}\\right) = \\frac{1}{2}f\\left(\\frac{29}{16}\\right)\\]
 Hm. We'll need f(13/16) for that. Let's generalize some more.<br><br>
-I'll leave it to you to prove that the function evaluated at a dyadic rational will always return a dyadic rational. I'm going to try to find \\(f\\left(1 - \frac{n,2^x}\\right)\\) for \\(n < 2^x\\), \\(n\\) odd.<br>\
+I'll leave it to you to prove that the function evaluated at a dyadic rational will always return a dyadic rational. I'm going to try to find \\(f\\left(1 - \\frac{n}{2^x}\\right)\\) for \\(n < 2^x\\), \\(n\\) odd.<br>\
 Starting at \\(1 - \\frac{n}{2^x}\\) we double our distance from 1 multiple times. Each time we attain another multiplication by \\frac{1}{2}.<br>\
 But how many times do we double our distance from 1 before the argument becomes negative?<br>\
-Well, once \\(n > 2^y\\) the argument will be negative. In other words \\(y < \\log_2 n\\), or specifically, \\(y = \\lfloor \\log_2 \\rfloor\\). I'll call this \\(L2(n)\\).<br><br>
-So with \\f\\left(1 - \\frac{n}{2^x}\\right)\\) we do this division \\(x - y\\) times to get \\(\\frac{1}{2^{x-y}}f\\left(1 - \\frac{n}{2^y}\\right) = \\frac{n/2^y - 1}{2^{x-y}}\\) = \\frac{n - 2^y}{2^x}\\).<br><br>\
+Well, once \\(n > 2^y\\) the argument will be negative. In other words \\(y < \\log_2 n\\), or specifically, \\(y = \\lfloor \\log_2 \\rfloor\\).<br><br>
+So with \\(f\\left(1 - \\frac{n}{2^x}\\right)\\) we do this division \\(x - y\\) times to get \\(\\frac{1}{2^{x-y}}f\\left(1 - \\frac{n}{2^y}\\right) = \\frac{n/2^y - 1}{2^{x-y}} = \\frac{n - 2^y}{2^x}\\).<br><br>\
 Now let's find a closed form for \\(f\\left(2 - \\frac{n}{2^x}\\right)\\).<br>
 \\[f\\left(2 - \\frac{n}{2^x}\\right) = \\frac{1}{2}f\\left(2 - \\frac{n}{2^x} - \\frac{n - 2^y}{2^x}\\right) = \\frac{1}{2}f\\left(2 - \\frac{2n - 2^y}{2^x}\\right)\\]<br><br>
 It may be difficult to understand what exactly the transformation inside the function is that gives a coefficient of 1/2 outside the function. In the range <m>[0,1)</m> it was easy to understand: 2x - 1 doubles the distance from 1. What is this one doing?<br>\
@@ -125,7 +125,7 @@ It took 16 steps to get from [2, 7] to [2, 6]<br>
 [2, 4] after 49 steps<br>
 [2, 3] after 65 steps<br>
 [1] after 81 steps<br>
-Is 81 correct? Well, gaps are 5, 3, 2, 1 so we should get \\(1 + 5 + 5\cdot 3 + 5\cdot 3\cdot 2 + 5\cdot 3\cdot 2\cdot 1 = 81\\). So yes, this formula works. And we can finally get the answer.<hline></hline>
+Is 81 correct? Well, gaps are 5, 3, 2, 1 so we should get \\(1 + 5 + 5\\cdot 3 + 5\\cdot 3\\cdot 2 + 5\\cdot 3\\cdot 2\\cdot 1 = 81\\). So yes, this formula works. And we can finally get the answer.<hline></hline>
 So, we start at 3 - []. After one step this becomes 3 - [10]. How many steps does it take for 10 to become 9?<br>
 1 + (13)(1 + 11 + 11*10 + 11*10*9 + ... + 11!)<br>
 Then how many steps to get to 3 - [8]?<br>
@@ -135,7 +135,7 @@ You can see the pattern. Eventually we will get down to 3 - [1], which after 1 +
 I actually did this by hand without a calculator in class (you know, for fun, and I wanted to do this whole problem with no calculator):<br>
 <img src="/fusiblezfnswork.png"><br>
 Therefore<br><br>
-<h2 style='font-size:30px;'><b><m>f(3) = 2<s>-1541023937</s></m></b></h2><br>
+<h2 style='font-size:30px;'><b>\\[\\mathbf{f(3) = 2^{-1541023937}}\\]</b></h2><br>
 And that's the answer.<hline></hline>
 Now for f(4)...
 `],
