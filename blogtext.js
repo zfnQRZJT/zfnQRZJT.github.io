@@ -230,7 +230,16 @@ However 2 maximum stupid terms cannot occur adjacent because each must be greate
 Therefore there are at least as many 0s of P'(x) as the stupid number of the sequence.<br>
 Therefore the order of P'(x) >= stupid number.
 Since P is a polynomial the order of P'(x) = the order of P(x) - 1. (Order of P(x) > 0 because if P(x) = 0 it is a constant implying the sequence has no stupid terms. Stupid number = 0 = order, and statement holds.)<br>
-Since order of P'(x) >= stupid number, order of P(x) = order of P'(x) + 1 > stupid number.`]
+Since order of P'(x) >= stupid number, order of P(x) = order of P'(x) + 1 > stupid number.`],
+  "4334807026388001":[
+    "Professional timewasting with math",
+    true,
+    `Here's a method to find the antiderivative of $\\sec(x)$: $$\\int \\sec(x)dx = \\int \\sec(x) \\frac{\\sec(x) + \\tan(x)}{\\sec(x) + \\tan(x)} = \\frac{\\sec(x)\\tan(x) + \\sec^2(x)}{\\sec(x) + \\tan(x)} = \\ln(\\sec(x) + \\tan(x)) + C$$
+    This relies on the fact that the derivatives of $\\sec(x), \\tan(x)$ are each the other multiplied by $\\sec(x)$. In other words, taking the derivative, dividing by $\\sec(x)$, taking the derivative again, dividing by $\\sec(x)$, returns us to the original function.<br>
+    Let's find all functions that do that.
+    $$y(x) := y, \\cos(x)\\frac{d}{dx}\\left(y'\\cos(x)\\right) = y$$
+    $$y''\\cos^2(x) - y'\\sin(x)\\cos(x) - y = 0$$`
+  ]
 }
 const urlPath = (new URL(window.location.href).search.substr(1));
 window.onload = function() {
