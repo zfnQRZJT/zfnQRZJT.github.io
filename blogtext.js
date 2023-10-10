@@ -234,11 +234,36 @@ Since order of P'(x) >= stupid number, order of P(x) = order of P'(x) + 1 > stup
   "4334807026388001":[
     "Professional timewasting with math",
     true,
-    `Here's a method to find the antiderivative of $\\sec(x)$: $$\\int \\sec(x)dx = \\int \\sec(x) \\frac{\\sec(x) + \\tan(x)}{\\sec(x) + \\tan(x)} = \\frac{\\sec(x)\\tan(x) + \\sec^2(x)}{\\sec(x) + \\tan(x)} = \\ln(\\sec(x) + \\tan(x)) + C$$
-    This relies on the fact that the derivatives of $\\sec(x), \\tan(x)$ are each the other multiplied by $\\sec(x)$. In other words, taking the derivative, dividing by $\\sec(x)$, taking the derivative again, dividing by $\\sec(x)$, returns us to the original function.<br>
+    `Here's a method to find the antiderivative of sec(x): $$\\int \\sec(x)dx = \\int \\sec(x) \\frac{\\sec(x) + \\tan(x)}{\\sec(x) + \\tan(x)} = \\frac{\\sec(x)\\tan(x) + \\sec^2(x)}{\\sec(x) + \\tan(x)} = \\ln(\\sec(x) + \\tan(x)) + C$$
+    This relies on the fact that the derivatives of sec(x), tan(x) are each the other multiplied by sec(x). In other words, taking the derivative, dividing by sec(x), taking the derivative again, and dividing by sec(x) returns us to the original function.<br>
     Let's find all functions that do that.
     $$y(x) := y, \\cos(x)\\frac{d}{dx}\\left(y'\\cos(x)\\right) = y$$
-    $$y''\\cos^2(x) - y'\\sin(x)\\cos(x) - y = 0$$`
+    Product rule:
+    $$y''\\cos^2(x) - y'\\sin(x)\\cos(x) - y = 0$$
+    I want to get rid of the trig. So, I made the ill-advised decision to substitute t = cos(x).
+    Now, we have to convert y(x) and its derivatives into y(t) and its derivatives.
+    $$\\frac{dy}{dx} = \\frac{dy}{dt}\\frac{dt}{dx} = -y'\\sin(x) = -y'\\sqrt{1-t^2}$$
+    $$\\frac{d^2y}{dx^2} = \\left(\\frac{d}{dt} \\frac{dy}{dx}\\right) \\frac{dt}{dx} = \\frac{d}{dt}(-y'\\sqrt{1-t^2})}(-\\sqrt{1-t^2}) = \\left(-y''\\sqrt{1-t^2} + \frac{y't}{\\sqrt{1-t^2}\\right)(-\\sqrt{1-t^2}) = y''(1 - t^2) - y't$$
+    And remember that \\(\\cos^2(x) = t^2, \\sin(x) = \\sqrt{1-t^2}\\), and we can resubstitute into the differential equation.
+    $$(y''(1 - t^2) - y't)t^2 + y'(1-t^2)(t) - y = 0$$
+    $$y''(t^2 - t^4) + y'(t - 2t^3) - y = 0$$
+    Now, it is not obvious how to solve this. We can take some inspiration from our two existing solutions, \\(\\sec(x) = \frac{1}{t}, \\tan(x) = \\frac{\\sqrt{1-t^2}}{t}\\), and see that they are both divided by \\(t\\). So, let's make the function \\z(t) = ty(t)\\):
+    $$z' = ty' + y = ty' + \\frac{z}{t}, z'' = 2y' + ty'' \\implies y' = \\frac{z' - z/t}{t} = \\frac{z'}{t} - \\frac{z}{t^2}, y'' = \\frac{z'' - 2y'}{t} = \\frac{z'' - \\frac{2z'}{t} + \\frac{2z}{t^2}}{t} = \\frac{z''}{t} - \\frac{2z'}{t^2} + \\frac{2z}{t^3}$$
+    $$\\left(\\frac{z''}{t} - \\frac{2z'}{t^2} + \\frac{2z}{t^3}\\right)(t^2 - t^4) + \\left(\\frac{z'}{t} - \\frac{z}{t^2}\\right)(t - 2t^3) - \\frac{z}{t} = 0$$
+    Oh no. Fortunately, it simplifies a lot after distribution.
+    $$(t-t^3)z'' - 2(1-t^2)z' + 2\\left(\\frac{1}{t} - t\\right)z + (1-2t^2)z' - \\left(\\frac{1}{t} - 2t\\right)z - \\frac{z}{t} = 0$$
+    $$(t-t^3)z'' - z' = 0$$
+    $$z'(t) = a(t) \\implies (t-t^3)a' = a \\implies \\frac{da}{a} = \\frac{1}{t - t^3} \\implies \\ln(a) = \\int \\frac{dt}{t - t^3} = \\int \\left(\\frac{A}{t} + \\frac{B}{1 - t^2}\\right) dt$$
+    To solve for A, B note that by comparing coefficients, A needs to be constant and B needs to be linear:
+    $$A(1 - t^2) + (B_1t + B_2)t = 1 \\forall t \\implies A = B_1 = 1, B_2 = 0$$
+    $$\\ln(a) = \\int \\left(\\frac{1}{t} + \\frac{t}{1 - t^2}\\right)dt = \\ln(t) - \\frac{1}{2}\\ln(1 - t^2) + C
+    $$a = C\\frac{t}{\\sqrt{1-t^2}}
+    $$z' = a \\implies z = \\int a dt = C\\sqrt{1 - t^2} + D$$
+    (the e^C gets absorbed into the C, as do the - and the factor of 2)
+    $$y(t) = C\\frac{\\sqrt{1-t^2}}{t} + \\frac{D}{t}$$
+    $$y(x) = C\\tan(x) + D\\sec(x)$$
+    Well, so it turns out that the 2 solutions we started with can be linearly combined to produce all solutions. When I saw this, I realized I had done a lot of work for nothing, and I could just have seen that the original equation was linear, and since we had 2 degrees of freedom with a 2nd degree differential equation, that these would be all of the solutions. But, I didn't see it, and I still enjoyed the problem solving process.
+    `
   ]
 }
 const urlPath = (new URL(window.location.href).search.substr(1));
