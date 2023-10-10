@@ -248,7 +248,7 @@ Since order of P'(x) >= stupid number, order of P(x) = order of P'(x) + 1 > stup
     And remember that \\(\\cos^2(x) = t^2, \\sin(x) = \\sqrt{1-t^2}\\), and we can resubstitute into the differential equation.
     $$(y''(1 - t^2) - y't)t^2 + y'(1-t^2)(t) - y = 0$$
     $$y''(t^2 - t^4) + y'(t - 2t^3) - y = 0$$
-    Now, it is not obvious how to solve this. We can take some inspiration from our two existing solutions, \\(\\sec(x) = \frac{1}{t}, \\tan(x) = \\frac{\\sqrt{1-t^2}}{t}\\), and see that they are both divided by \\(t\\). So, let's make the function \\z(t) = ty(t)\\):
+    Now, it is not obvious how to solve this. We can take some inspiration from our two existing solutions, sec(x) and tan(x), and see that they are both divided by cos(x) = t. So, let's make the function \\z(t) = ty(t)\\):
     $$z' = ty' + y = ty' + \\frac{z}{t}, z'' = 2y' + ty'' \\implies y' = \\frac{z' - z/t}{t} = \\frac{z'}{t} - \\frac{z}{t^2}, y'' = \\frac{z'' - 2y'}{t} = \\frac{z'' - \\frac{2z'}{t} + \\frac{2z}{t^2}}{t} = \\frac{z''}{t} - \\frac{2z'}{t^2} + \\frac{2z}{t^3}$$
     $$\\left(\\frac{z''}{t} - \\frac{2z'}{t^2} + \\frac{2z}{t^3}\\right)(t^2 - t^4) + \\left(\\frac{z'}{t} - \\frac{z}{t^2}\\right)(t - 2t^3) - \\frac{z}{t} = 0$$
     Oh no. Fortunately, it simplifies a lot after distribution.
