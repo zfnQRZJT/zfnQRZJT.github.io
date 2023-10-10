@@ -257,8 +257,8 @@ Since order of P'(x) >= stupid number, order of P(x) = order of P'(x) + 1 > stup
     $$z'(t) = a(t) \\implies (t-t^3)a' = a \\implies \\frac{da}{a} = \\frac{1}{t - t^3} \\implies \\ln(a) = \\int \\frac{dt}{t - t^3} = \\int \\left(\\frac{A}{t} + \\frac{B}{1 - t^2}\\right) dt$$
     To solve for A, B note that by comparing coefficients, A needs to be constant and B needs to be linear:
     $$A(1 - t^2) + (B_1t + B_2)t = 1 \\forall t \\implies A = B_1 = 1, B_2 = 0$$
-    $$\\ln(a) = \\int \\left(\\frac{1}{t} + \\frac{t}{1 - t^2}\\right)dt = \\ln(t) - \\frac{1}{2}\\ln(1 - t^2) + C
-    $$a = C\\frac{t}{\\sqrt{1-t^2}}
+    $$\\ln(a) = \\int \\left(\\frac{1}{t} + \\frac{t}{1 - t^2}\\right)dt = \\ln(t) - \\frac{1}{2}\\ln(1 - t^2) + C$$
+    $$a = C\\frac{t}{\\sqrt{1-t^2}}$$
     $$z' = a \\implies z = \\int a dt = C\\sqrt{1 - t^2} + D$$
     (the e^C gets absorbed into the C, as do the - and the factor of 2)
     $$y(t) = C\\frac{\\sqrt{1-t^2}}{t} + \\frac{D}{t}$$
