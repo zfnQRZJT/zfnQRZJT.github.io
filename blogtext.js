@@ -244,7 +244,7 @@ Since order of P'(x) >= stupid number, order of P(x) = order of P'(x) + 1 > stup
     Now, we have to convert y(x) and its derivatives into y(t) and its derivatives.
     $$\\frac{dy}{dx} = \\frac{dy}{dt}\\frac{dt}{dx} = -y'\\sin(x) = -y'\\sqrt{1-t^2}$$
     
-    $$\\frac{d^2y}{dx^2} = \\left(\\frac{d}{dt} \\frac{dy}{dx}\\right) \\frac{dt}{dx} = \\frac{d}{dt}(-y'\\sqrt{1-t^2})(-\\sqrt{1-t^2}) = \\left(-y''\\sqrt{1-t^2} + \\frac{y't}{\\sqrt{1-t^2}\\right)(-\\sqrt{1-t^2}) = y''(1 - t^2) - y't$$
+    $$\\frac{d^2y}{dx^2} = \\left(\\frac{d}{dt} \\frac{dy}{dx}\\right) \\frac{dt}{dx} = \\frac{d}{dt}(-y'\\sqrt{1-t^2})(-\\sqrt{1-t^2}) = \\left(-y''\\sqrt{1-t^2} + \\frac{y't}{\\sqrt{1-t^2}} \\right)(-\\sqrt{1-t^2}) = y''(1 - t^2) - y't$$
     And remember that \\(\\cos^2(x) = t^2, \\sin(x) = \\sqrt{1-t^2}\\), and we can resubstitute into the differential equation.
     $$(y''(1 - t^2) - y't)t^2 + y'(1-t^2)(t) - y = 0$$
     $$y''(t^2 - t^4) + y'(t - 2t^3) - y = 0$$
