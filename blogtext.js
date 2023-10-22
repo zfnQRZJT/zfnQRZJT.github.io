@@ -266,7 +266,7 @@ Since order of P'(x) >= stupid number, order of P(x) = order of P'(x) + 1 > stup
     Well, so it turns out that the 2 solutions we started with can be linearly combined to produce all solutions. When I saw this, I realized I had done a lot of work for nothing, and I could just have seen that the original equation was linear, and since we had 2 degrees of freedom with a 2nd degree differential equation, that these would be all of the solutions. But, I didn't see it, and I still enjoyed the problem solving process.
     `
   ],
-  "":["A fun puzzle about a sequence of shapes",true,`Let \\(\\{S_n\\}_{n=0}^{\\infty}\\) be a sequence of sets with \\(S_n \\subseteq \\mathbb{R}^2\\), such that
+  "7366858041736281":["A fun puzzle about a sequence of shapes",true,`Let \\(\\{S_n\\}_{n=0}^{\\infty}\\) be a sequence of sets with \\(S_n \\subseteq \\mathbb{R}^2\\), such that
 \\[S_0 = \\{(1,0)\\}\\]
 \\[\\forall n \\in \\mathbb{Z}^+, S_n = \\{(x,y):x^2 + y^2 = \\inf(\\{(a-x)^2 + (b-y)^2: (a,b) \\in S_{n-1}\\})\\}\\]
 
