@@ -271,18 +271,18 @@ Since order of P'(x) >= stupid number, order of P(x) = order of P'(x) + 1 > stup
 \\[\\forall n \\in \\mathbb{Z}^+, S_n = \\{(x,y):x^2 + y^2 = \\inf(\\{(a-x)^2 + (b-y)^2: (a,b) \\in S_{n-1}\\})\\}\\]
 
 <br>For \\(n \\geq 3\\), \\(S_n\\) is a Jordan curve. Find the area it encloses in terms of \\(n\\).
-<br>
+<br><br>
 And now for a human readable version. We define the distance from a point to a curve (in the euclidean plane) as the lowest possible distance. This is just how distances between points and lines is defined, we can just extend it. For example, the distance between the unit circle and the point (2,2) is the shortest distance, which is the length of the segment from (2,2) to \\((\\frac{\\sqrt{2}}{2},\\frac{\\sqrt{2}}{2})\\).
 <br>
 Now, the question says we start with the "curve" of just one point, (1,0). Then we find the set of points equidistant from that curve, and the point (0,0). This forms \\(S_1\\). We can pretty easily see that \\(S_1\\) is a line, specifically the perpendicular bisector of the unit segment, or \\(x = \\frac{1}{2}\\).
-<br>
+<br><br>
 \\(S_2\\) will be the points \\((x,y)\\) so that \\(\\text{distance}((x,y),(0,0))\\) is the same as the distance to the line, which is \\(|\\frac{1}{2}-x|\\) (it's the perpendicular distance, which is of course the shortest distance).
 Using the pythagorean theorem, \\(x^2 + y^2 = (\\frac{1}{2}-x)^2 \\implies y^2 = \\frac{1}{4}-x\\) which is a sideways parabola. This may remind you that parabolas can be defined as curves equidistant from a point and a line.
-<br>
+<br><br>
 Now, let's just try finding \\(S_3\\) the same way. What's the formula for distance from a point \\((x,y)\\) to a parabola? I have no idea. If we try using some calculus to minimize the distance, we end up having to solve a cubic equation, just to get the point on the parabola - then we have to find the points where the distance to that nearest point is equal to the distance to the origin. Nobody wants to do that.
-<br>
+<br><br>
 Here's a new idea: instead of starting from the point \\((x,y)\\) and trying to make it equidistant, let's start from a point on the parabola. Since \\(x\\) is in terms of \\(y\\), let's say \\(y\\) is the parameter \\(t\\). The use of parametric equations might be a surprise here. But it's a case where they are absolutely essential. \\(S_2\\) is described by \\(y^2 = \\frac{1}{4} - x \\implies S_2 = \\{(\\frac{1}{4} - t^2,t)\\}\\).
-<br>
+<br><br>
 For what points \\((x,y)\\) is point \\((\\frac{1}{4} - t^2,t)\\) closest to them? We can realize that it must be the points along the line normal to the parabola at that point. If the line \\((x,y) \\to (\\frac{1}{4} - t^2,t)\\) is not perpendicular to the curve, we can adjust \\(t\\) to make it closer. The normal line will be the line whose slope is the negative reciprocal of the slope at the \\(t\\) point, i.e. \\(-(\\frac{dx}{dt})/(\\frac{dy}{dt}) = 2t\\), so the lines are \\(y = 2t(x - \\frac{1}{4} + t^2) + t\\). Meanwhile, to find the points along that line equally far from \\((0,0)\\) we just need to find the perpendicular bisector of the \\(t\\) point and the origin:
 \\[y = \\frac{t^2 - \\frac{1}{4}}{t}(x - \\frac{1}{8} + \\frac{1}{2}t^2) + \\frac{t}{2}\\]
 
@@ -290,11 +290,12 @@ These 2 lines will have 1 intersection point:
 
 \\[\\frac{t^2 - \\frac{1}{4}}{t}(x - \\frac{1}{8} + \\frac{1}{2}t^2) + \\frac{t}{2} = 2t(x - \\frac{1}{4} + t^2) + t\\]
 
-Trust me when I say the intersection point in terms of \\(t\\) is exactly
+After some simplification, the intersection point in terms of \\(t\\) is exactly
 
 \\[\\left(-\\frac{3}{2}t^{2}+\\frac{1}{8},-t^{3}+\\frac{3}{4}t\\right)\\]
 
-With that, we have basically found \\(S_3\\). There is an important detail to mention: \\(S_3\\) is bounded. As we zoom out on the interior of \\(S_2\\), most points in it are much closer to the parabola than the origin, because it is much thinner than it is wide. Because we know \\(S_3\\) points form a closed curve, and we can see that negating \\(t\\) flips it over the \\(x\\)-axis, we can assume that the highest and lowest \\(t\\)-values will be on the \\(x\\)-axis, when \\[-t^{3}+\\frac{3}{4}t = 0 \\implies t = 0, \\pm \\frac{\\sqrt{3}}{2}\\]. Therefore, \\(S_3 = \\{\\left(-\\frac{3}{2}t^{2}+\\frac{1}{8},-t^{3}+\\frac{3}{4}t\\right)\\}, |t| \\leq \\frac{\\sqrt{3}}{2}.\\)
+With that, we have basically found \\(S_3\\). There is an important detail to mention: \\(S_3\\) is bounded. As we zoom out on the interior of \\(S_2\\), most points in it are much closer to the parabola than the origin, because it is much thinner than it is wide. Because we know \\(S_3\\) points form a closed curve, and we can see that negating \\(t\\) flips it over the \\(x\\)-axis, we can assume that the highest and lowest \\(t\\)-values will be on the \\(x\\)-axis, when \\[-t^{3}+\\frac{3}{4}t = 0 \\implies t = 0, \\pm \\frac{\\sqrt{3}}{2}\\]
+Therefore, \\(S_3 = \\{\\left(-\\frac{3}{2}t^{2}+\\frac{1}{8},-t^{3}+\\frac{3}{4}t\\right)\\}, |t| \\leq \\frac{\\sqrt{3}}{2}\\)
 <br>
 Just looking at this, if you can figure out a formula without manually performing this process and simplifying, good for you. I went ahead and did the algebra for \\(S_4, S_5, S_6\\) (yes, it took a long time even with Desmos basically finding the functions for me):
 \\[S_0 = (1,0)\\]
@@ -307,7 +308,7 @@ Just looking at this, if you can figure out a formula without manually performin
 
 It's a little surprising that all of them are polynomial in both \\(x\\) and \\(y\\), at best we should expect it to be a rational function. So it's lucky that it actually always simplifies.
 <br>
-I did a lot of pattern seeking on these. If you multiply each point in set \\(S_n\\) by \\(2^n\\), you will notice that the constant in \\(x\\) is 1, the linear term in \\(y\\) is \\(2n\\), the quadratic term in \\(x\\) is \\(-2n(n-1)\\), the cubic term in \\(y\\) is \\(-\\frac{4}{3}n(n-1)(n-2)\\), and so on. Those constants end up being \\(1,2,-2,\\frac{-4}{3},\\frac{2}{3},\\frac{4}{15},-\\frac{4}{45} = \\frac{2^n}{n!}(-1)^{\\lfloor n/2 \\rfloor}\\). Putting it all together, and replacing all \\(t\\) with \\(t/2\\), we get this (for now unproven) formula for \\((x,y)\\):
+I did a lot of pattern seeking on these. If you multiply each point in set \\(S_n\\) by \\(2^n\\), you will notice that the constant in \\(x\\) is 1, the linear term in \\(y\\) is \\(2n\\), the quadratic term in \\(x\\) is \\(-2n(n-1)\\), the cubic term in \\(y\\) is \\(-\\frac{4}{3}n(n-1)(n-2)\\), and so on. Those constants end up being \\(1,2,-2,\\frac{-4}{3},\\frac{2}{3},\\frac{4}{15},-\\frac{4}{45} = \\frac{2^n}{n!}(-1)^{\\lfloor n/2 \\rfloor}\\). Putting it all together, we get this (for now unproven) formula for \\((x,y)\\):
 
 \\[S_n = \\frac{1}{2^{n}}\\left(\\sum_{k=0}^{\\lfloor n/2\\rfloor}\\left(-4t^2\\right)^{k}\\binom{n}{2k},2t\\sum_{k=0}^{\\lfloor n/2\\rfloor}\\left(-4t^2\\right)^{k}\\binom{n}{2k+1}\\right)\\]
 
@@ -338,7 +339,7 @@ We can use some complex number multiplication to justify that \\(\\mathbf{Im}(z_
 \\[x = \\frac{|z|^{2n-2}\\mathbf{Re}(z)\\mathbf{Re}(z^n) - |z|^{2n-2}\\mathbf{Im}(z)\\mathbf{Im}(z^n)}{2|z|^{2n-2}\\mathbf{Re}(z)}\\]
 
 and finally \\(x = \\frac{\\mathbf{Re}(z^{n+1})}{2\\mathbf{Re}(z)} = \\mathbf{Re}(z^{n+1})\\) as we wanted. Proof that \\(y\\) ends up being the imaginary part is left to the reader.
-
+<br><br>
 Note that we need to again solve for the first nonzero \\(t\\)-value in which \\(y = 0\\) to get only the actual points in \\(S_n\\). This is easy, though: \\((\\frac{1}{2}+it)^{n}\\) is real when \\(2t = \\tan\\left(\\frac{\\pi}{n}\\right)\\), so \\(t\\) should vary from \\(-\\frac{1}{2}\\tan\\left(\\frac{\\pi}{n}\\right)\\) to \\(\\frac{1}{2}\\tan\\left(\\frac{\\pi}{n}\\right)\\).
 <br>
 OK, we still need to find the area like the question asked. We can use the parameterized area formula:
@@ -349,7 +350,6 @@ The 2 is by symmetry, the negative is because it is going right to left.
 
 \\[= -\\frac{2}{4^n}\\int_{0}^{\\tan(\\pi/n)/2} \\mathbf{Im}(1+2it)^{n} \\frac{d}{dt} \\mathbf{Re}(1+2it)^n dt \\] \\[= -\\frac{2}{4^n}\\int_{0}^{\\pi/n} \\mathbf{Im}(1+i\\tan(\\theta))^{n} \\frac{d}{dt} \\mathbf{Re}(1+i\\tan(\\theta))^n d\\theta\\]
 \\[= -\\frac{2}{4^n}\\int_{0}^{\\tan(\\pi/n)/2} \\mathbf{Im}(1+2it)^{n} \\frac{d}{dt} \\mathbf{Re}(1+2it)^n dt \\] \\[= \\frac{2n}{4^n}\\int_{0}^{\\pi/n} \\mathbf{Im}(1+i\\tan(\\theta))^{n} \\mathbf{Im}((1+i\\tan(\\theta))^{n-1})\\sec^2(\\theta) d\\theta\\]
-\\[= \\frac{2n}{4^n}\\int_{0}^{\\pi/n} \\mathbf{Im}(\\cos(\\theta)+i\\sin(\\theta))^{n} \\mathbf{Im}((\\cos(\\theta)+i\\sin(\\theta))^{n-1})\\sec^{2n+1}(\\theta) d\\theta\\]
 \\[= \\frac{2n}{4^n}\\int_{0}^{\\pi/n} \\sin(n\\theta)\\sin((n-1)\\theta)\\sec^{2n+1}(\\theta) d\\theta\\]
 \\[= \\frac{n}{4^n}\\int_{0}^{\\pi/n}\\left(\\sec^{2n}(\\theta) + \\cos((2n-1)\\theta)\\sec^{2n+1}(\\theta)\\right) d\\theta\\]
 
