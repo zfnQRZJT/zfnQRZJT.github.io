@@ -354,10 +354,10 @@ The 2 is by symmetry, the negative is because it is going right to left.
 \\[= \\frac{n}{4^n}\\int_{0}^{\\pi/n}\\left(\\sec^{2n}(\\theta) + \\cos((2n-1)\\theta)\\sec^{2n+1}(\\theta)\\right) d\\theta\\]
 For reasons I do not know, \\(\\int_{0}^{\\pi/n}\\cos((2n-1)\\theta)\\sec^{2n+1}(\\theta) d\\theta\\) is always \\(0\\) so we can simplify to
 \\[= \\frac{n}{4^n}\\int_{0}^{\\pi/n}\\sec^{2n}(\\theta) d\\theta\\]
-\\[= \\frac{n}{4^n}\\int_{0}^{\\pi/n}\\(1 + \\tan^2(\\theta))^{n-1}\\sec^2(\\theta)d\\theta\\]
+\\[= \\frac{n}{4^n}\\int_{0}^{\\pi/n}\\left(1 + \\tan^2(\\theta)\\right)^{n-1}\\sec^2(\\theta)d\\theta\\]
 \\[= \\frac{n}{4^n}\\int_{0}^{\\pi/n}\\sum_{k=0}^{n-1}\\tan^{2k}(\\theta) \\binom{n-1}{k} d\\tan(\\theta)\\]
 \\[= \\frac{n}{4^n}\\sum_{k=0}^{n-1} \\frac{\\tan^{2k+1}(\\pi/n)}{2k+1}\\binom{n-1}{k}\\]
-Well, I guess we could have hoped for something a little bit neater, but I guess this is fine enough.`]
+Well, we could have hoped for something a little bit neater, but I guess this is a good enough final answer.`]
 }
 const urlPath = (new URL(window.location.href).search.substr(1));
 window.onload = function() {
