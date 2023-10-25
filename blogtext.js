@@ -352,8 +352,12 @@ The 2 is by symmetry, the negative is because it is going right to left.
 \\[= -\\frac{2}{4^n}\\int_{0}^{\\tan(\\pi/n)/2} \\mathbf{Im}(1+2it)^{n} \\frac{d}{dt} \\mathbf{Re}(1+2it)^n dt \\] \\[= \\frac{2n}{4^n}\\int_{0}^{\\pi/n} \\mathbf{Im}(1+i\\tan(\\theta))^{n} \\mathbf{Im}((1+i\\tan(\\theta))^{n-1})\\sec^2(\\theta) d\\theta\\]
 \\[= \\frac{2n}{4^n}\\int_{0}^{\\pi/n} \\sin(n\\theta)\\sin((n-1)\\theta)\\sec^{2n+1}(\\theta) d\\theta\\]
 \\[= \\frac{n}{4^n}\\int_{0}^{\\pi/n}\\left(\\sec^{2n}(\\theta) + \\cos((2n-1)\\theta)\\sec^{2n+1}(\\theta)\\right) d\\theta\\]
-
-At this point you can tell I'm pretty much just pushing symbols around. I don't think there's a better answer than this integral, unless we use a few sums of binomial coefficients or something. It is always good to remember that there may not be a neat (sumless, integral-less) solution to every problem.`]
+For reasons I do not know, \\(\\int_{0}^{\\pi/n}\\cos((2n-1)\\theta)\\sec^{2n+1}(\\theta) d\\theta\\) is always \\(0\\) so we can simplify to
+\\[= \\frac{n}{4^n}\\int_{0}^{\\pi/n}\\sec^{2n}(\\theta) d\\theta\\]
+\\[= \\frac{n}{4^n}\\int_{0}^{\\pi/n}\\(1 + \\tan^2(\\theta))^{n-1}\\sec^2(\\theta)d\\theta\\]
+\\[= \\frac{n}{4^n}\\int_{0}^{\\pi/n}\\sum_{k=0}^{n-1}\\tan^{2k}(\\theta) \\binom{n-1}{k} d\\tan(\\theta)\\]
+\\[= \\frac{n}{4^n}\\sum_{k=0}^{n-1} \\frac{\\tan^{2k+1}(\\pi/n)}{2k+1}\\binom{n-1}{k}\\]
+Well, I guess we could have hoped for something a little bit neater, but I guess this is fine enough.`]
 }
 const urlPath = (new URL(window.location.href).search.substr(1));
 window.onload = function() {
