@@ -2,6 +2,57 @@
 <html>
   <head>
     <title>Linear equation solver</title>
+    <style>
+      body, html {
+        margin:0;
+        padding:0;
+        width:100%;
+        height:100%;
+        display:inline-block;
+        background:#DDF;
+      }
+      div {
+        display:inline-block;
+      }
+      * {
+        vertical-align:top;
+        box-sizing:border-box;
+      }
+      #leftside, #rightside {
+        width:50%;
+        height:100%;
+      }
+      #leftside {
+        background:white;
+      }
+      #rightside {
+        background:#DDF;
+      }
+      .entereq {
+        border:0;
+        width:100%;
+        padding:3px;
+        margin:0;
+        font-size:18px;
+        font-family:Trebuchet MS;
+        background:white;
+        font-weight:bold;
+        background:#A8A8FF;
+      }
+      .entereq:focus {
+        font-weight:normal;
+        padding:10px;
+        border-top:2px solid #00F;
+        border-bottom:2px solid #00F;
+        outline:none;/*ree*/
+      }
+      .gr {
+        background:#DDF;
+      }
+      textarea {
+        resize:none;
+      }
+    </style>
     <script>
       const find = function(elem) {
         return(document.getElementById(elem));
@@ -9,22 +60,22 @@
       HTMLElement.prototype.add = function(newHTML) {this.insertAdjacentHTML("beforeend",newHTML)};
       var numofeqs = 0;
       window.onload = function() {
-        find("leftside").innerHTML = '<input class="entereq" id="eq0" oninput="updateEqs(0)"><input class="entereq gr" id="eq1" oninput="updateEqs(1)">';
+        find("leftside").innerHTML = '<div contenteditable class="entereq" id="eq0" oninput="updateEqs(0)"></div><div contenteditable class="entereq gr" id="eq1" oninput="updateEqs(1)"></div>';
         numofeqs = 2;
       }
       var vars = [];
       const updateEqs = function(edt) {
         //Reset errors
         find("eq" + edt).style = "";
-        if (find("eq" + (numofeqs - 1)).value !== "") {
-          find("leftside").add('<input class="entereq' + ['',' gr'][numofeqs % 2] + '" id="eq' + numofeqs + '" oninput="updateEqs(' + numofeqs + ')">');
+        if (find("eq" + (numofeqs - 1)).innerHTML !== "") {
+          find("leftside").add('<div contenteditable class="entereq' + ['',' gr'][numofeqs % 2] + '" id="eq' + numofeqs + '" oninput="updateEqs(' + numofeqs + ')"></div>');
           numofeqs++;
         }
         clearUneqs();
         let zeroArray = [];
         for (let i = 0; i < numofeqs; i++) {
-          let badstuffbeforeeq = find("eq" + i).value.includes("+=") || find("eq" + i).value.includes("-=");
-          let inpspeq = find("eq" + i).replaceAll(" ","").split("");
+          let badstuffbeforeeq = find("eq" + i).innerHTML.includes("+=") || find("eq" + i).innerHTML.includes("-=");
+          let inpspeq = find("eq" + i).innerHTML.replaceAll(" ","").split("");
           if (inpspeq.length === 2 && inpspeq[0].length*inpspeq[1].length && !badstuffbeforeeq) {
             zeroArray[i] = clearPlPlMiMi(inpspeq[0]);
             inspeq[1] = clearPlPlMiMi(inspeq[1]);
@@ -42,7 +93,7 @@
         }
       }
       const clearUneqs = function() {
-        while (find("eq" + (numofeqs - 1)).value + find("eq" + (numofeqs - 2)).value === "" && numofeqs > 2) {
+        while (find("eq" + (numofeqs - 1)).innerHTML + find("eq" + (numofeqs - 2)).innerHTML === "" && numofeqs > 2) {
           numofeqs--;
           find("eq" + numofeqs).remove();
         }
@@ -57,48 +108,6 @@
         return(str);
       }
     </script>
-    <style>
-      body, html {
-        margin:0;
-        padding:0;
-        width:100%;
-        height:100%;
-        display:inline-block;
-      }
-      div {
-        display:inline-block;
-      }
-      * {
-        vertical-align:top;
-        box-sizing:border-box;
-      }
-      #leftside, #rightside {
-        width:50%;
-        height:100%;
-      }
-      #rightside {
-        background:#DDF;
-      }
-      .entereq {
-        border:0;
-        width:100%;
-        height:28px;
-        margin:0;
-        font-size:18px;
-        font-family:Trebuchet MS;
-        background:white;
-        font-weight:bold;
-        background:#EFEFFF;
-      }
-      .entereq:focus {
-        font-weight:normal;
-        height:40px;
-        padding:10px;
-      }
-      .gr {
-        background:#DDF;
-      }
-    </style>
   </head>
   <body><div id="leftside">Loading</div><div id="rightside"></div></body>
 </html>
