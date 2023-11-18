@@ -4,7 +4,7 @@
     <title>Linear equation solver</title>
     <script>
       const find = function(elem) {
-        return(document.getElementByID(elem));
+        return(document.getElementById(elem));
       }
       HTMLElement.prototype.add = function(newHTML) {this.insertAdjacentHTML("beforeend",newHTML)};
       var numofeqs = 2;
@@ -29,23 +29,30 @@
       }
       * {
         vertical-align:top;
+        box-sizing:border-box;
       }
       #leftside, #rightside {
-        width:48%
-        height:98%;
-        border:1% solid black;
+        width:50%;
+        height:100%;
+      }
+      #rightside {
+        background:#DDF;
       }
       .entereq {
         border:0;
         width:100%;
-        height:40px;
+        height:28px;
         margin:0;
-        font-size:30px;
+        font-size:18px;
         font-family:Trebuchet MS;
         background:white;
+        font-weight:bold;
+      }
+      .entereq:focus {
+        font-weight:normal;
       }
       .gr {
-        background:#ABABAB;
+        background:#DDF;
       }
     </style>
   </head>
