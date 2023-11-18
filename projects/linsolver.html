@@ -74,7 +74,7 @@
         //Reset errors
         find("eq" + edt).style = "";
         if ("<div><br></div><div></div>".includes(find("eq" + edt).innerHTML)) {
-          find("eq" + edt).innerHTML) = "";
+          find("eq" + edt).innerHTML = "";
         }
         if (find("eq" + (numofeqs - 1)).innerHTML !== "") {
           find("leftside").add('<div contenteditable class="entereq' + ['',' gr'][numofeqs % 2] + '" id="eq' + numofeqs + '" oninput="updateEqs(' + numofeqs + ')"></div>');
