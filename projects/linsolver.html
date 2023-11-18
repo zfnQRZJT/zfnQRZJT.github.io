@@ -9,16 +9,52 @@
       HTMLElement.prototype.add = function(newHTML) {this.insertAdjacentHTML("beforeend",newHTML)};
       var numofeqs = 0;
       window.onload = function() {
-        find("leftside").innerHTML = "";
-        find("leftside").add('<input class="entereq" id="eq0" oninput="updateEqs()"><input class="entereq gr" id="eq1" oninput="updateEqs()">');
+        find("leftside").innerHTML = '<input class="entereq" id="eq0" oninput="updateEqs(0)"><input class="entereq gr" id="eq1" oninput="updateEqs(1)">';
         numofeqs = 2;
       }
-      updateEqs = function() {
-        console.log("let's get this party started");
+      var vars = [];
+      const updateEqs = function(edt) {
+        //Reset errors
+        find("eq" + edt).style = "";
         if (find("eq" + (numofeqs - 1)).value !== "") {
-          find("leftside").add('<input class="entereq' + ['',' gr'][numofeqs % 2] + '" id="eq' + numofeqs + '" oninput="updateEqs()">');
+          find("leftside").add('<input class="entereq' + ['',' gr'][numofeqs % 2] + '" id="eq' + numofeqs + '" oninput="updateEqs(' + numofeqs + ')">');
           numofeqs++;
         }
+        clearUneqs();
+        let zeroArray = [];
+        for (let i = 0; i < numofeqs; i++) {
+          let badstuffbeforeeq = find("eq" + i).value.includes("+=") || find("eq" + i).value.includes("-=");
+          let inpspeq = find("eq" + i).replaceAll(" ","").split("");
+          if (inpspeq.length === 2 && inpspeq[0].length*inpspeq[1].length && !badstuffbeforeeq) {
+            zeroArray[i] = clearPlPlMiMi(inpspeq[0]);
+            inspeq[1] = clearPlPlMiMi(inspeq[1]);
+            if (!("+-".includes(inpspeq[1][0]))) {
+              zeroArray[i] += "-";
+            }
+            zeroArray[i] += inpspeq[1].replaceAll("-"," ").replaceAll("+","-").replaceAll(" ","+");
+          } else if (inpspeq.length > 2 || badstuffbeforeeq) {
+            find("eq" + i).style = "background:#F88;";
+          }
+        }
+        console.log(zeroArray);
+        for (let peqn of zeroArray) {
+          
+        }
+      }
+      const clearUneqs = function() {
+        while (find("eq" + (numofeqs - 1)).value + find("eq" + (numofeqs - 2)).value === "" && numofeqs > 2) {
+          numofeqs--;
+          find("eq" + numofeqs).remove();
+        }
+      }
+      const clearPlPlMiMi = function(str) {
+        while (str.includes("--") || str.includes("-+") || str.includes("+-") || str.includes("++")) {
+          str = str.replaceAll("--","+");
+          str = str.replaceAll("++","+");
+          str = str.replaceAll("-+","-");
+          str = str.replaceAll("+-","-");
+        }
+        return(str);
       }
     </script>
     <style>
@@ -56,6 +92,8 @@
       }
       .entereq:focus {
         font-weight:normal;
+        height:40px;
+        padding:10px;
       }
       .gr {
         background:#DDF;
