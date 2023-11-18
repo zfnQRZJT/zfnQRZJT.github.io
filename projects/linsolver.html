@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Linear equation solver</title>
+    <script>
+      const find = function(elem) {
+        return(document.getElementByID(elem));
+      }
+      HTMLElement.prototype.add = function(newHTML) {this.insertAdjacentHTML("beforeend",newHTML)};
+      var numofeqs = 2;
+      find("leftside").oninput = function() {
+        console.log("let's get this party started");
+        if (find("eq" + (numofeqs - 1)).value !== "") {
+          find("leftside").add('<input class="entereq' + ['',' gr'][numofeqs % 2] + '" id="eq' + numofeqs + '">');
+          numofeqs++;
+        }
+      }
+    </script>
+    <style>
+      body, html {
+        margin:0;
+        padding:0;
+        width:100%;
+        height:100%;
+        display:inline-block;
+      }
+      div {
+        display:inline-block;
+      }
+      * {
+        vertical-align:top;
+      }
+      #leftside, #rightside {
+        width:48%
+        height:98%;
+        border:1% solid black;
+      }
+      .entereq {
+        border:0;
+        width:100%;
+        height:40px;
+        margin:0;
+        font-size:30px;
+        font-family:Trebuchet MS;
+        background:white;
+      }
+      .gr {
+        background:#ABABAB;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="leftside">
+      <input class="entereq" id="eq0">
+      <input class="entereq gr" id="eq1">
+    </div>
+    <div id="rightside"></div>
+  </body>
+</html>
