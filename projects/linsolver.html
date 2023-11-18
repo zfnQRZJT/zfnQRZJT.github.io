@@ -75,10 +75,10 @@
         let zeroArray = [];
         for (let i = 0; i < numofeqs; i++) {
           let badstuffbeforeeq = find("eq" + i).innerHTML.includes("+=") || find("eq" + i).innerHTML.includes("-=");
-          let inpspeq = find("eq" + i).innerHTML.replaceAll(" ","").split("");
+          let inpspeq = find("eq" + i).innerHTML.replaceAll(" ","").split("=");
           if (inpspeq.length === 2 && inpspeq[0].length*inpspeq[1].length && !badstuffbeforeeq) {
             zeroArray[i] = clearPlPlMiMi(inpspeq[0]);
-            inspeq[1] = clearPlPlMiMi(inspeq[1]);
+            inpspeq[1] = clearPlPlMiMi(inpspeq[1]);
             if (!("+-".includes(inpspeq[1][0]))) {
               zeroArray[i] += "-";
             }
