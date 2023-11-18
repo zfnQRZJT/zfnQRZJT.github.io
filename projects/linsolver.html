@@ -7,11 +7,16 @@
         return(document.getElementById(elem));
       }
       HTMLElement.prototype.add = function(newHTML) {this.insertAdjacentHTML("beforeend",newHTML)};
-      var numofeqs = 2;
-      find("leftside").oninput = function() {
+      var numofeqs = 0;
+      window.onload = function() {
+        find("leftside").innerHTML = "";
+        find("leftside").add('<input class="entereq" id="eq0" oninput="updateEqs()"><input class="entereq gr" id="eq1" oninput="updateEqs()">');
+        numofeqs = 2;
+      }
+      updateEqs = function() {
         console.log("let's get this party started");
         if (find("eq" + (numofeqs - 1)).value !== "") {
-          find("leftside").add('<input class="entereq' + ['',' gr'][numofeqs % 2] + '" id="eq' + numofeqs + '">');
+          find("leftside").add('<input class="entereq' + ['',' gr'][numofeqs % 2] + '" id="eq' + numofeqs + '" oninput="updateEqs()">');
           numofeqs++;
         }
       }
@@ -47,6 +52,7 @@
         font-family:Trebuchet MS;
         background:white;
         font-weight:bold;
+        background:#EFEFFF;
       }
       .entereq:focus {
         font-weight:normal;
@@ -56,11 +62,5 @@
       }
     </style>
   </head>
-  <body>
-    <div id="leftside">
-      <input class="entereq" id="eq0">
-      <input class="entereq gr" id="eq1">
-    </div>
-    <div id="rightside"></div>
-  </body>
+  <body><div id="leftside">Loading</div><div id="rightside"></div></body>
 </html>
