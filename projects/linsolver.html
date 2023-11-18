@@ -73,7 +73,9 @@
       const updateEqs = function(edt) {
         //Reset errors
         find("eq" + edt).style = "";
-        find("eq" + edt).innerHTML = find("eq" + edt).innerHTML.replaceAll("<br>","").replaceAll("<div>","").replaceAll("</div>","").replaceAll("<","&lt;").replaceAll(">","&rt;");
+        if ("<div><br></div><div></div>".includes(find("eq" + edt).innerHTML)) {
+          find("eq" + edt).innerHTML) = "";
+        }
         if (find("eq" + (numofeqs - 1)).innerHTML !== "") {
           find("leftside").add('<div contenteditable class="entereq' + ['',' gr'][numofeqs % 2] + '" id="eq' + numofeqs + '" oninput="updateEqs(' + numofeqs + ')"></div>');
           numofeqs++;
@@ -81,7 +83,7 @@
         clearUneqs();
         let zeroArray = [];
         for (let i = 0; i < numofeqs; i++) {
-          let badstuffbeforeeq = find("eq" + i).innerHTML.includes("+=") || find("eq" + i).innerHTML.includes("-=");
+          let badstuffbeforeeq = find("eq" + i).innerHTML.includes("+=") || find("eq" + i).innerHTML.includes("-=") || find("eq" + i).innerHTML.includes("<br>");
           let inpspeq = find("eq" + i).innerHTML.replaceAll(" ","").split("=");
           if (inpspeq.length === 2 && inpspeq[0].length*inpspeq[1].length && !badstuffbeforeeq) {
             zeroArray[i] = "";
