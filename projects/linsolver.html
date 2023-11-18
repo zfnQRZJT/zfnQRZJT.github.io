@@ -73,7 +73,7 @@
       const updateEqs = function(edt) {
         //Reset errors
         find("eq" + edt).style = "";
-        if ("<div><br></div><div></div>".includes(find("eq" + edt).innerHTML)) {
+        if (find("eq" + edt).innerHTML.replaceAll("<br>","").replaceAll("<div></div>","") === "") {
           find("eq" + edt).innerHTML = "";
         }
         if (find("eq" + (numofeqs - 1)).innerHTML !== "") {
