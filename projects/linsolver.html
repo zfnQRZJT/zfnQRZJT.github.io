@@ -46,8 +46,14 @@
         border-bottom:2px solid #00F;
         outline:none;/*ree*/
       }
+      .entereq::selection {
+        background:#0A5;
+      }
       .gr {
         background:#DDF;
+      }
+      .gr::selection {
+        background:#0C5;
       }
       textarea {
         resize:none;
@@ -67,6 +73,7 @@
       const updateEqs = function(edt) {
         //Reset errors
         find("eq" + edt).style = "";
+        find("eq" + edt).innerHTML = find("eq" + edt).innerHTML.replaceAll("<br>","").replaceAll("<div>","").replaceAll("</div>","").replaceAll("<","&lt;").replaceAll(">","&rt;");
         if (find("eq" + (numofeqs - 1)).innerHTML !== "") {
           find("leftside").add('<div contenteditable class="entereq' + ['',' gr'][numofeqs % 2] + '" id="eq' + numofeqs + '" oninput="updateEqs(' + numofeqs + ')"></div>');
           numofeqs++;
@@ -77,7 +84,11 @@
           let badstuffbeforeeq = find("eq" + i).innerHTML.includes("+=") || find("eq" + i).innerHTML.includes("-=");
           let inpspeq = find("eq" + i).innerHTML.replaceAll(" ","").split("=");
           if (inpspeq.length === 2 && inpspeq[0].length*inpspeq[1].length && !badstuffbeforeeq) {
-            zeroArray[i] = clearPlPlMiMi(inpspeq[0]);
+            zeroArray[i] = "";
+            if (!("+-".includes(inpspeq[0][0]))) {
+              zeroArray[i] = "+";
+            }
+            zeroArray[i] += clearPlPlMiMi(inpspeq[0]);
             inpspeq[1] = clearPlPlMiMi(inpspeq[1]);
             if (!("+-".includes(inpspeq[1][0]))) {
               zeroArray[i] += "-";
