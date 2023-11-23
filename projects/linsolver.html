@@ -108,7 +108,7 @@
         for (let peqnind = 0; peqnind < zeroArray.length; peqnind++) {
           if (peqnind in zeroArray) {peqn = zeroArray[peqnind];} else {continue;}
           let segmented = [];
-          let mode = 0;
+          let mode = 1;
           for (let i = 0; i < peqn.length; i++) {
             if ((mode && peqn[i] === "+" || peqn[i] === "-") || (1 - mode && !numchars.includes(peqn[i]))) {
               mode = 1 - mode; segmented.push(peqn[i]);
