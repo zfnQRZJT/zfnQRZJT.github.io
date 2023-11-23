@@ -203,10 +203,12 @@
 						console.log("zero array");
 					} else {
 						donevars[multj] = JSON.parse(JSON.stringify(parr[multj]));
+						console.log("new donevar",donevars[multj]);
 						for (let k = parrind + 1; k < matrArray.length; k++) {
 							if (matrArray[k][multj][0] !== 0) {
-								matrArray[k] = arith(matrArray[k],arith(donevars[multj],matrArray[k][multj],"*"),"+");
-								//that's supposedly literally it
+								for (let l = 0; l < vars.length; l++) {
+									matrArray[k][l] = arith(matrArray[k][l],arith(donevars[multj][l],matrArray[k][multj],"*"),"+");
+								}
 							}
 						}
 						console.log("matrarray modified after var",vars[multj],"and is now",JSON.stringify(matrArray));
