@@ -202,7 +202,8 @@
 					if (multf === "") {
 						console.log("zero array");
 					} else {
-						donevars[multj] = JSON.parse(JSON.stringify(parr[multj]));
+						console.log("parrmultj",parr);
+						donevars[multj] = JSON.parse(JSON.stringify(parr));
 						console.log("new donevar",donevars[multj]);
 						for (let k = parrind + 1; k < matrArray.length; k++) {
 							if (matrArray[k][multj][0] !== 0) {
