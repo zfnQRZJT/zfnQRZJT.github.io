@@ -185,6 +185,7 @@
         }
 				console.log("matrArray",JSON.stringify(matrArray));
 				let donevars = [];
+				let varorder = [];
 				for (let parrind = 0; parrind < matrArray.length; parrind++) {
 					let parr = matrArray[parrind];
 					let multf = "";
@@ -192,6 +193,7 @@
 					for (let j = 1; j < parr.length; j++) {
 						if (parr[j][0] !== 0) {
 							multj = j;
+							varorder.push(j);
 							multf = arith([-1,1],parr[j],"/");
 							for (let k = 0; k < parr.length; k++) {
 								parr[k] = arith(parr[k],multf,"*");
@@ -208,6 +210,7 @@
 						for (let k = parrind + 1; k < matrArray.length; k++) {
 							if (matrArray[k][multj][0] !== 0) {
 								for (let l = 0; l < vars.length; l++) {
+									console.log("looking at matrArray",k,l,"we multiplied by",matrArray[k][multj]);
 									matrArray[k][l] = arith(matrArray[k][l],arith(donevars[multj][l],matrArray[k][multj],"*"),"+");
 								}
 							}
