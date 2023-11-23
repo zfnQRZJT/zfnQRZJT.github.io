@@ -184,7 +184,7 @@
 					}
         }
 				if (vars.length - 1 > matrArray.length) {
-					postAns("<b>More variables than equations</b>");
+					postAns(["More variables than equations</b>"]);
 					return;
 				}
 				console.log("matrArray",JSON.stringify(matrArray));
@@ -235,20 +235,18 @@
 						}
 					}
 				}
-				let results = "";
+				let results = [];
 				for (i = 1; i < vars.length; i++) {
-					results += vars[i] + " = ";
-					if (varvals[i][1] === 1) {
-						results += varvals[i][0];
-					} else {
-						results += varvals[i][0] + "/" + varvals[i][1];
+					let thres = vars[i] + " = " + varvals[i][0];
+					if (varvals[i][1] !== 1) {
+						thres += varvals[i][0] + "/" + varvals[i][1];
 					}
-					results += "\n";
+					results.push(thres);
 				}
 				postAns(results);
       }
 			const postAns = function(words) {
-				find("rightside").innerHTML = words.replaceAll("\n","<br>");
+				find("rightside").innerHTML = '<div class="entereq gr">' + words.join('</div><div class="entereq gr">') + "</div>;
 			}
       const arith = function(r1,r2,op) {
         let newRat = [];
