@@ -105,7 +105,7 @@
         var vars = [];
         var peqn;
         for (let peqnind = 0; peqnind < zeroArray.length; peqnind++) {
-          if (peqnind in zeroArray) {peqn = peqnind;} else {continue;}
+          if (peqnind in zeroArray) {peqn = zeroArray[peqnind];} else {continue;}
           let segmented = [];
           let mode = 0;
           for (let i = 0; i < peqn.length; i++) {
@@ -146,12 +146,40 @@
             continue;
           }
         }
-        console.log(vars);
-      }
-      const interpRats = function(r1,r2,op) {
-        if (op === "+") {
-          
+        let matrArray = [];
+        for (let peqnind = 0; peqnind < zeroArray.length; peqnind++) {
+          if (peqnind in zeroArray) {peqn = zeroArray[peqnind];} else {continue;}
+          //Convert into matrix format
         }
+      }
+      const arithRats = function(r1,r2,op) {
+        let newRat = [];
+        if (op === "+") {
+          newRat = [r1[0]*r2[2] + r1[1]*r2[0],r1[1]*r2[1]];
+        } else if (op === "-") {
+          newRat = [r1[0]*r2[2] - r1[1]*r2[0],r1[1]*r2[1]];
+        } else if (op === "*") {
+          newRat = [r1[0]*r2[0],r1[1]*r2[1]];
+        } else if (op === "/") {
+          if (r2[0] === 0) {
+            throw Error("Dividing by zero");
+          } else {
+            newRat = [r1[0]*r2[1],r1[1]*r2[0]];
+          }
+        }
+        newGcd = gcd(...newRat);
+        return([newRat[0]/newGcd,newRat[1]/newGcd]);
+      }
+      const gcd = function(n1,n2) {
+        n1 = Math.abs(n1); n2 = Math.abs(n2);
+        while (n1*n2 > 0) {
+          if (n1 > n2) {
+						n1 = n1 % n2;
+					} else {
+						n2 = n2 % n1;
+					}
+        }
+        return(n1 + n2);
       }
       const clearUneqs = function() {
         while (find("eq" + (numofeqs - 1)).innerHTML + find("eq" + (numofeqs - 2)).innerHTML === "" && numofeqs > 2) {
