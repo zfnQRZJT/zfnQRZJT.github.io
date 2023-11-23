@@ -129,6 +129,9 @@
 							segmented[segmented.length - 1] += peqn[i];
 						}
           }
+					if (segmented.length % 2) {
+						segmented.push("");
+					}
           var fallor = false;
 					peqn = segmented;
 					console.log("peqn",peqn);
@@ -172,6 +175,7 @@
 					let targ = 0;
 					for (let j = 0; j < peqn.length; j += 2) {
 						targ = vars.indexOf(peqn[j + 1]);
+						console.log("peqnind:",peqnind,"peqn:",peqn,"targ:",targ,"vars:",vars);
 						matrArray[targ] = arith(matrArray[targ],peqn[j],"+");
 					}
         }
