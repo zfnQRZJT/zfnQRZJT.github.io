@@ -179,7 +179,7 @@
 					for (let j = 0; j < peqn.length; j += 2) {
 						targ = vars.indexOf(peqn[j + 1]);
 						console.log("peqnind:",peqnind,"peqn:",peqn,"targ:",targ,"vars:",vars);
-						matrArray[targ] = arith(matrArray[targ],peqn[j],"+");
+						matrArray[matrArray.length - 1][targ] = arith(matrArray[matrArray.length - 1][targ],peqn[j],"+");
 					}
         }
 				console.log("matrArray",matrArray);
