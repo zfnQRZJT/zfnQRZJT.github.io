@@ -224,25 +224,25 @@
 					}
 				}
 				//Now donevars is our row echelon matrix, traversable backwards along varorder
-				console.log("donevars",JSON.stringify(donevars));
+				//console.log("donevars",JSON.stringify(donevars));
 				let varvals = [];
 				for (let i = varorder.length - 1; i >= 0; i--) {
 					nevi = varorder[i];
-					console.log("computing variable",vars[nevi]);
+					//console.log("computing variable",vars[nevi]);
 					varvals[nevi] = [donevars[nevi][0][0],donevars[nevi][0][1]];
-					console.log("and we think its",varvals[nevi]);
+					//console.log("and we think its",varvals[nevi]);
 					for (let j = 1; j < donevars.length; j++) {
 						if (donevars[j][nevi][0] !== 0) {
 							donevars[j][0] = arith(donevars[j][0],arith(donevars[j][nevi],varvals[nevi],"*"),"+");
 						}
-						console.log("after variable",vars[nevi],JSON.stringify(donevars));
+						//console.log("after variable",vars[nevi],JSON.stringify(donevars));
 					}
 				}
 				let results = [];
 				for (i = 1; i < vars.length; i++) {
 					let thres = vars[i] + " = " + varvals[i][0];
 					if (varvals[i][1] !== 1) {
-						thres += varvals[i][0] + "/" + varvals[i][1];
+						thres += "/" + varvals[i][1];
 					}
 					results.push(thres);
 				}
