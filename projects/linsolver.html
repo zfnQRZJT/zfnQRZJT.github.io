@@ -147,7 +147,9 @@
             } else {
               if (1*peqn[i] || 1*peqn[i] === 0) {
                 if (peqn[i].includes(".")) {
-                  peqn[i] = [1*peqn[i].replaceAll(".",""),peqn[i].length - peqn[i].indexOf(".") - 1];
+									console.log(peqn[i]);
+                  peqn[i] = [1*peqn[i].replaceAll(".",""),10**(peqn[i].length - peqn[i].indexOf(".") - 1)];
+									console.log("after",peqn[i]);
                 } else {
 									peqn[i] = [1*peqn[i],1];
 								}
@@ -207,6 +209,7 @@
 								//that's supposedly literally it
 							}
 						}
+						console.log("matrarray modified after var",vars[multj],"and is now",JSON.stringify(matrArray));
 					}
 				}
       }
