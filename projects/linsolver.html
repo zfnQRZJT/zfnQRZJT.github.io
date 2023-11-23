@@ -185,6 +185,7 @@
         }
 				if (vars.length - 1 > matrArray.length) {
 					postAns("<b>More variables than equations</b>");
+					return;
 				}
 				console.log("matrArray",JSON.stringify(matrArray));
 				let donevars = [];
@@ -228,7 +229,7 @@
 				for (let i = varorder.length - 1; i >= 0; i--) {
 					nevi = varorder[i];
 					varvals[nevi] = donevars[i][0];
-					for (let j = 0; j < donevars.length; j++) {
+					for (let j = 1; j < donevars.length; j++) {
 						if (donevars[j][nevi][0] !== 0) {
 							donevars[j][0] = arithm(donevars[j][0],arithm(donevars[j][nevi],varvals[varorder[nevi]],"*"),"+");
 						}
