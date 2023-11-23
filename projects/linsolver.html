@@ -99,6 +99,7 @@
             zeroArray[i] += inpspeq[1].replaceAll("-"," ").replaceAll("+","-").replaceAll(" ","+");
           } else if (inpspeq.length > 2 || badstuffbeforeeq) {
             find("eq" + i).style = rb;
+						console.log("rb",inpspeq,badstuffbeforeeq);
           }
         }
         console.log(zeroArray);
