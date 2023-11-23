@@ -148,8 +148,10 @@
             } else {
               if (1*peqn[i] || 1*peqn[i] === 0) {
                 if (peqn[i].includes(".")) {
-                  peqn[i] = [1*peqn.replaceAll(".",""),peqn.length - peqn.indexOf(".") - 1];
-                }
+                  peqn[i] = [1*peqn[i].replaceAll(".",""),peqn[i].length - peqn[i].indexOf(".") - 1];
+                } else {
+									peqn[i] = [1*peqn[i],1];
+								}
               } else {
                 //Non interpretable number
                 find("eq" + peqnind).style = rb;
@@ -162,6 +164,7 @@
               vars.push(peqn[i+1]);
             }
           }
+					zeroArray[peqnind] = peqn;
           if (fallor) {
             zeroArray[peqnind] = undefined;
             continue;
