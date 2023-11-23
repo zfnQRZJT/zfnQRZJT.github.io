@@ -69,7 +69,7 @@
         find("leftside").innerHTML = '<div contenteditable class="entereq" id="eq0" oninput="updateEqs(0)"></div><div contenteditable class="entereq gr" id="eq1" oninput="updateEqs(1)"></div>';
         numofeqs = 2;
       }
-      var vars = [];
+      const numchars = "0123456789+-/";
       const updateEqs = function(edt) {
         //Reset errors
         find("eq" + edt).style = "";
@@ -81,6 +81,7 @@
           numofeqs++;
         }
         clearUneqs();
+        const rb = "background:#F88;"
         let zeroArray = [];
         for (let i = 0; i < numofeqs; i++) {
           let badstuffbeforeeq = find("eq" + i).innerHTML.includes("+=") || find("eq" + i).innerHTML.includes("-=") || find("eq" + i).innerHTML.includes("<br>");
@@ -97,11 +98,58 @@
             }
             zeroArray[i] += inpspeq[1].replaceAll("-"," ").replaceAll("+","-").replaceAll(" ","+");
           } else if (inpspeq.length > 2 || badstuffbeforeeq) {
-            find("eq" + i).style = "background:#F88;";
+            find("eq" + i).style = rb;
           }
         }
         console.log(zeroArray);
-        for (let peqn of zeroArray) {
+        var vars = [];
+        var peqn;
+        for (let peqnind = 0; peqnind < zeroArray.length; peqnind++) {
+          if (peqnind in zeroArray) {peqn = peqnind;} else {continue;}
+          let segmented = [];
+          let mode = 0;
+          for (let i = 0; i < peqn.length; i++) {
+            if ((mode && peqn[i] === "+" || peqn[i] === "-") || (1 - mode && !numchars.includes(peqn[i]))) {
+              mode = 1 - mode; segmented.push(peqn[i]);
+            } else {
+              segmented[segmented.length - 1] += peqn[i];
+            }
+          }
+          var fallor = false;
+          for (let i = 0; i < peqn.length; i += 2) {
+            if (peqn[i].includes("/")) {
+              if (peqn[i].length - peqn[i].replaceAll("/","").length >= 2) {
+                find("eq" + peqnind).style = rb;
+                fallor = true;
+                break;
+              } else {
+                peqn[i] = [1*(peqn[i].split("/")[0]),1*(peqn[i].split("/")[1])];
+              }
+            } else {
+              if (1*peqn[i] || 1*peqn[i] === 0) {
+                if (peqn[i].includes(".")) {
+                  peqn[i] = [1*peqn.replaceAll(".",""),peqn.length - peqn.indexOf(".") - 1];
+                }
+              } else {
+                //Non interpretable number
+                find("eq" + peqnind).style = rb;
+                fallor = true;
+                break;
+              }
+            }
+            if (!(vars.includes(peqn[i+1])) {
+              vars.push(peqn[i+1]);
+            }
+          }
+          if (fallor) {
+            zeroArray[peqnind] = undefined;
+            continue;
+          }
+        }
+        console.log(vars);
+      }
+      const interpRats = function(r1,r2,op) {
+        if (op === "+") {
           
         }
       }
