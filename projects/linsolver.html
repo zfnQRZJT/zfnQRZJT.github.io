@@ -103,18 +103,31 @@
           }
         }
         console.log(zeroArray);
-        var vars = [];
+        var vars = [""];
         var peqn;
         for (let peqnind = 0; peqnind < zeroArray.length; peqnind++) {
           if (peqnind in zeroArray) {peqn = zeroArray[peqnind];} else {continue;}
           let segmented = [];
-          let mode = 1;
-          for (let i = 0; i < peqn.length; i++) {
-            if ((mode && peqn[i] === "+" || peqn[i] === "-") || (1 - mode && !numchars.includes(peqn[i]))) {
-              mode = 1 - mode; segmented.push(peqn[i]);
-            } else {
+          let mode = 0;
+					for (let i = 0; i < peqn.length; i++) {
+						console.log(mode,segmented);
+            if ("+-".includes(peqn[i])) {
+							if (segmented.length % 2) {
+								segmented.push("");
+							}
+							mode = 0;
+              segmented.push(peqn[i]);
+            } else if (numchars.includes(peqn[i]) && !mode) {
               segmented[segmented.length - 1] += peqn[i];
-            }
+            } else if (!mode) {
+							if (segmented[segmented.length - 1].length === 1) {
+								segmented[segmented.length - 1] += "1";
+							}
+							segmented.push(peqn[i]);
+							mode = 1;
+						} else {
+							segmented[segmented.length - 1] += peqn[i];
+						}
           }
           var fallor = false;
 					peqn = segmented;
@@ -155,9 +168,43 @@
         for (let peqnind = 0; peqnind < zeroArray.length; peqnind++) {
           if (peqnind in zeroArray) {peqn = zeroArray[peqnind];} else {continue;}
           //Convert into matrix format
+					matrArray.push(vars.map(x => [0,1]));
+					let targ = 0;
+					for (let j = 0; j < peqn.length; j += 2) {
+						targ = vars.indexOf(peqn[j + 1]);
+						matrArray[targ] = arith(matrArray[targ],peqn[j],"+");
+					}
         }
+				console.log("matrArray",matrArray);
+				let donevars = [];
+				for (let parrind = 0; parrind < matrArray.length; parrind++) {
+					let parr = matrArray[parrind];
+					let multf = "";
+					let multj = 0;
+					for (let j = 1; j < parr.length; j++) {
+						if (parr[j][0] !== 0) {
+							multj = j;
+							multf = arith([-1,1],parr[j],"/");
+							for (let k = 0; k < parr.length; k++) {
+								parr[k] = arith(parr[k],multf,"*");
+							}
+							break;
+						}
+					}
+					if (multf === "") {
+						console.log("zero array");
+					} else {
+						donevars[multj] = JSON.parse(JSON.stringify(parr[multj]));
+						for (let k = parrind + 1; k < matrArray.length; k++) {
+							if (matrArray[k][multj][0] !== 0) {
+								matrArray[k] = arith(matrArray[k],arith(donevars[multj],matrArray[k][multj],"*"),"+");
+								//that's supposedly literally it
+							}
+						}
+					}
+				}
       }
-      const arithRats = function(r1,r2,op) {
+      const arith = function(r1,r2,op) {
         let newRat = [];
         if (op === "+") {
           newRat = [r1[0]*r2[2] + r1[1]*r2[0],r1[1]*r2[1]];
@@ -171,9 +218,15 @@
           } else {
             newRat = [r1[0]*r2[1],r1[1]*r2[0]];
           }
-        }
-        newGcd = gcd(...newRat);
-        return([newRat[0]/newGcd,newRat[1]/newGcd]);
+        } else if (op === "n") {
+					newRat = [r1[0]*(-1),r1[1]];
+				}
+				if (newRat[0] === 0) {
+					return([0,1]);
+				} else {
+        	newGcd = gcd(...newRat);
+        	return([newRat[0]/newGcd,newRat[1]/newGcd]);
+				}
       }
       const gcd = function(n1,n2) {
         n1 = Math.abs(n1); n2 = Math.abs(n2);
