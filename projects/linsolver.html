@@ -271,7 +271,7 @@
 					return([0,1]);
 				} else {
         	newGcd = gcd(...newRat);
-        	return([newRat[0]/newGcd,newRat[1]/newGcd]);
+        	return([newRat[0]/newGcd*Math.sign(newRat[1]),newRat[1]/newGcd*Math.sign(newRat[1])]);
 				}
       }
       const gcd = function(n1,n2) {
