@@ -99,10 +99,10 @@
             zeroArray[i] += inpspeq[1].replaceAll("-"," ").replaceAll("+","-").replaceAll(" ","+");
           } else if (inpspeq.length > 2 || badstuffbeforeeq) {
             find("eq" + i).style = rb;
-		  			console.log("rb",inpspeq,badstuffbeforeeq);
+		  			//console.log("rb",inpspeq,badstuffbeforeeq);
           }
         }
-        console.log(zeroArray);
+        //console.log(zeroArray);
         var vars = [""];
         var peqn;
         for (let peqnind = 0; peqnind < zeroArray.length; peqnind++) {
@@ -133,7 +133,7 @@
 					}
           var fallor = false;
 					peqn = segmented;
-					console.log("peqn",peqn);
+					//console.log("peqn",peqn);
           for (let i = 0; i < peqn.length; i += 2) {
             if (peqn[i].includes("/")) {
               if (peqn[i].length - peqn[i].replaceAll("/","").length >= 2) {
@@ -147,9 +147,9 @@
             } else {
               if (1*peqn[i] || 1*peqn[i] === 0) {
                 if (peqn[i].includes(".")) {
-									console.log(peqn[i]);
+									//console.log(peqn[i]);
                   peqn[i] = [1*peqn[i].replaceAll(".",""),10**(peqn[i].length - peqn[i].indexOf(".") - 1)];
-									console.log("after",peqn[i]);
+									//console.log("after",peqn[i]);
                 } else {
 									peqn[i] = [1*peqn[i],1];
 								}
@@ -207,9 +207,9 @@
 					if (multf === "") {
 						console.log("zero array");
 					} else {
-						console.log("parrmultj",parr);
+						//console.log("parrmultj",parr);
 						donevars[multj] = JSON.parse(JSON.stringify(parr));
-						console.log("new donevar",donevars[multj]);
+						//console.log("new donevar",donevars[multj]);
 						for (let k = parrind + 1; k < matrArray.length; k++) {
 							if (matrArray[k][multj][0] !== 0) {
 								let specmul = [matrArray[k][multj][0],matrArray[k][multj][1]];
@@ -219,10 +219,11 @@
 								}
 							}
 						}
-						console.log("matrarray modified after var",vars[multj],"and is now",JSON.stringify(matrArray));
+						//console.log("matrarray modified after var",vars[multj],"and is now",JSON.stringify(matrArray));
 					}
 				}
 				//Now donevars is our row echelon matrix, traversable backwards along varorder
+				console.log("donevars",JSON.stringify(donevars));
 				let varvals = [];
 				for (let i = varorder.length - 1; i >= 0; i--) {
 					nevi = varorder[i];
