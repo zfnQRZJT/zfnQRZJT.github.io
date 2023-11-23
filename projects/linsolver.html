@@ -69,7 +69,7 @@
         find("leftside").innerHTML = '<div contenteditable class="entereq" id="eq0" oninput="updateEqs(0)"></div><div contenteditable class="entereq gr" id="eq1" oninput="updateEqs(1)"></div>';
         numofeqs = 2;
       }
-      const numchars = "0123456789+-/";
+      const numchars = "0123456789/.";
       const updateEqs = function(edt) {
         //Reset errors
         find("eq" + edt).style = "";
