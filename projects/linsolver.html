@@ -183,6 +183,9 @@
 						matrArray[matrArray.length - 1][targ] = arith(matrArray[matrArray.length - 1][targ],peqn[j],"+");
 					}
         }
+				if (vars.length - 1 > matrArray.length) {
+					postAns("<b>More equations than variables</b>");
+				}
 				console.log("matrArray",JSON.stringify(matrArray));
 				let donevars = [];
 				let varorder = [];
@@ -219,7 +222,32 @@
 						console.log("matrarray modified after var",vars[multj],"and is now",JSON.stringify(matrArray));
 					}
 				}
+				//Now donevars is our row echelon matrix, traversable backwards along varorder
+				let varvals = [];
+				for (let i = varorder.length - 1; i >= 0; i--) {
+					nevi = varorder[i];
+					varvals[nevi] = donevars[i][0];
+					for (let j = 0; j < donevars.length; j++) {
+						if (donevars[j][nevi][0] !== 0) {
+							donevars[j][0] = arithm(donevars[j][0],arithm(donevars[j][nevi],varvals[varorder[nevi]],"*"),"+");
+						}
+					}
+				}
+				let results = "";
+				for (i = 1; i < vars.length; i++) {
+					results += vars[i] + " = ";
+					if (varvals[i][1] === 1) {
+						results += varvals[i][0];
+					} else {
+						results += varvals[i][0] + "/" + varvals[i][1];
+					}
+					results += "\n";
+				}
+				postAns(results);
       }
+			const postAns = function(words) {
+				find("rightside").innerHTML = words.replaceAll("\n","<br>");
+			}
       const arith = function(r1,r2,op) {
         let newRat = [];
         if (op === "+") {
