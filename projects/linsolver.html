@@ -209,9 +209,10 @@
 						console.log("new donevar",donevars[multj]);
 						for (let k = parrind + 1; k < matrArray.length; k++) {
 							if (matrArray[k][multj][0] !== 0) {
+								let specmul = [matrArray[k][multj][0],matrArray[k][multj][1]];
 								for (let l = 0; l < vars.length; l++) {
-									console.log("looking at matrArray",k,l,"we multiplied by",matrArray[k][multj]);
-									matrArray[k][l] = arith(matrArray[k][l],arith(donevars[multj][l],matrArray[k][multj],"*"),"+");
+									//console.log("looking at matrArray",k,l,"we multiplied by",matrArray[k][multj]);
+									matrArray[k][l] = arith(matrArray[k][l],arith(donevars[multj][l],specmul,"*"),"+");
 								}
 							}
 						}
