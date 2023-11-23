@@ -231,7 +231,7 @@
 					varvals[nevi] = donevars[i][0];
 					for (let j = 1; j < donevars.length; j++) {
 						if (donevars[j][nevi][0] !== 0) {
-							donevars[j][0] = arithm(donevars[j][0],arithm(donevars[j][nevi],varvals[varorder[nevi]],"*"),"+");
+							donevars[j][0] = arith(donevars[j][0],arith(donevars[j][nevi],varvals[varorder[nevi]],"*"),"+");
 						}
 					}
 				}
