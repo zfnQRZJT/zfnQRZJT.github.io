@@ -110,7 +110,6 @@
           let segmented = [];
           let mode = 0;
 					for (let i = 0; i < peqn.length; i++) {
-						console.log(mode,segmented);
             if ("+-".includes(peqn[i])) {
 							if (segmented.length % 2) {
 								segmented.push("");
@@ -178,11 +177,11 @@
 					let targ = 0;
 					for (let j = 0; j < peqn.length; j += 2) {
 						targ = vars.indexOf(peqn[j + 1]);
-						console.log("peqnind:",peqnind,"peqn:",peqn,"targ:",targ,"vars:",vars);
+						//console.log("peqnind:",peqnind,"peqn:",peqn,"targ:",targ,"vars:",vars);
 						matrArray[matrArray.length - 1][targ] = arith(matrArray[matrArray.length - 1][targ],peqn[j],"+");
 					}
         }
-				console.log("matrArray",matrArray);
+				console.log("matrArray",JSON.stringify(matrArray));
 				let donevars = [];
 				for (let parrind = 0; parrind < matrArray.length; parrind++) {
 					let parr = matrArray[parrind];
