@@ -357,7 +357,64 @@ For reasons I do not know, \\(\\int_{0}^{\\pi/n}\\cos((2n-1)\\theta)\\sec^{2n+1}
 \\[= \\frac{n}{4^n}\\int_{0}^{\\pi/n}\\left(1 + \\tan^2(\\theta)\\right)^{n-1}\\sec^2(\\theta)d\\theta\\]
 \\[= \\frac{n}{4^n}\\int_{0}^{\\pi/n}\\sum_{k=0}^{n-1}\\tan^{2k}(\\theta) \\binom{n-1}{k} d\\tan(\\theta)\\]
 \\[= \\frac{n}{4^n}\\sum_{k=0}^{n-1} \\frac{\\tan^{2k+1}(\\pi/n)}{2k+1}\\binom{n-1}{k}\\]
-Well, we could have hoped for something a little bit neater, but I guess this is a good enough final answer.`]
+Well, we could have hoped for something a little bit neater, but I guess this is a good enough final answer.`],
+  "8292942597449297":["Two objects falling together",true,`
+  I was posed this question: We have 2 masses in an empty universe, each mass \\(M\\), a distance \\(x_0\\) then we drop them from rest. Find the distance apart as a function of time.
+  Well, my thought process went, the gravitational force is proportional to \\(\\frac{1}{x^2}\\), and so \\(x'' = \\frac{1}{x^2}\\). (I had no paper at this point, by the way--I was outside walking.) So if we guess \\(x = t^a\\) then we get \\(a = \\frac{2}{3}\\), and since we want the masses to come together in the future, just shift \\(t\\) like so:
+
+  \\[x(t) = C\\cdot (T-t)^{2/3}\\]
+
+  So, this solution works in the sense that it satisfies the laws of physics. But it does not really satisfy the problem, in which we assume the masses begin at rest. In this case, they must begin at infinity if we want them to begin at rest. If they begin a finite distance apart, they must also start with some speed towards each other.
+
+So, we need to solve the problem in a more general way, and not guess a particular solution to the differential equation. Proceed with energy. \\[K_0 = 0, E_0 = U_0 = \\frac{-2GMM}{x_0}\\]
+
+\\[U(t) + K(t) = \\frac{-2GMM}{x(t)} + Mv(t)^2 = -\\frac{2GMM}{x(t)} +\\frac{M}{4}x'(t)^2=E_0\\]
+
+Therefore, we get the differential equation \\(x'x' = A/x + B\\)
+
+\\(B = 0\\) yields the \\((c-x)^{2/3}\\) solution from before. In our case, \\(B\\) is in general negative, because \\(A\\) is positive, \\(x\\) is positive, and \\(x'(0) = 0\\).
+
+Considering \\(x(t) := \frac{y(ct)}{d}\\), the equation becomes \\(y'y'\\frac{c^2}{d^2} = \frac{Ad}{y} + B\\), \\(y'y' = \\frac{Ad^3}{c^2} \\frac{1}{y} + \\frac{Bd^2}{c^2}\\), so we have suitable real choices of \\(c,d\\) to turn any case in which \\(B < 0\\) into the following:
+
+\\[y'y' = \frac{1}{y} - 1\\]
+
+Specifically \\(d = -\frac{B}{A}, c = -\\frac{B}{A}\\sqrt{-B}\\).
+
+Now, wolfram finds this solution to the DE:
+
+\\[t=\\sqrt{y(1-y)}+\\arcsin\\left(\\sqrt{1-y}\\right)\\]
+
+\\(y = 0\\) when \\(t = \\pi/2\\). Therefore \\[t = \\frac{1}{c}\\left(\\sqrt{xd(1-xd)} + \\arcsin(\\sqrt{1-xd})\\right)\\]
+
+There is probably no way to isolate \\(x\\), as in, to write distance as a function of time. But we can console ourselves from our sadness by realizing that a formula for where it is at a certain time is about as useful as a formula for when it will get to a certain place.
+
+I also tried to solve the problem a different way:
+
+\\(y'' = \frac{-1}{y^2}\\) (considering \\(y\\) as positive, and \\(y(0) = 1\\)) (also I, as above, assumed \\(x(t) = \frac{y(ct)}{d}\\) to get rid of physical constants like G, M, etc.) (So y is not the same function as it was in the last problem, it ends up being horizontally squished by a factor of \\(\sqrt{2}\\), I don't know why)
+
+\\[y''y^2 = -1\\]
+
+Take derivative of both sides
+
+\\[y'''yy + 2y''y'y = 0 \\implies y'''y + 2y''y' = 0 \\implies y'''(0) = 0\\]
+
+We will take derivative of both sides repeatedly and use it to solve for \\(y^{(n)}(0)\\)
+
+\\[yy'''' + 3y'y''' + 2y''y'' = 0 \\implies y''''(0) = -2\\]
+\\[yy''''' + 4yy'''' + 7y''y''' = 0 \\implies y'''''(0) = 0\\]
+
+In general we will find all odd derivatives at \\(0\\) are \\(0\\). \\(y(t)\\) ends up being an even function in that way, which makes sense, \\(y(-t)\\) has the same equation of \\(--y''(-t) = -\\frac{1}{y(-t)^2}\\) so it should be the same function. The physical meaning of this is that to get to the point at the start, the masses could be accelerating away from each other until they stop.
+
+Also, if we write it like this:
+
+\\[\\frac{1}{2}yy''' + 1y'y'' + 1y''y' + \\frac{1}{2}y'''y = 0\\]
+\\[\\frac{1}{2}yy'''' + \\frac{3}{2}y'y''' + 2y''y'' + \\frac{3}{2}y'''y' + \\frac{1}{2}y''''y = 0\\]
+
+Because the number of ways we get \\(y^{(a)}y^{(b)}\\) equals \\(\\#(y^{(a-1)}y^{(b)}) + \#(y^{(a)}y^{(b-1)})\\) we have a pascal's triangle thing happening here. We can ignore the rows with an even number of elements, as they will all just find that odd derivatives of \\(y\\) at \\(0\\) are \\(0\\). We find that the \\(a$th term in the \\(n\\)th row, that is the number of \\(y^{(a)}y^{(n-a)}\\), is always \\(\\frac{1}{2}\binom{n}{a} - \\frac{1}{2}\\binom{n-2}{a-1}\\) where \\(\\binom{}{}\\) is the choose function/binomial coefficient. Of course for \\(a \\ne n/2\\) there are 2 of these terms so we should really not have the 1/2s there. But anyway, via manual solving, I found \\(y(0) = 1, y''(0) = -1, y''''(0) = -2, y^{(6)}(0) = -22, y^{(8)}(0) = -584\\). We can use those to create a very accurate approximation of \\(y\\) as the taylor series
+
+\\[y \\approx 1 - \\frac{t^2}{2!} - 2\\frac{t^4}{4!} - 22\\frac{t^6}{6!} - 584\\frac{t^8}{8!}... = 1-\\sum_{k=1}^{\\infty} a_k\\frac{t^{2k}}{(2k)!}\\] with \\(a_k = 1,2,22,584..\\)
+
+This is on OEIS as sequence A120419. They have a different formula. The one this problem gives is \\[a_n = \\sum_{k=1}^{n-1} \\left(\\frac{1}{2}\\binom{2n}{2k} - \\frac{1}{2}\\binom{2n-2}{2k-1}\\right)a_ka_{n-k}\\]`]
 }
 const urlPath = (new URL(window.location.href).search.substr(1));
 window.onload = function() {
