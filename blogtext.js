@@ -360,26 +360,27 @@ For reasons I do not know, \\(\\int_{0}^{\\pi/n}\\cos((2n-1)\\theta)\\sec^{2n+1}
 Well, we could have hoped for something a little bit neater, but I guess this is a good enough final answer.`],
   "8292942597449297":["Two objects falling together",true,`
   I was posed this question: We have 2 masses in an empty universe, each mass \\(M\\), a distance \\(x_0\\) then we drop them from rest. Find the distance apart as a function of time.
+  <br>
   My thought process was that the gravitational force is proportional to \\(\\frac{1}{x^2}\\), and so \\(x'' = \\frac{1}{x^2}\\). (I had no paper at this point, by the way--I was outside walking.) So if we guess \\(x = t^a\\) then we get \\(a = \\frac{2}{3}\\), and since we want the masses to come together in the future, just shift \\(t\\) like so:
 
   \\[x(t) = C\\cdot (T-t)^{2/3}\\]
 
   So, this solution works in the sense that it satisfies the laws of physics. But it does not really satisfy the problem, in which we assume the masses begin at rest. In this case, they must begin at infinity if we want them to begin at rest. If they begin a finite distance apart, they must also start with some speed towards each other.
-
+<br>
 So, we need to solve the problem in a more general way, and not guess a particular solution to the differential equation. Proceed with energy. \\[K_0 = 0, E_0 = U_0 = \\frac{-2GMM}{x_0}\\]
 
 \\[U(t) + K(t) = \\frac{-2GMM}{x(t)} + Mv(t)^2 = -\\frac{2GMM}{x(t)} +\\frac{M}{4}x'(t)^2=E_0\\]
 
 Therefore, we get the differential equation \\(x'x' = A/x + B\\)
-
+<br>
 \\(B = 0\\) yields the \\((c-x)^{2/3}\\) solution from before. In our case, \\(B\\) is in general negative, because \\(A\\) is positive, \\(x\\) is positive, and \\(x'(0) = 0\\).
-
+<br>
 Considering \\(x(t) := \\frac{y(ct)}{d}\\), the equation becomes \\(y'y'\\frac{c^2}{d^2} = \\frac{Ad}{y} + B\\), \\(y'y' = \\frac{Ad^3}{c^2} \\frac{1}{y} + \\frac{Bd^2}{c^2}\\), so we have suitable real choices of \\(c,d\\) to turn any case in which \\(B < 0\\) into the following:
 
 \\[y'y' = \\frac{1}{y} - 1\\]
 
 Specifically \\(d = -\\frac{B}{A}, c = -\\frac{B}{A}\\sqrt{-B}\\).
-
+<br>
 Now, wolfram finds this solution to the DE:
 
 \\[t=\\sqrt{y(1-y)}+\\arcsin\\left(\\sqrt{1-y}\\right)\\]
@@ -387,7 +388,7 @@ Now, wolfram finds this solution to the DE:
 \\(y = 0\\) when \\(t = \\pi/2\\). Therefore \\[t = \\frac{1}{c}\\left(\\sqrt{xd(1-xd)} + \\arcsin(\\sqrt{1-xd})\\right)\\]
 
 There is probably no way to isolate \\(x\\), as in, to write distance as a function of time. But we can console ourselves from our sadness by realizing that a formula for where it is at a certain time is about as useful as a formula for when it will get to a certain place.
-
+<hline></hline>
 I also tried to solve the problem a different way:
 
 \\(y'' = \\frac{-1}{y^2}\\) (considering \\(y\\) as positive, and \\(y(0) = 1\\)) (also I, as above, assumed \\(x(t) = \\frac{y(ct)}{d}\\) to get rid of physical constants like G, M, etc.) (So y is not the same function as it was in the last problem, it ends up being horizontally squished by a factor of \\(\\sqrt{2}\\), I don't know why)
@@ -414,7 +415,9 @@ Because the number of ways we get \\(y^{(a)}y^{(b)}\\) equals \\(\\#(y^{(a-1)}y^
 
 \\[y \\approx 1 - \\frac{t^2}{2!} - 2\\frac{t^4}{4!} - 22\\frac{t^6}{6!} - 584\\frac{t^8}{8!}... = 1-\\sum_{k=1}^{\\infty} a_k\\frac{t^{2k}}{(2k)!}\\] with \\(a_k = 1,2,22,584..\\)
 
-This is on OEIS as sequence A120419. They have a different formula. The one this problem gives is \\[a_n = \\sum_{k=1}^{n-1} \\left(\\frac{1}{2}\\binom{2n}{2k} - \\frac{1}{2}\\binom{2n-2}{2k-1}\\right)a_ka_{n-k}\\]`]
+This is on OEIS as sequence A120419. They have a different formula. The one this problem gives is \\[a_n = \\sum_{k=1}^{n-1} \\left(\\frac{1}{2}\\binom{2n}{2k} - \\frac{1}{2}\\binom{2n-2}{2k-1}\\right)a_ka_{n-k}\\]
+
+Anyway, to summarize, we have an exact solution for \\(t(x)\\) and an easy way to compute the taylor series for \\(x(t)\\), with some scaling to get rid of the constants, and make as many things as possible \\(1\\). As in the last blog post, we would have liked something neater, but that doesn't always happen.`]
 }
 const urlPath = (new URL(window.location.href).search.substr(1));
 window.onload = function() {
