@@ -417,7 +417,12 @@ Because the number of ways we get \\(y^{(a)}y^{(b)}\\) equals \\(\\#(y^{(a-1)}y^
 
 This is on OEIS as sequence A120419. They have a different formula. The one this problem gives is \\[a_n = \\sum_{k=1}^{n-1} \\left(\\frac{1}{2}\\binom{2n}{2k} - \\frac{1}{2}\\binom{2n-2}{2k-1}\\right)a_ka_{n-k}\\]
 
-Anyway, to summarize, we have an exact solution for \\(t(x)\\) and an easy way to compute the taylor series for \\(x(t)\\), with some scaling to get rid of the constants, and make as many things as possible \\(1\\). As in the last blog post, we would have liked something neater, but that doesn't always happen.`]
+Anyway, to summarize, we have an exact solution for \\(t(x)\\) and an easy way to compute the taylor series for \\(x(t)\\), with some scaling to get rid of the constants, and make as many things as possible \\(1\\). As in the last blog post, we would have liked something neater, but that doesn't always happen.`],
+  "0150974217054712":["That evil circle problem",false,`This problem is so funny to me because it requires either a lot of difficult, relatively obscure techniques and information or a ton of work to get the answer. But it looks so cute and simple, like those geometry problems in YouTube thumbnails. The ones that you can solve in your head. But this one is different for a few reasons. For one, after the largest 3 green circles, you may have difficulty even finding the radius of the next one in the chain. But you have to find infinitely many of those radii. And then you have to add the areas up, and it's not obvious how to do that either.
+  <br>
+  I'll go through the whole derivation in several ways for your enjoyment and end on a discussion of problem difficulty. Shall I begin?
+  <br>
+  `]
 }
 const urlPath = (new URL(window.location.href).search.substr(1));
 window.onload = function() {
