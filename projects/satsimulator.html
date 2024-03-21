@@ -77,12 +77,17 @@
       const findpoints = function(yans) {
         console.log("[" + yans.join("],[") + "]");
         let tolookatrn = [[]];
+        let yescancel = true;
         for (let i = 0; i < yans.length; i++) {
           if (yans[i].length <= 1) {
             tolookatrn[0].push(yans[i][0]);
           } else {
-            tolookatrn[1] = i;
+            tolookatrn.push(i);
+            yescancel = false;
           }
+        }
+        if (yescancel) {
+          return(1);
         }
         let wefound = 0;
         let yans2 = JSON.parse(JSON.stringify(yans));
