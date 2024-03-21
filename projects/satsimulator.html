@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <head>
+    <title>SAT simulator</title>
+    <style>
+      * {
+        box-sizing:border-box;
+      }
+      div {
+        display:inline-block;
+      }
+      .noselectio {
+        cursor:not-allowed;
+      }
+      .unselectio {
+        background:#F00;
+      }
+      .selectio, .unselectio, .noselectio {
+        height:30px;
+        width:30px;
+        display:inline-block;
+        background:#0A5;
+        cursor:pointer;
+      }
+      .selectio:active, .unselectio:active {
+        border:2px solid #000;
+      }
+    </style>
+    <script>
+      var body; var n = 4;
+      var yesesandnos = [[1],[2],[3],[4]];
+      const find = function(elem) {
+        return(document.getElementById(elem));
+      }
+      window.onload = function() {
+        body = document.body;
+        body.innerHTML = "<label for='inputn'>Enter n</label><br><input id='inputn' type='range' min='2' max='10' value='4' oninput='changeN()'><br><br><div id='funbox'></div>";
+        changeN();
+      }
+      const changeN = function() {
+        n = find("inputn").value;
+        find("funbox").innerHTML = "";
+        yesesandnos = [];
+        for (let i = 1; i <= n; i++) {
+          yesesandnos.push([i]);
+          find("funbox").innerHTML += "<div class='fbrow' id='fbrow" + i + "'></div>";
+          for (let j = 1; j <= n; j++) {
+            find("fbrow" + i).innerHTML += "<button class='" + ((i===j)?"":"no") + "selectio' id='button" + i + "," + j + "' onclick='press(" + i + "," + j + ")'></button>";
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    Loading...
+  </body>
+</html>
