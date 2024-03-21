@@ -73,7 +73,7 @@
           find("light" + xs[i][0] + "," + xs[i][1]).innerHTML = "";
         }
         //We now have a whole yesesandnos thing.
-        find("p").innerHTML = (findpoints(yesesandnos) === 2)?"Remove some greens":"";
+        find("warningtoobroad").innerHTML = (findpoints(yesesandnos) === 2)?"Remove some greens":"";
         if (findpoints(yesesandnos) === 1) {
           let fakeyeses = JSON.parse(JSON.stringify(yesesandnos));
           xs = [];
