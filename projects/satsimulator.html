@@ -49,7 +49,7 @@
           yesesandnos.push([i]);
           find("funbox").innerHTML += "<div class='fbrow' id='fbrow" + i + "'></div>";
           for (let j = 0; j < n; j++) {
-            find("fbrow" + i).innerHTML += "<button class='" + ((i===j)?"no":"un") + "selectio' id='button" + i + "," + j + "' onclick='press(" + j + "," + i + ")'></button>";
+            find("fbrow" + i).innerHTML += "<button id='light" + i + "," + j + "' class='" + ((i===j)?"no":"un") + "selectio' id='button" + i + "," + j + "' onclick='press(" + j + "," + i + ")'></button>";
           }
         }
       }
@@ -59,8 +59,10 @@
         }
         if (yesesandnos[i].includes(j)) {
           yesesandnos[i].splice(yesesandnos[i].indexOf(j),1);
+          find("light" + j + "," + i).setAttribute("class","unselectio");
         } else {
           yesesandnos[i].push(j);
+          find("light" + j + "," + i).setAttribute("class","selectio");
         }
       }
       const setminus = function(a,b) {
