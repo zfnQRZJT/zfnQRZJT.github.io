@@ -21,14 +21,15 @@
         display:inline-block;
         background:#0A5;
         cursor:pointer;
+        border:1px solid #000;
       }
       .selectio:active, .unselectio:active {
-        border:2px solid #000;
+        border:4px solid #0BF;
       }
     </style>
     <script>
       var body; var n = 4;
-      var yesesandnos = [[1],[2],[3],[4]];
+      var yesesandnos = [[0],[1],[2],[3]];
       const find = function(elem) {
         return(document.getElementById(elem));
       }
@@ -41,13 +42,53 @@
         n = find("inputn").value;
         find("funbox").innerHTML = "";
         yesesandnos = [];
-        for (let i = 1; i <= n; i++) {
+        for (let i = 0; i < n; i++) {
           yesesandnos.push([i]);
           find("funbox").innerHTML += "<div class='fbrow' id='fbrow" + i + "'></div>";
-          for (let j = 1; j <= n; j++) {
-            find("fbrow" + i).innerHTML += "<button class='" + ((i===j)?"":"no") + "selectio' id='button" + i + "," + j + "' onclick='press(" + i + "," + j + ")'></button>";
+          for (let j = 0; j < n; j++) {
+            find("fbrow" + i).innerHTML += "<button class='" + ((i===j)?"no":"") + "selectio' id='button" + i + "," + j + "' onclick='press(" + i + "," + j + ")'></button>";
           }
         }
+      }
+      const press = function(i,j) {
+        if (yesesandnos[i].includes(j)) {
+          yesesandnos[i].splice(yesesandnos[i].indexOf(j),1);
+        } else {
+          yesesandnos[i].push(j);
+        }
+      }
+      const setminus(a,b) {
+        let intersection = [];
+        for (let ii = 0; ii < a.length; ii++) {
+          if (!(b.includes(a[ii]))) {
+            intersection.push(a[ii]);
+          }
+        }
+        return(intersection);
+      }
+      const findpoints(yans) {
+        let tolookatrn = [[]];
+        for (let i = 0; i < yans.length; i++) {
+          if (yans[i].length <= 1) {
+            tolookatrn[0].push(yans[i][0]);
+          } else {
+            tolookatrn[1] = i;
+          }
+        }
+        let wefound = 0;
+        let yans2 = JSON.parse(JSON.stringify(yans));
+        let subtr = setminus(yans[tolookatrn[1]],tolookatrn[0]);
+        if (subtr.length === 0) {
+          return(0);
+        }
+        for (let i = 0; i < subtr.length; i++) {
+          yans2[tolookatrn[1]] = [subtr[i]];
+          wefound += findpoints(yans2);
+          if (wefound >= 2) {
+            return(2);
+          }
+        }
+        return(wefound);
       }
     </script>
   </head>
