@@ -88,6 +88,8 @@
         let subtr = setminus(yans[tolookatrn[1]],tolookatrn[0]);
         if (subtr.length === 0) {
           return(0);
+        } else if (tolookatrn[1] === yans.length - 1) {
+          return(subtr.length);
         }
         for (let i = 0; i < subtr.length; i++) {
           yans2[tolookatrn[1]] = [subtr[i]];
