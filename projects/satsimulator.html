@@ -82,7 +82,7 @@
             for (let j = 0; j < n; j++) {
               if (yesesandnos[j].includes(i)) {continue;}
               fakeyeses[j] = [i];
-              console.log(fakeyeses,findpoints(fakeyeses));
+              console.log(fakeyeses.join(","),findpoints(fakeyeses));
               if (findpoints(fakeyeses) >= 1) {
                 xs.push([i,j]);
               }
