@@ -75,6 +75,7 @@
         return(intersection);
       }
       const findpoints = function(yans) {
+        console.log("[" + yans.join("],[" + "]);
         let tolookatrn = [[]];
         for (let i = 0; i < yans.length; i++) {
           if (yans[i].length <= 1) {
@@ -86,6 +87,7 @@
         let wefound = 0;
         let yans2 = JSON.parse(JSON.stringify(yans));
         let subtr = setminus(yans[tolookatrn[1]],tolookatrn[0]);
+        console.log("riffling through " + subtr);
         if (subtr.length === 0) {
           return(0);
         } else if (tolookatrn[1] === yans.length - 1) {
