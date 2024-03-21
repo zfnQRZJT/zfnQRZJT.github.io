@@ -60,7 +60,7 @@
           yesesandnos[i].push(j);
         }
       }
-      const setminus(a,b) {
+      const setminus = function(a,b) {
         let intersection = [];
         for (let ii = 0; ii < a.length; ii++) {
           if (!(b.includes(a[ii]))) {
@@ -69,7 +69,7 @@
         }
         return(intersection);
       }
-      const findpoints(yans) {
+      const findpoints = function(yans) {
         let tolookatrn = [[]];
         for (let i = 0; i < yans.length; i++) {
           if (yans[i].length <= 1) {
