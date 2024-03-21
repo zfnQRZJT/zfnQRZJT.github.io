@@ -9,12 +9,6 @@
       div {
         display:inline-block;
       }
-      .noselectio {
-        cursor:not-allowed;
-      }
-      .unselectio {
-        background:#F00;
-      }
       .selectio, .unselectio, .noselectio {
         height:30px;
         width:30px;
@@ -22,6 +16,12 @@
         background:#0A5;
         cursor:pointer;
         border:1px solid #000;
+      }
+      .noselectio {
+        cursor:not-allowed;
+      }
+      .unselectio {
+        background:#F00;
       }
       .selectio:active, .unselectio:active {
         border:4px solid #0BF;
@@ -49,11 +49,14 @@
           yesesandnos.push([i]);
           find("funbox").innerHTML += "<div class='fbrow' id='fbrow" + i + "'></div>";
           for (let j = 0; j < n; j++) {
-            find("fbrow" + i).innerHTML += "<button class='" + ((i===j)?"no":"") + "selectio' id='button" + i + "," + j + "' onclick='press(" + i + "," + j + ")'></button>";
+            find("fbrow" + i).innerHTML += "<button class='" + ((i===j)?"no":"un") + "selectio' id='button" + i + "," + j + "' onclick='press(" + j + "," + i + ")'></button>";
           }
         }
       }
       const press = function(i,j) {
+        if (i === j) {
+          return;
+        }
         if (yesesandnos[i].includes(j)) {
           yesesandnos[i].splice(yesesandnos[i].indexOf(j),1);
         } else {
