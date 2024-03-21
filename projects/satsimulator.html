@@ -80,7 +80,7 @@
           //Now we go on a whole thing
           for (let i = 0; i < n; i++) {
             for (let j = 0; j < n; j++) {
-              if (i === j) {continue;}
+              if (yesesandnos[i].includes(j)) {continue;}
               fakeyeses[j] = [i];
               if (findpoints(fakeyeses) >= 1) {
                 xs.push([i,j]);
