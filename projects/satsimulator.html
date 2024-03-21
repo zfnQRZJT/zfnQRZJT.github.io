@@ -5,6 +5,7 @@
     <style>
       * {
         box-sizing:border-box;
+        vertical-align:top;
       }
       div {
         display:inline-block;
@@ -29,9 +30,13 @@
       .fbrow {
         display:block;
       }
+      .xtext {
+        font-size:25px;
+        transform:translateY(-4px);
+      }
     </style>
     <script>
-      var body; var n = 4;
+      var body; var n = 4; let xs = [];
       var yesesandnos = [[0],[1],[2],[3]];
       const find = function(elem) {
         return(document.getElementById(elem));
@@ -49,7 +54,7 @@
           yesesandnos.push([i]);
           find("funbox").innerHTML += "<div class='fbrow' id='fbrow" + i + "'></div>";
           for (let j = 0; j < n; j++) {
-            find("fbrow" + i).innerHTML += "<button id='light" + i + "," + j + "' class='" + ((i===j)?"no":"un") + "selectio' id='button" + i + "," + j + "' onclick='press(" + j + "," + i + ")'></button>";
+            find("fbrow" + i).innerHTML += "<button id='light" + i + "," + j + "' class='" + ((i===j)?"no":"un") + "selectio' id='button" + i + "," + j + "' onclick='press(" + j + "," + i + ")'></button><br><p id='warningtoobroad'></p>";
           }
         }
       }
@@ -63,6 +68,31 @@
         } else {
           yesesandnos[i].push(j);
           find("light" + j + "," + i).setAttribute("class","selectio");
+        }
+        for (let i = 0; i < xs.length; i++) {
+          find("light" + xs[i][0] + "," + xs[i][1]).innerHTML = "";
+        }
+        //We now have a whole yesesandnos thing.
+        find("p").innerHTML = (findpoints(yesesandnos) === 2)?"Remove some greens":"";
+        if (findpoints(yesesandnos) === 1) {
+          let fakeyeses = JSON.parse(JSON.stringify(yesesandnos);
+          xs = [];
+          //Now we go on a whole thing
+          for (let i = 0; i < n; i++) {
+            for (let j = 0; j < n; j++) {
+              if (i === j) {continue;}
+              fakeyeses[j] = [i];
+              if (findpoints(fakeyeses) >= 1) {
+                xs.push([i,j]);
+              }
+              fakeyeses[j] = JSON.parse(JSON.stringify(yesesandnos[j]));
+              //(cleaning up after our fakeness)
+            }
+          }
+          //Now we have all our x's
+          for (let i = 0; i < xs.length; i++) {
+            find("light" + xs[i][0] + "," + xs[i][1]).innerHTML = "<div class='xtext'>×</div>";
+          }
         }
       }
       const setminus = function(a,b) {
