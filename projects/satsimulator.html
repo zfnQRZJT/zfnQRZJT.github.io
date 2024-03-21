@@ -43,7 +43,7 @@
       }
       window.onload = function() {
         body = document.body;
-        body.innerHTML = "<label for='inputn'>Enter n</label><br><input id='inputn' type='range' min='2' max='10' value='4' oninput='changeN()'><br><br><div id='funbox'></div>";
+        body.innerHTML = "<label for='inputn'>Enter n</label><br><input id='inputn' type='range' min='2' max='10' value='4' oninput='changeN()'><br><br><div id='funbox'></div><br><p id='warningtoobroad'></p>";
         changeN();
       }
       const changeN = function() {
@@ -54,7 +54,7 @@
           yesesandnos.push([i]);
           find("funbox").innerHTML += "<div class='fbrow' id='fbrow" + i + "'></div>";
           for (let j = 0; j < n; j++) {
-            find("fbrow" + i).innerHTML += "<button id='light" + i + "," + j + "' class='" + ((i===j)?"no":"un") + "selectio' id='button" + i + "," + j + "' onclick='press(" + j + "," + i + ")'></button><br><p id='warningtoobroad'></p>";
+            find("fbrow" + i).innerHTML += "<button id='light" + i + "," + j + "' class='" + ((i===j)?"no":"un") + "selectio' id='button" + i + "," + j + "' onclick='press(" + j + "," + i + ")'></button>";
           }
         }
       }
