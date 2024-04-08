@@ -429,11 +429,11 @@ Anyway, to summarize, we have an exact solution for \\(t(x)\\) and an easy way t
   <br>
   This is called the martingale betting system. It can seem like a foolproof way to make money, because if we have \\(110686\\) D, we would have to lose 10 rolls of the die straight just to avoid losing money. (A \\(0.13\\%\\) chance.) The problem is that we have to beat those odds almost a thousand times just to get to the point where we can bet 11 times instead of 10. And there's only a \\(30\\%\\) chance that we make it even that far.
   <br>
-  If the unthinkable (\\(0.17\\%\\) chance event) happens, a more weak-willed gambler than us would give up after such a tragic 10-in-a-row failure. (You know who you are.) No, we persist until victory or death. The question: what's our chance of making it to the goal? I tried several techniques before finding the trick that allows this chance to be computed, which is detailed below.
+  If the unthinkable (\\(0.13\\%\\) chance event) happens, a more weak-willed gambler than us would give up after such a tragic 10-in-a-row failure. (You know who you are.) No, we persist until victory or death. The question: what's our chance of making it to the goal? I tried several techniques before finding the trick that allows this chance to be computed, which is detailed below.
   <hline></hline>
   Let's get a handle on some simple facts about the system first. Let \\(m\\) be our money. We'll set \\(100\\) D to be \\(1\\), so that we have \\(m = 1106\\) at the start. Losing consists of having \\(m = 0\\), while winning is when \\(m = 1166296\\). Of course, when we actually lose we'll have \\(m = 0.86 < 1\\) and when we win we'll have \\(m = 1166296.86 > 1166296.70\\). The \\(86\\) D really has no importance other than that.
   <br><br>
-  If we are betting exactly $b$ times, that means \\(m \\geq 1 + 2 + 4 + \\ldots + 2^{b-1} = 2^b - 1\\) and \\(m < 2^{b+1} - 1\\). Therefore, we will bet \\(\\lfloor \\log_2(m+1) \\rfloor\\) times, which we'll set as \\(b(m)\\). Also, let \\(q\\) be \\(\\frac{19}{37}\\), the losing chance.
+  If we are betting exactly \\(b\\) times, that means \\(m \\geq 1 + 2 + 4 + \\ldots + 2^{b-1} = 2^b - 1\\) and \\(m < 2^{b+1} - 1\\). Therefore, we will bet \\(\\lfloor \\log_2(m+1) \\rfloor\\) times, which we'll set as \\(b(m)\\). Also, let \\(q\\) be \\(\\frac{19}{37}\\), the losing chance.
   <br><br>
   The data that turns out to solve the problem is the chance that, starting at \\(m = n\\), we will get to \\(m = n+1\\) before we die. Let's call that \\(A(n)\\). One way to get to \\(n+1\\) is to win immediately, with a chance of \\(1-q^{b(n)}\\). The other way is to lose, climb back up to \\(n\\), maybe lose several more times, and eventually win at \\(n\\).
   <br>
