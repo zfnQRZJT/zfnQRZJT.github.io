@@ -422,6 +422,16 @@ Anyway, to summarize, we have an exact solution for \\(t(x)\\) and an easy way t
   <br>
   I'll go through the whole derivation in several ways for your enjoyment and end on a discussion of problem difficulty. Shall I begin?
   <br>
+  `],
+  "0418769979963993":["Gambling to fame",false,`Like many of my blog posts, this one begins: I was posed this question. We have 110,686 dollars. The goal is to have 116,629,670 dollars. In order to make money, we can bet \\(100n\\) dollars (D). There is a \\(\\frac{19}{37}\\) chance the money is lost, and a \\(\\frac{18}{37}\\) chance the money is returned doubled, so we gain \\(100n\\) D. Obviously, the game is stacked against us. But let's say we end up losing \\(100\\) D. We're looking to make a profit, so let's bet \\(200\\) D. If we get lucky, we'll net \\(100\\) D, and if we get unlucky, we'll just bet \\(400\\) D to again hopefully net $100$ D. If we keep losing, we will repeat the process until we net \\(100\\) D or we can no longer double our bets, in which case we will reset to betting \\(100\\) D, assuming we even have that much to our name. If we ever go below \\(100\\) D, I'll call that a death, because no more bets can occur and we are stuck forever.\
+  <br>
+  This is called the martingale betting system. It can seem like a foolproof way to make money, because if we have \\(110686\\) D, we would have to lose 10 rolls of the die straight just to avoid losing money. (A \\(0.13%\\) chance.) The problem is that we have to beat those odds almost a thousand times just to get to the point where we can bet 11 times instead of 10. And there's only a 30% chance that we make it even that far.
+  <br>
+  If the unthinkable (\\(0.17%\\) chance event) happens, a more weak-willed gambler than us would give up after such a tragic 10-in-a-row failure. (You know who you are.) No, we persist until victory or death. The question: what's our chance of making it to the goal? I tried several techniques before finding the trick that allows this chance to be computed, which is detailed below.
+  <hline></hline>
+  Let's get a handle on some simple facts about the system first. Let \\(m\\) be our money. We'll set \\(100\\) D to be \\(1\\), so that we have \\(m = 1106\\) at the start. Losing consists of having \\(m = 0\\), while winning is when \\(m = 1166296\\). Of course, when we actually lose we'll have \\(m = 0.86 < 1\\) and when we win we'll have \\(m = 1166296.86 > 1166296.70\\). The \\(86\\) D really has no importance other than that.
+  <br>
+  If we are betting exactly $b$ times, that means \\(m \geq 1 + 2 + 4 + \\ldots + 2^{b-1} = 2^b - 1\\) and \\(m < 2^{b+1} - 1\\). Therefore, we will bet \\(\\lfloor \\log_2(m+1) \\rfloor\\) times.
   `]
 }
 const urlPath = (new URL(window.location.href).search.substr(1));
