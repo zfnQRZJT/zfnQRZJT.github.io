@@ -444,16 +444,16 @@ Anyway, to summarize, we have an exact solution for \\(t(x)\\) and an easy way t
   <br>
   There are two special cases we need to define: \\(B(0),B(-1)\\). These will come in due to the \\(B(n - 2^{b(n)})\\). Remember, they come from using a ratio of two values of \\(B\\) to calculate multiplication of \\(A\\). Specifically, \\(A(x)A(x+1)\\cdots A(y) = \\frac{B(y)}{B(x-1)}\\). When \\(x = 1\\), this is simply \\(B(y)\\), so we should set \\(B(0) = 1\\). This makes sense - \\(B(0)\\) is really the empty product of no values of \\(A\\), so it should be \\(1\\). When \\(x = 0\\), the product of values of \\(A\\) is \\(0\\) because \\(A(0) = 0\\), because it's impossible to un-die. That means \\(\\frac{B(y)}{B(-1)} = 0 \\implies B(-1) \`\`='' \\infty\\). This is questionable mathematically but JavaScript will figure it out.
   <hline></hline>
-  Here's the code: <blogcode><pre>var q = <pren>19/37</pren>;
-var qpow = [<pren>1</pren>,q,q*q,q*q*q,q**<pren>4</pren>,q**<pren>5</pren>,q**6,q**7,q**8,q**9,q**10,q**11,q**12,q**13,q**14,q**15,q**16,q**17,q**18,q**19,q**20,q**21,q**22,q**23];
-B = [<pren>1</pren>]; B[<pren>-1</pren>] = <pren>Infinity</pren>;
-for (let b = <pren>1; b <= <pren>21; b++) {
-  let bpow = <pren>2</pren>**b;
-  for (let n = bpow - <pren>1</pren>; n < Math.min(<pren>2</pren>*bpow - <pren>1</pren>,<pren>1166297</pren>); n++) {
-    B[n] = (<pren>1</pren> - qpow[b])/(<pren>1</pren>/B[n-<pren>1</pren>] - qpow[b]/B[n - bpow]);
+  Here's the code: <blogcode><pre style="background: #2a2a2a;padding: 10px;margin-block-start: 0;margin-block-end: 0;border-radius: 10px;line-height: 20px;">const <prev>q</prev> = <pren style="/*! color: #0AF; */">19</pren>/<pren>37</pren>;
+const <prev>qpow</prev> = [<pren>1</pren>,<prev>q</prev>,<prev>q</prev>*<prev>q</prev>,<prev>q</prev>*<prev>q</prev>*<prev>q</prev>,<prev>q</prev>**<pren>4</pren>,<prev>q</prev>**<pren>5</pren>,<prev>q</prev>**<pren>6</pren>,<prev>q</prev>**<pren>7</pren>,<prev>q</prev>**<pren>8</pren>,<prev>q</prev>**<pren>9</pren>,<prev>q</prev>**<pren>10</pren>,<prev>q</prev>**<pren>11</pren>,<prev>q</prev>**<pren>12</pren>,<prev>q</prev>**<pren>13</pren>,<prev>q</prev>**<pren>14</pren>,<prev>q</prev>**<pren>15</pren>,<prev>q</prev>**<pren>16</pren>,<prev>q</prev>**<pren>17</pren>,<prev>q</prev>**<pren>18</pren>,<prev>q</prev>**<pren>19</pren>,<prev>q</prev>**<pren>20</pren>,<prev>q</prev>**<pren>21</pren>,<prev>q</prev>**<pren>22</pren>,<prev>q</prev>**<pren>23</pren>];
+var <prev>B</prev> = [<pren>1</pren>]; <prev>B</prev>[<pren>-1</pren>] = <pren>Infinity</pren>;
+for (let <prev>b</prev> = <pren>1</pren>; <prev>b</prev> &lt;= <pren>21</pren>; <prev>b</prev>++) {
+  let <prev>bpow</prev> = <pren>2</pren>**<prev>b</prev>;
+  for (let <prev>n</prev> = <prev>bpow</prev> - <pren>1</pren>; <prev>n</prev> < Math.min(<pren>2</pren>*<prev>bpow</prev> - <pren>1</pren>,<pren>1166297</pren>); <prev>n</prev>++) {
+    <prev>B</prev>[<prev>n</prev>] = (<pren>1</pren> - <prev>qpow</prev>[<prev>b</prev>])/(<pren>1</pren>/<prev>B</prev>[<prev>n</prev>-<pren>1</pren>] - <prev>qpow</prev>[<prev>b</prev>]/<prev>B</prev>[<prev>n</prev> - <prev>bpow</prev>]);
   }
 }
-B[<pren>1166295</pren>]/B[<pren>1105</pren>]</pre></blogcode>
+<prev>B</prev>[<pren>1166295</pren>]/<prev>B</prev>[<pren>1105</pren>]</pre></blogcode>
 The ratio at the end is the answer, because it assumes we are already at \\(m = 1106\\), so we can skip the hops from \\(1\\) to \\(1106\\), and if we make the hop at \\(1166295\\) that will be a success.
 <br><br>
 It returns an answer of \\(0.00027\\%\\). That's surprisingly unlikely, at least to me.
