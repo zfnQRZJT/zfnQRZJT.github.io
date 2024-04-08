@@ -438,9 +438,25 @@ Anyway, to summarize, we have an exact solution for \\(t(x)\\) and an easy way t
   The data that turns out to solve the problem is the chance that, starting at \\(m = n\\), we will get to \\(m = n+1\\) before we die. Let's call that \\(A(n)\\). One way to get to \\(n+1\\) is to win immediately, with a chance of \\(1-q^{b(n)}\\). The other way is to lose, climb back up to \\(n\\), maybe lose several more times, and eventually win at \\(n\\).
   <br>
   If we lose, we drop to \\(m = n - 2^{b(n)} + 1\\). To get back to \\(m = n\\) we'll need to get to \\(m = n - 2^{b(n)} + 2, m = n - 2^{b(n)} + 3, \\ldots, m = n\\). All this has a likelihood of \\(A(n-2^{b(n)} + 1)A(n - 2^{b(n)}+2)\\cdots A(n-1)\\). From here, we either get a \\(1 - q^{b(n)}\\) success again or a \\(q^{b(n)}A(n-2^{b(n)})\\cdots A(n-1) := A_r(n)\\) shot of trying again. This can repeat indefinitely. Therefore, \\[A(n) = (1-q^{b(n)}) + (1-q^{b(n)})A_r(n) + (1-q^{b(n)})A_r(n)^2 + \\ldots = \\frac{1-q^{b(n)}}{1-A_r(n)}\\]
-  <br><br>
-  Notice that \\(A_r(n)\\) involves multiplying many instances of \\(A(n)\\) together. If a recursive formula for anything includes some modification of itself in the formula, say \\(f(n) = g(h(f(n-1)))\\), it's worth it to see what happens if we reformat everything in terms of \\(h(f(n))\\): \\(H(n) = h(g(H(n-1)))\\). In this case, let \\(B(n) = A(1)A(2)A(3)\\cdots A(n)\\). Then \\[B(n) = A(n)B(n-1) = \\frac{1-q^{b(n)}}{1 - q^{b(n)}\\frac{A(1)A(2)\\cdots A(n)}{A(1)A(2)\\cdots A(n - 2^{b(n)})}}B(n-1)\\]\\[= \\frac{1-q^{b(n)}}{1 - q^{b(n)}\\frac{B(n-1)}{B(n - 2^{b(n)})}}B(n-1) = \\frac{1 - q^{b(n)}}{\\frac{1}{B(n-1)} - \\frac{q^{b(n)}}{B(n - 2^{b(n)})}\\]
+  Notice that \\(A_r(n)\\) involves multiplying many instances of \\(A(n)\\) together. If a recursive formula for anything includes some modification of itself in the formula, say \\(f(n) = g(h(f(n-1)))\\), it's worth it to see what happens if we reformat everything in terms of \\(h(f(n))\\): \\(H(n) = h(g(H(n-1)))\\). In this case, let \\(B(n) = A(1)A(2)A(3)\\cdots A(n)\\). Then \\[B(n) = A(n)B(n-1) = \\frac{1-q^{b(n)}}{1 - q^{b(n)}\\frac{A(1)A(2)\\cdots A(n)}{A(1)A(2)\\cdots A(n - 2^{b(n)})}}B(n-1)\\]
+  \\[= \\frac{1-q^{b(n)}}{1 - q^{b(n)}\\frac{B(n-1)}{B(n - 2^{b(n)})}}B(n-1) = \\frac{1 - q^{b(n)}}{\\frac{1}{B(n-1)} - \\frac{q^{b(n)}}{B(n - 2^{b(n)})}\\]
   Indeed, this allows the formula to involve only \\(q\\) and two past values of \\(B\\), meaning much less computation.
+  <br>
+  There are two special cases we need to define: \\(B(0),B(-1)\\). These will come in due to the \\(B(n - 2^{b(n)})\\). Remember, they come from using a ratio of two values of \\(B\\) to calculate multiplication of \\(A\\). Specifically, \\(A(x)A(x+1)\\cdots A(y) = \\frac{B(y)}{B(x-1)}\\). When \\(x = 1\\), this is simply \\(B(y)\\), so we should set \\(B(0) = 1\\). This makes sense - \\(B(0)\\) is really the empty product of no values of \\(A\\), so it should be \\(1\\). When \\(x = 0\\), the product of values of \\(A\\) is \\(0\\) because \\(A(0) = 0\\), because it's impossible to un-die. That means \\(\\frac{B(y)}{B(-1)} = 0 \\implies B(-1) ``='' \\infty\\). This is questionable mathematically but JavaScript will figure it out.
+  <hline></hline>
+  Here's the code: <blogcode><pre>var q = <pren>19/37</pren>;
+var qpow = [<pren>1</pren>,q,q*q,q*q*q,q**<pren>4</pren>,q**<pren>5</pren>,q**6,q**7,q**8,q**9,q**10,q**11,q**12,q**13,q**14,q**15,q**16,q**17,q**18,q**19,q**20,q**21,q**22,q**23];
+B = [<pren>1</pren>]; B[<pren>-1</pren>] = <pren>Infinity</pren>;
+for (let b = <pren>1; b <= <pren>21; b++) {
+  let bpow = <pren>2</pren>**b;
+  for (let n = bpow - <pren>1</pren>; n < Math.min(<pren>2</pren>*bpow - <pren>1</pren>,<pren>1166297</pren>); n++) {
+    B[n] = (<pren>1</pren> - qpow[b])/(<pren>1</pren>/B[n-<pren>1</pren>] - qpow[b]/B[n - bpow]);
+  }
+}
+B[<pren>1166295</pren>]/B[<pren>1105</pren>]</pre></blogcode>
+The ratio at the end is the answer, because it assumes we are already at \\(m = 1106\\), so we can skip the hops from \\(1\\) to \\(1106\\), and if we make the hop at \\(1166295\\) that will be a success.
+<br><br>
+It returns an answer of \\(0.00027\\%\\). That's surprisingly unlikely, at least to me.
   `]
 }
 const urlPath = (new URL(window.location.href).search.substr(1));
