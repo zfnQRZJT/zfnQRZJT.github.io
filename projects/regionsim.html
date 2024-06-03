@@ -38,8 +38,9 @@
           }
           lines.push(JSON.parse(JSON.stringify(currarr)));
         }
-        console.log(lines);
+        console.log(JSON.stringify(lines));
         console.log(pointlocs);
+        //return;
         //now we have to find all those line intersections yayyyyy
         for (let i = 1; i < N; i++) {
           for (let j = 0; j < i; j++) {
@@ -48,6 +49,7 @@
             for (let k = 0; k < thesplit[0].length; k++) {
               for (let l = 0; l < thesplit[1].length; l++) {
                 let secline = lines[Math.max(k,l)][Math.min(k,l)];
+                if (!(secline)) {console.log(i,j,k,l);}
                 let intpointx = (secline[1]-lines[i][j][1])/(lines[i][j][0]-secline[0]);
                 if (Math.min(pointlocs[i][0],pointlocs[j][0]) < intpointx && intpointx < Math.max(pointlocs[i][0],pointlocs[j][0])) {
                   //real intersection
