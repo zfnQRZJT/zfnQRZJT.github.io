@@ -57,7 +57,7 @@
                 let intpointx = (secline[1]-lines[i][j][1])/(lines[i][j][0]-secline[0]);
                 if (Math.min(pointlocs[i][0],pointlocs[j][0]) < intpointx && intpointx < Math.max(pointlocs[i][0],pointlocs[j][0])) {
                   //real intersection
-                  let realinter = [i,j,Math.max(k,l),Math.min(k,l),realinter[0],realinter[1]];
+                  let realinter = [i,j,Math.max(k,l),Math.min(k,l),intpointx,lines[i][j][0]*intpointx + lines[i][j][1]];
                   lines[i][j][3].push(realinter);
                   if (i > Math.max(k,l)) {
                     intlocs.push(realinter);
