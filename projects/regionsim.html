@@ -68,6 +68,8 @@
             lines[i][j][3].sort((a,b) => a[4] - b[4]);
           }
         }
+				let allregions = [];
+				//for (let i = 0; i < 
         ctx.reset();
         ctx.font = "10px serif";
         for (let i = 0; i < pointlocs.length; i++) {
@@ -163,6 +165,25 @@
         }
         return(regbord);
       }
+			const evaluBord = function(bord) {
+				let yeses = "0".repeat(N).split("");
+				for (let bori = 0; bori < bord.length; bori++) {
+					if (bord[bori].length === 6) {
+						 yeses[bord[bori][0]] = 1; yeses[bord[bori][1]] = 1; yeses[bord[bori][2]] = 1; yeses[bord[bori][3]] = 1;
+					}
+				}
+				return(!(yeses.includes(0)));
+			}
+			const donepair = function(p1,p2,doneregs) {
+				for (let di = 0; di < doneregs.length; di++) {
+					for (let dj = 0; dj < doneregs[di].length - 1; dj++) {
+						if (Math.abs(doneregs[di][dj][4] - p1[4]) + Math.abs(doneregs[di][dj+1][4] - p2[4]) < 0.0000001) {
+							return(true);
+						}
+					}
+				}
+				return(false);
+			}
       //window.onload = regenerate;
       /**/
     </script>
