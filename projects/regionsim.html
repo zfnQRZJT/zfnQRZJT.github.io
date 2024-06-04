@@ -165,7 +165,7 @@
           let newlin;
           if (nowpoint.length === 7) {
             regbord.push(regbord[0]);
-	    return(regbord);
+	    			return(regbord);
           }
           if (regbord.length >= 4*N) {
             console.log(regbord);
@@ -197,7 +197,7 @@
 						 yeses[bord[bori][0]] = 1; yeses[bord[bori][1]] = 1; yeses[bord[bori][2]] = 1; yeses[bord[bori][3]] = 1;
 					}
 				}
-				return(!(yeses.includes(0)));
+				return(!(yeses.includes("0")));
 			}
 			const donepair = function(p1,p2) {
 				for (let di = 0; di < allregions.length; di++) {
