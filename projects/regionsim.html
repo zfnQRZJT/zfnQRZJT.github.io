@@ -72,12 +72,12 @@
 				for (let i = 1; i < pointlocs.length; i++) {
 					for (let j = 0; j < i; j++) {
 						let lij = lines[i][j];
-						if (lij[2][3].length > 2) {
-							workpair(lij[2][3][0],lij[2][3][1]);
-							workpair(lij[2][3][lij[2][3].length - 1],lij[2][3][lij[2][3].length - 2]);
-							if (lij[2][3].length > 3) {
-								for (k = 1; k < lij[2][3].length - 2; k++) {
-									workpair(lij[2][3][k],lij[2][3][k+1]);
+						if (lij[3].length > 2) {
+							workpair(lij[3][0],lij[3][1]);
+							workpair(lij[3][lij[3].length - 1],lij[3][lij[3].length - 2]);
+							if (lij[3].length > 3) {
+								for (k = 1; k < lij[3].length - 2; k++) {
+									workpair(lij[3][k],lij[3][k+1]);
 									//workpair(lij[2][3][k],lij[2][3][k]);
 								}
 							}
