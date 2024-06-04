@@ -133,7 +133,7 @@
             currlin = [p1[2],p1[3]];
           }
         }
-        while (regbord[regbord.length - 1] !== regbord[0]) {
+        while (Math.abs(regbord[regbord.length - 1][4] - regbord[0][4]) > 0.000000001) {
           let nowpoint = regbord[regbord.length - 1];
           let newlin;
           if (nowpoint.length === 7) {
