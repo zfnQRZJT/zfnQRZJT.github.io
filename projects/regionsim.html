@@ -77,7 +77,7 @@
 							workpair(lij[3][lij[3].length - 1],lij[3][lij[3].length - 2]);
 							if (lij[3].length > 3) {
 								for (k = 1; k < lij[3].length - 2; k++) {
-									workpair(lij[3][k],lij[3][k+1],lij,k);
+									workpair(lij[3][k],lij[3][k+1]);
 									//workpair(lij[2][3][k],lij[2][3][k]);
 								}
 							}
@@ -190,6 +190,10 @@
           }
           let newnewpoint = newlinact[3][findindonlin(nowpoint,newlinact) + currdir];
           regbord.push(newnewpoint);
+					if (!(newnewpoint)) {
+						drawThing();
+						console.log(regbord);
+					}
           currlin = newlin;
         }
         return(regbord);
@@ -213,11 +217,7 @@
 				}
 				return(false);
 			}
-			const workpair = function(a,b,err1,err2) {
-				if (!(a) || !(b)) {
-					console.log(err1,err2);
-					drawThing();
-				}
+			const workpair = function(a,b) {
 				if (!(donepair(a,b))) {
 					let newtrreg = traceReg(a,b);
 					if (evaluBord(newtrreg)) {
