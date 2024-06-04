@@ -5,9 +5,9 @@
     <script>
       const find = function(elem) {return(document.getElementById(elem));}
       var N; var ctx; var pointlocs; var lines; var intlocs = []; let allregions = []; let starryinds = [];
-      const regenerate = function() {
+			const epsi = 0.0000000001;
+      const regenerate = function(donotshow) {
         N = find("howmanypoints").value;
-        ctx = find("cv").getContext('2d');
         pointlocs = [];
         lines = []; intlocs = [];
         for (let i = 0; i < N; i++) {
@@ -41,8 +41,8 @@
           }
           lines.push(JSON.parse(JSON.stringify(currarr)));
         }
-        console.log(JSON.stringify(lines));
-        console.log(pointlocs);
+        //console.log(JSON.stringify(lines));
+        //console.log(pointlocs);
         //return;
         //now we have to find all those line intersections yayyyyy
         for (let i = 1; i < N; i++) {
@@ -53,7 +53,7 @@
               for (let L = 0; L < thesplit[1].length; L++) {
                 let k = thesplit[0][K]; let l = thesplit[1][L];
                 let secline = lines[Math.max(k,l)][Math.min(k,l)];
-                if (!(secline)) {console.log(i,j,k,l);}
+                //if (!(secline)) {console.log(i,j,k,l);}
                 let intpointx = (secline[1]-lines[i][j][1])/(lines[i][j][0]-secline[0]);
                 if (Math.min(pointlocs[i][0],pointlocs[j][0]) < intpointx && intpointx < Math.max(pointlocs[i][0],pointlocs[j][0])) {
                   //real intersection
@@ -84,7 +84,8 @@
 						}
 					}
 				}
-        ctx.reset();
+        if (!donotshow) {
+					ctx.reset();
 				for (let i = 0; i < allregions.length; i++) {
 					ctx.fillStyle = "#" + Math.floor(16777216*Math.random()).toString(16);
 					ctx.beginPath();
@@ -110,7 +111,7 @@
         for (let i = 0; i < intlocs.length; i++) {
           drawp(intlocs[i],i);
         }
-				
+				}
       }
       const drawp = function(p,ind) {
         ctx.fillStyle = "black";
@@ -120,7 +121,7 @@
       }
       const isvert = function(p) {
         for (let findp = 0; findp < pointlocs.length; findp++) {
-          if (Math.abs(pointlocs[findp][0] - p[0]) < 0.00001 && Math.abs(pointlocs[findp][1] - p[1]) < 0.00001) {
+          if (Math.abs(pointlocs[findp][0] - p[0]) + Math.abs(pointlocs[findp][1] - p[1]) < epsi) {
             return(pointlocs);
           }
         }
@@ -136,7 +137,7 @@
       }*/
       const findindonlin = function(po,li) {
         for (let fpi = 0; fpi < li[3].length; fpi++) {
-          if (Math.abs(li[3][fpi][4] - po[4]) + Math.abs(li[3][fpi][5] - po[5]) < 0.000001) {
+          if (Math.abs(li[3][fpi][4] - po[4]) + Math.abs(li[3][fpi][5] - po[5]) < epsi) {
             return(fpi);
           }
         }
@@ -160,7 +161,7 @@
             currlin = [p1[2],p1[3]];
           }
         }
-        while (Math.abs(regbord[regbord.length - 1][4] - regbord[0][4]) > 0.000000001) {
+        while (Math.abs(regbord[regbord.length - 1][4] - regbord[0][4]) > epsi) {
           let nowpoint = regbord[regbord.length - 1];
           let newlin;
           if (nowpoint.length === 7) {
@@ -178,7 +179,7 @@
           } else {
             newlin = [nowpoint[0],nowpoint[1]];
           }
-          console.log(newlin,currlin,regbord);
+          //console.log(newlin,currlin,regbord);
           newlinact = lines[newlin[0]][newlin[1]];
           if (newlinact[0] < lines[currlin[0]][currlin[1]][0]) {
             //we just decreased our slope.
@@ -202,7 +203,7 @@
 			const donepair = function(p1,p2) {
 				for (let di = 0; di < allregions.length; di++) {
 					for (let dj = 0; dj < allregions[di].length - 1; dj++) {
-						if (Math.abs(allregions[di][dj][4] - p1[4]) + Math.abs(allregions[di][dj+1][4] - p2[4]) < 0.0000001) {
+						if (Math.abs(allregions[di][dj][4] - p1[4]) + Math.abs(allregions[di][dj+1][4] - p2[4]) < epsi) {
 							return(true);
 						}
 					}
@@ -221,7 +222,26 @@
 			const uhmpl = function() {
 				find("hmplabel").innerHTML = "Number of points: " + find("howmanypoints").value;
 			}
-      window.onload = uhmpl;
+			let csofts = [];
+			const manygene = function() {
+				for (let mg = 0; mg < 20000; mg++) {
+					if ((mg % 200) === 0) {
+						console.log(mg);
+					}
+					regenerate(true);
+					let cstar = starryinds.length;
+					if (csofts[cstar]) {
+						csofts[cstar] += 1;
+					} else {
+						csofts[cstar] = 1;
+					}
+				}
+				console.log(csofts);
+			}
+      window.onload = function() {
+				uhmpl();
+        ctx = find("cv").getContext('2d');
+			}
       /**/
     </script>
   </head>
@@ -229,6 +249,7 @@
     <input id="howmanypoints" type="range" min="3" max="15" value="6" autocomplete="off" oninput="uhmpl()"><label id="hmplabel" for="howmanypoints">Number of points: 6</label><br>
     <input id="convex" type="checkbox"><label for="convex">Convex or not</label><br>
     <button id="regen" onclick="regenerate()">Regenerate</button><br>
-    <canvas id="cv" width="800" height="800"></canvas>
+    <canvas id="cv" width="800" height="800"></canvas><br>
+		<button id="manygen" onclick="manygene()">Create many</button>
   </body>
 </html>
