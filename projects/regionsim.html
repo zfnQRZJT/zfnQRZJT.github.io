@@ -4,7 +4,7 @@
     <title>Region simulator</title>
     <script>
       const find = function(elem) {return(document.getElementById(elem));}
-      var N; var ctx; var pointlocs; var lines; var intlocs = [];
+      var N; var ctx; var pointlocs; var lines; var intlocs = []; let allregions = []; let starryinds = [];
       const regenerate = function() {
         N = find("howmanypoints").value;
         ctx = find("cv").getContext('2d');
@@ -68,9 +68,31 @@
             lines[i][j][3].sort((a,b) => a[4] - b[4]);
           }
         }
-				let allregions = [];
-				//for (let i = 0; i < 
+				allregions = []; starryinds = [];
+				for (let i = 1; i < pointlocs.length; i++) {
+					for (let j = 0; j < i; j++) {
+						let lij = lines[i][j];
+						if (lij[2][3].length > 2) {
+							workpair(lij[2][3][0],lij[2][3][1]);
+							workpair(lij[2][3][lij[2][3].length - 1],lij[2][3][lij[2][3].length - 2]);
+							if (lij[2][3].length > 3) {
+								for (k = 1; k < lij[2][3].length - 2; k++) {
+									workpair(lij[2][3][k],lij[2][3][k+1]);
+									//workpair(lij[2][3][k],lij[2][3][k]);
+								}
+							}
+						}
+					}
+				}
         ctx.reset();
+				for (let i = 0; i < allregions.length; i++) {
+					ctx.fillStyle = "#" + Math.floor(16777216*Math.random()).toString(16);
+					ctx.moveTo(allregions[i][0][4],allregions[i][0][5]);
+					for (let j = 1; j < allregions[i].length; j++) {
+						ctx.lineTo(allregions[i][j][4],allregions[i][j][5]);
+					}
+					ctx.fill();
+				}
         ctx.font = "10px serif";
         for (let i = 0; i < pointlocs.length; i++) {
           ctx.fillStyle = "black";
@@ -86,6 +108,7 @@
         for (let i = 0; i < intlocs.length; i++) {
           drawp(intlocs[i],i);
         }
+				
       }
       const drawp = function(p,ind) {
         ctx.fillStyle = "black";
@@ -184,12 +207,24 @@
 				}
 				return(false);
 			}
-      //window.onload = regenerate;
+			const workpair = function(a,b) {
+				if (!(donepair(a,b))) {
+					let newtrreg = traceReg(a,b);
+					if (evaluBord(newtrreg)) {
+						starryinds.push(allregions.length);
+					}
+					allregions.push(newtrreg);
+				}
+			}
+			const uhmpl = function() {
+				find("hmplabel").innerHTML = "Number of points: " + find("howmanypoints").value;
+			}
+      window.onload = uhmpl;
       /**/
     </script>
   </head>
   <body>
-    <input id="howmanypoints" type="range" min="3" max="15" value="6"><br>
+    <input id="howmanypoints" type="range" min="3" max="15" value="6" autocomplete="off" oninput="uhmpl()"><label id="hmplabel" for="howmanypoints">Number of points: 6</label><br>
     <input id="convex" type="checkbox"><label for="convex">Convex or not</label><br>
     <button id="regen" onclick="regenerate()">Regenerate</button><br>
     <canvas id="cv" width="800" height="800"></canvas>
