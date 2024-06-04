@@ -46,8 +46,9 @@
           for (let j = 0; j < i; j++) {
             let thesplit = lines[i][j][2];
             lines[i][j].push([pointlocs[i],pointlocs[j]]);
-            for (let k = 0; k < thesplit[0].length; k++) {
-              for (let l = 0; l < thesplit[1].length; l++) {
+            for (let K = 0; K < thesplit[0].length; K++) {
+              for (let L = 0; L < thesplit[1].length; L++) {
+                let k = thesplit[0][K]; let l = thesplit[1][L];
                 let secline = lines[Math.max(k,l)][Math.min(k,l)];
                 if (!(secline)) {console.log(i,j,k,l);}
                 let intpointx = (secline[1]-lines[i][j][1])/(lines[i][j][0]-secline[0]);
