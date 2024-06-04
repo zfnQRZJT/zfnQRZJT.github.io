@@ -86,8 +86,8 @@
       const drawp = function(p,ind) {
         ctx.fillStyle = "black";
         ctx.fillRect(p[4] - 5,p[5] - 5,10,10);
-        ctx.fillStyle="gray";
-        ctx.fillText(ind,p[4],p[5]);
+        ctx.fillStyle="white";
+        ctx.fillText(ind,p[4] - 5,p[5] + 5);
       }
       const isvert = function(p) {
         for (let findp = 0; findp < pointlocs.length; findp++) {
