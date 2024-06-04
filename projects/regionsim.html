@@ -9,6 +9,7 @@
         N = find("howmanypoints").value;
         ctx = find("cv").getContext('2d');
         pointlocs = [];
+        lines = []; intlocs = [];
         for (let i = 0; i < N; i++) {
           let x = 600*Math.random() - 300; let y;
           if (find("convex").checked) {
@@ -16,7 +17,9 @@
           } else {
             y = 600*Math.random() - 300;
           }
-          pointlocs.push([x + Math.random()*10 + 400,y + Math.random()*10 + 400]);
+          let newpo = [x + Math.random()*10 + 400,y + Math.random()*10 + 400,pointlocs.length - 1,0];
+          newpo.push(newpo[0],newpo[1],0);
+          pointlocs.push(newpo);
         }
         //now we have a bunch of points and have to connect them
         lines = [];
@@ -54,15 +57,15 @@
                 let intpointx = (secline[1]-lines[i][j][1])/(lines[i][j][0]-secline[0]);
                 if (Math.min(pointlocs[i][0],pointlocs[j][0]) < intpointx && intpointx < Math.max(pointlocs[i][0],pointlocs[j][0])) {
                   //real intersection
-                  let realinter = [intpointx,lines[i][j][0]*intpointx + lines[i][j][1]];
+                  let realinter = [i,j,Math.max(k,l),Math.min(k,l),realinter[0],realinter[1]];
                   lines[i][j][3].push(realinter);
-                  if (Math.max(i,j) > Math.max(k,l)) {
-                    intlocs.push([i,j,k,l,realinter[0],realinter[1]]);
+                  if (i > Math.max(k,l)) {
+                    intlocs.push(realinter);
                   }
                 }
               }
             }
-            lines[i][j][3].sort((a,b) => a.x - b.x);
+            lines[i][j][3].sort((a,b) => a[4] - b[4]);
           }
         }
         ctx.fillStyle = "white";
@@ -78,7 +81,70 @@
         }
         for (let i = 0; i < intlocs.length; i++) {drawp([intlocs[i][4],intlocs[i][5]]);}
       }
-      const drawp = function(p) {ctx.fillRect(p[0] - 2.5,p[1] - 2.5,5,5);}
+      const drawp = function(p) {ctx.fillRect(p[0] - 5,p[1] - 5,10,10);}
+      const isvert = function(p) {
+        for (let findp = 0; findp < pointlocs.length; findp++) {
+          if (Math.abs(pointlocs[findp][0] - p[0]) < 0.00001 && Math.abs(pointlocs[findp][1] - p[1]) < 0.00001) {
+            return(pointlocs);
+          }
+        }
+        return(false);
+      }
+      const findline = function(p) {
+        if (isvert(p)) {throw(new Error("tried to find the line of a vertex " + p))); return;}
+        for (let findp = 0; findp < intlocs.length; findp++) {
+          if (Math.abs(intlocs[findp][4] - p[0]) < 0.00001 && Math.abs(intlocs[findp][5] - p[1]) < 0.00001) {
+            return([intlocs[findp])
+          }
+        }
+      }
+      const traceReg = function(p1,p2) {
+        let regbord = [p1,p2];
+        let currlin;
+        let currdir = Math.sign(p2[4] - p1[4]);
+        if (p1.length === 6) {
+          //p1 is a vertex
+          if ([p2[0],p2[1]].includes(p1[2])) {
+            currlin = [p2[0],p2[1]];
+          } else {
+            currlin = [p2[2],p2[3]];
+          }
+        } else {
+          if ((p1[0] === p2[0] && p1[1] === p2[1]) || (p1[0] === p2[2] && p1[1] === p2[3])) {
+            currlin = [p1[0],p1[1]];
+          } else {
+            currlin = [p1[2],p1[3]];
+          }
+        }
+        while (regbord[regbord.length - 1] !== regbord[0]) {
+          let nowpoint = regbord[regbord.length - 1];
+          let newlin;
+          if (nowpoint.length === 6) {
+            throw Error("vertex found" + nowpoint);
+            return;
+          }
+          if (regbord.length >= 4*N) {
+            console.log(regbord);
+            throw Error("region too many sides");
+            return;
+          }
+          //we have the current line, find the next line
+          if (nowpoint[0] === currlin[0]) {
+            newlin = [nowpoint[2],nowpoint[3]];
+          } else {
+            newlin = [nowpoint[0],nowpoint[1]];
+          }
+          newlin = lines[newlin[0]][newlin[1]];
+          if (newlin[0] < lines[currlin[0]][currlin[1]]) {
+            //we just decreased our slope.
+            currdir *= -1;
+          }
+          let pointonlinindex = newlin.indexOf(nowpoint);
+          let newnewpoint = newlin[pointonlinindex + currdir];
+          regbord.push(newnewpoint);
+        }
+        return(regbord);
+      }
       //window.onload = regenerate;
     </script>
   </head>
