@@ -90,14 +90,14 @@
         }
         return(false);
       }
-      const findline = function(p) {
+      /*const findline = function(p) {
         if (isvert(p)) {throw Error("tried to find the line of a vertex " + p); return;}
         for (let findp = 0; findp < intlocs.length; findp++) {
           if (Math.abs(intlocs[findp][4] - p[0]) < 0.00001 && Math.abs(intlocs[findp][5] - p[1]) < 0.00001) {
-            return([intlocs[findp])
+            return([intlocs[findp]]);
           }
         }
-      }
+      }*/
       const traceReg = function(p1,p2) {
         let regbord = [p1,p2];
         let currlin;
