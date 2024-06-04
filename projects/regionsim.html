@@ -234,8 +234,8 @@
 			}
 			let csofts = [];
 			const manygene = function() {
-				for (let mg = 0; mg < 20000; mg++) {
-					if ((mg % 200) === 0) {
+				for (let mg = 0; mg < 40000; mg++) {
+					if ((mg % 400) === 0) {
 						console.log(mg);
 					}
 					regenerate(true);
@@ -245,8 +245,9 @@
 					} else {
 						csofts[cstar] = 1;
 					}
-					if (cstar > N + 1) {
+					if (cstar > N*1 + 1) {
 						drawThing();
+						console.log(pointlocs);
 					}
 				}
 				console.log(csofts);
