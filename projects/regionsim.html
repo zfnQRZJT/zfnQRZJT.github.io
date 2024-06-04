@@ -17,9 +17,20 @@
           } else {
             y = 600*Math.random() - 300;
           }
-          let newpo = [x + Math.random()*10 + 400,y + Math.random()*10 + 400,pointlocs.length,0];
-          newpo.push(newpo[0],newpo[1],0);
-          pointlocs.push(newpo);
+					x += Math.random()*10 + 400;
+					y += Math.random()*10 + 400
+					let tooclose = false;
+					for (let j = 0; j < pointlocs.length; j++) {
+						if (Math.abs(pointlocs[j][0] - x) < 0.01) {
+							tooclose = true;
+						}
+					}
+					if (tooclose) {
+						i -= 1;
+					} else {
+          	let newpo = [x,y,pointlocs.length,0,x,y,0];
+          	pointlocs.push(newpo);
+					}
         }
         //now we have a bunch of points and have to connect them
         lines = [];
