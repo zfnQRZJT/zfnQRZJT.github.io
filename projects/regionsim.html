@@ -105,6 +105,14 @@
           }
         }
       }*/
+      const findindonlin = function(po,li) {
+        for (let fpi = 0; fpi < li[3].length; fpi++) {
+          if (Math.abs(li[3][fpi][4] - po[4]) + Math.abs(li[3][fpi][5] - po[5]) < 0.000001) {
+            return(fpi);
+          }
+        }
+        return(-1);
+      }
       const traceReg = function(p1,p2) {
         let regbord = [p1,p2];
         let currlin;
@@ -143,12 +151,11 @@
           }
           console.log(newlin,currlin,regbord);
           newlin = lines[newlin[0]][newlin[1]];
-          if (newlin[0] < lines[currlin[0]][currlin[1]]) {
+          if (newlin[0] < lines[currlin[0]][currlin[1]][0]) {
             //we just decreased our slope.
             currdir *= -1;
           }
-          let pointonlinindex = newlin.indexOf(nowpoint);
-          let newnewpoint = newlin[pointonlinindex + currdir];
+          let newnewpoint = newlin[findindonlin(nowpoint,newlin) + currdir];
           regbord.push(newnewpoint);
           currlin = newlin;
         }
