@@ -68,6 +68,7 @@
             lines[i][j][3].sort((a,b) => a[4] - b[4]);
           }
         }
+        ctx.reset();
         ctx.fillStyle = "white";
         ctx.fillRect(0,0,800,800);
         ctx.fillStyle="black";
@@ -119,7 +120,7 @@
         while (regbord[regbord.length - 1] !== regbord[0]) {
           let nowpoint = regbord[regbord.length - 1];
           let newlin;
-          if (nowpoint.length === 6) {
+          if (nowpoint.length === 7) {
             throw Error("vertex found" + nowpoint);
             return;
           }
