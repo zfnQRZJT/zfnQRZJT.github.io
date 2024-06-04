@@ -69,16 +69,18 @@
           }
         }
         ctx.reset();
-        ctx.font = "15px serif";
+        ctx.font = "10px serif";
         for (let i = 0; i < pointlocs.length; i++) {
-          ctx.fillStyle="black";
+          ctx.fillStyle = "black";
           for (let j = 0; j < i; j++) {
             ctx.moveTo(pointlocs[i][0],pointlocs[i][1]);
             ctx.lineTo(pointlocs[j][0],pointlocs[j][1]);
           }
-          drawp(pointlocs[i],i);
         }
         ctx.stroke();
+				for (let i = 0; i < pointlocs.length; i++) {
+          drawp(pointlocs[i],i);
+				}
         for (let i = 0; i < intlocs.length; i++) {
           drawp(intlocs[i],i);
         }
@@ -87,7 +89,7 @@
         ctx.fillStyle = "black";
         ctx.fillRect(p[4] - 5,p[5] - 5,10,10);
         ctx.fillStyle="white";
-        ctx.fillText(ind,p[4] - 5,p[5] + 5);
+        ctx.fillText(ind,p[4] - 5,p[5] + 3);
       }
       const isvert = function(p) {
         for (let findp = 0; findp < pointlocs.length; findp++) {
@@ -150,12 +152,12 @@
             newlin = [nowpoint[0],nowpoint[1]];
           }
           console.log(newlin,currlin,regbord);
-          newlin = lines[newlin[0]][newlin[1]];
-          if (newlin[0] < lines[currlin[0]][currlin[1]][0]) {
+          newlinact = lines[newlin[0]][newlin[1]];
+          if (newlinact[0] < lines[currlin[0]][currlin[1]][0]) {
             //we just decreased our slope.
             currdir *= -1;
           }
-          let newnewpoint = newlin[findindonlin(nowpoint,newlin) + currdir];
+          let newnewpoint = newlinact[3][findindonlin(nowpoint,newlinact) + currdir];
           regbord.push(newnewpoint);
           currlin = newlin;
         }
