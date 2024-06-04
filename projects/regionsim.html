@@ -109,7 +109,7 @@
         let regbord = [p1,p2];
         let currlin;
         let currdir = Math.sign(p2[4] - p1[4]);
-        if (p1.length === 6) {
+        if (p1.length === 7) {
           //p1 is a vertex
           if ([p2[0],p2[1]].includes(p1[2])) {
             currlin = [p2[0],p2[1]];
@@ -150,6 +150,7 @@
           let pointonlinindex = newlin.indexOf(nowpoint);
           let newnewpoint = newlin[pointonlinindex + currdir];
           regbord.push(newnewpoint);
+          currlin = newlin;
         }
         return(regbord);
       }
