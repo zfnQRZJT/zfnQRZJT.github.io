@@ -197,10 +197,10 @@
 				}
 				return(!(yeses.includes(0)));
 			}
-			const donepair = function(p1,p2,doneregs) {
-				for (let di = 0; di < doneregs.length; di++) {
-					for (let dj = 0; dj < doneregs[di].length - 1; dj++) {
-						if (Math.abs(doneregs[di][dj][4] - p1[4]) + Math.abs(doneregs[di][dj+1][4] - p2[4]) < 0.0000001) {
+			const donepair = function(p1,p2) {
+				for (let di = 0; di < allregions.length; di++) {
+					for (let dj = 0; dj < allregions[di].length - 1; dj++) {
+						if (Math.abs(allregions[di][dj][4] - p1[4]) + Math.abs(allregions[di][dj+1][4] - p2[4]) < 0.0000001) {
 							return(true);
 						}
 					}
