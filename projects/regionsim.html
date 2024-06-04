@@ -17,7 +17,7 @@
           } else {
             y = 600*Math.random() - 300;
           }
-          let newpo = [x + Math.random()*10 + 400,y + Math.random()*10 + 400,pointlocs.length - 1,0];
+          let newpo = [x + Math.random()*10 + 400,y + Math.random()*10 + 400,pointlocs.length,0];
           newpo.push(newpo[0],newpo[1],0);
           pointlocs.push(newpo);
         }
@@ -137,8 +137,8 @@
           let nowpoint = regbord[regbord.length - 1];
           let newlin;
           if (nowpoint.length === 7) {
-            throw Error("vertex found" + nowpoint);
-            return;
+            regbord.push(regbord[0]);
+	    return(regbord);
           }
           if (regbord.length >= 4*N) {
             console.log(regbord);
@@ -164,6 +164,7 @@
         return(regbord);
       }
       //window.onload = regenerate;
+      /**/
     </script>
   </head>
   <body>
