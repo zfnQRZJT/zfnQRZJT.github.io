@@ -87,10 +87,12 @@
         ctx.reset();
 				for (let i = 0; i < allregions.length; i++) {
 					ctx.fillStyle = "#" + Math.floor(16777216*Math.random()).toString(16);
+					ctx.beginPath();
 					ctx.moveTo(allregions[i][0][4],allregions[i][0][5]);
 					for (let j = 1; j < allregions[i].length; j++) {
 						ctx.lineTo(allregions[i][j][4],allregions[i][j][5]);
 					}
+					ctx.closePath();
 					ctx.fill();
 				}
         ctx.font = "10px serif";
