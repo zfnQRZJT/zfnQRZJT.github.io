@@ -104,6 +104,9 @@
           }
         }
         //console.log(zeroArray);
+				const arbd = function(n) {
+					return(new Decimal(n,100));
+				}
         var vars = [""];
         var peqn;
         for (let peqnind = 0; peqnind < zeroArray.length; peqnind++) {
@@ -143,16 +146,16 @@
                 fallor = true;
                 break;
               } else {
-                peqn[i] = [1*(peqn[i].split("/")[0]),1*(peqn[i].split("/")[1])];
+                peqn[i] = [arbd(peqn[i].split("/")[0]),arbd(peqn[i].split("/")[1])];
               }
             } else {
               if (1*peqn[i] || 1*peqn[i] === 0) {
                 if (peqn[i].includes(".")) {
 									//console.log(peqn[i]);
-                  peqn[i] = [1*peqn[i].replaceAll(".",""),10**(peqn[i].length - peqn[i].indexOf(".") - 1)];
+                  peqn[i] = [arbd(peqn[i].replaceAll(".","")),arbd(10**(peqn[i].length - peqn[i].indexOf(".") - 1))];
 									//console.log("after",peqn[i]);
                 } else {
-									peqn[i] = [1*peqn[i],1];
+									peqn[i] = [arbd(peqn[i]),1];
 								}
               } else {
                 //Non interpretable number
@@ -184,7 +187,7 @@
 						matrArray[matrArray.length - 1][targ] = arith(matrArray[matrArray.length - 1][targ],peqn[j],"+");
 					}
         }
-				console.log(vars,matrArray);
+				//console.log(vars,matrArray);
 				if (vars.length - 1 > matrArray.length) {
 					postAns(["More variables than equations</b>"]);
 					return;
@@ -257,37 +260,38 @@
       const arith = function(r1,r2,op) {
         let newRat = [];
         if (op === "+") {
-          newRat = [r1[0]*r2[1] + r1[1]*r2[0],r1[1]*r2[1]];
+          newRat = [r1[0].times(r2[1]).plus(r1[1].times(r2[0])),r1[1].times(r2[1])];
         } else if (op === "-") {
-          newRat = [r1[0]*r2[1] - r1[1]*r2[0],r1[1]*r2[1]];
+          newRat = [r1[0].times(r2[1]).minus(r1[1].times(r2[0])),r1[1].times(r2[1])];
         } else if (op === "*") {
-          newRat = [r1[0]*r2[0],r1[1]*r2[1]];
+          newRat = [r1[0].times(r2[0]),r1[1].times(r2[1])];
         } else if (op === "/") {
-          if (r2[0] === 0) {
+          if (r2[0] == 0) {
             throw Error("Dividing by zero");
           } else {
-            newRat = [r1[0]*r2[1],r1[1]*r2[0]];
+            newRat = [r1[0].times(r2[1]),r1[1].times(r2[0])];
           }
         } else if (op === "n") {
-					newRat = [r1[0]*(-1),r1[1]];
+					newRat = [r1[0].times(-1),r1[1]];
 				}
 				if (newRat[0] === 0) {
-					return([0,1]);
+					return([arbd(0),arbd(1)]);
 				} else {
         	newGcd = gcd(...newRat);
-        	return([newRat[0]/newGcd*Math.sign(newRat[1]),newRat[1]/newGcd*Math.sign(newRat[1])]);
+        	return([newRat[0].div(newGcd).times(newRat[1].s),newRat[1].div(newGcd).times(newRat[1].s)]);
 				}
       }
       const gcd = function(n1,n2) {
-        n1 = Math.abs(n1); n2 = Math.abs(n2);
-        while (n1*n2 > 0) {
+        n1 = n1.abs();
+				n2 = n2.abs();
+        while (n1 > 0 && n2 > 0) {
           if (n1 > n2) {
-						n1 = n1 % n2;
+						n1 = n1.mod(n2);
 					} else {
-						n2 = n2 % n1;
+						n2 = n2.mod(n1);
 					}
         }
-        return(n1 + n2);
+        return(n1.plus(n2));
       }
       const clearUneqs = function() {
         while (find("eq" + (numofeqs - 1)).innerHTML + find("eq" + (numofeqs - 2)).innerHTML === "" && numofeqs > 2) {
