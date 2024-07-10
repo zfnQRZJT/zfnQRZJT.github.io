@@ -239,6 +239,7 @@
 					//console.log("and we think its",varvals[nevi]);
 					for (let j = 1; j < donevars.length; j++) {
 						if (donevars[j][nevi][0] !== 0) {
+							console.log(donevars[j][0], donevars[j][nevi],varvals[nevi],"dj0 djn vn");
 							donevars[j][0] = arith(donevars[j][0],arith(donevars[j][nevi],varvals[nevi],"*"),"+");
 						}
 						//console.log("after variable",vars[nevi],JSON.stringify(donevars));
