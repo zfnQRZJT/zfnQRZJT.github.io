@@ -179,7 +179,7 @@
         for (let peqnind = 0; peqnind < zeroArray.length; peqnind++) {
           if (peqnind in zeroArray) {peqn = zeroArray[peqnind];} else {continue;}
           //Convert into matrix format
-					matrArray.push(vars.map(x => [0,1]));
+					matrArray.push(vars.map(x => [arbd(0),arbd(1)]));
 					let targ = 0;
 					for (let j = 0; j < peqn.length; j += 2) {
 						targ = vars.indexOf(peqn[j + 1]);
