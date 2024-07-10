@@ -70,6 +70,9 @@
         find("leftside").innerHTML = '<div contenteditable class="entereq" id="eq0" oninput="updateEqs(0)"></div><div contenteditable class="entereq gr" id="eq1" oninput="updateEqs(1)"></div>';
         numofeqs = 2;
       }
+			const arbd = function(n) {
+				return(new Decimal(n,28));
+			}
       const numchars = "0123456789/.";
       const updateEqs = function(edt) {
         //Reset errors
@@ -104,9 +107,6 @@
           }
         }
         //console.log(zeroArray);
-				const arbd = function(n) {
-					return(new Decimal(n,28));
-				}
         var vars = [""];
         var peqn;
         for (let peqnind = 0; peqnind < zeroArray.length; peqnind++) {
@@ -296,7 +296,7 @@
 					if (Math.random() < 0.000001) {
 						console.log(n1.toString(),n2.toString());
 					}
-          if (n1 > n2) {
+          if (n1.minus(n2) > 0) {
 						n1 = n1.mod(n2);
 					} else {
 						n2 = n2.mod(n1);
