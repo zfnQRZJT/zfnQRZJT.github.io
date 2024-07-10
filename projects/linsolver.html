@@ -192,7 +192,7 @@
 					postAns(["More variables than equations</b>"]);
 					return;
 				}
-				console.log("matrArray",JSON.stringify(matrArray));
+				//console.log("matrArray",matrArray);
 				let donevars = [];
 				let varorder = [];
 				for (let parrind = 0; parrind < matrArray.length; parrind++) {
@@ -203,7 +203,7 @@
 						if (parr[j][0] !== 0) {
 							multj = j;
 							varorder.push(j);
-							multf = arith([-1,1],parr[j],"/");
+							multf = arith([arbd(-1),arbd(1)],parr[j],"/");
 							for (let k = 0; k < parr.length; k++) {
 								parr[k] = arith(parr[k],multf,"*");
 							}
