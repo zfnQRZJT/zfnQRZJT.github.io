@@ -215,7 +215,14 @@
 						return;
 					} else {
 						console.log("parrmultj",parr);
-						donevars[multj] = JSON.parse(JSON.stringify(parr));
+						//donevars[multj] = parr;//JSON.parse(JSON.stringify(parr));
+						donevars[multj] = [];
+						for (let pari = 0; pari < parr.length; pari++) {
+							donevars[multj].push([]);
+							for (let parj = 0; parj < parr[pari].length; parj++) {
+								donevars[multj][pari].push(parr[pari][parj]);
+							}
+						}
 						//console.log("new donevar",donevars[multj]);
 						for (let k = parrind + 1; k < matrArray.length; k++) {
 							if (matrArray[k][multj][0] !== 0) {
