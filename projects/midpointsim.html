@@ -70,7 +70,9 @@
         pointcols = ["0".repeat(n).split("").map(x => 0)];
         origins = "0".repeat(n).split("").map(x => []);
         for (let i = 1; i < n; i++) {
-          pointcols.push(("0".repeat(i - 1) + "1" + "0".repeat(n - 1 - i)).split("").map(x => 1*x).push(i))
+          let pointtobe = ("0".repeat(i - 1) + "1" + "0".repeat(n - 1 - i)).split("").map(x => 1*x);
+          pointtobe.push(i);
+          pointcols.push(pointtobe);
         }
         let timeout = 10000;
         while(timeout > 0) {
@@ -107,7 +109,7 @@
         }
         simulateF();
       }
-      window.onload = updateInp();
+      window.onload = updateInp;
     </script>
   </head>
   <body>
