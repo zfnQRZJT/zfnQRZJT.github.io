@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Fourier</title>
+    <script>
+      const find = function(elem) {
+        return(document.getElementById(elem));
+      }
+      const updateInp = function() {
+        n = find("entern").value;
+      }
+      window.onload = updateInp();
+    </script>
+  </head>
+  <body>Midpoint Simulator<br><input id='entern' type='range' min='2' max='10' oninput='updateInp()'></body>
+</html>
