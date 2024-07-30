@@ -30,8 +30,65 @@
       }
       let n = 1;
       let f = [];
+      let pointcols = [];
+      origins = [];
+      const union = function(a,b) {
+        let aub = [];
+        for (let i = 0; i < a.length; i++) {
+          if (!(aub.includes(a[i]))) {
+            aub.push(a[i]);
+          }
+        }
+        for (let i = 0; i < b.length; i++) {
+          if (!(aub.includes(b[i]))) {
+            aub.push(b[i]);
+          }
+        }
+        return(aub);
+      }
+      const averagepoints = function(p1d,p2d) {
+        retp = [];
+        for (let i = 0; i < n - 1; i++) {
+          retp.push((p1d[i] + p2d[i])/2);
+        }
+        retp.push(f[p1d[n - 1]][p2d[n - 1]]);
+        return(retp);
+      }
+      const checkifalready = function(pd) {
+        for (let i = 0; i < pointcols.length; i++) {
+          if (pointcols[i].slice(0,n-1).join(",") === pd.slice(0,n-1).join(",")) {
+            if (pd[n - 1] === pointcols[i][n - 1]) {
+              return(2);
+            } else {
+              return(pointcols[i]);
+            }
+          }
+        }
+        return(1);
+      }
       const simulateF = function() {
-        
+        pointcols = ["0".repeat(n).split("").map(x => 0)];
+        origins = "0".repeat(n).split("").map(x => []);
+        for (let i = 1; i < n; i++) {
+          pointcols.push(("0".repeat(i - 1) + "1" + "0".repeat(n - 1 - i)).split("").map(x => 1*x).push(i))
+        }
+        let timeout = 10000;
+        while(timeout > 0) {
+          timeout -= 1;
+          r1 = Math.floor(pointcols.length*Math.random());
+          r2 = Math.floor(pointcols.length*Math.random());
+          if (r1 !== r2) {
+            midp = averagepoints(pointcols[r1],pointcols[r2]);
+            sw = checkifalready(midp);
+            if (sw === 2) {} else if (sw === 1) {
+              pointcols.push(midp);
+              origins.push(union(origins[r1],origins[r2]));
+            } else {
+              console.log("Failure! Points",JSON.stringify(r1),JSON.stringify(r2),"conflict with point",JSON.stringify(sw));
+              break;
+            }
+          }
+        }
       }
       const changeVal = function(x,y) {
         f[x][y] = find("val" + x + "," + y).value*1; f[y][x] = f[x][y];
@@ -40,6 +97,7 @@
       const updateInp = function() {
         n = 1*find("entern").value;
         find("enterf").innerHTML = "";
+        f = [];
         for (let i = 1; i <= n; i++) {
           f.push("1".repeat(n).split("").map(x => 1))
           find("enterf").innerHTML += "<div class='row' id='enterrow" + i + "'></div>";
