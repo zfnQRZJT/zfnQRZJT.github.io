@@ -2,15 +2,54 @@
 <html>
   <head>
     <title>Fourier</title>
+    <style>
+      * {
+        box-sizing:border-box;
+        vertical-align:top;
+      }
+      .row {
+        display:block;
+        height:30px;
+      }
+      .rowcell {
+        height:30px;
+        width:30px;
+        border:2px;
+        display:inline-block;
+      }
+    </style>
     <script>
       const find = function(elem) {
         return(document.getElementById(elem));
       }
+      let n = 1;
+      let f = [];
+      const simulateF = function() {
+        
+      }
+      const changeVal = function(x,y) {
+        f[x][y] = find("val" + x + "," + y).value*1; f[y][x] = f[x][y];
+        simulateF();
+      }
       const updateInp = function() {
-        n = find("entern").value;
+        n = 1*find("entern").value;
+        find("enterf").innerHTML = "";
+        for (let i = 1; i <= n; i++) {
+          f.push("1".repeat(n).split("").map(x => 1))
+          find("enterf").innerHTML += "<div class='row' id='enterrow" + n + "'></div>";
+          for (let j = 1; j <= i; j++) {
+            find("enterrow" + n).innerHTML += "<div class='rowcell'><input value='1' oninput='changeVal(" + i + "," + j + ")' id='val" + i + "," + j + "'></div>";
+          }
+        }
+        simulateF();
       }
       window.onload = updateInp();
     </script>
   </head>
-  <body>Midpoint Simulator<br><input id='entern' type='range' min='2' max='10' oninput='updateInp()'></body>
+  <body>
+    Midpoint Simulator<br>
+    <input id='entern' type='range' min='2' max='10' oninput='updateInp()'>
+    <div id='enterf'></div>
+  </body>
+  
 </html>
