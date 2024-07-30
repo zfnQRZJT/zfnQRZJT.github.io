@@ -14,14 +14,14 @@
       .rowcell {
         height:30px;
         width:30px;
-        border:2px;
+        border:2px solid;
         display:inline-block;
       }
       .cellinp {
         border:none;
         text-align:center;
-        width:30px;
-        padding-top:2px;
+        width:26px;
+        padding:4px 0 0;
       }
     </style>
     <script>
@@ -44,7 +44,7 @@
           f.push("1".repeat(n).split("").map(x => 1))
           find("enterf").innerHTML += "<div class='row' id='enterrow" + i + "'></div>";
           for (let j = 1; j <= i; j++) {
-            find("enterrow" + i).innerHTML += "<div class='rowcell'><input class'cellinp' value='1' oninput='changeVal(" + i + "," + j + ")' id='val" + i + "," + j + "'></div>";
+            find("enterrow" + i).innerHTML += "<div class='rowcell'><input class='cellinp' value='1' oninput='changeVal(" + i + "," + j + ")' id='val" + i + "," + j + "'></div>";
           }
         }
         simulateF();
