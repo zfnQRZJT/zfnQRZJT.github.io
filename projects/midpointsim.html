@@ -77,7 +77,6 @@
         let timeout = 400;
         while(timeout > 0) {
           timeout -= 1;
-          
           r1 = Math.random(); r2 = Math.random();
           r1 = Math.min(pointcols.length - 1,Math.floor(Math.sqrt(pointcols.length)*r1/(1 - r1)));
           r2 = Math.min(pointcols.length - 1,Math.floor(Math.sqrt(pointcols.length)*r2/(1 - r2)));
@@ -132,9 +131,11 @@
             baseconv.push(ii % n + 1);
             ii = Math.floor(ii/n);
           }
+          console.log(baseconv.join(""));
           insertNumbers(baseconv);
           if (simulateF()) {
-            console.log(successes.push(f.join(" / ")));
+            successes.push(f);
+            console.log(f.join(" / "));
           }
         }
       }
