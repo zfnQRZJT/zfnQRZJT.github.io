@@ -74,11 +74,13 @@
           pointtobe.push(i);
           pointcols.push(pointtobe);
         }
-        let timeout = 10000;
+        let timeout = 150;
         while(timeout > 0) {
           timeout -= 1;
-          r1 = Math.floor(pointcols.length*Math.random());
-          r2 = Math.floor(pointcols.length*Math.random());
+          
+          r1 = Math.random(); r2 = Math.random();
+          r1 = Math.min(pointcols.length - 1,Math.floor(Math.sqrt(pointcols.length)*r1/(1 - r1)));
+          r2 = Math.min(pointcols.length - 1,Math.floor(Math.sqrt(pointcols.length)*r2/(1 - r2)));
           if (r1 !== r2) {
             midp = averagepoints(pointcols[r1],pointcols[r2]);
             sw = checkifalready(midp);
