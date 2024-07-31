@@ -74,12 +74,13 @@
           pointtobe.push(i);
           pointcols.push(pointtobe);
         }
-        let timeout = 1000;
+        r1 = 1; r2 = 0;
+        let timeout = 500;
         while(timeout > 0) {
           timeout -= 1;
-          r1 = Math.random(); r2 = Math.random();
+          /*r1 = Math.random(); r2 = Math.random();
           r1 = Math.min(pointcols.length - 1,Math.floor(Math.sqrt(pointcols.length)*r1/(1 - r1)));
-          r2 = Math.min(pointcols.length - 1,Math.floor(Math.sqrt(pointcols.length)*r2/(1 - r2)));
+          r2 = Math.min(pointcols.length - 1,Math.floor(Math.sqrt(pointcols.length)*r2/(1 - r2)));*/
           if (r1 !== r2) {
             midp = averagepoints(pointcols[r1],pointcols[r2]);
             sw = checkifalready(midp);
@@ -90,6 +91,12 @@
               console.log("Failure! Points",JSON.stringify(r1),JSON.stringify(r2),"conflict with point",JSON.stringify(sw));
               return(false);
             }
+          }
+          if (r1 - r2 === 1) {
+            r1 += 1;
+            r2 = 0;
+          } else {
+            r2 += 1;
           }
         }
         return(true);
