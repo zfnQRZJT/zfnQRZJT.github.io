@@ -120,7 +120,7 @@
         for (let i = 1; i <= n; i++) {
           for (let j = 1; j <= i; j++) {
             pos += 1;
-            f[i][j] = numbs[pos]; f[j][i] = numbs[pos];
+            f[i - 1][j - 1] = numbs[pos]; f[j - 1][i - 1] = numbs[pos];
           }
         }
       }
