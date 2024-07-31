@@ -116,7 +116,7 @@
         for (let i = 1; i <= n; i++) {
           for (let j = 1; j <= i; j++) {
             pos += 1;
-            f[x][y] = numbs[pos]; f[y][x] = numbs[pos];
+            f[i][j] = numbs[pos]; f[j][i] = numbs[pos];
           }
         }
       }
