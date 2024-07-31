@@ -103,7 +103,7 @@
         find("enterf").innerHTML = "";
         f = [];
         for (let i = 1; i <= n; i++) {
-          f.push("1".repeat(n).split("").map(x => 1))
+          f.push("1".repeat(n).split("").map(x => 1));
           find("enterf").innerHTML += "<div class='row' id='enterrow" + i + "'></div>";
           for (let j = 1; j <= i; j++) {
             find("enterrow" + i).innerHTML += "<div class='rowcell'><input class='cellinp' value='1' oninput='changeVal(" + i + "," + j + ")' id='val" + i + "," + j + "'></div>";
@@ -113,6 +113,10 @@
       }
       const insertNumbers = function(numbs) {
         let pos = 0;
+        f = [];
+        for (let i = 1; i <= n; i++) {
+          f.push("1".repeat(n).split("").map(x => 1));
+        }
         for (let i = 1; i <= n; i++) {
           for (let j = 1; j <= i; j++) {
             pos += 1;
