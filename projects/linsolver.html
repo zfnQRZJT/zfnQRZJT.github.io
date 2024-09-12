@@ -61,7 +61,7 @@
     </style>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/decimal.js/10.3.1/decimal.min.js"></script>
     <script>
-      const find = function(elem) {
+      /*const find = function(elem) {
         return(document.getElementById(elem));
       }
       HTMLElement.prototype.add = function(newHTML) {this.insertAdjacentHTML("beforeend",newHTML)};
@@ -319,7 +319,250 @@
           str = str.replaceAll("+-","-");
         }
         return(str);
+      }*/
+			const find = function(elem) {
+        return(document.getElementById(elem));
       }
+      HTMLElement.prototype.add = function(newHTML) {this.insertAdjacentHTML("beforeend",newHTML)};
+      var numofeqs = 0;
+      window.onload = function() {
+        find("leftside").innerHTML = '<div contenteditable class="entereq" id="eq0" oninput="updateEqs(0)"></div><div contenteditable class="entereq gr" id="eq1" oninput="updateEqs(1)"></div>';
+        numofeqs = 2;
+      }
+      const numchars = "0123456789/.";
+      const updateEqs = function(edt) {
+        //Reset errors
+        find("eq" + edt).style = "";
+        if (find("eq" + edt).innerHTML.replaceAll("<br>","").replaceAll("<div></div>","") === "") {
+          find("eq" + edt).innerHTML = "";
+        }
+        if (find("eq" + (numofeqs - 1)).innerHTML !== "") {
+          find("leftside").add('<div contenteditable class="entereq' + ['',' gr'][numofeqs % 2] + '" id="eq' + numofeqs + '" oninput="updateEqs(' + numofeqs + ')"></div>');
+          numofeqs++;
+        }
+        clearUneqs();
+        const rb = "background:#F88;"
+        let zeroArray = [];
+        for (let i = 0; i < numofeqs; i++) {
+          let badstuffbeforeeq = find("eq" + i).innerHTML.includes("+=") || find("eq" + i).innerHTML.includes("-=") || find("eq" + i).innerHTML.includes("<br>");
+          let inpspeq = find("eq" + i).innerHTML.replaceAll(" ","").split("=");
+          if (inpspeq.length === 2 && inpspeq[0].length*inpspeq[1].length && !badstuffbeforeeq) {
+            zeroArray[i] = "";
+            if (!("+-".includes(inpspeq[0][0]))) {
+              zeroArray[i] = "+";
+            }
+            zeroArray[i] += clearPlPlMiMi(inpspeq[0]);
+            inpspeq[1] = clearPlPlMiMi(inpspeq[1]);
+            if (!("+-".includes(inpspeq[1][0]))) {
+              zeroArray[i] += "-";
+            }
+            zeroArray[i] += inpspeq[1].replaceAll("-"," ").replaceAll("+","-").replaceAll(" ","+");
+          } else if (inpspeq.length > 2 || badstuffbeforeeq) {
+            find("eq" + i).style = rb;
+		  			//console.log("rb",inpspeq,badstuffbeforeeq);
+          }
+        }
+        //console.log(zeroArray);
+        var vars = [""];
+        var peqn;
+        for (let peqnind = 0; peqnind < zeroArray.length; peqnind++) {
+          if (peqnind in zeroArray) {peqn = zeroArray[peqnind];} else {continue;}
+          let segmented = [];
+          let mode = 0;
+					for (let i = 0; i < peqn.length; i++) {
+            if ("+-".includes(peqn[i])) {
+							if (segmented.length % 2) {
+								segmented.push("");
+							}
+							mode = 0;
+              segmented.push(peqn[i]);
+            } else if (numchars.includes(peqn[i]) && !mode) {
+              segmented[segmented.length - 1] += peqn[i];
+            } else if (!mode) {
+							if (segmented[segmented.length - 1].length === 1) {
+								segmented[segmented.length - 1] += "1";
+							}
+							segmented.push(peqn[i]);
+							mode = 1;
+						} else {
+							segmented[segmented.length - 1] += peqn[i];
+						}
+          }
+					if (segmented.length % 2) {
+						segmented.push("");
+					}
+          var fallor = false;
+					peqn = segmented;
+					//console.log("peqn",peqn);
+          for (let i = 0; i < peqn.length; i += 2) {
+            if (peqn[i].includes("/")) {
+              if (peqn[i].length - peqn[i].replaceAll("/","").length >= 2) {
+                find("eq" + peqnind).style = rb;
+								console.log("rb, too many slashes");
+                fallor = true;
+                break;
+              } else {
+                peqn[i] = [1*(peqn[i].split("/")[0]),1*(peqn[i].split("/")[1])];
+              }
+            } else {
+              if (1*peqn[i] || 1*peqn[i] === 0) {
+                if (peqn[i].includes(".")) {
+									//console.log(peqn[i]);
+                  peqn[i] = [1*peqn[i].replaceAll(".",""),10**(peqn[i].length - peqn[i].indexOf(".") - 1)];
+									//console.log("after",peqn[i]);
+                } else {
+									peqn[i] = [1*peqn[i],1];
+								}
+              } else {
+                //Non interpretable number
+                find("eq" + peqnind).style = rb;
+								console.log("rb, noninterpretable number",peqn[i]);
+                fallor = true;
+                break;
+              }
+            }
+            if (!(vars.includes(peqn[i+1]))) {
+              vars.push(peqn[i+1]);
+            }
+          }
+					zeroArray[peqnind] = peqn;
+          if (fallor) {
+            zeroArray[peqnind] = undefined;
+            continue;
+          }
+        }
+        let matrArray = [];
+        for (let peqnind = 0; peqnind < zeroArray.length; peqnind++) {
+          if (peqnind in zeroArray) {peqn = zeroArray[peqnind];} else {continue;}
+          //Convert into matrix format
+					matrArray.push(vars.map(x => [0,1]));
+					let targ = 0;
+					for (let j = 0; j < peqn.length; j += 2) {
+						targ = vars.indexOf(peqn[j + 1]);
+						//console.log("peqnind:",peqnind,"peqn:",peqn,"targ:",targ,"vars:",vars);
+						matrArray[matrArray.length - 1][targ] = arith(matrArray[matrArray.length - 1][targ],peqn[j],"+");
+					}
+        }
+				console.log(vars,matrArray);
+				if (vars.length - 1 > matrArray.length) {
+					postAns(["More variables than equations</b>"]);
+					return;
+				}
+				console.log("matrArray",JSON.stringify(matrArray));
+				let donevars = [];
+				let varorder = [];
+				for (let parrind = 0; parrind < matrArray.length; parrind++) {
+					let parr = matrArray[parrind];
+					let multf = "";
+					let multj = 0;
+					for (let j = 1; j < parr.length; j++) {
+						if (parr[j][0] !== 0) {
+							multj = j;
+							varorder.push(j);
+							multf = arith([-1,1],parr[j],"/");
+							for (let k = 0; k < parr.length; k++) {
+								parr[k] = arith(parr[k],multf,"*");
+							}
+							break;
+						}
+					}
+					if (multf === "") {
+						postAns(["Two of these equations are identical or never match. First found on equation #" + (parrind+1)]);
+						return;
+					} else {
+						//console.log("parrmultj",parr);
+						donevars[multj] = JSON.parse(JSON.stringify(parr));
+						//console.log("new donevar",donevars[multj]);
+						for (let k = parrind + 1; k < matrArray.length; k++) {
+							if (matrArray[k][multj][0] !== 0) {
+								let specmul = [matrArray[k][multj][0],matrArray[k][multj][1]];
+								for (let l = 0; l < vars.length; l++) {
+									//console.log("looking at matrArray",k,l,"we multiplied by",matrArray[k][multj]);
+									matrArray[k][l] = arith(matrArray[k][l],arith(donevars[multj][l],specmul,"*"),"+");
+								}
+							}
+						}
+						//console.log("matrarray modified after var",vars[multj],"and is now",JSON.stringify(matrArray));
+					}
+				}
+				//Now donevars is our row echelon matrix, traversable backwards along varorder
+				//console.log("donevars",JSON.stringify(donevars));
+				let varvals = [];
+				for (let i = varorder.length - 1; i >= 0; i--) {
+					nevi = varorder[i];
+					//console.log("computing variable",vars[nevi]);
+					varvals[nevi] = [donevars[nevi][0][0],donevars[nevi][0][1]];
+					//console.log("and we think its",varvals[nevi]);
+					for (let j = 1; j < donevars.length; j++) {
+						if (donevars[j][nevi][0] !== 0) {
+							donevars[j][0] = arith(donevars[j][0],arith(donevars[j][nevi],varvals[nevi],"*"),"+");
+						}
+						//console.log("after variable",vars[nevi],JSON.stringify(donevars));
+					}
+				}
+				let results = [];
+				for (i = 1; i < vars.length; i++) {
+					let thres = vars[i] + " = " + varvals[i][0];
+					if (varvals[i][1] !== 1) {
+						thres += "/" + varvals[i][1];
+					}
+					results.push(thres);
+				}
+				postAns(results);
+      }
+			const postAns = function(words) {
+				find("rightside").innerHTML = '<div class="entereq gr">' + words.join('</div><div class="entereq gr">') + "</div>";
+			}
+      const arith = function(r1,r2,op) {
+        let newRat = [];
+        if (op === "+") {
+          newRat = [r1[0]*r2[1] + r1[1]*r2[0],r1[1]*r2[1]];
+        } else if (op === "-") {
+          newRat = [r1[0]*r2[1] - r1[1]*r2[0],r1[1]*r2[1]];
+        } else if (op === "*") {
+          newRat = [r1[0]*r2[0],r1[1]*r2[1]];
+        } else if (op === "/") {
+          if (r2[0] === 0) {
+            throw Error("Dividing by zero");
+          } else {
+            newRat = [r1[0]*r2[1],r1[1]*r2[0]];
+          }
+        } else if (op === "n") {
+					newRat = [r1[0]*(-1),r1[1]];
+				}
+				if (newRat[0] === 0) {
+					return([0,1]);
+				} else {
+        	newGcd = gcd(...newRat);
+        	return([newRat[0]/newGcd*Math.sign(newRat[1]),newRat[1]/newGcd*Math.sign(newRat[1])]);
+				}
+      }
+      const gcd = function(n1,n2) {
+        n1 = Math.abs(n1); n2 = Math.abs(n2);
+        while (n1*n2 > 0) {
+          if (n1 > n2) {
+						n1 = n1 % n2;
+					} else {
+						n2 = n2 % n1;
+					}
+        }
+        return(n1 + n2);
+      }
+      const clearUneqs = function() {
+        while (find("eq" + (numofeqs - 1)).innerHTML + find("eq" + (numofeqs - 2)).innerHTML === "" && numofeqs > 2) {
+          numofeqs--;
+          find("eq" + numofeqs).remove();
+        }
+      }
+      const clearPlPlMiMi = function(str) {
+        while (str.includes("--") || str.includes("-+") || str.includes("+-") || str.includes("++")) {
+          str = str.replaceAll("--","+");
+          str = str.replaceAll("++","+");
+          str = str.replaceAll("-+","-");
+          str = str.replaceAll("+-","-");
+        }
+        return(str);
+			}
     </script>
   </head>
   <body><div id="leftside">Loading</div><div id="rightside"></div></body>
