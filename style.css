@@ -129,7 +129,6 @@ h3 {
   width:calc(6*var(--gap));
   margin-left:var(--gap);
   position:relative;
-  -webkit-filter:grayscale(1);
   transition: -webkit-filter 0.3s;
 }
 .proglang:hover {
