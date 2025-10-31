@@ -1,0 +1,139 @@
+*{box-sizing:inherit;font-family:"Rubik", sans-serif;margin:0;line-height:120%;vertical-align:top}div{display:inline-block}body,html{box-sizing:border-box;overflow-x:hidden;width:100vw;margin:0;color:#fff;transition:color 0.3s, background 0.3s;background-color:#111}body.Light{color:#000}#topBar{display:inline-block;height:0;position:fixed;top:0;left:0;width:100vw;z-index:7}#topFade{background:linear-gradient(#100b1a, #00000000);pointer-events:none;height:150px;position:fixed;top:0;left:0;width:100vw;z-index:1;z-index:6;transition:height 0.3s}#title{display:inline-block;margin:15px;font-size:45px;font-weight:600;display:block;width:100%;height:90px;background-image:url("https://cdn.glitch.com/deb854d2-fda3-43b3-9ad0-9ff600d97b8d%2Firon_bars.png?v=1629417190767");background-size:54px;background-repeat:no-repeat;text-indent:105px;background-size:84px;transition:all 0.3s, color 0s;padding-top:18px;position:fixed;top:0;z-index:7}body[scrolltop="true"] #title{background-size:36px;text-indent:45px;width:40px;height:40px;font-size:28px;padding-top:0}body[scrolltop="true"] #topFade{height:75px}@media screen and (max-width: 430px){#title{color:transparent}}#aboutButton{position:absolute;top:50px;right:12px;font-size:25px;font-weight:400;padding:0 15px;transition:top 0.3s;color:#FFF}#adminPanelButton{position:absolute;top:50px;right:115px;font-size:25px;font-weight:400;transition:top 0.3s;color:#FFF}#bedrockButton{position:absolute;top:50px;right:105px;font-size:25px;font-weight:400;transition:top 0.3s;color:#FFF}body[scrolltop="true"] #navPanel{padding-top:15px}body[scrolltop="true"] #adminPanelButton{top:15px}a:focus,a:hover{text-decoration-skip-ink:none;text-decoration:2px underline #0BF}a,a:visited{color:#0BF}body.Light a,body.Light a:visited{color:#00F}#navPanel{float:right;z-index:8;position:fixed;top:0;right:0;padding:52px;font-size:20px;transition:padding 0.3s}.topNav a{color:#FFF;margin-left:20px}.topNav a.selectedPageNav{color:#FFF}@media screen and (max-width:250px){#navPanel{display:none}}@media screen and (max-width: 200px){#topBar{text-align:center;width:100%}#title{display:inline-block}#topFade{background:transparent}}.mainBox{border:2px solid #313131;border-radius:10px;background:#1d1d1d;width:90vw;padding:10px;position:relative;margin:1vw 5vw;}body.Light .mainBox{border:2px solid #A5A5A5;background:#C7C7C7}.mainBox:last-child:not(.topMB){margin-bottom:5vw}.shortenedMB{height:360px;overflow-y:hidden}.topMB{margin:0;}@media screen and (max-width: 679px){#title{background-size:36px;text-indent:45px;width:40px;height:40px;font-size:28px;padding-top:0}#topFade{height:75px}#aboutButton{top:15px}#navPanel{padding:23px}}#rulesButton{position:absolute;top:15px;right:19px;font-size:25px;font-weight:400;padding:0 13px}a{text-decoration:none;line-height:120%}.videoLink:focus{transform-origin:middle middle;transform:scale(1.35)}body.Light #darkModeButton{background:#C7C7C7;border:2px solid #A5A5A5}#showMoreHold{position:absolute;bottom:10px;z-index:5;text-align:center;margin-left:50%;transform:translateX(-50%);}
+#showMore{background:#000;border:0 solid #000;height:38px;border-radius:5px;font-size:20px;padding:4px 8px;transition:border 0.5s;pointer-events:all;color:#FFF;cursor:pointer;transition:background 0.3s;}
+#showMore:focus-visible,#showMore:hover{background:#0064d3}#mainLarge{display:block;font-size:25px;text-decoration:underline;margin-bottom:10px}table{border-collapse:collapse;border-color:#555}table > tr{border-top:3px solid #313131;margin-top:5px;display:inline-block;width:100%}td{position:relative;padding:3px}.creator,.videoLink{font-size:0;width:25px;height:25px;display:inline-block;background-size:25px}.videoLink{background-image:url("https://cdn.glitch.com/deb854d2-fda3-43b3-9ad0-9ff600d97b8d%2Fyoutube-icon.ico?v=1627321879635");background-size:32px;background-position-x:0;background-origin:;background-position-x:0;background-position-y:-2.5px;height:18px;width:32px}.hoverNote{display:none;background:#363636;border:4px solid #000;color:#fff;padding:5px;position:absolute;top:29px;left:50%;transform:translateX(-50%);border-radius:10px;z-index:8}a:hover + .hoverNote,div.creator:hover + .hoverNote{display:block}.hoverNote > img{max-width:100px;margin-top:5px}.hoverNoteYT{font-size:12px}tr {height:48.8px;}tr > td{border-width:3px}tr > td:not(:last-child):not([cl="4"]){border-right:solid #313131}tr > td:not(:first-child){border-left:solid #313131}tr:not(:first-child):not(.fakehead) > td{border-top:solid #313131}
+@media screen and (min-width: 551px){
+td[cl="4"]{border-right:solid #313131}
+}
+a {
+  cursor:pointer;
+}
+html {
+  background:url("https://cdn.glitch.com/deb854d2-fda3-43b3-9ad0-9ff600d97b8d%2Fobsidians.png?v=1627308505182");background-size:110px;image-rendering:crisp-edges;image-rendering:-moz-crisp-edges;image-rendering:-o-crisp-edges;image-rendering:-webkit-optimize-contrast;-ms-interpolation-mode:nearest-neighbor;background-position-x:0;background-position-y:0;
+  background-color:#222222;
+}
+body {
+  background:transparent;
+}
+body.Light tr > td:not(:last-child){border-right:solid #A5A5A5}
+body.Light tr > td:not(:first-child){border-left:solid #A5A5A5}
+body.Light tr:not(:first-child) > td{border-top:solid #A5A5A5}
+/*td[cl="2"]{}*/
+td[cl="0"]{width:164px}
+td[centaur]{text-align:center;max-width:98px}
+.creatorHold,.videoHold{position:relative;width:25px;height:25px;padding:0;margin:1px}
+.videoHold{width:32px;height:18px}
+td[name]{font-weight:bold;font-size:20px}
+.dropdown {width:40px;height:40px;text-align:center;position:absolute;right:10px;top:10px}
+.prisonRankType {font-size:30px;width:calc(100% - 50px);margin-bottom:20px}
+@media screen and (max-width: 900px){td[cl="1"]{display:none}}
+@media screen and (max-width: 550px){td[cl="5"]{display:none}}
+@media screen and (max-width: 500px){td[cl="2"]{display:none}}
+@media screen and (max-width: 350px){
+  tr > td,tr > td[name]{font-size:4.5vw;border-width:1.5px !important;padding:1.5px}
+  .mainBox{margin:1vw 2vw;padding:5px;width:96vw}
+  .mainBox:last-child{margin-bottom:2vw}
+  .prisonRankType{font-size:calc(6vw + 10px)}
+}
+.dropdown > button{width:20px;height:20px;font-size:0;color:transparent;cursor:pointer;border:none;border-left:5px solid #ffffff;border-bottom:5px solid #ffffff;transform:rotate(-45deg);background:transparent;transition:border-color 0.3s}
+.dropdown > button:hover{border-color:#525252}
+
+@media screen and (max-width: 200px){.dropdown > button{width:calc(5vw + 10px);height:calc(5vw + 10px)}}
+
+#dropdownBelowButton{width:10vw;min-width:100px;background:#2C2C2C;border:3px solid #2B2B2B;border-radius:10px;padding:5px;display:none;position:absolute;right:10px;top:50px;z-index:2}
+.rankSetting{text-align:center;width:100%;border:2px solid #3D3D3D;color:#F8F1F1;background:#525252;font-size:13px;transition:background 0.3s, color 0.3s;position:relative}
+.rankSetting:not(.chosenRank):hover{background:#1B1B1B}
+.chosenRank{background:#2C2C2C;color:#ffffff}
+.chosenRank:hover{background:#1B1B1B}
+body.Light .chosenRank:hover{background:#D1D1D1}
+.rankSetting:not(:first-child){
+  border-top:0 solid #000000;
+}
+
+body.Light.rankSetting:not(.chosenRank):hover{
+  background:#E4E4E4;
+}
+.channelIcon{
+  grid-column:span 2;margin:5px 0 5px 5px;width:70px;height:70px;grid-row:1;grid-column:1
+}
+.channelIcon > img{width:70px;height:70px;border:3px solid #000000;border-radius:50%}
+.channelName{grid-row:1;grid-column:2;font-size:16px;font-style:italic;padding:8px 0;text-align:center;width:130px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.channelLink{grid-row:2;grid-column:2;text-align:center;width:130px;margin:5px 0 0}
+.channelLink > a {color:#008bff}
+@media screen and (min-width: 201px){
+  .youtubeLink:not(.youtubeLinkDc){height:80px}
+  .youtubeLink{font-size:15px}
+}
+.youtubeLink{display:grid;grid-template-rows:30px 30px;background:#282828;border:0 solid;border-radius:10px;width:210px;display:inline-grid;margin-right:10px;margin-top:5px;margin-bottom:5px;grid-template-columns:80px 1fr;max-width:100%}body.Light .youtubeLink{background:#969696}@media screen and (max-width: 350px){.youtubeLink{width:200px;grid-template-rows:25px 25px;height:60px;grid-template-columns:50px 1fr;margin-top:2px;margin-bottom:2px;background-color:#414141}.channelIcon,.channelIcon > img{width:50px;height:50px}.channelName{font-size:15px;padding:4px 0;width:145px}.channelLink{font-size:10px;width:145px}}@media screen and (max-width: 350px){@media screen and (min-width: 201px){.youtubeLink{height:60px !important}}}@media screen and (max-width: 200px){.youtubeLink{grid-template-columns:1fr;grid-template-rows:50px 20px 20px;text-align:center;width:130px;height:100px}.channelName{grid-row:2;grid-column:1;width:100%}.channelLink{grid-row:3;grid-column:1;width:100%}}#mainBoxGrid{display:grid;grid-template-columns:65% 35%;grid-template-areas:"windoww" "infoo" "beloww"}#viewWindow{grid-area:windoww;line-height:0;position:relative;}
+#viewWindowL{width:154%;z-index:0}
+#information-side{padding:10px;text-align:center}
+.niceButton{width:95%;background:#444;border:2px solid #000;border-radius:5px;color:#fff;font-size:20px;display:inline-block;margin-top:10px;transition:background 0.3s;text-align:left;cursor:pointer}
+.niceButton:hover{background:#252525}.niceButtonSelected{font-weight:bold;background:#252525}
+.niceButtonSelected:hover{background:#252525}.selectorButtonColor{height:20px;width:20px;margin-right:5px;border-radius:50%;display:inline-block;margin-top:2px}#viewWindow > img{width:100%;opacity:0;height:0;margin:0;position:absolute;top:0;left:0;z-index:2;border:3px solid #777;}#below-window{grid-area:beloww;padding:10px;font-size:18px;grid-column:span 2}#prisonTitle{text-align:center;font-size:40px;font-weight:bold;text-decoration:underline;margin-bottom:10px}#below-window a:not(.arbitraryDiscord){color:#0f5}#below-window > iframe{border:none;margin-right:10px;display:inline-block;width:24vw;min-width:180px;height:13.5vw;min-height:84.375px;margin-bottom:5px;margin-top:5px}
+@media screen and (max-width: 600px){
+  #viewWindow{grid-column:span 2}
+  #information-side{grid-column:span 2}
+  #viewWindowL {width:auto}
+}
+.nameAdjIcon{width:40px;height:40px;image-rendering:crisp-edges;image-rendering:-moz-crisp-edges;image-rendering:-o-crisp-edges;image-rendering:-webkit-optimize-contrast;-ms-interpolation-mode:nearest-neighbor;}
+.cellVid{display:inline-grid;grid-template-areas:"thumb" "title" "creator";grid-template-columns:auto;width:30%;margin-bottom:10px;margin-right:1.5%;margin-left:1.5%}
+.cellThumbnail{grid-area:thumb}.cellThumbnail > img{width:100%}.cellCreator{font-size:14px;font-style:italic;padding:0 8px}.cellTitle{font-size:17px;padding:8px 8px 12px;line-clamp:5;text-overflow:ellipsis}@media screen and (max-width:450px){.cellTitle{font-size:3vw}.cellCreator{font-size:2.6vw}}.centredname{position:absolute;top:50%;transform:translateY(-50%);left:50px}.centredname:focus,.centredname:hover{}td[cl="2"] a:hover,td[cl="3"] a:hover{text-decoration:none}.nameAdjIcon{position:absolute;top:50%;transform:translateY(-50%)}.hashline{transform:translateY(-50px)}.adjIconSpacer{line-height:40px}@media screen and (max-width: 550px){td[cl="4"]{border-right:none}}@media screen and (max-width: 710px){.nameAdjIcon{display:none}.centredname{position:static;transform:none}.adjIconSpacer{display:none}}#linksBig{margin:0 5vw;background:#777;border:0 solid;border-radius:10px;padding:10px 10px 10px 0;padding-inline-start:25px;font-size:15px;display:inline-block;float:right}#linksSmol{background:#777;border:0 solid;border-radius:10px;padding:10px 5px 10px 0;padding-inline-start:25px;font-size:15px;display:inline-block;float:right;margin:0 2vw}.footer{position:fixed;bottom:0;z-index:6;background:#222;border-top:5px solid #888;border-right:5px solid #888;padding:0 10px;font-size:18px;border-top-right-radius:4px;max-width:calc(50% - 95px)}@media screen and (max-width: 750px){.footer{font-size:0;max-width:100%}.footer a{font-size:15px}}@media screen and (max-width: 150px){.footer{display:none}}.creatorSpotlight{float:right}.youtubeLinkDc{grid-template-rows:30px 40px 1fr}.arbitraryDiscord{grid-row:3;grid-column:span 2;margin:5px;border-bottom:3px solid #282828;font-size:16px}.ceBlock{background:#222;width:130px;height:150px;border:3px solid #000;border-radius:10px;text-align:center;padding:10px;margin:5px}.ceBlockLong{border:2px solid #000;border-radius:10px;font-size:20px;padding:10px;max-width:300px}
+.ceBlockImage{width:100px;height:100px;border:0 solid;border-radius:25%;margin-bottom:10px}.ceBlockLong > h3{display:inline-block}.downArrowHold{width:30px;height:30px;background:transparent;border:0 solid;border-radius:50%;cursor:pointer;transition:background 0.3s;display:inline-block}.shortenedTactic > p{max-height:47px;overflow:hidden}.shortenedTactic > .grad{background:linear-gradient(#1d1d1d00,#1d1d1d);height:47px;position:absolute;top:0;left:0;width:100%}.downArrowHold:hover{background:rgba(0,0,0,0.5)}.downArrow{width:15px;height:15px;border-right:2px solid #FFF;border-bottom:2px solid #FFF;transform:rotate(45deg);transition:border-width 0.3s, transform 0.3s}.downArrowHold:hover .downArrow{border-width:4px}.tactic{font-size:14px;position:relative}#linksSmol{display:none}
+@media screen and (max-width: 250px){
+  #linksBig{display:none}
+  #linksSmol{display:block}
+}
+.switchSetButton,.switchSetButtonSelected{height:50px;border:2px solid #000;background:#555;transition:background 0.3s;border-radius:25px;padding:0 12px;font-size:25px;margin:5px;cursor:pointer}
+.switchSetButton:focus-visible,.switchSetButton:hover,.switchSetButtonSelected{background:#333}.switchSetHold{position:absolute;top:0;left:0;z-index:2}@media screen and (max-width:1150px){.compressedSidewaysMB td[cl="5"]{display:none}.compressedSidewaysMB td[cl="4"]{border-right:none}}@media screen and (max-width:1250px){.compressedSidewaysMB .nameAdjIcon{display:none;}.compressedSidewaysMB .centredname{position:static;transform:none}.adjIconSpacer{display:none}}
+@media screen and (min-width:901px){
+  .compressedSidewaysMB{width:calc(50% - 7.5vw);margin-right:0}
+}
+.mainBox li{margin-bottom:5px;font-size:15px}
+#title > a{color:#FFF}.prisonSub,select{width:50%;background:#222;border:2px solid #000;color:#EEE;font-size:20px;height:30px}select{font-size:12px;width:55%;margin-top:5px}.prisonSubSection{margin-top:20px}.xbuttonsub{color:#F22;width:30px;height:30px;font-size:20px;background:#222;border:2px solid #030303;transition:background 0.3s;border-radius:50%;padding:0;transform:translateY(5px);margin-left:5px;cursor:pointer}.xbuttonsub:hover{background:#111}.subButton{border:2px solid #000;height:25px;font-size:15px;background:#444;color:#FFF;transition:background 0.3s;border-radius:8px;margin-top:10px;cursor:pointer}.subButton:hover:not(.greyedSub){background:#232323}.greyedSub{border:2px solid #444;background:#666;color:#CCC;cursor:default}.videoPrev{width:80px;display:block;margin-top:10px}.videoEnter::placeholder{color:#555}.videoEnter{font-size:15px}.requiredStar{color:#3F3;font-size:150%;line-height:80%;transform:translateY(5px)}#submit{border:2px solid #000;height:30px;font-size:20px;background:#444;color:#FFF;transition:background 0.3s;border-radius:8px;margin-top:10px;cursor:pointer;width:50%}#calldock{width:24px;height:24px;display:inline-block;border:2px solid #000;padding:0;border-radius:50%;cursor:pointer;margin-left:5px;transform:translateY(-2.5px)}#historyWindowHold{position:fixed;top:0;left:0;z-index:9;width:100vw;height:100vw;margin:0;background:rgba(0,0,0,0.5)}#historyWindow{overflow:scroll;width:60vw;height:80vh;margin:10vh 20vw;border:3px solid #313131;background:#1d1d1d;border-radius:10px;padding:2vw;position:relative;font-size:15px}#closeHistoryWindow{position:absolute;top:2vw;right:2vw;color:#FFF;background:#555;border:3px solid #000;width:40px;height:40px;border-radius:50%;font-size:25px;transition:background 0.3s;cursor:pointer}#closeHistoryWindow:hover{background:#222}
+#actualShowMore {width:0;height:0;border:0;opacity:0;display:none;}
+#actualShowMore:checked ~ #showMoreHold {display:none;}
+#actualShowMore:checked ~ .shortenedMB {height:auto; overflow-y:inherit;}
+.mainListHold {margin:1vw 5vw;margin-top:140px;position:relative;}
+
+/* oh right we can alternate which one is displayed */
+
+/*just have 2 labels for the checkbox I think */
+
+tr.fakehead {
+  display:none;
+}
+/*
+#actualShowMore:not(:checked) ~ .shortenedMB tr:not(.fakehead) {
+  width:250px;
+  height:250px;
+  display:inline-block;
+}
+#actualShowMore:not(:checked) ~ .shortenedMB tr.realhead {
+  display:none;
+}
+/*Truly cursed selector/
+#actualShowMore:not(:checked) ~ .shortenedMB td[cl="2"], #actualShowMore:not(:checked) ~ .shortenedMB td[cl="4"], #actualShowMore:not(:checked) ~ .shortenedMB td[cl="5"] {
+  display:none;
+}
+
+#actualShowMore:not(:checked) ~ .shortenedMB td[cl="1"] {
+  display:block;
+}
+/*OMG YAY*/
+
+/* wheres #actualShowMore in the HTML*/
+/* your site is... unfamiliar */
+/*like I said, the page is generated in /index.js */
+.bombthreat {
+  z-index:500;
+  background:rgba(255,0,0,0.8);
+  border:5px solid #F44;
+  border-radius:10px;
+  position:absolute;
+  top:30px;
+  left:30px;
+  margin:0;
+  padding:10px;
+  font-size:30px;
+  color:#FFF;
+  font-weight:bold;
+  width:calc(100% - 60px);
+}
