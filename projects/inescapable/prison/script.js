@@ -171,14 +171,14 @@ var images = [];
       }
       const createPrisonPage = function(thisPrison,thoseCreators) {
         images = thisPrison[1];
-        viewing[0] = JSON.stringify(images[0]);
-        savingAllImages = JSON.stringify(images);
+        viewing[0] = images[0];
+        savingAllImages = images;
   if (typeof images[1] !== "string") {
     currentImageDisplayed = [1,0];
   }
   
   if (thisPrison[4]) {
-    thisHistory = JSON.stringify(thisPrison[4]);
+    thisHistory = thisPrison[4];
   }
   
   let retStr = '<div id="topBar"><h1 id="title"><a href="/projects/inescapable/">Inescapable</a></h1><div id="topFade"></div><nav class="topNav" id="navPanel"><a href="/projects/inescapable/" alt="Go home">Home</a><a href="/projects/inescapable/about" alt="About Inescapable">About</a><a href="/projects/inescapable/rules" alt="Go to prison rules">Rules</a></nav></div><div style="padding-top:140px;"><div class="mainBox"><h2 id="prisonTitle">' + thisPrison[0] + '</h2><div id="mainBoxGrid"><div id="viewWindow"';
