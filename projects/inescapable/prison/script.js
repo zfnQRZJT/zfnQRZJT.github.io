@@ -181,7 +181,7 @@ var images = [];
     thisHistory = JSON.stringify(thisPrison[4]);
   }
   
-  let retStr = '<div id="topBar"><h1 id="title"><a href="/">Inescapable</a></h1><div id="topFade"></div><nav class="topNav" id="navPanel"><a href="/" alt="Go home">Home</a><a href="/about" alt="About Inescapable">About</a><a href="/rules" alt="Go to prison rules">Rules</a></nav></div><div style="padding-top:140px;"><div class="mainBox"><h2 id="prisonTitle">' + thisPrison[0] + '</h2><div id="mainBoxGrid"><div id="viewWindow"';
+  let retStr = '<div id="topBar"><h1 id="title"><a href="/projects/inescapable/">Inescapable</a></h1><div id="topFade"></div><nav class="topNav" id="navPanel"><a href="/projects/inescapable/" alt="Go home">Home</a><a href="/projects/inescapable/about" alt="About Inescapable">About</a><a href="/projects/inescapable/rules" alt="Go to prison rules">Rules</a></nav></div><div style="padding-top:140px;"><div class="mainBox"><h2 id="prisonTitle">' + thisPrison[0] + '</h2><div id="mainBoxGrid"><div id="viewWindow"';
   if (thisPrison[0] === "Eleos Citadel") {
     retStr += ' class="viewWindowL"';
   }
