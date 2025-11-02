@@ -2,7 +2,7 @@ var body = "";
       var viewing = [];
       var thisHistory = "";
       var currentImageDisplayed = [1,0];
-      createPrisonPage = function(thisPrison,thoseCreators) {
+      const createPrisonPage = function(thisPrison,thoseCreators) {
         let images = thisPrison[1];
         viewing[0] = JSON.stringify(images[0]);
         savingAllImages = JSON.stringify(images);
@@ -257,7 +257,14 @@ var body = "";
 "fox-den":["Fox Den",["#0F0Exterior","https://cdn.glitch.global/deb854d2-fda3-43b3-9ad0-9ff600d97b8d/Screenshot%202023-07-16%20at%2011.09.31%20AM.png?v=1689530990786"],["General","<b>Status:</b> V3.1<br><b>On:</b> Spigot 1.19<br><a href='https://www.mediafire.com/file/c1b3jem27d4884j/The_Fox_Den_V3.1.zip/file' target='_blank'>Download the Fox Den</a>","Cell Security","The prisoner stands in a 1x2x1 box which is the spawnpoint of a respawn anchor. If they try to break out, sculk sensors will hear it and trigger suicide. There is no way to die.","More Security","The prison is very cheap, so it can be built in a short amount of time, allowing it to be placed in the nether spawnchunks and avoid the 7th class escape, as well as chunkskipping, light suppression, nosave, and other annoyances, due to the always-loaded property of the spawnchunks. Visiting is not a possible escape method as the visiting process involves the visitor spamming F3+A at a point barely less than 48 blocks from the prisoner, due to the unique triple outer foxban layout and small interior. The floor detector uses tripwires; all detectors use sculk sensors and bells to avoid TTS. As the walls are very thin, withers are ignored.","Prison Video",["TmcNfy0vmxk"],"Escape Videos",["g31o0zLiuCA","Vt_D8-e4srs","KcxOljFZBAk","bykWuiykfKM","RB0sb83SYh4","GzPOsNtrDgk?start=276&end=348","fe9_bqLdtb4"]],["BRANBERT","MADBROTHERS"]],
 "ravens-retaliation":["Ravens Retaliation",["#0F0Exterior","https://cdn.glitch.global/deb854d2-fda3-43b3-9ad0-9ff600d97b8d/Screenshot%202023-08-23%20at%209.58.04%20PM.png?v=1692853438488"],["General","<b>Status:</b> V1.1<br><b>On:</b> Spigot 1.20.1<br><a href='https://www.mediafire.com/file/i9tjusabipqc4ot/Ravens_Retaliation_V1.1.zip/file' target='_blank'>Download Raven's Retaliation</a>","Prison Video",["ytaxiHnQ830"],"Escape Videos",["f5kiD32YxtY"]],["BRANBERT","FISHY","LEON","MADBROTHERS"]],
 "velox":["Velox",["#0F0Exterior","https://cdn.glitch.global/deb854d2-fda3-43b3-9ad0-9ff600d97b8d/Screenshot%202023-08-23%20at%2011.00.21%20PM.png?v=1692856940306"],["General","<b>Status:</b> V2.1<br><b>On:</b> Spigot 1.19+<br><a href='https://www.mediafire.com/file/r703z0yjxgu8e46/Velox_V2.1.zip/file' target='_blank'>Download Velox</a>","Prison Video",["oTzipNEpX58"],"Escape Videos",["GKLl9PbCpDA","1w9WBRtyts4?start=0&end=55","fZKcfhdSD8U","PelGtePj6eY","HpNb5bfPaPE"]],["AVATAR","ELCATO"]]}
-      window.onload = function() {
+const embedYtUrls = function() {
+    let total = "";
+    for (let i = 0; i < arguments.length; i++) {
+      total += "<iframe src='https://youtube.com/embed/" + arguments[i] + "' allowfullscreen></iframe>"
+    }
+    return(total);
+  }      
+window.onload = function() {
         body = document.body;
         var wherewewant = window.location.search.substring(1);
         if (prisonPages[wherewewant] !== undefined) {
