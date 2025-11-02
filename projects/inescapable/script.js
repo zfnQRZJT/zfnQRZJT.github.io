@@ -20,7 +20,7 @@ window.onload=function(){
 };
 const toggleMode=function(){if(body.class==""){body.class="Dark"}else{body.class=""}};
 const showDropdown=function(event){event.stopPropagation();if(display("dropdownBelowButton")==="block"){display("dropdownBelowButton","none")}else{display("dropdownBelowButton","block")}};var currentRankSetting=null;
-const showMore=function(){/*document.querySelector(".shortenedMB").classList.remove("shortenedMB");find("showMore").remove()*/};html.setAttribute("onscroll","scrollTopIndicator");const rickroll=function(){window.open("/rickr",'_blank')};
+const showMore=function(){/*document.querySelector(".shortenedMB").classList.remove("shortenedMB");find("showMore").remove()*/};html.setAttribute("onscroll","scrollTopIndicator");const rickroll=function(){window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ",'_blank')};
 var clicks=0;const easterEgg=function(){clicks+=1;if(clicks===5){find("title").innerHTML="Escapable"}if(clicks===1){setTimeout(function(){clicks=0},10000)}};
 
 const rankSetting=function(type,event){
