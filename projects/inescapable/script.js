@@ -17,6 +17,7 @@ window.onload=function(){
       });
     }
   })
+  rankSetting(-1,null);
 };
 const toggleMode=function(){if(body.class==""){body.class="Dark"}else{body.class=""}};
 const showDropdown=function(event){event.stopPropagation();if(display("dropdownBelowButton")==="block"){display("dropdownBelowButton","none")}else{display("dropdownBelowButton","block")}};var currentRankSetting=null;
@@ -24,7 +25,7 @@ const showMore=function(){/*document.querySelector(".shortenedMB").classList.rem
 var clicks=0;const easterEgg=function(){clicks+=1;if(clicks===5){find("title").innerHTML="Escapable"}if(clicks===1){setTimeout(function(){clicks=0},10000)}};
 
 const rankSetting=function(type,event){
-  event.stopPropagation();
+  if (event !== null) {event.stopPropagation();}
   if(currentRankSetting!==type){
     currentRankSetting=type;
     var prisons;
@@ -44,7 +45,7 @@ const rankSetting=function(type,event){
           return(b1-a1);
         }
       });
-      console.log(prisons)
+      //console.log(prisons)
     } else if(type===0){
       prisons=Array.from(document.querySelector(".mainBox tbody").children).sort(function(a,b){
         if (a.className !== "fakehead" && b.className !== "fakehead") {
@@ -59,7 +60,7 @@ const rankSetting=function(type,event){
           } else {return(1*a1[1]-1*b1[1])}
         }
       });
-      console.log(prisons)
+      //console.log(prisons)
     } else if(type===1) {
       prisons=Array.from(document.querySelector(".mainBox tbody").children).sort((a,b)=>(b.getAttribute("rank")*1-a.getAttribute("rank")*1));
       prisons.forEach(function(elem){
@@ -92,7 +93,7 @@ const rankSetting=function(type,event){
   Ranks.forEach(function(elem,ind){if(ind===type+1){elem.classList.add("chosenRank")}else{elem.classList.remove("chosenRank")}});
   const rankTitles = {"-1":"Prisons ordered by date","0":"Prisons ordered by creator","1":"Prisons ordered by rank (subjective)","2":"Prisons ordered by avatardotpng","3":"Prisons ordered by ZeoNight"};
   document.querySelector(".prisonRankType").innerHTML=rankTitles[type + ""];
-  //if (type === 1) {NUKEPLUSPLUS();}
+  if (type === 1) {NUKEPLUSPLUS();}
 }
 window.onbeforeunload=function(){for(let i=1;i<body.children.length;i+=1){body.children[i].style.display="none"}};
 
