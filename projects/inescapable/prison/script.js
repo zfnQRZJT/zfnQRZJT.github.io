@@ -175,6 +175,7 @@ var images = [];
         savingAllImages = images;
   if (typeof images[1] !== "string") {
     currentImageDisplayed = [1,0];
+viewing[1] = 0;
   }
   
   if (thisPrison[4]) {
