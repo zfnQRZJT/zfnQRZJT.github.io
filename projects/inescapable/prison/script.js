@@ -1,9 +1,176 @@
 var body = "";
       var viewing = [];
       var thisHistory = "";
-      var currentImageDisplayed = [1,0];
+      var currentImageDisplayed = 0;
+var savingAllImages = [];
+var images = [];
+      const scrollTopIndicator = function() {
+        console.log("scroll");
+        body.setAttribute("scrolltop",window.pageYOffset > 50)
+      }
+      const find = function(elem) {
+        return(document.getElementById(elem));
+      }
+      const display = function(elem,type) {
+        if ((typeof elem) === "string") {elem = find(elem);}
+        if (type) {
+          elem.style.display = type;
+        } else {
+          return(elem.style.display);
+        }
+      }
+      const switchSet = function(newSet) {
+        displayImage(newSet,0,true);
+        find("switchSet" + (viewing[1] + 1)).setAttribute("class","switchSetButton");
+        find("switchSet" + newSet).setAttribute("class","switchSetButtonSelected");
+        viewing[1] = newSet - 1;
+        viewing[0] = savingAllImages[newSet];
+        find("information-side").innerHTML = "<h2>Images</h2>";
+        for (let j = 0; j < viewing[0].length; j++) {
+              if (j % 2) {
+                continue;
+              }
+              let niceButton = document.createElement("button");
+              find("information-side").appendChild(niceButton);
+              niceButton.className = "niceButton";
+              if (newSet === viewing[1] + 1) {
+                niceButton.setAttribute("style","display:inline-block;");
+              } else {
+                niceButton.setAttribute("style","display:none;");
+              }
+          if (j === 0) {
+            niceButton.setAttribute("class","niceButton niceButtonSelected")
+          }
+              niceButton.setAttribute("onclick","displayImage(" + newSet + "," + j + ")");
+              niceButton.setAttribute("id","niceButton" + newSet + "," + j);
+              niceButton.innerHTML = "<div class='selectorButtonColor' style='background:" + viewing[0][j].substr(0,4) + "'></div>" + viewing[0][j].slice(4);
+              /*let prisonImage = document.createElement("img");
+              find("viewWindow").appendChild(prisonImage);
+              prisonImage.setAttribute("src",images[i][j + 1]);
+              prisonImage.setAttribute("id","displayImage" + i + "," + j);
+              if (!j && i === viewing[1] + 1) {
+                prisonImage.style.height = "auto";
+                prisonImage.style.opacity = 1;
+                prisonImage.style.position = "relative";
+                niceButton.classList.add("niceButtonSelected");
+              }*/
+              
+        }
+        /*let prisonButton = document.createElement("button");
+        find("viewWindow").appendChild(prisonButton);
+        prisonButton.setAttribute("onclick","switchSet(" +  + ")");*/
+      }
+      const displayImage = function(number,num2,force) {
+        /*if (typeof number === "string") {
+          if (typeof currentImageDisplayed !== "string") {
+            currentImageDisplayed = "full";
+            if (find("displayImagefull")) {
+              let prisonImage = find("displayImagefull");
+              prisonImage.style.opacity = 0;
+              prisonImage.style.height = "0%";
+              prisonImage.style.position = "absolute";
+              //find("displayImage" + currentImageDisplayed).style.borderWidth = "0px";
+            }
+          }
+        } else */if (num2 || num2 === 0) {
+          
+          //When there are multiple images
+          
+          if (num2 !== currentImageDisplayed[1] || force) {
+            if (find("displayImage" + currentImageDisplayed)) {
+              let prisonImage = find("displayImage" + currentImageDisplayed);
+              prisonImage.style.opacity = 0;
+              prisonImage.style.height = "0%";
+              prisonImage.style.position = "absolute";
+              //find("displayImage" + currentImageDisplayed).style.borderWidth = "0px";
+            }
+            if (find("niceButton" + currentImageDisplayed)) {
+              find("niceButton" + currentImageDisplayed).classList.remove("niceButtonSelected");
+            }
+            currentImageDisplayed = [number,num2];
+            if (find("displayImage" + currentImageDisplayed)) {
+              let prisonImage = find("displayImage" + currentImageDisplayed);
+              prisonImage.style.opacity = 1;
+              prisonImage.style.height = "auto";
+              prisonImage.style.position = "relative";
+              //find("displayImage" + currentImageDisplayed).style.borderWidth = "3px";
+            }
+            if (find("niceButton" + currentImageDisplayed)) {
+              find("niceButton" + currentImageDisplayed).classList.add("niceButtonSelected");
+            }
+          }
+          
+        } else {
+          
+          //When there is only one image
+          
+          //find("displayImage0").style.borderWidth = "0%";
+          //find("displayImage0").style.borderWidth = "0px";
+          if (find("chooseImageOnRight")) {find("chooseImageOnRight").remove();}
+          if (number !== currentImageDisplayed || force) {
+            if (find("displayImage" + currentImageDisplayed)) {
+              let prisonImage = find("displayImage" + currentImageDisplayed);
+              prisonImage.style.opacity = 0;
+              prisonImage.style.height = "0%";
+              prisonImage.style.position = "absolute";
+              //find("displayImage" + currentImageDisplayed).style.borderWidth = "0px";
+            }
+            if (find("niceButton" + currentImageDisplayed)) {
+              find("niceButton" + currentImageDisplayed).classList.remove("niceButtonSelected");
+            }
+            currentImageDisplayed = number;
+            if (find("displayImage" + currentImageDisplayed)) {
+              let prisonImage = find("displayImage" + currentImageDisplayed);
+              prisonImage.style.opacity = 1;
+              prisonImage.style.height = "auto";
+              prisonImage.style.position = "relative";
+              //find("displayImage" + currentImageDisplayed).style.borderWidth = "3px";
+            }
+            if (find("niceButton" + currentImageDisplayed)) {
+              find("niceButton" + currentImageDisplayed).classList.add("niceButtonSelected");
+            }
+          }
+        }
+      }
+      var clicks = 0;
+      const easterEgg = function() {
+        clicks++;
+        if(clicks === 5) {
+          find("title").innerHTML = "Escapable";
+        }
+        if(clicks === 1) {
+          setTimeout(function () {
+            clicks = 0;
+          },10000)
+        }
+      }
+      window.onbeforeunload = function () {
+        for (let i = 1; i < body.children.length; i++) {
+          body.children[i].style.display = "none";
+        }
+        closeHistoryMenu();
+        //body.style.background = "#111";
+        //html.style.background = "#111";
+      }
+      const openHistoryMenu = function() {
+        if (thisHistory) {
+          var retStr = "<div id='historyWindowHold'><div id='historyWindow'><h1><u>History</u></h1><button id='closeHistoryWindow' onclick='closeHistoryMenu()'>x</button><br>"
+          for (let i = 0; i < thisHistory.length; i++) {
+            if (i % 2) {continue;}
+            retStr += "<h2>V" + thisHistory[i] + "</h2><p>" + " - " + thisHistory[i + 1].join("<br> - ") + "</p>";
+          }
+          body.insertAdjacentHTML("afterbegin",retStr + "</div></div>");
+          body.parentElement.style.overflowY = "hidden";
+        }
+      }
+      const closeHistoryMenu = function() {
+        if (find("historyWindowHold")) {
+          find("historyWindowHold").remove();
+        }
+        body.parentElement.style.overflowY = "scroll";
+      }
       const createPrisonPage = function(thisPrison,thoseCreators) {
-        let images = thisPrison[1];
+        images = thisPrison[1];
         viewing[0] = JSON.stringify(images[0]);
         savingAllImages = JSON.stringify(images);
   if (typeof images[1] !== "string") {
@@ -268,6 +435,10 @@ window.onload = function() {
         body = document.body;
         var wherewewant = window.location.search.substring(1);
         if (prisonPages[wherewewant] !== undefined) {
+            images = prisonPages[wherewewant][1];
+            if (typeof images[1] !== "string") {
+                currentImageDisplayed = [1,0];
+            }
           document.body.innerHTML = createPrisonPage(prisonPages[wherewewant],desyncCreators);
         } else {
           document.body.innerHTML = "<h4>Not found</h4>";
